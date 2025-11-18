@@ -104,7 +104,8 @@ class SetupTab(ttk.Frame):
 
         # Progress bar frame (hidden by default, shown during processing)
         self.progress_frame = ttk.Frame(self, style="Status.TFrame")
-        self.progress_frame.pack(fill="x", pady=(0, 7))  # 7 pixels below status as requested
+        # Don't pack it yet - will be packed when show_progress() is called
+        self.progress_visible = False
 
         # Progress bar with cancel button frame
         progress_container = ttk.Frame(self.progress_frame, style="Status.TFrame")
@@ -138,20 +139,16 @@ class SetupTab(ttk.Frame):
             width=8
         ).pack(side="right", padx=(8, 0))
 
-        # Initially hide the progress frame
-        self.progress_frame.pack_forget()
-        self.progress_visible = False
-
         # Files list with improved styling
-        list_frame = ttk.Frame(self, style="Card.TFrame")
-        list_frame.pack(fill="both", expand=True)
+        self.list_frame = ttk.Frame(self, style="Card.TFrame")
+        self.list_frame.pack(fill="both", expand=True)
 
         # Title for the list with file counter
         self.title_label_var = tk.StringVar(value="📄 Arquivos Disponíveis")
-        ttk.Label(list_frame, textvariable=self.title_label_var, style="SectionTitle.TLabel").pack(anchor="w", pady=(12, 8), padx=16)
+        ttk.Label(self.list_frame, textvariable=self.title_label_var, style="SectionTitle.TLabel").pack(anchor="w", pady=(12, 8), padx=16)
 
         columns = ("documento", "pasta", "tamanho")
-        self.tree = ttk.Treeview(list_frame, columns=columns, show="headings", height=15, style="Modern.Treeview")
+        self.tree = ttk.Treeview(self.list_frame, columns=columns, show="headings", height=15, style="Modern.Treeview")
         self.tree.heading("documento", text="📄 Documento")
         self.tree.heading("pasta", text="📁 Pasta")
         self.tree.heading("tamanho", text="💾 Tamanho (KB)")
@@ -160,7 +157,7 @@ class SetupTab(ttk.Frame):
         self.tree.column("tamanho", width=150, anchor="center")
 
         # Add scrollbar
-        scrollbar = ttk.Scrollbar(list_frame, orient="vertical", command=self.tree.yview)
+        scrollbar = ttk.Scrollbar(self.list_frame, orient="vertical", command=self.tree.yview)
         self.tree.configure(yscrollcommand=scrollbar.set)
 
         self.tree.pack(side="left", fill="both", expand=True, padx=(16, 0), pady=(0, 16))
@@ -199,7 +196,8 @@ class SetupTab(ttk.Frame):
         self.progress_bar.configure(maximum=total)
         self.progress_label_var.set("0%")
         if not self.progress_visible:
-            self.progress_frame.pack(fill="x", pady=(0, 7))
+            # Pack it before the list_frame to show it between status and files list
+            self.progress_frame.pack(fill="x", pady=(0, 7), before=self.list_frame)
             self.progress_visible = True
 
     def update_progress(self, current: int, total: int) -> None:
