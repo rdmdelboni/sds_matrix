@@ -13,7 +13,7 @@ from tkinter import filedialog, messagebox, ttk
 
 from ..core.chunk_strategy import ChunkStrategy
 from ..core.document_processor import DocumentProcessor, DEFAULT_FIELDS, ADDITIONAL_FIELDS
-from ..core.llm_client import LMStudioClient, GeminiClient
+from ..core.llm_client import LMStudioClient, GeminiClient, GrokClient, TavilyClient
 from ..core.queue_manager import ProcessingQueue
 from ..database.duckdb_manager import DuckDBManager
 from ..utils.file_utils import list_supported_files
@@ -1151,12 +1151,21 @@ class Application(tk.Tk):
 
         self.db_manager = DuckDBManager()
         self.llm_client = LMStudioClient()
-        # Optional Gemini client for online search if configured
-        self.gemini_client = GeminiClient() if ONLINE_SEARCH_PROVIDER.lower() == "gemini" else None
+        # Online search client based on configured provider (Tavily > Grok > Gemini > LM Studio)
+        provider = ONLINE_SEARCH_PROVIDER.lower()
+        self.online_search_client = None
+        if provider == "tavily":
+            self.online_search_client = TavilyClient()
+        elif provider == "grok":
+            self.online_search_client = GrokClient()
+        elif provider == "gemini":
+            self.online_search_client = GeminiClient()
+        # LM Studio fallback is handled by DocumentProcessor (uses llm_client.search_online_for_missing_fields)
+
         self.processor = DocumentProcessor(
             db_manager=self.db_manager,
             llm_client=self.llm_client,
-            online_search_client=self.gemini_client,
+            online_search_client=self.online_search_client,
             chunk_strategy=ChunkStrategy(),
             fields=[*DEFAULT_FIELDS, *ADDITIONAL_FIELDS],
         )
@@ -1295,15 +1304,25 @@ class Application(tk.Tk):
         self.after(200, self._drain_status_queue)
 
     def _check_llm_connection(self) -> None:
-        """Check local LLM availability (Ollama/LM Studio) and update UI."""
+        """Check local LLM availability (Ollama/LM Studio) and online search provider."""
         ok = self.llm_client.test_connection()
         status = "LLM local conectado." if ok else "LLM local nao respondeu."
-        # Append Gemini info if configured
+
+        # Append online search provider info if configured
         try:
-            if self.gemini_client and self.gemini_client.test_connection():
-                status += " | Gemini pronto para pesquisa online."
+            provider_name = ONLINE_SEARCH_PROVIDER.lower()
+            if self.online_search_client and self.online_search_client.test_connection():
+                if provider_name == "tavily":
+                    status += " | Tavily pronto para pesquisa online."
+                elif provider_name == "grok":
+                    status += " | Grok pronto para pesquisa online."
+                elif provider_name == "gemini":
+                    status += " | Gemini pronto para pesquisa online."
+                else:
+                    status += " | Pesquisa online via LLM local."
         except Exception:
             pass
+
         self.setup_tab.update_llm_status(status)
         self._update_status_bar("Pronto - Conexões verificadas")
 

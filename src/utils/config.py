@@ -105,8 +105,37 @@ GEMINI_CONFIG: Final[Dict[str, object]] = {
     "timeout": int(os.getenv("GEMINI_TIMEOUT", "60")),
 }
 
-# Provider for online search. Options: "gemini", "lmstudio".
-ONLINE_SEARCH_PROVIDER: Final[str] = os.getenv("ONLINE_SEARCH_PROVIDER", "gemini" if os.getenv("GOOGLE_API_KEY") else "lmstudio")
+# Grok (xAI API) configuration
+# To enable online search via Grok, set GROK_API_KEY in your environment (or .env)
+# Optional overrides:
+#   GROK_MODEL (default: grok-beta)
+#   GROK_BASE_URL (default: https://api.x.ai/v1)
+GROK_CONFIG: Final[Dict[str, object]] = {
+    "api_key": os.getenv("GROK_API_KEY", ""),
+    "model": os.getenv("GROK_MODEL", "grok-beta"),
+    "base_url": os.getenv("GROK_BASE_URL", "https://api.x.ai/v1"),
+    "timeout": int(os.getenv("GROK_TIMEOUT", "60")),
+}
+
+# Tavily AI Research API configuration
+# To enable online search via Tavily, set TAVILY_API_KEY in your environment (or .env)
+# Optional overrides:
+#   TAVILY_BASE_URL (default: https://api.tavily.com)
+TAVILY_CONFIG: Final[Dict[str, object]] = {
+    "api_key": os.getenv("TAVILY_API_KEY", ""),
+    "base_url": os.getenv("TAVILY_BASE_URL", "https://api.tavily.com"),
+    "timeout": int(os.getenv("TAVILY_TIMEOUT", "60")),
+}
+
+# Provider for online search. Options: "tavily", "grok", "gemini", "lmstudio".
+# Priority: TAVILY_API_KEY > GROK_API_KEY > GOOGLE_API_KEY > lmstudio (fallback)
+ONLINE_SEARCH_PROVIDER: Final[str] = os.getenv(
+    "ONLINE_SEARCH_PROVIDER",
+    "tavily" if os.getenv("TAVILY_API_KEY")
+    else ("grok" if os.getenv("GROK_API_KEY")
+    else ("gemini" if os.getenv("GOOGLE_API_KEY")
+    else "lmstudio"))
+)
 
 MAX_WORKERS: Final[int] = int(os.getenv("MAX_WORKERS", "2"))
 CHUNK_SIZE: Final[int] = int(os.getenv("CHUNK_SIZE", "4000"))
