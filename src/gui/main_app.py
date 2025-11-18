@@ -21,6 +21,33 @@ from ..utils.config import DATA_DIR, ONLINE_SEARCH_PROVIDER
 from ..utils.logger import logger
 
 
+# Modern Color Palette
+COLORS = {
+    "primary": "#2563eb",      # Blue
+    "primary_dark": "#1e40af",
+    "primary_light": "#dbeafe",
+    "success": "#10b981",      # Green
+    "success_light": "#d1fae5",
+    "warning": "#f59e0b",      # Orange
+    "warning_light": "#fef3c7",
+    "error": "#ef4444",        # Red
+    "error_light": "#fee2e2",
+    "neutral_50": "#f9fafb",
+    "neutral_100": "#f3f4f6",
+    "neutral_200": "#e5e7eb",
+    "neutral_300": "#d1d5db",
+    "neutral_400": "#9ca3af",
+    "neutral_500": "#6b7280",
+    "neutral_600": "#4b5563",
+    "neutral_700": "#374151",
+    "neutral_800": "#1f2937",
+    "neutral_900": "#111827",
+    "white": "#ffffff",
+    "text_primary": "#111827",
+    "text_secondary": "#6b7280",
+}
+
+
 class SetupTab(ttk.Frame):
     """Tab responsible for folder selection and file preview."""
 
@@ -35,13 +62,22 @@ class SetupTab(ttk.Frame):
         self._state_path = (DATA_DIR / "config" / "app_state.json")
         self._last_folder = self._load_last_folder()
 
-        top_frame = ttk.Frame(self)
-        top_frame.pack(fill="x", pady=(0, 24))
-        ttk.Button(top_frame, text="Selecionar pasta", command=self._select_folder).pack(side="left")
-        self._btn_reload = ttk.Button(top_frame, text="Recarregar pasta", command=self._reload_folder)
-        self._btn_reload.pack(side="left", padx=(16, 0))
-        ttk.Button(top_frame, text="Adicionar a fila", command=self._enqueue_files).pack(side="left", padx=(16, 0))
-        ttk.Label(top_frame, textvariable=self.folder_var).pack(side="left", padx=(24, 0))
+        # Header frame with gradient-like background
+        header_frame = ttk.Frame(self, style="Header.TFrame")
+        header_frame.pack(fill="x", pady=(0, 16))
+
+        top_frame = ttk.Frame(header_frame)
+        top_frame.pack(fill="x", pady=12, padx=16)
+
+        # Styled buttons with icons (using Unicode symbols)
+        ttk.Button(top_frame, text="📁 Selecionar pasta", command=self._select_folder, style="Primary.TButton").pack(side="left")
+        self._btn_reload = ttk.Button(top_frame, text="🔄 Recarregar pasta", command=self._reload_folder, style="Secondary.TButton")
+        self._btn_reload.pack(side="left", padx=(12, 0))
+        ttk.Button(top_frame, text="➕ Adicionar a fila", command=self._enqueue_files, style="Success.TButton").pack(side="left", padx=(12, 0))
+
+        # Info label with better styling
+        info_label = ttk.Label(top_frame, textvariable=self.folder_var, style="Info.TLabel")
+        info_label.pack(side="left", padx=(24, 0))
 
         # Show last folder on label at startup, if available
         try:
@@ -60,15 +96,79 @@ class SetupTab(ttk.Frame):
         # Ensure reload button reflects current state at startup
         self._update_reload_button()
 
-        ttk.Label(self, textvariable=self.llm_status_var, foreground="#1e88e5").pack(anchor="w", pady=(0, 16))
+        # Status label with badge-like styling
+        status_frame = ttk.Frame(self, style="Status.TFrame")
+        status_frame.pack(fill="x", pady=(0, 16))
+        ttk.Label(status_frame, text="🔌 Status:", style="StatusLabel.TLabel").pack(side="left", padx=(8, 4))
+        ttk.Label(status_frame, textvariable=self.llm_status_var, style="StatusValue.TLabel").pack(side="left")
 
-        columns = ("documento", "tamanho")
-        self.tree = ttk.Treeview(self, columns=columns, show="headings", height=15)
-        self.tree.heading("documento", text="Documento")
-        self.tree.heading("tamanho", text="Tamanho (KB)")
-        self.tree.column("documento", width=1000, anchor="w")
-        self.tree.column("tamanho", width=220, anchor="center")
-        self.tree.pack(fill="both", expand=True)
+        # Progress bar frame (hidden by default, shown during processing)
+        self.progress_frame = ttk.Frame(self, style="Status.TFrame")
+        self.progress_frame.pack(fill="x", pady=(0, 7))  # 7 pixels below status as requested
+
+        # Progress bar with cancel button frame
+        progress_container = ttk.Frame(self.progress_frame, style="Status.TFrame")
+        progress_container.pack(fill="x", padx=(8, 8), pady=(8, 8))
+
+        # Progress bar (takes up space, grows to fill)
+        self.progress_var = tk.IntVar(value=0)
+        self.progress_bar = ttk.Progressbar(
+            progress_container,
+            length=500,
+            maximum=100,
+            mode="determinate",
+            variable=self.progress_var
+        )
+        self.progress_bar.pack(side="left", fill="x", expand=True, padx=(0, 8))
+
+        # Cancel button on the right
+        self.cancel_button = ttk.Button(
+            progress_container,
+            text="⏹️ Cancelar",
+            command=self._cancel_processing
+        )
+        self.cancel_button.pack(side="right")
+
+        # Progress percentage and status label
+        self.progress_label_var = tk.StringVar(value="0%")
+        ttk.Label(
+            progress_container,
+            textvariable=self.progress_label_var,
+            style="StatusValue.TLabel",
+            width=8
+        ).pack(side="right", padx=(8, 0))
+
+        # Initially hide the progress frame
+        self.progress_frame.pack_forget()
+        self.progress_visible = False
+
+        # Files list with improved styling
+        list_frame = ttk.Frame(self, style="Card.TFrame")
+        list_frame.pack(fill="both", expand=True)
+
+        # Title for the list with file counter
+        self.title_label_var = tk.StringVar(value="📄 Arquivos Disponíveis")
+        ttk.Label(list_frame, textvariable=self.title_label_var, style="SectionTitle.TLabel").pack(anchor="w", pady=(12, 8), padx=16)
+
+        columns = ("documento", "pasta", "tamanho")
+        self.tree = ttk.Treeview(list_frame, columns=columns, show="headings", height=15, style="Modern.Treeview")
+        self.tree.heading("documento", text="📄 Documento")
+        self.tree.heading("pasta", text="📁 Pasta")
+        self.tree.heading("tamanho", text="💾 Tamanho (KB)")
+        self.tree.column("documento", width=600, anchor="w")
+        self.tree.column("pasta", width=400, anchor="w")
+        self.tree.column("tamanho", width=150, anchor="center")
+
+        # Add scrollbar
+        scrollbar = ttk.Scrollbar(list_frame, orient="vertical", command=self.tree.yview)
+        self.tree.configure(yscrollcommand=scrollbar.set)
+
+        self.tree.pack(side="left", fill="both", expand=True, padx=(16, 0), pady=(0, 16))
+        scrollbar.pack(side="right", fill="y", padx=(0, 16), pady=(0, 16))
+
+        # Configure alternating row colors for better readability
+        self.tree.tag_configure("oddrow", background=COLORS["white"])
+        self.tree.tag_configure("evenrow", background=COLORS["neutral_50"])
 
     def _select_folder(self) -> None:
         # Use last folder as starting point if available
@@ -93,6 +193,37 @@ class SetupTab(ttk.Frame):
         """Update the connection status label."""
         self.llm_status_var.set(status)
 
+    def show_progress(self, total: int) -> None:
+        """Show the integrated progress bar."""
+        self.progress_var.set(0)
+        self.progress_bar.configure(maximum=total)
+        self.progress_label_var.set("0%")
+        if not self.progress_visible:
+            self.progress_frame.pack(fill="x", pady=(0, 7))
+            self.progress_visible = True
+
+    def update_progress(self, current: int, total: int) -> None:
+        """Update the integrated progress bar."""
+        if total > 0:
+            self.progress_var.set(current)
+            percentage = (current * 100) // total
+            self.progress_label_var.set(f"{percentage}%")
+
+    def hide_progress(self) -> None:
+        """Hide the integrated progress bar."""
+        if self.progress_visible:
+            self.progress_frame.pack_forget()
+            self.progress_visible = False
+        self.progress_var.set(0)
+        self.progress_label_var.set("0%")
+
+    def _cancel_processing(self) -> None:
+        """Cancel the current processing."""
+        if hasattr(self.controller, 'processing_queue') and self.controller.processing_queue:
+            self.controller.processing_queue.stop()
+            self.hide_progress()
+            messagebox.showinfo("Cancelado", "Processamento cancelado pelo usuário.")
+
     # --- Persistence helpers ---
     def _reload_folder(self) -> None:
         """Reload files from the last selected folder into the grid."""
@@ -112,7 +243,7 @@ class SetupTab(ttk.Frame):
     
     def _load_folder_files(self, path: Path) -> None:
         try:
-            files = list_supported_files(path)
+            files = list_supported_files(path, recursive=True)
         except Exception as exc:  # noqa: BLE001
             # Use the unified error dialog with hints
             self.controller._show_error_dialog(
@@ -134,17 +265,38 @@ class SetupTab(ttk.Frame):
         for item in self.tree.get_children():
             self.tree.delete(item)
 
-        for file_path in files:
+        # Count unique folders
+        unique_folders = set()
+        for idx, file_path in enumerate(files):
             try:
                 size_kb = file_path.stat().st_size / 1024
             except Exception:
                 size_kb = 0.0
+
+            # Get relative path from base folder
+            try:
+                relative_path = file_path.relative_to(path)
+                folder_path = str(relative_path.parent) if relative_path.parent != Path(".") else "."
+                unique_folders.add(folder_path)
+            except ValueError:
+                folder_path = str(file_path.parent.name)
+
+            # Apply alternating row colors
+            row_tag = "evenrow" if idx % 2 == 0 else "oddrow"
+
             self.tree.insert(
                 "",
                 "end",
                 iid=str(file_path),
-                values=(file_path.name, f"{size_kb:.1f}"),
+                values=(file_path.name, folder_path, f"{size_kb:.1f}"),
+                tags=(row_tag,),
             )
+
+        # Update title with counts
+        folder_count = len(unique_folders)
+        self.title_label_var.set(
+            f"📄 Arquivos Disponíveis ({len(files)} arquivo(s) em {folder_count} pasta(s))"
+        )
 
         self.folder_var.set(f"{path} ({len(files)} arquivo(s))")
         # Persist last selected folder
@@ -212,17 +364,34 @@ class ProcessingTab(ttk.Frame):
     """Tab displaying processing progress and extracted results."""
 
     def __init__(self, master: ttk.Notebook, controller: "Application") -> None:
-        super().__init__(master, padding=16)
+        super().__init__(master, padding=24)
         self.controller = controller
         self._modes: dict[str, str] = {}  # iid -> mode ("online"|"local")
         self._mode_editor: ttk.Combobox | None = None
 
+        # Header frame
+        header_frame = ttk.Frame(self, style="Header.TFrame")
+        header_frame.pack(fill="x", pady=(0, 16))
+
         # Toolbar for bulk actions (set mode for selected rows)
-        toolbar = ttk.Frame(self)
-        toolbar.pack(fill="x", pady=(0, 8))
-        ttk.Label(toolbar, text="Alterar modo:").pack(side="left")
-        ttk.Button(toolbar, text="Modo: Online", command=self._set_selected_mode_online).pack(side="left", padx=(6, 0))
-        ttk.Button(toolbar, text="Modo: Local", command=self._set_selected_mode_local).pack(side="left", padx=(6, 0))
+        toolbar = ttk.Frame(header_frame)
+        toolbar.pack(fill="x", pady=12, padx=16)
+        ttk.Label(toolbar, text="⚙️ Alterar modo:", style="ToolbarLabel.TLabel").pack(side="left", padx=(0, 8))
+        ttk.Button(toolbar, text="🌐 Modo: Online", command=self._set_selected_mode_online, style="Primary.TButton").pack(side="left", padx=(0, 8))
+        ttk.Button(toolbar, text="💻 Modo: Local", command=self._set_selected_mode_local, style="Secondary.TButton").pack(side="left")
+
+        # Table frame with card styling
+        table_frame = ttk.Frame(self, style="Card.TFrame")
+        table_frame.pack(fill="both", expand=True, pady=(0, 16))
+
+        # Title frame
+        title_frame = ttk.Frame(table_frame, style="Card.TFrame")
+        title_frame.pack(fill="x", padx=16, pady=(12, 8))
+        ttk.Label(title_frame, text="📊 Progresso do Processamento", style="SectionTitle.TLabel").pack(anchor="w")
+
+        # Tree container for grid layout
+        tree_container = ttk.Frame(table_frame, style="Card.TFrame")
+        tree_container.pack(fill="both", expand=True, padx=16, pady=(0, 16))
 
         columns = (
             "documento",
@@ -238,8 +407,8 @@ class ProcessingTab(ttk.Frame):
                 "grupo_embalagem",
                 "incompatibilidades",
         )
-        self.tree = ttk.Treeview(self, columns=columns, show="headings", height=15)
-        self.tree.heading("documento", text="Documento")
+        self.tree = ttk.Treeview(tree_container, columns=columns, show="headings", height=15, style="Modern.Treeview")
+        self.tree.heading("documento", text="📄 Documento")
         self.tree.heading("status", text="Status")
         self.tree.heading("modo", text="Modo")
         self.tree.heading("nome_produto", text="Produto")
@@ -263,16 +432,26 @@ class ProcessingTab(ttk.Frame):
         self.tree.column("classe_onu", width=100, anchor="center")
         self.tree.column("grupo_embalagem", width=140, anchor="center")
         self.tree.column("incompatibilidades", width=350, anchor="w")
-        
-        # Add horizontal scrollbar
-        h_scrollbar = ttk.Scrollbar(self, orient="horizontal", command=self.tree.xview)
-        self.tree.configure(xscrollcommand=h_scrollbar.set)
-        self.tree.pack(side="top", fill="both", expand=True)
-        h_scrollbar.pack(side="bottom", fill="x")
 
-        self.tree.tag_configure("valid", background="#e8f5e9")
-        self.tree.tag_configure("warning", background="#fff8e1")
-        self.tree.tag_configure("invalid", background="#ffebee")
+        # Add scrollbars
+        h_scrollbar = ttk.Scrollbar(tree_container, orient="horizontal", command=self.tree.xview)
+        v_scrollbar = ttk.Scrollbar(tree_container, orient="vertical", command=self.tree.yview)
+        self.tree.configure(xscrollcommand=h_scrollbar.set, yscrollcommand=v_scrollbar.set)
+
+        self.tree.grid(row=0, column=0, sticky="nsew")
+        v_scrollbar.grid(row=0, column=1, sticky="ns")
+        h_scrollbar.grid(row=1, column=0, sticky="ew")
+
+        tree_container.grid_rowconfigure(0, weight=1)
+        tree_container.grid_columnconfigure(0, weight=1)
+
+        # Modern color scheme with better contrast
+        self.tree.tag_configure("valid", background=COLORS["success_light"], foreground=COLORS["text_primary"])
+        self.tree.tag_configure("warning", background=COLORS["warning_light"], foreground=COLORS["text_primary"])
+        self.tree.tag_configure("invalid", background=COLORS["error_light"], foreground=COLORS["text_primary"])
+        # Alternating row colors (used when no validation status)
+        self.tree.tag_configure("oddrow", background=COLORS["white"])
+        self.tree.tag_configure("evenrow", background=COLORS["neutral_50"])
         # Enable editing of 'modo' on double-click
         self.tree.bind("<Double-1>", self._on_double_click)
 
@@ -468,52 +647,73 @@ class ResultsTab(ttk.Frame):
     """Tab to show processed outputs and trigger exports."""
 
     def __init__(self, master: ttk.Notebook, controller: "Application") -> None:
-        super().__init__(master, padding=16)
+        super().__init__(master, padding=24)
         self.controller = controller
         self._results: list[dict[str, object]] = []
         self._filtered_results: list[dict[str, object]] = []
 
-        toolbar = ttk.Frame(self)
-        toolbar.pack(fill="x", pady=(0, 8))
+        # Header frame
+        header_frame = ttk.Frame(self, style="Header.TFrame")
+        header_frame.pack(fill="x", pady=(0, 16))
 
-        ttk.Button(toolbar, text="Atualizar", command=self.refresh).pack(side="left")
-        ttk.Button(toolbar, text="Exportar CSV", command=self._export_csv).pack(side="left", padx=(8, 0))
-        ttk.Button(toolbar, text="Exportar Excel", command=self._export_excel).pack(side="left", padx=(8, 0))
+        toolbar = ttk.Frame(header_frame)
+        toolbar.pack(fill="x", pady=12, padx=16)
 
-        ttk.Label(toolbar, text="Status proc.:").pack(side="left", padx=(16, 4))
+        # Action buttons
+        ttk.Button(toolbar, text="🔄 Atualizar", command=self.refresh, style="Primary.TButton").pack(side="left")
+        ttk.Button(toolbar, text="📊 Exportar CSV", command=self._export_csv, style="Success.TButton").pack(side="left", padx=(8, 0))
+        ttk.Button(toolbar, text="📈 Exportar Excel", command=self._export_excel, style="Success.TButton").pack(side="left", padx=(8, 0))
+
+        ttk.Separator(toolbar, orient="vertical").pack(side="left", fill="y", padx=16)
+
+        # Filters
+        ttk.Label(toolbar, text="Status:", style="FilterLabel.TLabel").pack(side="left", padx=(0, 4))
         self.status_filter = tk.StringVar(value="Todos")
         status_combo = ttk.Combobox(
             toolbar,
             textvariable=self.status_filter,
             values=("Todos", "success", "failed", "partial"),
             state="readonly",
-            width=10,
+            width=12,
         )
         status_combo.pack(side="left")
         status_combo.current(0)
         status_combo.bind("<<ComboboxSelected>>", lambda _: self._apply_filters())
 
-        ttk.Label(toolbar, text="Validacao:").pack(side="left", padx=(16, 4))
+        ttk.Label(toolbar, text="Validação:", style="FilterLabel.TLabel").pack(side="left", padx=(16, 4))
         self.validation_filter = tk.StringVar(value="Todas")
         validation_combo = ttk.Combobox(
             toolbar,
             textvariable=self.validation_filter,
             values=("Todas", "valid", "warning", "invalid"),
             state="readonly",
-            width=10,
+            width=12,
         )
         validation_combo.pack(side="left")
         validation_combo.current(0)
         validation_combo.bind("<<ComboboxSelected>>", lambda _: self._apply_filters())
 
-        ttk.Label(toolbar, text="Buscar:").pack(side="left", padx=(16, 4))
+        ttk.Label(toolbar, text="🔍 Buscar:", style="FilterLabel.TLabel").pack(side="left", padx=(16, 4))
         self.search_var = tk.StringVar()
         search_entry = ttk.Entry(toolbar, textvariable=self.search_var, width=24)
         search_entry.pack(side="left")
         self.search_var.trace_add("write", lambda *_: self._apply_filters())
 
         self.info_var = tk.StringVar(value="0 registros carregados.")
-        ttk.Label(toolbar, textvariable=self.info_var).pack(side="left", padx=(12, 0))
+        ttk.Label(toolbar, textvariable=self.info_var, style="Info.TLabel").pack(side="left", padx=(16, 0))
+
+        # Table frame with card styling
+        table_frame = ttk.Frame(self, style="Card.TFrame")
+        table_frame.pack(fill="both", expand=True)
+
+        # Title frame
+        title_frame = ttk.Frame(table_frame, style="Card.TFrame")
+        title_frame.pack(fill="x", padx=16, pady=(12, 8))
+        ttk.Label(title_frame, text="📋 Resultados Processados", style="SectionTitle.TLabel").pack(anchor="w")
+
+        # Tree container for grid layout
+        tree_container = ttk.Frame(table_frame, style="Card.TFrame")
+        tree_container.pack(fill="both", expand=True, padx=16, pady=(0, 16))
 
         columns = (
             "documento",
@@ -527,9 +727,9 @@ class ResultsTab(ttk.Frame):
             "incompatibilidades",
             "processado_em",
         )
-        self.tree = ttk.Treeview(self, columns=columns, show="headings", height=15)
-        self.tree.heading("documento", text="Documento")
-        self.tree.heading("status", text="Status proc.")
+        self.tree = ttk.Treeview(tree_container, columns=columns, show="headings", height=15, style="Modern.Treeview")
+        self.tree.heading("documento", text="📄 Documento")
+        self.tree.heading("status", text="Status")
         self.tree.heading("nome_produto", text="Produto")
         self.tree.heading("fabricante", text="Fabricante")
         self.tree.heading("numero_onu", text="ONU")
@@ -537,7 +737,7 @@ class ResultsTab(ttk.Frame):
         self.tree.heading("classe_onu", text="Classe")
         self.tree.heading("grupo_embalagem", text="Grupo Emb")
         self.tree.heading("incompatibilidades", text="Incompatibilidades")
-        self.tree.heading("processado_em", text="Processado em")
+        self.tree.heading("processado_em", text="⏰ Processado em")
 
         self.tree.column("documento", width=280, anchor="w")
         self.tree.column("status", width=160, anchor="center")
@@ -549,21 +749,31 @@ class ResultsTab(ttk.Frame):
         self.tree.column("grupo_embalagem", width=140, anchor="center")
         self.tree.column("incompatibilidades", width=350, anchor="w")
         self.tree.column("processado_em", width=280, anchor="center")
-        
-        # Add horizontal scrollbar
-        h_scrollbar = ttk.Scrollbar(self, orient="horizontal", command=self.tree.xview)
-        self.tree.configure(xscrollcommand=h_scrollbar.set)
-        self.tree.pack(side="top", fill="both", expand=True)
-        h_scrollbar.pack(side="bottom", fill="x")
+
+        # Add scrollbars
+        h_scrollbar = ttk.Scrollbar(tree_container, orient="horizontal", command=self.tree.xview)
+        v_scrollbar = ttk.Scrollbar(tree_container, orient="vertical", command=self.tree.yview)
+        self.tree.configure(xscrollcommand=h_scrollbar.set, yscrollcommand=v_scrollbar.set)
+
+        self.tree.grid(row=0, column=0, sticky="nsew")
+        v_scrollbar.grid(row=0, column=1, sticky="ns")
+        h_scrollbar.grid(row=1, column=0, sticky="ew")
+
+        tree_container.grid_rowconfigure(0, weight=1)
+        tree_container.grid_columnconfigure(0, weight=1)
 
         # Context menu (right-click) for quick actions
         self._context_menu = tk.Menu(self, tearoff=0)
-        self._context_menu.add_command(label="Reprocessar selecao (online)", command=self._reprocess_selected_online)
+        self._context_menu.add_command(label="🔄 Reprocessar seleção (online)", command=self._reprocess_selected_online)
         self.tree.bind("<Button-3>", self._on_results_right_click)
 
-        self.tree.tag_configure("valid", background="#e8f5e9")
-        self.tree.tag_configure("warning", background="#fff8e1")
-        self.tree.tag_configure("invalid", background="#ffebee")
+        # Modern color scheme
+        self.tree.tag_configure("valid", background=COLORS["success_light"], foreground=COLORS["text_primary"])
+        self.tree.tag_configure("warning", background=COLORS["warning_light"], foreground=COLORS["text_primary"])
+        self.tree.tag_configure("invalid", background=COLORS["error_light"], foreground=COLORS["text_primary"])
+        # Alternating row colors (used when no validation status)
+        self.tree.tag_configure("oddrow", background=COLORS["white"])
+        self.tree.tag_configure("evenrow", background=COLORS["neutral_50"])
 
     def _reprocess_selected_online(self) -> None:
         """Trigger online reprocessing (Gemini) for selected rows in the Results grid."""
@@ -775,32 +985,171 @@ class Application(tk.Tk):
 
     def __init__(self) -> None:
         super().__init__()
-        self.title("FDS Extractor MVP")
-        self.geometry("1600x1000")
-        
-        # Configure LARGE fonts for better readability (2x size)
-        default_font = ("TkDefaultFont", 16, "normal")
-        text_font = ("TkTextFont", 16)
-        fixed_font = ("TkFixedFont", 14)
-        menu_font = ("TkMenuFont", 16)
-        heading_font = ("TkDefaultFont", 17, "bold")
-        
+        self.title("FDS-2-Matrix")
+        self.geometry("1700x1000")
+        self.minsize(1200, 700)
+
+        # Set window background
+        self.configure(bg=COLORS["neutral_50"])
+
+        # Configure LARGE fonts for better readability
+        default_font = ("Segoe UI", 14, "normal")
+        text_font = ("Segoe UI", 14)
+        fixed_font = ("Consolas", 13)
+        menu_font = ("Segoe UI", 14)
+        heading_font = ("Segoe UI", 15, "bold")
+        title_font = ("Segoe UI", 16, "bold")
+
         self.option_add("*TCombobox*Listbox*Font", default_font)
         self.option_add("*Font", default_font)
         self.option_add("*TkDefaultFont", default_font)
         self.option_add("*TkTextFont", text_font)
         self.option_add("*TkFixedFont", fixed_font)
         self.option_add("*TkMenuFont", menu_font)
-        
-        # Configure ttk styles with MUCH LARGER fonts and buttons
+
+        # Configure modern ttk styles
         style = ttk.Style(self)
-        style.configure(".", font=default_font)
-        style.configure("Treeview", font=("TkDefaultFont", 15), rowheight=40)
-        style.configure("Treeview.Heading", font=heading_font)
-        style.configure("TButton", font=("TkDefaultFont", 16), padding=12)
-        style.configure("TLabel", font=("TkDefaultFont", 16))
-        style.configure("TEntry", font=("TkDefaultFont", 16))
-        style.configure("TCombobox", font=("TkDefaultFont", 16))
+        style.theme_use('clam')  # Modern theme base
+
+        # Base styles
+        style.configure(".", font=default_font, background=COLORS["neutral_50"])
+        style.configure("TFrame", background=COLORS["neutral_50"])
+        style.configure("TLabel", font=default_font, background=COLORS["neutral_50"], foreground=COLORS["text_primary"])
+        style.configure("TEntry", font=default_font, fieldbackground=COLORS["white"], padding=8)
+        style.configure("TCombobox", font=default_font, fieldbackground=COLORS["white"], padding=6)
+
+        # Button styles - Primary (Blue)
+        style.configure("Primary.TButton",
+                       font=default_font,
+                       background=COLORS["primary"],
+                       foreground=COLORS["white"],
+                       borderwidth=0,
+                       focuscolor='none',
+                       padding=(16, 10))
+        style.map("Primary.TButton",
+                 background=[("active", COLORS["primary_dark"]), ("pressed", COLORS["primary_dark"])],
+                 relief=[("pressed", "flat"), ("active", "flat")])
+
+        # Button styles - Secondary (Gray)
+        style.configure("Secondary.TButton",
+                       font=default_font,
+                       background=COLORS["neutral_300"],
+                       foreground=COLORS["text_primary"],
+                       borderwidth=0,
+                       focuscolor='none',
+                       padding=(16, 10))
+        style.map("Secondary.TButton",
+                 background=[("active", COLORS["neutral_400"]), ("pressed", COLORS["neutral_400"])],
+                 relief=[("pressed", "flat"), ("active", "flat")])
+
+        # Button styles - Success (Green)
+        style.configure("Success.TButton",
+                       font=default_font,
+                       background=COLORS["success"],
+                       foreground=COLORS["white"],
+                       borderwidth=0,
+                       focuscolor='none',
+                       padding=(16, 10))
+        style.map("Success.TButton",
+                 background=[("active", "#059669"), ("pressed", "#059669")],
+                 relief=[("pressed", "flat"), ("active", "flat")])
+
+        # Frame styles
+        style.configure("Header.TFrame", background=COLORS["white"], relief="flat")
+        style.configure("Card.TFrame", background=COLORS["white"], relief="flat", borderwidth=1)
+        style.configure("Status.TFrame", background=COLORS["primary_light"], relief="flat")
+
+        # Label styles
+        style.configure("SectionTitle.TLabel",
+                       font=title_font,
+                       background=COLORS["white"],
+                       foreground=COLORS["text_primary"])
+        style.configure("StatusLabel.TLabel",
+                       font=("Segoe UI", 13, "bold"),
+                       background=COLORS["primary_light"],
+                       foreground=COLORS["primary_dark"])
+        style.configure("StatusValue.TLabel",
+                       font=default_font,
+                       background=COLORS["primary_light"],
+                       foreground=COLORS["text_primary"])
+        style.configure("Info.TLabel",
+                       font=default_font,
+                       background=COLORS["white"],
+                       foreground=COLORS["text_secondary"])
+        style.configure("ToolbarLabel.TLabel",
+                       font=("Segoe UI", 14, "bold"),
+                       background=COLORS["white"],
+                       foreground=COLORS["text_primary"])
+        style.configure("FilterLabel.TLabel",
+                       font=default_font,
+                       background=COLORS["white"],
+                       foreground=COLORS["text_secondary"])
+
+        # Treeview (Table) styles
+        style.configure("Modern.Treeview",
+                       font=("Segoe UI", 13),
+                       background=COLORS["white"],
+                       foreground=COLORS["text_primary"],
+                       fieldbackground=COLORS["white"],
+                       borderwidth=0,
+                       rowheight=42)
+        style.configure("Modern.Treeview.Heading",
+                       font=heading_font,
+                       background=COLORS["neutral_100"],
+                       foreground=COLORS["text_primary"],
+                       relief="flat",
+                       borderwidth=0)
+        style.map("Modern.Treeview.Heading",
+                 background=[("active", COLORS["neutral_200"])])
+        style.map("Modern.Treeview",
+                 background=[("selected", COLORS["primary_light"])],
+                 foreground=[("selected", COLORS["text_primary"])])
+
+        # Configure striped rows
+        self.tree_stripe_color = COLORS["neutral_50"]
+
+        # Notebook (Tabs) styles - Harmonized & Equal Height
+        style.configure("TNotebook",
+                       background=COLORS["neutral_50"],
+                       borderwidth=0,
+                       relief="flat",
+                       lightcolor=COLORS["neutral_50"],
+                       darkcolor=COLORS["neutral_50"])
+
+        style.configure("TNotebook.Tab",
+                       font=("Segoe UI", 14, "bold"),
+                       padding=(16, 10),  # Altura padronizada (vertical reduzido)
+                       background=COLORS["neutral_200"],
+                       foreground=COLORS["text_secondary"],
+                       relief="flat",  # Sem efeito 3D
+                       borderwidth=0,
+                       lightcolor=COLORS["neutral_200"],
+                       darkcolor=COLORS["neutral_200"],
+                       focuscolor=COLORS["white"])  # Foco também branco
+
+        style.map("TNotebook.Tab",
+                 background=[("selected", COLORS["white"]),
+                            ("active", COLORS["white"])],
+                 foreground=[("selected", COLORS["primary"]),
+                            ("active", COLORS["primary"])],
+                 relief=[("selected", "flat"),
+                        ("active", "flat")],  # Mantém flat quando selecionada/ativa
+                 borderwidth=[("selected", 0),
+                             ("active", 0)],  # Sem bordas quando selecionada/ativa
+                 lightcolor=[("selected", COLORS["white"]),
+                            ("active", COLORS["white"])],
+                 darkcolor=[("selected", COLORS["white"]),
+                           ("active", COLORS["white"])]
+                 )
+
+        # Status bar style
+        style.configure("StatusBar.TFrame",
+                       background=COLORS["neutral_800"],
+                       relief="flat")
+        style.configure("StatusBar.TLabel",
+                       font=("Segoe UI", 12),
+                       background=COLORS["neutral_800"],
+                       foreground=COLORS["white"])
 
         self.db_manager = DuckDBManager()
         self.llm_client = LMStudioClient()
@@ -819,7 +1168,7 @@ class Application(tk.Tk):
 
         self.processing_queue = ProcessingQueue(
             processor=self.processor,
-            workers=1,
+            # workers usa MAX_WORKERS do .env por padrão
             on_started=self._on_job_started,
             on_finished=self._on_job_finished,
             on_failed=self._on_job_failed,
@@ -828,15 +1177,31 @@ class Application(tk.Tk):
 
         self.protocol("WM_DELETE_WINDOW", self._on_close)
 
-        notebook = ttk.Notebook(self)
+        # Main container with padding
+        main_container = ttk.Frame(self)
+        main_container.pack(fill="both", expand=True, padx=8, pady=8)
+
+        notebook = ttk.Notebook(main_container)
         notebook.pack(fill="both", expand=True)
 
         self.setup_tab = SetupTab(notebook, self)
         self.processing_tab = ProcessingTab(notebook, self)
         self.results_tab = ResultsTab(notebook, self)
-        notebook.add(self.setup_tab, text="Configuracao")
-        notebook.add(self.processing_tab, text="Processamento")
-        notebook.add(self.results_tab, text="Resultados")
+        notebook.add(self.setup_tab, text="⚙️ Configuração")
+        notebook.add(self.processing_tab, text="⚡ Processamento")
+        notebook.add(self.results_tab, text="📊 Resultados")
+
+        # Status bar at the bottom
+        self.status_bar = ttk.Frame(main_container, style="StatusBar.TFrame", height=32)
+        self.status_bar.pack(fill="x", side="bottom", pady=(8, 0))
+
+        self.status_text = tk.StringVar(value="Pronto")
+        status_label = ttk.Label(self.status_bar, textvariable=self.status_text, style="StatusBar.TLabel")
+        status_label.pack(side="left", padx=12, pady=6)
+
+        # Version info on the right
+        version_label = ttk.Label(self.status_bar, text="FDS Extractor v1.0", style="StatusBar.TLabel")
+        version_label.pack(side="right", padx=12, pady=6)
 
         # Menu bar with quick actions
         menubar = tk.Menu(self)
@@ -854,7 +1219,6 @@ class Application(tk.Tk):
         self.after(100, self._check_llm_connection)
         self.after(400, self.results_tab.refresh)
         # Progress tracking
-        self._progress_dialog: ProgressDialog | None = None
         self._progress_total: int = 0
         self._progress_done: int = 0
 
@@ -867,12 +1231,12 @@ class Application(tk.Tk):
     def start_processing(self) -> None:
         """Queue selected files for background processing."""
         logger.info("Starting processing of %s file(s)", len(self.selected_files))
-        # Setup and show progress dialog
+        self._update_status_bar(f"Iniciando processamento de {len(self.selected_files)} arquivo(s)...")
+        # Setup and show integrated progress bar
         self._progress_total = len(self.selected_files)
         self._progress_done = 0
         if self._progress_total > 0:
-            self._progress_dialog = ProgressDialog(self, total=self._progress_total)
-            self._progress_dialog.show()
+            self.setup_tab.show_progress(self._progress_total)
         for file_path in self.selected_files:
             self.processing_tab.update_status(file_path, "Na fila", field_details={})
             mode = self.processing_tab.get_mode(file_path)
@@ -920,16 +1284,15 @@ class Application(tk.Tk):
             # Update progress bar
             if status in {"Concluido", "Erro"}:
                 self._progress_done += 1
-                if self._progress_dialog:
-                    self._progress_dialog.update(self._progress_done)
+                self.setup_tab.update_progress(self._progress_done, self._progress_total)
 
         if refresh_results:
             self.results_tab.refresh()
 
-        # Close progress dialog when all tasks are done
-        if self._progress_dialog and self._progress_done >= self._progress_total and self._progress_total > 0:
-            self._progress_dialog.close()
-            self._progress_dialog = None
+        # Hide progress bar when all tasks are done
+        if self._progress_done >= self._progress_total and self._progress_total > 0:
+            self.setup_tab.hide_progress()
+            self._update_status_bar(f"Processamento concluído - {self._progress_total} arquivo(s) processado(s)")
 
         self.after(200, self._drain_status_queue)
 
@@ -944,10 +1307,16 @@ class Application(tk.Tk):
         except Exception:
             pass
         self.setup_tab.update_llm_status(status)
+        self._update_status_bar("Pronto - Conexões verificadas")
+
+    def _update_status_bar(self, message: str) -> None:
+        """Update the status bar with a message."""
+        self.status_text.set(message)
 
     def _on_close(self) -> None:
         """Cleanup resources when the user closes the app."""
         logger.info("Shutting down application.")
+        self._update_status_bar("Encerrando...")
         self.processing_queue.stop()
         self.destroy()
 
@@ -1003,7 +1372,7 @@ class Application(tk.Tk):
         details: str | None = None,
         suggestions: str | None = None,
     ) -> None:
-        """Show a modal error dialog with details and copy-to-clipboard.
+        """Show a modern modal error dialog with details and copy-to-clipboard.
 
         - message: short summary line
         - details: raw exception or traceback
@@ -1020,39 +1389,72 @@ class Application(tk.Tk):
 
         dlg = tk.Toplevel(self)
         dlg.title(title)
-        dlg.geometry("900x700")
+        dlg.geometry("950x750")
         dlg.transient(self)
         dlg.grab_set()
         dlg.resizable(True, True)
+        dlg.configure(bg=COLORS["white"])
 
-        frame = ttk.Frame(dlg, padding=24)
-        frame.pack(fill="both", expand=True)
+        # Header with error icon
+        header = ttk.Frame(dlg, style="Header.TFrame")
+        header.pack(fill="x")
 
-        ttk.Label(frame, text=message, foreground="#d32f2f", wraplength=820, justify="left").pack(anchor="w")
+        title_frame = ttk.Frame(header, style="Header.TFrame")
+        title_frame.pack(fill="x", padx=24, pady=20)
+        ttk.Label(title_frame, text="⚠️", font=("Segoe UI", 36), style="SectionTitle.TLabel").pack(side="left", padx=(0, 16))
+
+        title_content = ttk.Frame(title_frame, style="Header.TFrame")
+        title_content.pack(side="left", fill="both", expand=True)
+        ttk.Label(title_content, text=title, font=("Segoe UI", 18, "bold"), style="SectionTitle.TLabel").pack(anchor="w")
+        error_label = ttk.Label(title_content, text=message, font=("Segoe UI", 13), wraplength=750, justify="left")
+        error_label.configure(foreground=COLORS["error"])
+        error_label.pack(anchor="w", pady=(4, 0))
+
+        # Main content area
+        content_frame = ttk.Frame(dlg)
+        content_frame.configure(bg=COLORS["white"])
+        content_frame.pack(fill="both", expand=True, padx=24, pady=(0, 24))
 
         if suggestions:
-            ttk.Separator(frame).pack(fill="x", pady=16)
-            ttk.Label(frame, text="Sugestoes:", foreground="#455a64").pack(anchor="w")
-            txt_sug = tk.Text(frame, height=6, wrap="word", font=("TkDefaultFont", 14))
+            # Suggestions section
+            suggestions_frame = ttk.Frame(content_frame, style="Card.TFrame")
+            suggestions_frame.pack(fill="x", pady=(0, 16))
+
+            ttk.Label(suggestions_frame, text="💡 Sugestões", font=("Segoe UI", 14, "bold"), style="SectionTitle.TLabel").pack(anchor="w", padx=16, pady=(12, 8))
+
+            txt_sug = tk.Text(suggestions_frame, height=6, wrap="word", font=("Segoe UI", 12), relief="flat", bg=COLORS["warning_light"], fg=COLORS["text_primary"])
             txt_sug.insert("1.0", suggestions)
             txt_sug.configure(state="disabled")
-            txt_sug.pack(fill="x", padx=0, pady=(4, 0))
+            txt_sug.pack(fill="x", padx=16, pady=(0, 12))
 
         if details:
-            ttk.Separator(frame).pack(fill="x", pady=16)
-            header = ttk.Frame(frame)
-            header.pack(fill="x")
-            ttk.Label(header, text="Detalhes do erro:").pack(side="left")
-            ttk.Button(header, text="Copiar", command=lambda: _copy(details)).pack(side="right")
+            # Details section
+            details_frame = ttk.Frame(content_frame, style="Card.TFrame")
+            details_frame.pack(fill="both", expand=True)
 
-            txt = tk.Text(frame, height=15, wrap="word", font=("TkFixedFont", 13))
+            detail_header = ttk.Frame(details_frame, style="Card.TFrame")
+            detail_header.pack(fill="x", padx=16, pady=(12, 8))
+            ttk.Label(detail_header, text="📋 Detalhes Técnicos", font=("Segoe UI", 14, "bold"), style="SectionTitle.TLabel").pack(side="left")
+            ttk.Button(detail_header, text="📋 Copiar", command=lambda: _copy(details), style="Secondary.TButton").pack(side="right")
+
+            txt = tk.Text(details_frame, height=15, wrap="word", font=("Consolas", 11), relief="flat", bg=COLORS["neutral_100"], fg=COLORS["text_primary"])
             txt.insert("1.0", details)
             txt.configure(state="disabled")
-            txt.pack(fill="both", expand=True)
 
-        btns = ttk.Frame(frame)
-        btns.pack(fill="x", pady=(20, 0))
-        ttk.Button(btns, text="Fechar", command=dlg.destroy).pack(side="right")
+            # Add scrollbar for details
+            scrollbar = ttk.Scrollbar(details_frame, orient="vertical", command=txt.yview)
+            txt.configure(yscrollcommand=scrollbar.set)
+
+            txt.pack(side="left", fill="both", expand=True, padx=(16, 0), pady=(0, 12))
+            scrollbar.pack(side="right", fill="y", padx=(0, 16), pady=(0, 12))
+
+        # Button footer
+        footer = ttk.Frame(dlg, style="Header.TFrame")
+        footer.pack(fill="x", pady=(12, 0))
+
+        btn_frame = ttk.Frame(footer, style="Header.TFrame")
+        btn_frame.pack(fill="x", padx=24, pady=16)
+        ttk.Button(btn_frame, text="Fechar", command=dlg.destroy, style="Primary.TButton").pack(side="right")
 
 
 def run_app() -> None:
@@ -1062,36 +1464,96 @@ def run_app() -> None:
 
 
 class ProgressDialog:
-    """Simple modal progress dialog with a label and a progress bar."""
+    """Modern modal progress dialog with enhanced styling."""
 
     def __init__(self, parent: tk.Tk, total: int) -> None:
         self.parent = parent
         self.total = max(total, 1)
         self.top = tk.Toplevel(parent)
-        self.top.title("Processando arquivos...")
-        self.top.geometry("800x200")
+        self.top.title("Processamento em Andamento")
+
+        # Configuração da janela - MOVÍVEL
+        width = 700
+        height = 280
         self.top.transient(parent)
         self.top.grab_set()
-        self.top.resizable(False, False)
+        self.top.resizable(True, True)  # Permite redimensionar
+        self.top.configure(bg=COLORS["white"])
 
-        frame = ttk.Frame(self.top, padding=24)
-        frame.pack(fill="both", expand=True)
+        # Centralizar na tela (não no parent)
+        screen_width = self.top.winfo_screenwidth()
+        screen_height = self.top.winfo_screenheight()
+        x = (screen_width - width) // 2
+        y = (screen_height - height) // 2
+        self.top.geometry(f"{width}x{height}+{x}+{y}")
 
-        self.label_var = tk.StringVar(value=f"Processando 0 de {self.total}... (0%)")
-        ttk.Label(frame, textvariable=self.label_var).pack(anchor="w", pady=(0, 16))
+        # Header with icon - PERMITE ARRASTAR
+        header = ttk.Frame(self.top, style="Header.TFrame")
+        header.pack(fill="x", pady=(0, 0))
 
-        self.bar = ttk.Progressbar(frame, mode="determinate", maximum=self.total, length=720)
+        title_frame = ttk.Frame(header, style="Header.TFrame")
+        title_frame.pack(fill="x", padx=24, pady=16)
+        ttk.Label(title_frame, text="⚡", font=("Segoe UI", 32), style="SectionTitle.TLabel").pack(side="left", padx=(0, 12))
+        title_label = ttk.Label(title_frame, text="Processando Arquivos", font=("Segoe UI", 18, "bold"), style="SectionTitle.TLabel")
+        title_label.pack(side="left")
+
+        # Habilitar arrastar pela barra de título
+        self._enable_drag(title_frame)
+
+        # Main content
+        frame = ttk.Frame(self.top)
+        frame.configure(style="Card.TFrame")
+        frame.pack(fill="both", expand=True, padx=24, pady=(0, 24))
+
+        # Status text
+        self.label_var = tk.StringVar(value=f"Processando 0 de {self.total} arquivos...")
+        status_label = ttk.Label(frame, textvariable=self.label_var, font=("Segoe UI", 14))
+        status_label.pack(anchor="w", pady=(16, 8), padx=16)
+
+        # Progress bar with modern styling
+        progress_frame = ttk.Frame(frame, style="Card.TFrame")
+        progress_frame.pack(fill="x", padx=16, pady=(0, 8))
+
+        self.bar = ttk.Progressbar(progress_frame, mode="determinate", maximum=self.total, length=620)
         self.bar.pack(fill="x")
-        
-        # Percentage label below progress bar
+
+        # Percentage label
         self.percent_var = tk.StringVar(value="0%")
-        ttk.Label(frame, textvariable=self.percent_var, foreground="#1565c0").pack(anchor="center", pady=(8, 0))
+        percent_label = ttk.Label(frame, textvariable=self.percent_var, font=("Segoe UI", 16, "bold"))
+        percent_label.configure(foreground=COLORS["primary"])
+        percent_label.pack(anchor="center", pady=(8, 16))
 
-        ttk.Button(frame, text="Minimizar", command=self.top.withdraw).pack(anchor="e", pady=(20, 0))
+        # Button frame
+        btn_frame = ttk.Frame(frame, style="Card.TFrame")
+        btn_frame.pack(fill="x", padx=16, pady=(8, 16))
+        ttk.Button(btn_frame, text="Minimizar", command=self.top.withdraw, style="Secondary.TButton").pack(side="right")
 
-        # Ensure dialog stays on top while processing
+        # Variáveis para arrastar
+        self._drag_x = 0
+        self._drag_y = 0
+
+        # Ensure dialog stays on top initially
         self.top.attributes("-topmost", True)
         self.top.after(500, lambda: self.top.attributes("-topmost", False))
+
+    def _enable_drag(self, widget) -> None:
+        """Habilita arrastar a janela pelo widget."""
+        widget.bind("<Button-1>", self._start_drag)
+        widget.bind("<B1-Motion>", self._on_drag)
+        # Cursor de "mover" quando passar o mouse
+        widget.bind("<Enter>", lambda e: widget.configure(cursor="fleur"))
+        widget.bind("<Leave>", lambda e: widget.configure(cursor=""))
+
+    def _start_drag(self, event) -> None:
+        """Inicia o arraste da janela."""
+        self._drag_x = event.x
+        self._drag_y = event.y
+
+    def _on_drag(self, event) -> None:
+        """Arrasta a janela."""
+        x = self.top.winfo_x() + (event.x - self._drag_x)
+        y = self.top.winfo_y() + (event.y - self._drag_y)
+        self.top.geometry(f"+{x}+{y}")
 
     def show(self) -> None:
         self.top.deiconify()
@@ -1099,7 +1561,7 @@ class ProgressDialog:
     def update(self, current: int) -> None:
         current = max(0, min(current, self.total))
         percent = int((current / self.total) * 100) if self.total > 0 else 0
-        self.label_var.set(f"Processando {current} de {self.total}... ({percent}%)")
+        self.label_var.set(f"Processando {current} de {self.total} arquivos...")
         self.percent_var.set(f"{percent}%")
         self.bar['value'] = current
         self.top.update_idletasks()
