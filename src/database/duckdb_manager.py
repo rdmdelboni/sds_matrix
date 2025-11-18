@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import hashlib
+import threading
 from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
@@ -32,49 +33,51 @@ class DuckDBManager:
     def __init__(self, db_path: Path | None = None) -> None:
         self.db_path = db_path or DUCKDB_FILE
         self.conn = duckdb.connect(str(self.db_path))
+        self._lock = threading.Lock()  # Thread-safe access to DuckDB connection
         logger.info("Connected to DuckDB database at %s", self.db_path)
         self._initialize_schema()
 
     def _initialize_schema(self) -> None:
         """Create the minimum schema if it is not present."""
         logger.debug("Ensuring DuckDB schema is ready.")
-        # Create sequences for auto-increment behavior
-        self.conn.execute("CREATE SEQUENCE IF NOT EXISTS documents_seq START 1;")
-        self.conn.execute("CREATE SEQUENCE IF NOT EXISTS extractions_seq START 1;")
+        with self._lock:
+            # Create sequences for auto-increment behavior
+            self.conn.execute("CREATE SEQUENCE IF NOT EXISTS documents_seq START 1;")
+            self.conn.execute("CREATE SEQUENCE IF NOT EXISTS extractions_seq START 1;")
 
-        self.conn.execute(
-            """
-            CREATE TABLE IF NOT EXISTS documents (
-                id BIGINT PRIMARY KEY DEFAULT nextval('documents_seq'),
-                filename VARCHAR NOT NULL,
-                file_path VARCHAR NOT NULL,
-                file_hash VARCHAR UNIQUE NOT NULL,
-                file_size_bytes BIGINT,
-                file_type VARCHAR,
-                num_pages INTEGER,
-                status VARCHAR DEFAULT 'pending',
-                processed_at TIMESTAMP,
-                processing_time_seconds DOUBLE,
-                error_message TEXT
-            );
-            """
-        )
+            self.conn.execute(
+                """
+                CREATE TABLE IF NOT EXISTS documents (
+                    id BIGINT PRIMARY KEY DEFAULT nextval('documents_seq'),
+                    filename VARCHAR NOT NULL,
+                    file_path VARCHAR NOT NULL,
+                    file_hash VARCHAR UNIQUE NOT NULL,
+                    file_size_bytes BIGINT,
+                    file_type VARCHAR,
+                    num_pages INTEGER,
+                    status VARCHAR DEFAULT 'pending',
+                    processed_at TIMESTAMP,
+                    processing_time_seconds DOUBLE,
+                    error_message TEXT
+                );
+                """
+            )
 
-        self.conn.execute(
-            """
-            CREATE TABLE IF NOT EXISTS extractions (
-                id BIGINT PRIMARY KEY DEFAULT nextval('extractions_seq'),
-                document_id INTEGER NOT NULL,
-                field_name VARCHAR NOT NULL,
-                value TEXT,
-                confidence DOUBLE,
-                context TEXT,
-                validation_status VARCHAR,
-                validation_message TEXT,
-                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-            );
-            """
-        )
+            self.conn.execute(
+                """
+                CREATE TABLE IF NOT EXISTS extractions (
+                    id BIGINT PRIMARY KEY DEFAULT nextval('extractions_seq'),
+                    document_id INTEGER NOT NULL,
+                    field_name VARCHAR NOT NULL,
+                    value TEXT,
+                    confidence DOUBLE,
+                    context TEXT,
+                    validation_status VARCHAR,
+                    validation_message TEXT,
+                    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                );
+                """
+            )
 
     @staticmethod
     def calculate_hash(file_path: Path) -> str:
@@ -95,37 +98,38 @@ class DuckDBManager:
     ) -> int:
         """Create or reuse a document entry and return its id."""
         file_hash = self.calculate_hash(file_path)
-        existing = self.conn.execute(
-            "SELECT id FROM documents WHERE file_hash = ?",
-            [file_hash],
-        ).fetchone()
+        with self._lock:
+            existing = self.conn.execute(
+                "SELECT id FROM documents WHERE file_hash = ?",
+                [file_hash],
+            ).fetchone()
 
-        if existing:
-            logger.info("Document already registered: %s", filename)
-            return existing[0]
+            if existing:
+                logger.info("Document already registered: %s", filename)
+                return existing[0]
 
-        logger.info("Registering new document: %s", filename)
-        result = self.conn.execute(
-            """
-            INSERT INTO documents (
-                filename,
-                file_path,
-                file_hash,
-                file_size_bytes,
-                file_type,
-                num_pages,
-                status
-            )
-            VALUES (?, ?, ?, ?, ?, ?, 'pending')
-            RETURNING id;
-            """,
-            [filename, str(file_path), file_hash, file_size, file_type, num_pages],
-        ).fetchone()
+            logger.info("Registering new document: %s", filename)
+            result = self.conn.execute(
+                """
+                INSERT INTO documents (
+                    filename,
+                    file_path,
+                    file_hash,
+                    file_size_bytes,
+                    file_type,
+                    num_pages,
+                    status
+                )
+                VALUES (?, ?, ?, ?, ?, ?, 'pending')
+                RETURNING id;
+                """,
+                [filename, str(file_path), file_hash, file_size, file_type, num_pages],
+            ).fetchone()
 
-        if not result:
-            raise RuntimeError("Failed to register document in database.")
+            if not result:
+                raise RuntimeError("Failed to register document in database.")
 
-        return int(result[0])
+            return int(result[0])
 
     def update_document_status(
         self,
@@ -142,17 +146,18 @@ class DuckDBManager:
             status,
             error_message,
         )
-        self.conn.execute(
-            """
-            UPDATE documents
-            SET status = ?,
-                processed_at = CURRENT_TIMESTAMP,
-                processing_time_seconds = COALESCE(?, processing_time_seconds),
-                error_message = ?
-            WHERE id = ?;
-            """,
-            [status, processing_time_seconds, error_message, document_id],
-        )
+        with self._lock:
+            self.conn.execute(
+                """
+                UPDATE documents
+                SET status = ?,
+                    processed_at = CURRENT_TIMESTAMP,
+                    processing_time_seconds = COALESCE(?, processing_time_seconds),
+                    error_message = ?
+                WHERE id = ?;
+                """,
+                [status, processing_time_seconds, error_message, document_id],
+            )
 
     def store_extraction(
         self,
@@ -171,95 +176,100 @@ class DuckDBManager:
             field_name,
             value,
         )
-        self.conn.execute(
-            """
-            INSERT INTO extractions (
-                document_id,
-                field_name,
-                value,
-                confidence,
-                context,
-                validation_status,
-                validation_message
+        with self._lock:
+            self.conn.execute(
+                """
+                INSERT INTO extractions (
+                    document_id,
+                    field_name,
+                    value,
+                    confidence,
+                    context,
+                    validation_status,
+                    validation_message
+                )
+                VALUES (?, ?, ?, ?, ?, ?, ?);
+                """,
+                [
+                    document_id,
+                    field_name,
+                    value,
+                    confidence,
+                    context,
+                    validation_status,
+                    validation_message,
+                ],
             )
-            VALUES (?, ?, ?, ?, ?, ?, ?);
-            """,
-            [
-                document_id,
-                field_name,
-                value,
-                confidence,
-                context,
-                validation_status,
-                validation_message,
-            ],
-        )
 
     def fetch_documents(self, limit: int = 100) -> Sequence[DocumentRecord]:
         """Return recent documents for UI display."""
-        rows = self.conn.execute(
-            """
-            SELECT id, filename, file_path, status, processed_at, error_message
-            FROM documents
-            ORDER BY processed_at DESC NULLS LAST, id DESC
-            LIMIT ?;
-            """,
-            [limit],
-        ).fetchall()
-        return [
-            DocumentRecord(
-                id=row[0],
-                filename=row[1],
-                file_path=row[2],
-                status=row[3],
-                processed_at=row[4],
-                error_message=row[5],
-            )
-            for row in rows
-        ]
+        with self._lock:
+            rows = self.conn.execute(
+                """
+                SELECT id, filename, file_path, status, processed_at, error_message
+                FROM documents
+                ORDER BY processed_at DESC NULLS LAST, id DESC
+                LIMIT ?;
+                """,
+                [limit],
+            ).fetchall()
+            return [
+                DocumentRecord(
+                    id=row[0],
+                    filename=row[1],
+                    file_path=row[2],
+                    status=row[3],
+                    processed_at=row[4],
+                    error_message=row[5],
+                )
+                for row in rows
+            ]
 
     def fetch_extractions(self, document_id: int) -> Iterable[tuple[str, str, float]]:
         """Return extractions for a given document."""
-        return self.conn.execute(
-            """
-            SELECT field_name, value, confidence
-            FROM extractions
-            WHERE document_id = ?
-            ORDER BY field_name;
-            """,
-            [document_id],
-        ).fetchall()
+        with self._lock:
+            return self.conn.execute(
+                """
+                SELECT field_name, value, confidence
+                FROM extractions
+                WHERE document_id = ?
+                ORDER BY field_name;
+                """,
+                [document_id],
+            ).fetchall()
 
     def get_document_id(self, file_path: Path) -> Optional[int]:
         """Return the document id for a persisted path, if present."""
-        row = self.conn.execute(
-            "SELECT id FROM documents WHERE file_path = ?",
-            [str(file_path)],
-        ).fetchone()
-        return int(row[0]) if row else None
+        with self._lock:
+            row = self.conn.execute(
+                "SELECT id FROM documents WHERE file_path = ?",
+                [str(file_path)],
+            ).fetchone()
+            return int(row[0]) if row else None
 
     def get_field_details(self, document_id: int) -> dict[str, dict[str, object]]:
         """Return the latest value, confidence and validation metadata for each field."""
-        rows = self.conn.execute(
-            """
-            SELECT field_name, value, confidence, validation_status, validation_message
-            FROM extractions
-            WHERE document_id = ?
-            ORDER BY created_at DESC;
-            """,
-            [document_id],
-        ).fetchall()
-        details: dict[str, dict[str, object]] = {}
-        for field_name, value, confidence, status, message in rows:
-            if field_name in details:
-                continue
-            details[field_name] = {
-                "value": value,
-                "confidence": confidence,
-                "validation_status": status,
-                "validation_message": message,
-            }
-        return details
+        with self._lock:
+            rows = self.conn.execute(
+                """
+                SELECT field_name, value, confidence, validation_status, validation_message
+                FROM extractions
+                WHERE document_id = ?
+                ORDER BY created_at DESC;
+                """,
+                [document_id],
+            ).fetchall()
+            details: dict[str, dict[str, object]] = {}
+            for field_name, value, confidence, status, message in rows:
+                if field_name in details:
+                    continue
+                details[field_name] = {
+                    "value": value,
+                    "confidence": confidence,
+                    "validation_status": status,
+                    "validation_message": message,
+                }
+            return details
 
     def get_field_values(self, document_id: int) -> dict[str, str]:
         """Return only the latest field values (compatibility helper)."""
@@ -316,34 +326,35 @@ class DuckDBManager:
             ORDER BY d.processed_at DESC NULLS LAST, d.id DESC
             LIMIT ?;
         """
-        rows = self.conn.execute(query, [limit]).fetchall()
-        return [
-            {
-                "id": row[0],
-                "filename": row[1],
-                "status": row[2],
-                "processed_at": row[3],
-                "processing_time_seconds": row[4],
-                    "nome_produto": row[5],
-                    "nome_produto_confidence": row[6],
-                    "fabricante": row[7],
-                    "fabricante_confidence": row[8],
-                    "numero_onu": row[9],
-                    "numero_onu_confidence": row[10],
-                    "numero_onu_status": row[11],
-                    "numero_onu_message": row[12],
-                    "numero_cas": row[13],
-                    "numero_cas_confidence": row[14],
-                    "numero_cas_status": row[15],
-                    "numero_cas_message": row[16],
-                    "classificacao_onu": row[17],
-                    "classificacao_onu_confidence": row[18],
-                    "classificacao_onu_status": row[19],
-                    "classificacao_onu_message": row[20],
-                    "grupo_embalagem": row[21],
-                    "grupo_embalagem_confidence": row[22],
-                    "incompatibilidades": row[23],
-                    "incompatibilidades_confidence": row[24],
-            }
-            for row in rows
-        ]
+        with self._lock:
+            rows = self.conn.execute(query, [limit]).fetchall()
+            return [
+                {
+                    "id": row[0],
+                    "filename": row[1],
+                    "status": row[2],
+                    "processed_at": row[3],
+                    "processing_time_seconds": row[4],
+                        "nome_produto": row[5],
+                        "nome_produto_confidence": row[6],
+                        "fabricante": row[7],
+                        "fabricante_confidence": row[8],
+                        "numero_onu": row[9],
+                        "numero_onu_confidence": row[10],
+                        "numero_onu_status": row[11],
+                        "numero_onu_message": row[12],
+                        "numero_cas": row[13],
+                        "numero_cas_confidence": row[14],
+                        "numero_cas_status": row[15],
+                        "numero_cas_message": row[16],
+                        "classificacao_onu": row[17],
+                        "classificacao_onu_confidence": row[18],
+                        "classificacao_onu_status": row[19],
+                        "classificacao_onu_message": row[20],
+                        "grupo_embalagem": row[21],
+                        "grupo_embalagem_confidence": row[22],
+                        "incompatibilidades": row[23],
+                        "incompatibilidades_confidence": row[24],
+                }
+                for row in rows
+            ]
