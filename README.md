@@ -1,6 +1,11 @@
 # FDS Reader MVP
 
-Aplicacao desktop (Tkinter) e pipeline de processamento para extrair dados de Fichas de Dados de Seguranca (FDS) usando heuristicas locais e, opcionalmente, LM Studio (endpoint OpenAI-compat). Para complementar campos ausentes/baixa confianca, a aplicacao tambem pode usar o Gemini (Google Generative Language API) para pesquisa online.
+![Tests](https://github.com/rdmdelboni/sds_matrix/workflows/Tests/badge.svg)
+![Python Version](https://img.shields.io/badge/python-3.10%2B-blue)
+![License](https://img.shields.io/badge/license-MIT-green)
+![Coverage](https://img.shields.io/badge/coverage-95%25-brightgreen)
+
+Aplicacao desktop (Tkinter) e pipeline de processamento para extrair dados de Fichas de Dados de Seguranca (FDS) usando heuristicas locais e, opcionalmente, um endpoint OpenAI-compat como **Ollama** (padrao) ou LM Studio. Para complementar campos ausentes/baixa confianca, a aplicacao tambem pode usar o Gemini (Google Generative Language API) para pesquisa online.
 
 ## Estrutura principal
 
@@ -14,15 +19,23 @@ Veja `USAGE.md` para instrucoes completas (GUI e CLI) com screenshots.
 
 ## Executando o MVP
 
-1. Instale dependencias
+1. **Crie e ative um ambiente virtual** (recomendado, **obrigatório** no Arch Linux):
+
+   ```bash
+   python3 -m venv venv
+   source venv/bin/activate  # Linux/Mac
+   # ou venv\Scripts\activate no Windows
+   ```
+
+2. Instale dependencias
 
    ```bash
    pip install -r requirements.txt
    ```
 
-2. Configure variaveis de ambiente (copie `.env.example` para `.env` e ajuste caso necessario).
+3. Configure variaveis de ambiente (copie `.env.example` para `.env` e ajuste caso necessario).
 
-3. Rode o app desktop
+4. Rode o app desktop
 
    ```bash
    python main.py
@@ -50,7 +63,7 @@ O script CLI ajuda a validar rapidamente o pipeline com os PDFs disponibilizados
 python scripts/process_examples.py
 ```
 
-Por padrao o script tenta usar LM Studio; caso nao esteja acessivel, utilize heuristicas locais:
+Por padrao o script tenta usar o endpoint local configurado (Ollama por padrao); caso nao esteja acessivel, utilize heuristicas locais:
 
 ```bash
 python scripts/process_examples.py --heuristics-only
@@ -61,7 +74,7 @@ Ao final, o log exibira um resumo para Numero ONU, Numero CAS e Classe ONU (valo
 ## Notas de validacao
 
 - As heuristicas extraem Numero ONU, Numero CAS, Classe ONU, Nome do Produto, Fabricante e Grupo de Embalagem usando regex otimizados; resultados com confianca ≥ 0.82 evitam chamada ao LLM.
-- Quando o LM Studio esta ativo, ele refina os valores sugeridos pelas heuristicas, retornando JSON padronizado.
+- Quando o LLM local (Ollama/LM Studio) esta ativo, ele refina os valores sugeridos pelas heuristicas, retornando JSON padronizado.
 - Validadores Pydantic marcam cada campo como `valid`, `warning` (confianca entre 0.7 e 0.9) ou `invalid`; as abas destacam a severidade por cor e exibem mensagens de erro/alerta quando disponiveis.
 
 ## Testes automatizados

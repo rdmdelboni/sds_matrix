@@ -91,6 +91,10 @@ pwsh -File scripts/create_shortcut.ps1
 Crie um arquivo `.env` ao lado do executável (ou defina no sistema):
 
 ```ini
+# Endpoint OpenAI-compatível local (Ollama por padrão; pode ser LM Studio)
+LMSTUDIO_BASE_URL=http://localhost:11434/v1
+LMSTUDIO_MODEL=llama3.1:8b
+
 # Provedor de busca online: "gemini" ou "lmstudio"
 ONLINE_SEARCH_PROVIDER=gemini
 

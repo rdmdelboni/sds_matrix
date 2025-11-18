@@ -570,3 +570,189 @@ Exception: PDF extraction failed
 2025-11-07 08:16:53 - fds_reader - INFO - Document /tmp/pytest-of-rdmd/pytest-6/test_local_mode_uses_llm_for_l0/test.pdf processed in 0.00s
 2025-11-07 08:16:53 - fds_reader - INFO - Gemini: searching online for fields: ['numero_onu', 'numero_cas']
 2025-11-07 08:16:53 - fds_reader - INFO - Gemini online search completed for 2 fields
+2025-11-17 12:09:17 - fds_reader - INFO - Processing document /tmp/pytest-of-rdmdelboni/pytest-0/test_high_confidence_heuristic0/test.pdf
+2025-11-17 12:09:17 - fds_reader - INFO - Document /tmp/pytest-of-rdmdelboni/pytest-0/test_high_confidence_heuristic0/test.pdf processed in 0.00s
+2025-11-17 12:09:17 - fds_reader - INFO - Searching online for 1 missing fields: ['incompatibilidades']
+2025-11-17 12:09:17 - fds_reader - INFO - Processing document /tmp/pytest-of-rdmdelboni/pytest-0/test_low_confidence_uses_llm0/test.pdf
+2025-11-17 12:09:17 - fds_reader - INFO - Document /tmp/pytest-of-rdmdelboni/pytest-0/test_low_confidence_uses_llm0/test.pdf processed in 0.00s
+2025-11-17 12:09:17 - fds_reader - INFO - Processing document /tmp/pytest-of-rdmdelboni/pytest-0/test_file_size_validation0/large.pdf
+2025-11-17 12:09:17 - fds_reader - INFO - Processing document /tmp/pytest-of-rdmdelboni/pytest-0/test_error_handling_and_status0/error.pdf
+2025-11-17 12:09:17 - fds_reader - ERROR - Failed to process document /tmp/pytest-of-rdmdelboni/pytest-0/test_error_handling_and_status0/error.pdf
+Traceback (most recent call last):
+  File "/home/rdmdelboni/Work/Gits/sds_matrix/src/core/document_processor.py", line 144, in process
+    data = extractor.extract(file_path)
+  File "/usr/lib/python3.13/unittest/mock.py", line 1169, in __call__
+    return self._mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/unittest/mock.py", line 1173, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/unittest/mock.py", line 1228, in _execute_mock_call
+    raise effect
+Exception: Extraction failed
+2025-11-17 12:09:17 - fds_reader - INFO - Searching online for 1 missing fields: ['incompatibilidades']
+2025-11-17 12:09:17 - fds_reader - INFO - Processing document /tmp/pytest-of-rdmdelboni/pytest-0/test_no_llm_client_uses_heuris0/test.pdf
+2025-11-17 12:09:17 - fds_reader - INFO - Document /tmp/pytest-of-rdmdelboni/pytest-0/test_no_llm_client_uses_heuris0/test.pdf processed in 0.00s
+2025-11-17 12:09:17 - fds_reader - INFO - Processing document /tmp/pytest-of-rdmdelboni/pytest-0/test_empty_heuristics_triggers0/test.pdf
+2025-11-17 12:09:17 - fds_reader - INFO - Document /tmp/pytest-of-rdmdelboni/pytest-0/test_empty_heuristics_triggers0/test.pdf processed in 0.00s
+2025-11-17 12:09:17 - fds_reader - INFO - Processing document /tmp/pytest-of-rdmdelboni/pytest-0/test_empty_heuristics_stores_n0/test.pdf
+2025-11-17 12:09:17 - fds_reader - INFO - Document /tmp/pytest-of-rdmdelboni/pytest-0/test_empty_heuristics_stores_n0/test.pdf processed in 0.00s
+2025-11-17 12:09:17 - fds_reader - INFO - Processing document /tmp/pytest-of-rdmdelboni/pytest-0/test_llm_timeout_falls_back_to0/test.pdf
+2025-11-17 12:09:17 - fds_reader - INFO - Document /tmp/pytest-of-rdmdelboni/pytest-0/test_llm_timeout_falls_back_to0/test.pdf processed in 0.00s
+2025-11-17 12:09:17 - fds_reader - INFO - Processing document /tmp/pytest-of-rdmdelboni/pytest-0/test_llm_network_error_handlin0/test.pdf
+2025-11-17 12:09:17 - fds_reader - ERROR - Failed to process document /tmp/pytest-of-rdmdelboni/pytest-0/test_llm_network_error_handlin0/test.pdf
+Traceback (most recent call last):
+  File "/home/rdmdelboni/Work/Gits/sds_matrix/src/core/document_processor.py", line 161, in process
+    self._run_field_extractions(document_id, chunks, heuristic_hints, force_skip_llm=skip_local_llm)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rdmdelboni/Work/Gits/sds_matrix/src/core/document_processor.py", line 242, in _run_field_extractions
+    response = self.llm.extract_field(
+        field_name=field.label,
+        prompt_template=prompt,
+    )
+  File "/usr/lib/python3.13/unittest/mock.py", line 1169, in __call__
+    return self._mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/unittest/mock.py", line 1173, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/unittest/mock.py", line 1228, in _execute_mock_call
+    raise effect
+ConnectionError: Network error
+2025-11-17 12:09:17 - fds_reader - INFO - Processing document /tmp/pytest-of-rdmdelboni/pytest-0/test_corrupted_pdf_extraction_0/corrupted.pdf
+2025-11-17 12:09:17 - fds_reader - ERROR - Failed to process document /tmp/pytest-of-rdmdelboni/pytest-0/test_corrupted_pdf_extraction_0/corrupted.pdf
+Traceback (most recent call last):
+  File "/home/rdmdelboni/Work/Gits/sds_matrix/src/core/document_processor.py", line 144, in process
+    data = extractor.extract(file_path)
+  File "/usr/lib/python3.13/unittest/mock.py", line 1169, in __call__
+    return self._mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/unittest/mock.py", line 1173, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/unittest/mock.py", line 1228, in _execute_mock_call
+    raise effect
+Exception: PDF extraction failed
+2025-11-17 12:09:17 - fds_reader - INFO - Searching online for 1 missing fields: ['incompatibilidades']
+2025-11-17 12:09:17 - fds_reader - INFO - Processing document /tmp/pytest-of-rdmdelboni/pytest-0/test_empty_pdf_no_text_extract0/empty.pdf
+2025-11-17 12:09:17 - fds_reader - WARNING - Nenhum conteudo encontrado para o documento 1
+2025-11-17 12:09:17 - fds_reader - INFO - Document /tmp/pytest-of-rdmdelboni/pytest-0/test_empty_pdf_no_text_extract0/empty.pdf processed in 0.00s
+2025-11-17 12:09:17 - fds_reader - INFO - Processing document /tmp/pytest-of-rdmdelboni/pytest-0/test_confidence_exactly_at_thr0/test.pdf
+2025-11-17 12:09:17 - fds_reader - INFO - Document /tmp/pytest-of-rdmdelboni/pytest-0/test_confidence_exactly_at_thr0/test.pdf processed in 0.00s
+2025-11-17 12:09:17 - fds_reader - INFO - Processing document /tmp/pytest-of-rdmdelboni/pytest-0/test_custom_confidence_thresho0/test.pdf
+2025-11-17 12:09:17 - fds_reader - INFO - Document /tmp/pytest-of-rdmdelboni/pytest-0/test_custom_confidence_thresho0/test.pdf processed in 0.00s
+2025-11-17 12:09:17 - fds_reader - INFO - Processing document /tmp/pytest-of-rdmdelboni/pytest-0/test_online_mode_skips_local_l0/test.pdf
+2025-11-17 12:09:17 - fds_reader - INFO - Document /tmp/pytest-of-rdmdelboni/pytest-0/test_online_mode_skips_local_l0/test.pdf processed in 0.00s
+2025-11-17 12:09:17 - fds_reader - INFO - Searching online for 1 missing fields: ['incompatibilidades']
+2025-11-17 12:09:17 - fds_reader - INFO - Processing document /tmp/pytest-of-rdmdelboni/pytest-0/test_local_mode_uses_llm_for_l0/test.pdf
+2025-11-17 12:09:17 - fds_reader - INFO - Document /tmp/pytest-of-rdmdelboni/pytest-0/test_local_mode_uses_llm_for_l0/test.pdf processed in 0.00s
+2025-11-17 12:09:17 - fds_reader - INFO - Gemini: searching online for fields: ['numero_onu', 'numero_cas']
+2025-11-17 12:09:17 - fds_reader - INFO - Gemini online search completed for 2 fields
+2025-11-17 12:12:39 - fds_reader - INFO - Processing document /tmp/pytest-of-rdmdelboni/pytest-1/test_high_confidence_heuristic0/test.pdf
+2025-11-17 12:12:39 - fds_reader - INFO - Document /tmp/pytest-of-rdmdelboni/pytest-1/test_high_confidence_heuristic0/test.pdf processed in 0.00s
+2025-11-17 12:12:39 - fds_reader - INFO - Searching online for 1 missing fields: ['incompatibilidades']
+2025-11-17 12:12:39 - fds_reader - INFO - Processing document /tmp/pytest-of-rdmdelboni/pytest-1/test_low_confidence_uses_llm0/test.pdf
+2025-11-17 12:12:39 - fds_reader - INFO - Document /tmp/pytest-of-rdmdelboni/pytest-1/test_low_confidence_uses_llm0/test.pdf processed in 0.00s
+2025-11-17 12:12:39 - fds_reader - INFO - Processing document /tmp/pytest-of-rdmdelboni/pytest-1/test_file_size_validation0/large.pdf
+2025-11-17 12:12:39 - fds_reader - INFO - Processing document /tmp/pytest-of-rdmdelboni/pytest-1/test_error_handling_and_status0/error.pdf
+2025-11-17 12:12:39 - fds_reader - ERROR - Failed to process document /tmp/pytest-of-rdmdelboni/pytest-1/test_error_handling_and_status0/error.pdf
+Traceback (most recent call last):
+  File "/home/rdmdelboni/Work/Gits/sds_matrix/src/core/document_processor.py", line 144, in process
+    data = extractor.extract(file_path)
+  File "/usr/lib/python3.13/unittest/mock.py", line 1169, in __call__
+    return self._mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/unittest/mock.py", line 1173, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/unittest/mock.py", line 1228, in _execute_mock_call
+    raise effect
+Exception: Extraction failed
+2025-11-17 12:12:39 - fds_reader - INFO - Searching online for 1 missing fields: ['incompatibilidades']
+2025-11-17 12:12:39 - fds_reader - INFO - Processing document /tmp/pytest-of-rdmdelboni/pytest-1/test_no_llm_client_uses_heuris0/test.pdf
+2025-11-17 12:12:39 - fds_reader - INFO - Document /tmp/pytest-of-rdmdelboni/pytest-1/test_no_llm_client_uses_heuris0/test.pdf processed in 0.00s
+2025-11-17 12:12:39 - fds_reader - INFO - Processing document /tmp/pytest-of-rdmdelboni/pytest-1/test_empty_heuristics_triggers0/test.pdf
+2025-11-17 12:12:39 - fds_reader - INFO - Document /tmp/pytest-of-rdmdelboni/pytest-1/test_empty_heuristics_triggers0/test.pdf processed in 0.00s
+2025-11-17 12:12:39 - fds_reader - INFO - Processing document /tmp/pytest-of-rdmdelboni/pytest-1/test_empty_heuristics_stores_n0/test.pdf
+2025-11-17 12:12:39 - fds_reader - INFO - Document /tmp/pytest-of-rdmdelboni/pytest-1/test_empty_heuristics_stores_n0/test.pdf processed in 0.00s
+2025-11-17 12:12:39 - fds_reader - INFO - Processing document /tmp/pytest-of-rdmdelboni/pytest-1/test_llm_timeout_falls_back_to0/test.pdf
+2025-11-17 12:12:39 - fds_reader - INFO - Document /tmp/pytest-of-rdmdelboni/pytest-1/test_llm_timeout_falls_back_to0/test.pdf processed in 0.00s
+2025-11-17 12:12:39 - fds_reader - INFO - Processing document /tmp/pytest-of-rdmdelboni/pytest-1/test_llm_network_error_handlin0/test.pdf
+2025-11-17 12:12:39 - fds_reader - ERROR - Failed to process document /tmp/pytest-of-rdmdelboni/pytest-1/test_llm_network_error_handlin0/test.pdf
+Traceback (most recent call last):
+  File "/home/rdmdelboni/Work/Gits/sds_matrix/src/core/document_processor.py", line 161, in process
+    self._run_field_extractions(document_id, chunks, heuristic_hints, force_skip_llm=skip_local_llm)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rdmdelboni/Work/Gits/sds_matrix/src/core/document_processor.py", line 242, in _run_field_extractions
+    response = self.llm.extract_field(
+        field_name=field.label,
+        prompt_template=prompt,
+    )
+  File "/usr/lib/python3.13/unittest/mock.py", line 1169, in __call__
+    return self._mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/unittest/mock.py", line 1173, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/unittest/mock.py", line 1228, in _execute_mock_call
+    raise effect
+ConnectionError: Network error
+2025-11-17 12:12:39 - fds_reader - INFO - Processing document /tmp/pytest-of-rdmdelboni/pytest-1/test_corrupted_pdf_extraction_0/corrupted.pdf
+2025-11-17 12:12:39 - fds_reader - ERROR - Failed to process document /tmp/pytest-of-rdmdelboni/pytest-1/test_corrupted_pdf_extraction_0/corrupted.pdf
+Traceback (most recent call last):
+  File "/home/rdmdelboni/Work/Gits/sds_matrix/src/core/document_processor.py", line 144, in process
+    data = extractor.extract(file_path)
+  File "/usr/lib/python3.13/unittest/mock.py", line 1169, in __call__
+    return self._mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/unittest/mock.py", line 1173, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/unittest/mock.py", line 1228, in _execute_mock_call
+    raise effect
+Exception: PDF extraction failed
+2025-11-17 12:12:39 - fds_reader - INFO - Searching online for 1 missing fields: ['incompatibilidades']
+2025-11-17 12:12:39 - fds_reader - INFO - Processing document /tmp/pytest-of-rdmdelboni/pytest-1/test_empty_pdf_no_text_extract0/empty.pdf
+2025-11-17 12:12:39 - fds_reader - WARNING - Nenhum conteudo encontrado para o documento 1
+2025-11-17 12:12:39 - fds_reader - INFO - Document /tmp/pytest-of-rdmdelboni/pytest-1/test_empty_pdf_no_text_extract0/empty.pdf processed in 0.00s
+2025-11-17 12:12:39 - fds_reader - INFO - Processing document /tmp/pytest-of-rdmdelboni/pytest-1/test_confidence_exactly_at_thr0/test.pdf
+2025-11-17 12:12:39 - fds_reader - INFO - Document /tmp/pytest-of-rdmdelboni/pytest-1/test_confidence_exactly_at_thr0/test.pdf processed in 0.00s
+2025-11-17 12:12:39 - fds_reader - INFO - Processing document /tmp/pytest-of-rdmdelboni/pytest-1/test_custom_confidence_thresho0/test.pdf
+2025-11-17 12:12:39 - fds_reader - INFO - Document /tmp/pytest-of-rdmdelboni/pytest-1/test_custom_confidence_thresho0/test.pdf processed in 0.00s
+2025-11-17 12:12:39 - fds_reader - INFO - Processing document /tmp/pytest-of-rdmdelboni/pytest-1/test_online_mode_skips_local_l0/test.pdf
+2025-11-17 12:12:39 - fds_reader - INFO - Document /tmp/pytest-of-rdmdelboni/pytest-1/test_online_mode_skips_local_l0/test.pdf processed in 0.00s
+2025-11-17 12:12:39 - fds_reader - INFO - Searching online for 1 missing fields: ['incompatibilidades']
+2025-11-17 12:12:39 - fds_reader - INFO - Processing document /tmp/pytest-of-rdmdelboni/pytest-1/test_local_mode_uses_llm_for_l0/test.pdf
+2025-11-17 12:12:39 - fds_reader - INFO - Document /tmp/pytest-of-rdmdelboni/pytest-1/test_local_mode_uses_llm_for_l0/test.pdf processed in 0.00s
+2025-11-17 12:12:39 - fds_reader - INFO - Gemini: searching online for fields: ['numero_onu', 'numero_cas']
+2025-11-17 12:12:39 - fds_reader - INFO - Gemini online search completed for 2 fields
+2025-11-17 15:27:35 - fds_reader - INFO - Connected to DuckDB database at /home/rdmdelboni/Work/Gits/sds_matrix/data/duckdb/extractions.db
+2025-11-17 15:27:35 - fds_reader - INFO - Starting processing queue with 1 worker(s)
+2025-11-17 15:27:38 - fds_reader - ERROR - LM Studio connection failed: Connection error.
+2025-11-17 15:29:37 - fds_reader - INFO - Shutting down application.
+2025-11-17 15:29:37 - fds_reader - INFO - Stopping processing queue
+2025-11-17 15:31:34 - fds_reader - INFO - Connected to DuckDB database at /home/rdmdelboni/Work/Gits/sds_matrix/data/duckdb/extractions.db
+2025-11-17 15:31:34 - fds_reader - INFO - Starting processing queue with 1 worker(s)
+2025-11-17 15:31:37 - fds_reader - ERROR - LM Studio connection failed: Connection error.
+2025-11-17 15:32:52 - fds_reader - INFO - Shutting down application.
+2025-11-17 15:32:52 - fds_reader - INFO - Stopping processing queue
+2025-11-17 15:36:46 - fds_reader - INFO - Connected to DuckDB database at /home/rdmdelboni/Work/Gits/sds_matrix/data/duckdb/extractions.db
+2025-11-17 15:36:46 - fds_reader - INFO - Starting processing queue with 1 worker(s)
+2025-11-17 15:36:49 - fds_reader - ERROR - LM Studio connection failed: Connection error.
+2025-11-17 15:37:11 - fds_reader - INFO - Shutting down application.
+2025-11-17 15:37:11 - fds_reader - INFO - Stopping processing queue
+2025-11-17 15:40:32 - fds_reader - INFO - Connected to DuckDB database at /home/rdmdelboni/Work/Gits/sds_matrix/data/duckdb/extractions.db
+2025-11-17 15:40:32 - fds_reader - INFO - Starting processing queue with 1 worker(s)
+2025-11-17 15:40:35 - fds_reader - ERROR - LM Studio connection failed: Connection error.
+2025-11-17 15:40:45 - fds_reader - INFO - Shutting down application.
+2025-11-17 15:40:45 - fds_reader - INFO - Stopping processing queue
+2025-11-17 15:43:47 - fds_reader - INFO - Connected to DuckDB database at /home/rdmdelboni/Work/Gits/sds_matrix/data/duckdb/extractions.db
+2025-11-17 15:43:47 - fds_reader - INFO - Starting processing queue with 1 worker(s)
+2025-11-17 15:43:49 - fds_reader - ERROR - LM Studio connection failed: Connection error.
+2025-11-17 15:44:18 - fds_reader - INFO - Shutting down application.
+2025-11-17 15:44:18 - fds_reader - INFO - Stopping processing queue
+2025-11-17 15:50:09 - fds_reader - INFO - Connected to DuckDB database at /home/rdmdelboni/Work/Gits/sds_matrix/data/duckdb/extractions.db
+2025-11-17 15:50:09 - fds_reader - INFO - Starting processing queue with 1 worker(s)
+2025-11-17 15:50:11 - fds_reader - ERROR - LM Studio connection failed: Connection error.
+2025-11-17 15:50:22 - fds_reader - INFO - Shutting down application.
+2025-11-17 15:50:22 - fds_reader - INFO - Stopping processing queue

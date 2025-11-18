@@ -25,23 +25,23 @@ class SetupTab(ttk.Frame):
     """Tab responsible for folder selection and file preview."""
 
     def __init__(self, master: ttk.Notebook, controller: "Application") -> None:
-        super().__init__(master, padding=16)
+        super().__init__(master, padding=32)
         self.controller = controller
 
         self.folder_var = tk.StringVar(value="Nenhuma pasta selecionada.")
-        self.llm_status_var = tk.StringVar(value="Verificando conexao com LM Studio...")
+        self.llm_status_var = tk.StringVar(value="Verificando conexao com LLM local (Ollama/LM Studio)...")
 
         # App state for remembering last selected folder
         self._state_path = (DATA_DIR / "config" / "app_state.json")
         self._last_folder = self._load_last_folder()
 
         top_frame = ttk.Frame(self)
-        top_frame.pack(fill="x", pady=(0, 12))
+        top_frame.pack(fill="x", pady=(0, 24))
         ttk.Button(top_frame, text="Selecionar pasta", command=self._select_folder).pack(side="left")
         self._btn_reload = ttk.Button(top_frame, text="Recarregar pasta", command=self._reload_folder)
-        self._btn_reload.pack(side="left", padx=(8, 0))
-        ttk.Button(top_frame, text="Adicionar a fila", command=self._enqueue_files).pack(side="left", padx=(8, 0))
-        ttk.Label(top_frame, textvariable=self.folder_var).pack(side="left", padx=(12, 0))
+        self._btn_reload.pack(side="left", padx=(16, 0))
+        ttk.Button(top_frame, text="Adicionar a fila", command=self._enqueue_files).pack(side="left", padx=(16, 0))
+        ttk.Label(top_frame, textvariable=self.folder_var).pack(side="left", padx=(24, 0))
 
         # Show last folder on label at startup, if available
         try:
@@ -60,14 +60,14 @@ class SetupTab(ttk.Frame):
         # Ensure reload button reflects current state at startup
         self._update_reload_button()
 
-        ttk.Label(self, textvariable=self.llm_status_var, foreground="#1e88e5").pack(anchor="w", pady=(0, 8))
+        ttk.Label(self, textvariable=self.llm_status_var, foreground="#1e88e5").pack(anchor="w", pady=(0, 16))
 
         columns = ("documento", "tamanho")
-        self.tree = ttk.Treeview(self, columns=columns, show="headings", height=18)
+        self.tree = ttk.Treeview(self, columns=columns, show="headings", height=15)
         self.tree.heading("documento", text="Documento")
         self.tree.heading("tamanho", text="Tamanho (KB)")
-        self.tree.column("documento", width=480, anchor="w")
-        self.tree.column("tamanho", width=120, anchor="center")
+        self.tree.column("documento", width=1000, anchor="w")
+        self.tree.column("tamanho", width=220, anchor="center")
         self.tree.pack(fill="both", expand=True)
 
     def _select_folder(self) -> None:
@@ -238,7 +238,7 @@ class ProcessingTab(ttk.Frame):
                 "grupo_embalagem",
                 "incompatibilidades",
         )
-        self.tree = ttk.Treeview(self, columns=columns, show="headings", height=20)
+        self.tree = ttk.Treeview(self, columns=columns, show="headings", height=15)
         self.tree.heading("documento", text="Documento")
         self.tree.heading("status", text="Status")
         self.tree.heading("modo", text="Modo")
@@ -251,18 +251,18 @@ class ProcessingTab(ttk.Frame):
         self.tree.heading("classe_onu", text="Classe")
         self.tree.heading("grupo_embalagem", text="Grupo Emb")
         self.tree.heading("incompatibilidades", text="Incompatibilidades")
-        self.tree.column("documento", width=180, anchor="w")
-        self.tree.column("status", width=90, anchor="center")
-        self.tree.column("modo", width=90, anchor="center")
-        self.tree.column("nome_produto", width=200, anchor="w")
-        self.tree.column("fabricante", width=180, anchor="w")
-        self.tree.column("numero_onu", width=80, anchor="center")
-        self.tree.column("onu_validacao", width=70, anchor="center")
-        self.tree.column("numero_cas", width=110, anchor="center")
-        self.tree.column("cas_validacao", width=70, anchor="center")
-        self.tree.column("classe_onu", width=70, anchor="center")
-        self.tree.column("grupo_embalagem", width=90, anchor="center")
-        self.tree.column("incompatibilidades", width=220, anchor="w")
+        self.tree.column("documento", width=280, anchor="w")
+        self.tree.column("status", width=140, anchor="center")
+        self.tree.column("modo", width=100, anchor="center")
+        self.tree.column("nome_produto", width=400, anchor="w")
+        self.tree.column("fabricante", width=350, anchor="w")
+        self.tree.column("numero_onu", width=100, anchor="center")
+        self.tree.column("onu_validacao", width=80, anchor="center")
+        self.tree.column("numero_cas", width=180, anchor="center")
+        self.tree.column("cas_validacao", width=80, anchor="center")
+        self.tree.column("classe_onu", width=100, anchor="center")
+        self.tree.column("grupo_embalagem", width=140, anchor="center")
+        self.tree.column("incompatibilidades", width=350, anchor="w")
         
         # Add horizontal scrollbar
         h_scrollbar = ttk.Scrollbar(self, orient="horizontal", command=self.tree.xview)
@@ -527,7 +527,7 @@ class ResultsTab(ttk.Frame):
             "incompatibilidades",
             "processado_em",
         )
-        self.tree = ttk.Treeview(self, columns=columns, show="headings", height=20)
+        self.tree = ttk.Treeview(self, columns=columns, show="headings", height=15)
         self.tree.heading("documento", text="Documento")
         self.tree.heading("status", text="Status proc.")
         self.tree.heading("nome_produto", text="Produto")
@@ -539,16 +539,16 @@ class ResultsTab(ttk.Frame):
         self.tree.heading("incompatibilidades", text="Incompatibilidades")
         self.tree.heading("processado_em", text="Processado em")
 
-        self.tree.column("documento", width=180, anchor="w")
-        self.tree.column("status", width=100, anchor="center")
-        self.tree.column("nome_produto", width=220, anchor="w")
-        self.tree.column("fabricante", width=200, anchor="w")
-        self.tree.column("numero_onu", width=90, anchor="center")
-        self.tree.column("numero_cas", width=120, anchor="center")
-        self.tree.column("classe_onu", width=80, anchor="center")
-        self.tree.column("grupo_embalagem", width=100, anchor="center")
-        self.tree.column("incompatibilidades", width=240, anchor="w")
-        self.tree.column("processado_em", width=140, anchor="center")
+        self.tree.column("documento", width=280, anchor="w")
+        self.tree.column("status", width=160, anchor="center")
+        self.tree.column("nome_produto", width=400, anchor="w")
+        self.tree.column("fabricante", width=350, anchor="w")
+        self.tree.column("numero_onu", width=100, anchor="center")
+        self.tree.column("numero_cas", width=180, anchor="center")
+        self.tree.column("classe_onu", width=100, anchor="center")
+        self.tree.column("grupo_embalagem", width=140, anchor="center")
+        self.tree.column("incompatibilidades", width=350, anchor="w")
+        self.tree.column("processado_em", width=280, anchor="center")
         
         # Add horizontal scrollbar
         h_scrollbar = ttk.Scrollbar(self, orient="horizontal", command=self.tree.xview)
@@ -776,7 +776,31 @@ class Application(tk.Tk):
     def __init__(self) -> None:
         super().__init__()
         self.title("FDS Extractor MVP")
-        self.geometry("820x640")
+        self.geometry("1600x1000")
+        
+        # Configure LARGE fonts for better readability (2x size)
+        default_font = ("TkDefaultFont", 16, "normal")
+        text_font = ("TkTextFont", 16)
+        fixed_font = ("TkFixedFont", 14)
+        menu_font = ("TkMenuFont", 16)
+        heading_font = ("TkDefaultFont", 17, "bold")
+        
+        self.option_add("*TCombobox*Listbox*Font", default_font)
+        self.option_add("*Font", default_font)
+        self.option_add("*TkDefaultFont", default_font)
+        self.option_add("*TkTextFont", text_font)
+        self.option_add("*TkFixedFont", fixed_font)
+        self.option_add("*TkMenuFont", menu_font)
+        
+        # Configure ttk styles with MUCH LARGER fonts and buttons
+        style = ttk.Style(self)
+        style.configure(".", font=default_font)
+        style.configure("Treeview", font=("TkDefaultFont", 15), rowheight=40)
+        style.configure("Treeview.Heading", font=heading_font)
+        style.configure("TButton", font=("TkDefaultFont", 16), padding=12)
+        style.configure("TLabel", font=("TkDefaultFont", 16))
+        style.configure("TEntry", font=("TkDefaultFont", 16))
+        style.configure("TCombobox", font=("TkDefaultFont", 16))
 
         self.db_manager = DuckDBManager()
         self.llm_client = LMStudioClient()
@@ -910,9 +934,9 @@ class Application(tk.Tk):
         self.after(200, self._drain_status_queue)
 
     def _check_llm_connection(self) -> None:
-        """Check LM Studio availability and update UI."""
+        """Check local LLM availability (Ollama/LM Studio) and update UI."""
         ok = self.llm_client.test_connection()
-        status = "LM Studio conectado." if ok else "LM Studio nao respondeu."
+        status = "LLM local conectado." if ok else "LLM local nao respondeu."
         # Append Gemini info if configured
         try:
             if self.gemini_client and self.gemini_client.test_connection():
@@ -996,38 +1020,38 @@ class Application(tk.Tk):
 
         dlg = tk.Toplevel(self)
         dlg.title(title)
-        dlg.geometry("520x360")
+        dlg.geometry("900x700")
         dlg.transient(self)
         dlg.grab_set()
         dlg.resizable(True, True)
 
-        frame = ttk.Frame(dlg, padding=12)
+        frame = ttk.Frame(dlg, padding=24)
         frame.pack(fill="both", expand=True)
 
-        ttk.Label(frame, text=message, foreground="#d32f2f", wraplength=480, justify="left").pack(anchor="w")
+        ttk.Label(frame, text=message, foreground="#d32f2f", wraplength=820, justify="left").pack(anchor="w")
 
         if suggestions:
-            ttk.Separator(frame).pack(fill="x", pady=8)
+            ttk.Separator(frame).pack(fill="x", pady=16)
             ttk.Label(frame, text="Sugestoes:", foreground="#455a64").pack(anchor="w")
-            txt_sug = tk.Text(frame, height=4, wrap="word")
+            txt_sug = tk.Text(frame, height=6, wrap="word", font=("TkDefaultFont", 14))
             txt_sug.insert("1.0", suggestions)
             txt_sug.configure(state="disabled")
-            txt_sug.pack(fill="x", padx=0, pady=(2, 0))
+            txt_sug.pack(fill="x", padx=0, pady=(4, 0))
 
         if details:
-            ttk.Separator(frame).pack(fill="x", pady=8)
+            ttk.Separator(frame).pack(fill="x", pady=16)
             header = ttk.Frame(frame)
             header.pack(fill="x")
             ttk.Label(header, text="Detalhes do erro:").pack(side="left")
             ttk.Button(header, text="Copiar", command=lambda: _copy(details)).pack(side="right")
 
-            txt = tk.Text(frame, height=10, wrap="word")
+            txt = tk.Text(frame, height=15, wrap="word", font=("TkFixedFont", 13))
             txt.insert("1.0", details)
             txt.configure(state="disabled")
             txt.pack(fill="both", expand=True)
 
         btns = ttk.Frame(frame)
-        btns.pack(fill="x", pady=(10, 0))
+        btns.pack(fill="x", pady=(20, 0))
         ttk.Button(btns, text="Fechar", command=dlg.destroy).pack(side="right")
 
 
@@ -1045,25 +1069,25 @@ class ProgressDialog:
         self.total = max(total, 1)
         self.top = tk.Toplevel(parent)
         self.top.title("Processando arquivos...")
-        self.top.geometry("420x110")
+        self.top.geometry("800x200")
         self.top.transient(parent)
         self.top.grab_set()
         self.top.resizable(False, False)
 
-        frame = ttk.Frame(self.top, padding=12)
+        frame = ttk.Frame(self.top, padding=24)
         frame.pack(fill="both", expand=True)
 
         self.label_var = tk.StringVar(value=f"Processando 0 de {self.total}... (0%)")
-        ttk.Label(frame, textvariable=self.label_var).pack(anchor="w", pady=(0, 8))
+        ttk.Label(frame, textvariable=self.label_var).pack(anchor="w", pady=(0, 16))
 
-        self.bar = ttk.Progressbar(frame, mode="determinate", maximum=self.total, length=380)
+        self.bar = ttk.Progressbar(frame, mode="determinate", maximum=self.total, length=720)
         self.bar.pack(fill="x")
         
         # Percentage label below progress bar
         self.percent_var = tk.StringVar(value="0%")
-        ttk.Label(frame, textvariable=self.percent_var, foreground="#1565c0").pack(anchor="center", pady=(4, 0))
+        ttk.Label(frame, textvariable=self.percent_var, foreground="#1565c0").pack(anchor="center", pady=(8, 0))
 
-        ttk.Button(frame, text="Minimizar", command=self.top.withdraw).pack(anchor="e", pady=(10, 0))
+        ttk.Button(frame, text="Minimizar", command=self.top.withdraw).pack(anchor="e", pady=(20, 0))
 
         # Ensure dialog stays on top while processing
         self.top.attributes("-topmost", True)

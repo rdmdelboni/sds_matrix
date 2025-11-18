@@ -1,4 +1,4 @@
-"""LLM clients: LM Studio (OpenAI-compatible) and Gemini online search."""
+"""LLM clients: local OpenAI-compatible server (Ollama/LM Studio) and Gemini online search."""
 
 from __future__ import annotations
 
@@ -21,7 +21,7 @@ DEFAULT_SYSTEM_PROMPT = (
 
 
 class LMStudioClient:
-    """Wrapper for sending prompts to the local LM Studio server."""
+    """Wrapper for sending prompts to the local OpenAI-compatible server (Ollama/LM Studio)."""
 
     def __init__(self) -> None:
         self.config = LM_STUDIO_CONFIG
@@ -82,7 +82,7 @@ class LMStudioClient:
             )
             return True
         except Exception as exc:  # noqa: BLE001
-            logger.error("LM Studio connection failed: %s", exc)
+            logger.error("LLM connection failed: %s", exc)
             return False
 
     def search_online_for_missing_fields(

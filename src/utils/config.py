@@ -83,8 +83,9 @@ _ensure_directories()
 
 
 LM_STUDIO_CONFIG: Final[Dict[str, object]] = {
-    "base_url": os.getenv("LM_STUDIO_BASE_URL", "http://127.0.0.1:1234/v1"),
-    "model": os.getenv("LM_STUDIO_MODEL", "qwen2.5-coder-0.5b-instruct@fp16"),
+    # Defaults point to Ollama's OpenAI-compatible endpoint/model; override for LM Studio if desired.
+    "base_url": os.getenv("LM_STUDIO_BASE_URL", "http://127.0.0.1:11434/v1"),
+    "model": os.getenv("LM_STUDIO_MODEL", "llama3.1:8b"),
     "timeout": int(os.getenv("LM_STUDIO_TIMEOUT", "60")),
     "max_tokens": int(os.getenv("LM_STUDIO_MAX_TOKENS", "2000")),
     "temperature": float(os.getenv("LM_STUDIO_TEMPERATURE", "0.1")),

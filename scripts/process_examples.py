@@ -34,11 +34,11 @@ def _init_llm(disable_llm: bool) -> LMStudioClient | None:
     try:
         client = LMStudioClient()
         if not client.test_connection():
-            logger.warning("LM Studio not reachable; continuing with heuristics only.")
+            logger.warning("LLM server not reachable; continuing with heuristics only.")
             return None
         return client
     except Exception as exc:  # noqa: BLE001
-        logger.warning("Failed to initialise LM Studio client: %s", exc)
+        logger.warning("Failed to initialise LLM client: %s", exc)
         return None
 
 

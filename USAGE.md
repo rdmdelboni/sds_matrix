@@ -7,7 +7,7 @@ Este guia explica como instalar, configurar e operar o FDS Reader (GUI e CLI), a
 ## Requisitos
 
 - Windows com Python 3.13 (ou versão compatível com seu ambiente virtual)
-- LM Studio (opcional) rodando localmente para melhorar extração via LLM
+- Ollama (recomendado) ou outro servidor OpenAI-compatível (ex.: LM Studio) rodando localmente para melhorar extração via LLM
 - Gemini (opcional) para pesquisa online de campos faltantes
 - Tesseract OCR (opcional) para PDFs digitalizados
 
@@ -23,8 +23,9 @@ pip install -r requirements.txt
 
 1. Configure variáveis no `.env` (use o `.env.example` como base):
 
-- `LMSTUDIO_BASE_URL` (ex.: <http://localhost:1234>)
-- `OPENAI_API_KEY` (se necessário para LM Studio compatível)
+- `LMSTUDIO_BASE_URL` (ex.: <http://localhost:11434/v1> para Ollama)
+- `LMSTUDIO_MODEL` (ex.: `llama3.1:8b` em Ollama; ou `phi3.5` se quiser mais velocidade)
+- `OPENAI_API_KEY` (se necessário para outro provedor OpenAI-compatível)
 - `GOOGLE_API_KEY` (para habilitar Gemini)
 - `ONLINE_SEARCH_PROVIDER=gemini` (opcional; se não definido, usa gemini automaticamente quando `GOOGLE_API_KEY` existir)
 - `GEMINI_MODEL=gemini-2.0-flash` (opcional)
@@ -72,7 +73,7 @@ Processar exemplos (somente heurísticas):
 python scripts/process_examples.py --heuristics-only
 ```
 
-Processar com LLM (se LM Studio estiver disponível):
+Processar com LLM (se Ollama ou outro endpoint OpenAI-compat estiver disponível):
 
 ```powershell
 python scripts/process_examples.py
@@ -92,7 +93,7 @@ Indicadores:
 ## Dicas e Solução de Problemas
 
 - PDFs escaneados: instale o Tesseract OCR e refaça o processamento
-- LM Studio não responde: a GUI indicará "nao respondeu"; continue com heurísticas ou verifique a porta/configuração
+- Servidor LLM não responde (ex.: Ollama/LM Studio): a GUI indicará "nao respondeu"; continue com heurísticas ou verifique a porta/configuração
 - Erros de permissão/pasta: verifique permissões e se os arquivos são suportados
 - Exports: confirme que você tem permissão de escrita no destino
 
