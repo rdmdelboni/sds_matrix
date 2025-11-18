@@ -21,7 +21,9 @@ except ImportError:  # noqa: F401 - fallback when dependency missing
 
 
 # Ensure environment variables from .env are available early.
+# Load .env first, then .env.local to allow local overrides (e.g., API keys)
 load_dotenv()
+load_dotenv(dotenv_path=Path(__file__).resolve().parent.parent.parent / ".env.local")
 
 BASE_DIR: Final[Path] = Path(__file__).resolve().parent.parent.parent
 
