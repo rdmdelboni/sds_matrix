@@ -9,21 +9,29 @@ from __future__ import annotations
 
 import os
 import sys
-from typing import Dict, Final
 from pathlib import Path
+from typing import TYPE_CHECKING, Final
 
-try:
-    from dotenv import load_dotenv
-except ImportError:  # noqa: F401 - fallback when dependency missing
-    def load_dotenv(*_args, **_kwargs) -> bool:  # type: ignore[override]
-        """Fallback no-op when python-dotenv is not installed."""
-        return False
+if TYPE_CHECKING:
+    # Provide accurate type information to the type checker.
+    from dotenv import load_dotenv as _load_dotenv  # type: ignore
+else:
+    try:
+        from dotenv import load_dotenv as _load_dotenv
+    except ImportError:  # noqa: F401 - fallback when dependency missing
+        def _load_dotenv(*_args: object, **_kwargs: object) -> bool:
+            """Fallback no-op when python-dotenv is not installed."""
+            return False
 
 
 # Ensure environment variables from .env are available early.
 # Load .env first, then .env.local to allow local overrides (e.g., API keys)
-load_dotenv()
-load_dotenv(dotenv_path=Path(__file__).resolve().parent.parent.parent / ".env.local")
+_load_dotenv()
+# Allow .env.local to override values from .env for developer-specific settings
+_load_dotenv(
+    dotenv_path=Path(__file__).resolve().parent.parent.parent / ".env.local",
+    override=True,
+)
 
 BASE_DIR: Final[Path] = Path(__file__).resolve().parent.parent.parent
 
@@ -44,10 +52,13 @@ def _default_data_root() -> Path:
 
     # Detect frozen builds or site-packages install
     is_frozen = bool(getattr(sys, "frozen", False))
-    in_site_packages = any(name in str(BASE_DIR).lower() for name in ("site-packages", "dist-packages"))
+    base_str = str(BASE_DIR).lower()
+    in_site_packages = any(
+        name in base_str for name in ("site-packages", "dist-packages")
+    )
     base_writable = os.access(BASE_DIR, os.W_OK)
 
-    # 2) prefer user data dir when frozen or installed (non-dev), or when base is not writable
+    # 2) prefer user data dir when frozen/installed or base is not writable
     if is_frozen or in_site_packages or not base_writable:
         if os.name == "nt":
             appdata = os.getenv("APPDATA")
@@ -64,8 +75,12 @@ def _default_data_root() -> Path:
 
 DATA_DIR: Final[Path] = _default_data_root()
 LOGS_DIR: Final[Path] = DATA_DIR / "logs"
-DUCKDB_FILE: Final[Path] = Path(os.getenv("DUCKDB_PATH", DATA_DIR / "duckdb" / "extractions.db"))
-SQLITE_FILE: Final[Path] = Path(os.getenv("SQLITE_PATH", DATA_DIR / "config" / "templates.db"))
+DUCKDB_FILE: Final[Path] = Path(
+    os.getenv("DUCKDB_PATH", DATA_DIR / "duckdb" / "extractions.db")
+)
+SQLITE_FILE: Final[Path] = Path(
+    os.getenv("SQLITE_PATH", DATA_DIR / "config" / "templates.db")
+)
 LOG_FILE: Final[Path] = Path(os.getenv("LOG_FILE", LOGS_DIR / "app.log"))
 LOG_LEVEL: Final[str] = os.getenv("LOG_LEVEL", "INFO")
 
@@ -84,8 +99,8 @@ def _ensure_directories() -> None:
 _ensure_directories()
 
 
-LM_STUDIO_CONFIG: Final[Dict[str, object]] = {
-    # Defaults point to Ollama's OpenAI-compatible endpoint/model; override for LM Studio if desired.
+LM_STUDIO_CONFIG: Final[dict[str, object]] = {
+    # Defaults point to Ollama's OpenAI-compatible endpoint/model.
     "base_url": os.getenv("LM_STUDIO_BASE_URL", "http://127.0.0.1:11434/v1"),
     "model": os.getenv("LM_STUDIO_MODEL", "llama3.1:8b"),
     "timeout": int(os.getenv("LM_STUDIO_TIMEOUT", "60")),
@@ -94,23 +109,25 @@ LM_STUDIO_CONFIG: Final[Dict[str, object]] = {
 }
 
 # Gemini (Google Generative Language API) configuration
-# To enable online search via Gemini, set GOOGLE_API_KEY in your environment (or .env)
+# To enable online search via Gemini, set GOOGLE_API_KEY in your environment
 # Optional overrides:
 #   GEMINI_MODEL (default: gemini-2.0-flash)
 #   GEMINI_BASE_URL (default: https://generativelanguage.googleapis.com)
-GEMINI_CONFIG: Final[Dict[str, object]] = {
+GEMINI_CONFIG: Final[dict[str, object]] = {
     "api_key": os.getenv("GOOGLE_API_KEY", ""),
     "model": os.getenv("GEMINI_MODEL", "gemini-2.0-flash"),
-    "base_url": os.getenv("GEMINI_BASE_URL", "https://generativelanguage.googleapis.com"),
+    "base_url": os.getenv(
+        "GEMINI_BASE_URL", "https://generativelanguage.googleapis.com"
+    ),
     "timeout": int(os.getenv("GEMINI_TIMEOUT", "60")),
 }
 
 # Grok (xAI API) configuration
-# To enable online search via Grok, set GROK_API_KEY in your environment (or .env)
+# To enable online search via Grok, set GROK_API_KEY in your environment
 # Optional overrides:
 #   GROK_MODEL (default: grok-beta)
 #   GROK_BASE_URL (default: https://api.x.ai/v1)
-GROK_CONFIG: Final[Dict[str, object]] = {
+GROK_CONFIG: Final[dict[str, object]] = {
     "api_key": os.getenv("GROK_API_KEY", ""),
     "model": os.getenv("GROK_MODEL", "grok-beta"),
     "base_url": os.getenv("GROK_BASE_URL", "https://api.x.ai/v1"),
@@ -118,23 +135,28 @@ GROK_CONFIG: Final[Dict[str, object]] = {
 }
 
 # Tavily AI Research API configuration
-# To enable online search via Tavily, set TAVILY_API_KEY in your environment (or .env)
+# To enable online search via Tavily, set TAVILY_API_KEY in your environment
 # Optional overrides:
 #   TAVILY_BASE_URL (default: https://api.tavily.com)
-TAVILY_CONFIG: Final[Dict[str, object]] = {
+TAVILY_CONFIG: Final[dict[str, object]] = {
     "api_key": os.getenv("TAVILY_API_KEY", ""),
     "base_url": os.getenv("TAVILY_BASE_URL", "https://api.tavily.com"),
     "timeout": int(os.getenv("TAVILY_TIMEOUT", "60")),
 }
 
 # Provider for online search. Options: "tavily", "grok", "gemini", "lmstudio".
-# Priority: TAVILY_API_KEY > GROK_API_KEY > GOOGLE_API_KEY > lmstudio (fallback)
+# Priority: TAVILY_API_KEY > GROK_API_KEY > GOOGLE_API_KEY > lmstudio
 ONLINE_SEARCH_PROVIDER: Final[str] = os.getenv(
     "ONLINE_SEARCH_PROVIDER",
-    "tavily" if os.getenv("TAVILY_API_KEY")
-    else ("grok" if os.getenv("GROK_API_KEY")
-    else ("gemini" if os.getenv("GOOGLE_API_KEY")
-    else "lmstudio"))
+    (
+        "tavily"
+        if os.getenv("TAVILY_API_KEY")
+        else (
+            "grok"
+            if os.getenv("GROK_API_KEY")
+            else ("gemini" if os.getenv("GOOGLE_API_KEY") else "lmstudio")
+        )
+    ),
 )
 
 MAX_WORKERS: Final[int] = int(os.getenv("MAX_WORKERS", "2"))
@@ -143,7 +165,7 @@ MAX_FILE_SIZE_MB: Final[int] = int(os.getenv("MAX_FILE_SIZE_MB", "10"))
 
 TESSERACT_PATH: Final[str] = os.getenv("TESSERACT_PATH", "tesseract")
 
-SUPPORTED_FORMATS: Final[Dict[str, str]] = {
+SUPPORTED_FORMATS: Final[dict[str, str]] = {
     ".pdf": "PDF",
     ".docx": "Word",
     ".md": "Markdown",
@@ -152,7 +174,7 @@ SUPPORTED_FORMATS: Final[Dict[str, str]] = {
     ".htm": "HTML",
 }
 
-FDS_SECTIONS: Final[Dict[int, str]] = {
+FDS_SECTIONS: Final[dict[int, str]] = {
     1: "Identificacao",
     2: "Identificacao de perigos",
     3: "Composicao e informacoes sobre os ingredientes",

@@ -367,13 +367,13 @@ class TestConfidenceThresholds:
 class TestModeSwitch:
     """Test online vs local mode behavior."""
 
-    def test_online_mode_skips_local_llm(
+    def test_online_mode_runs_llm_and_sets_up_online_search(
         self,
         processor: DocumentProcessor,
         mock_llm_client: MagicMock,
         tmp_path: Path,
     ) -> None:
-        """Test that online mode skips local LLM processing."""
+        """Test that online mode still uses the local LLM before online completion."""
         test_file = tmp_path / "test.pdf"
         test_file.write_text("dummy")
 
@@ -383,10 +383,10 @@ class TestModeSwitch:
             "sections": None,
         })
 
-        # Online mode should skip local LLM
+        # Online mode should leverage LLM, then online completion afterwards
         processor.process(test_file, mode="online")
 
-        assert mock_llm_client.extract_field.call_count == 0
+        assert mock_llm_client.extract_field.call_count >= 3
 
     def test_local_mode_uses_llm_for_low_confidence(
         self,

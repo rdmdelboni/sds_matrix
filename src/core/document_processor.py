@@ -128,6 +128,7 @@ class DocumentProcessor:
         logger.info("Processing document %s", file_path)
         self._validate_file(file_path)
 
+        mode_normalized = mode.lower()
         extractor = self._select_extractor(file_path)
         start = time.perf_counter()
 
@@ -156,9 +157,13 @@ class DocumentProcessor:
                 sections=sections,
             )
 
-            # If mode is 'online', skip local LLM refinement to prioritize web completion later
-            skip_local_llm = (mode.lower() == "online")
-            self._run_field_extractions(document_id, chunks, heuristic_hints, force_skip_llm=skip_local_llm)
+            # Always run local heuristics + LLM; online mode adds a later web completion step
+            self._run_field_extractions(
+                document_id,
+                chunks,
+                heuristic_hints,
+                force_skip_llm=False,
+            )
             elapsed = time.perf_counter() - start
             self.db.update_document_status(
                 document_id,
@@ -177,9 +182,9 @@ class DocumentProcessor:
             logger.exception("Failed to process document %s", file_path)
             raise
         finally:
-            # After all fields processed, perform online completion only when requested
+            # After local extraction/LLM, perform online completion when requested
             try:
-                if mode.lower() == "online":
+                if mode_normalized == "online":
                     self._search_online_for_missing_fields(document_id)
             except Exception:
                 logger.exception("Online completion step failed for document %s", document_id)

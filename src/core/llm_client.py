@@ -450,7 +450,7 @@ class TavilyClient:
         payload = {
             "api_key": self.api_key,
             "query": query,
-            "topic": "science",  # Focus on scientific/technical content
+            "topic": "general",  # Valid options: general, news, finance
             "max_results": 5,
             "search_depth": "advanced",  # Advanced search for better results
             "include_answer": True,
@@ -478,23 +478,27 @@ class TavilyClient:
             return {field: {"value": "NAO ENCONTRADO", "confidence": 0.0, "context": "Tavily disabled"} for field in missing_fields}
 
         identifiers = []
-        if product_name:
-            identifiers.append(product_name)
-        if cas_number:
-            identifiers.append(f"CAS {cas_number}")
-        if un_number:
-            identifiers.append(f"UN {un_number}")
+        if product_name and product_name.strip():
+            identifiers.append(product_name.strip())
+        if cas_number and str(cas_number).strip():
+            identifiers.append(f"CAS {str(cas_number).strip()}")
+        if un_number and str(un_number).strip():
+            identifiers.append(f"UN {str(un_number).strip()}")
 
         if not identifiers:
             logger.warning("No identifiers provided for online search")
             return {}
 
-        identifier_text = " ".join(identifiers)
+        identifier_text = " ".join(identifiers).strip()
         results: Dict[str, Dict[str, object]] = {}
 
         # Search for each missing field
         for field_name in missing_fields:
-            logger.info("Tavily: searching for field '%s' with identifiers: %s", field_name, identifier_text)
+            logger.info(
+                "Tavily: searching for field '%s' with identifiers: %s",
+                field_name,
+                identifier_text,
+            )
 
             try:
                 # Build field-specific search query
@@ -508,7 +512,24 @@ class TavilyClient:
                     "incompatibilidades": "chemical incompatibilities",
                 }
                 field_display = field_translations.get(field_name, field_name)
-                query = f"{identifier_text} {field_display} chemical product safety data"
+                query = (
+                    f"{identifier_text} {field_display} "
+                    f"chemical product safety data"
+                ).strip()
+
+                # Skip if query is effectively empty
+                if not query or len(query.strip()) < 3:
+                    logger.warning(
+                        "Skipping Tavily search for %s: query too short or "
+                        "empty",
+                        field_name,
+                    )
+                    results[field_name] = {
+                        "value": "NAO ENCONTRADO",
+                        "confidence": 0.0,
+                        "context": "Query too short for online search",
+                    }
+                    continue
 
                 search_result = self._search(query)
 
@@ -525,18 +546,27 @@ class TavilyClient:
                 elif results_list and len(results_list) > 0:
                     # Use first search result's content as fallback
                     first_result = results_list[0]
-                    content = first_result.get("content", "") or first_result.get("snippet", "")
+                    content = (
+                        first_result.get("content", "")
+                        or first_result.get("snippet", "")
+                    )
                     if content:
                         results[field_name] = {
-                            "value": content.strip()[:500],  # Limit to 500 chars
+                            # Limit to 500 chars
+                            "value": content.strip()[:500],
                             "confidence": 0.6,
-                            "context": f"Tavily: {first_result.get('title', 'Search result')}",
+                            "context": (
+                                f"Tavily: "
+                                f"{first_result.get('title', 'Search result')}"
+                            ),
                         }
                     else:
                         results[field_name] = {
                             "value": "NAO ENCONTRADO",
                             "confidence": 0.0,
-                            "context": "Tavily search returned no usable content",
+                            "context": (
+                                "Tavily search returned no usable content"
+                            ),
                         }
                 else:
                     results[field_name] = {
@@ -545,15 +575,26 @@ class TavilyClient:
                         "context": "Tavily search returned no results",
                     }
 
-                logger.debug("Tavily result for %s: %s", field_name, results[field_name])
+                logger.debug(
+                    "Tavily result for %s: %s",
+                    field_name,
+                    results[field_name],
+                )
 
             except Exception as exc:  # noqa: BLE001
-                logger.error("Tavily search failed for field %s: %s", field_name, exc)
+                logger.error(
+                    "Tavily search failed for field %s: %s",
+                    field_name,
+                    exc,
+                )
                 results[field_name] = {
                     "value": "ERRO",
                     "confidence": 0.0,
                     "context": f"Tavily error: {str(exc)}",
                 }
 
-        logger.info("Tavily online search completed for %d fields", len(results))
+        logger.info(
+            "Tavily online search completed for %d fields",
+            len(results),
+        )
         return results
