@@ -4,7 +4,6 @@ import sys
 import traceback
 from src.gui.main_app import run_app
 
-
 def main() -> None:
     """Launch the Tkinter application."""
     try:
@@ -22,7 +21,6 @@ def main() -> None:
         print("   3. Verifique se o Ollama está rodando: ollama list")
         print("   4. Execute o teste: python teste_rapido.py")
         sys.exit(1)
-
 
 if __name__ == "__main__":
     main()

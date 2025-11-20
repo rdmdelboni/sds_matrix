@@ -7,12 +7,10 @@ import pytest
 from src.core.heuristics import HeuristicExtractor
 from src.core.validator import Fabricante, GrupoEmbalagem, NomeProduto
 
-
 @pytest.fixture
 def extractor() -> HeuristicExtractor:
     """Create a fresh HeuristicExtractor instance for testing."""
     return HeuristicExtractor()
-
 
 class TestNomeProduto:
     """Test suite for product name extraction."""
@@ -51,7 +49,6 @@ class TestNomeProduto:
         
         assert result is None
 
-
 class TestFabricante:
     """Test suite for manufacturer extraction."""
 
@@ -88,7 +85,6 @@ class TestFabricante:
         result = extractor._extract_fabricante(text, None)
         
         assert result is None
-
 
 class TestGrupoEmbalagem:
     """Test suite for packing group extraction."""
@@ -140,7 +136,6 @@ class TestGrupoEmbalagem:
         
         assert result is None
 
-
 class TestNomeProdutoValidator:
     """Test suite for product name validation."""
 
@@ -167,7 +162,6 @@ class TestNomeProdutoValidator:
         with pytest.raises(ValidationError, match="muito longo"):
             NomeProduto(value=long_name, confidence=0.9)
 
-
 class TestFabricanteValidator:
     """Test suite for manufacturer validation."""
 
@@ -186,7 +180,6 @@ class TestFabricanteValidator:
         from pydantic import ValidationError
         with pytest.raises(ValidationError, match="muito curto"):
             Fabricante(value="AB", confidence=0.9)
-
 
 class TestGrupoEmbalagemValidator:
     """Test suite for packing group validation."""
@@ -212,7 +205,6 @@ class TestGrupoEmbalagemValidator:
         from pydantic import ValidationError
         with pytest.raises(ValidationError, match="I, II ou III"):
             GrupoEmbalagem(value="IV", confidence=0.9)
-
 
 class TestFullExtractionWithNewFields:
     """Integration tests for extraction with all fields including new ones."""

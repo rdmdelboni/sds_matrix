@@ -22,7 +22,6 @@ ADDONS = {
 # Zyte API key (get from https://app.zyte.com/o/zyte-api/api-access)
 ZYTE_API_KEY = "d7015704c13f4b448b8d4e781bec18f0"
 
-
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = "project (+http://www.yourdomain.com)"
 
@@ -91,5 +90,5 @@ DOWNLOAD_DELAY = 1
 #HTTPCACHE_IGNORE_HTTP_CODES = []
 #HTTPCACHE_STORAGE = "scrapy.extensions.httpcache.FilesystemCacheStorage"
 
-# Set settings whose default value is deprecated to a future-proof value
+# set settings whose default value is deprecated to a future-proof value
 FEED_EXPORT_ENCODING = "utf-8"

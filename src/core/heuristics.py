@@ -3,12 +3,11 @@
 from __future__ import annotations
 
 import re
-from typing import Dict, Iterable, Mapping, Optional
+from typing import Iterable, Mapping
 
 from ..utils.logger import logger
 
-NumberONUResult = Dict[str, object]
-
+NumberONUResult = dict[str, object]
 
 class HeuristicExtractor:
     """Rule-based fallback extractors operating on plain text."""
@@ -49,8 +48,8 @@ class HeuristicExtractor:
         self,
         *,
         text: str,
-        sections: Optional[Mapping[int, str]] = None,
-    ) -> Dict[str, Dict[str, object]]:
+        sections: Mapping[int, str | None] = None,
+    ) -> dict[str, dict[str, object]]:
         """Return heuristic suggestions keyed by field name."""
         # Pre-process text to mask phone numbers
         masked_text = self._mask_phone_numbers(text)
@@ -58,7 +57,7 @@ class HeuristicExtractor:
         if sections:
             masked_sections = {k: self._mask_phone_numbers(v) for k, v in sections.items()}
 
-        suggestions: Dict[str, Dict[str, object]] = {}
+        suggestions: dict[str, dict[str, object]] = {}
 
         numero_onu = self._extract_numero_onu(masked_text, masked_sections)
         if numero_onu:
@@ -116,8 +115,8 @@ class HeuristicExtractor:
     def _extract_numero_onu(
         self,
         text: str,
-        sections: Optional[Mapping[int, str]] = None,
-    ) -> Optional[NumberONUResult]:
+        sections: Mapping[int, str | None] = None,
+    ) -> NumberONUResult | None:
         """Find likely ONU numbers using regex matching."""
         search_space: Iterable[str]
 
@@ -126,7 +125,7 @@ class HeuristicExtractor:
         else:
             search_space = [text]
 
-        best_match: Optional[NumberONUResult] = None
+        best_match: NumberONUResult | None = None
 
         for block in search_space:
             # Find all matches in the block
@@ -204,8 +203,8 @@ class HeuristicExtractor:
     def _extract_numero_cas(
         self,
         text: str,
-        sections: Optional[Mapping[int, str]] = None,
-    ) -> Optional[NumberONUResult]:
+        sections: Mapping[int, str | None] = None,
+    ) -> NumberONUResult | None:
         """Locate CAS numbers in the text."""
         search_space: Iterable[str] = sections.values() if sections else [text]
         for block in search_space:
@@ -230,9 +229,9 @@ class HeuristicExtractor:
     def _extract_classificacao(
         self,
         text: str,
-        sections: Optional[Mapping[int, str]] = None,
-        onu_number: Optional[str] = None,
-    ) -> Optional[NumberONUResult]:
+        sections: Mapping[int, str | None] = None,
+        onu_number: str | None = None,
+    ) -> NumberONUResult | None:
         """Heuristic for UN hazard class."""
         # First, try to infer from UN number if available
         if onu_number and onu_number in self.UN_CLASS_MAP:
@@ -267,8 +266,8 @@ class HeuristicExtractor:
     def _extract_nome_produto(
         self,
         text: str,
-        sections: Optional[Mapping[int, str]] = None,
-    ) -> Optional[NumberONUResult]:
+        sections: Mapping[int, str | None] = None,
+    ) -> NumberONUResult | None:
         """Extract product name from Section 1."""
         search_space: Iterable[str]
         if sections and 1 in sections:
@@ -301,8 +300,8 @@ class HeuristicExtractor:
     def _extract_fabricante(
         self,
         text: str,
-        sections: Optional[Mapping[int, str]] = None,
-    ) -> Optional[NumberONUResult]:
+        sections: Mapping[int, str | None] = None,
+    ) -> NumberONUResult | None:
         """Extract manufacturer/supplier name."""
         search_space: Iterable[str]
         if sections and 1 in sections:
@@ -333,8 +332,8 @@ class HeuristicExtractor:
     def _extract_grupo_embalagem(
         self,
         text: str,
-        sections: Optional[Mapping[int, str]] = None,
-    ) -> Optional[NumberONUResult]:
+        sections: Mapping[int, str | None] = None,
+    ) -> NumberONUResult | None:
         """Extract packing group (I, II, III)."""
         search_space: Iterable[str]
         if sections and 14 in sections:
@@ -373,8 +372,8 @@ class HeuristicExtractor:
     def _extract_incompatibilidades(
         self,
         text: str,
-        sections: Optional[Mapping[int, str]] = None,
-    ) -> Optional[NumberONUResult]:
+        sections: Mapping[int, str | None] = None,
+    ) -> NumberONUResult | None:
         """Extract chemical incompatibilities list.
 
         Strategy:

@@ -4,13 +4,11 @@ from __future__ import annotations
 
 import re
 from pathlib import Path
-from typing import Dict, List
 
 import pdfplumber
 
 from .base_extractor import BaseExtractor, ExtractionPayload
 from ..utils.logger import logger
-
 
 class PDFExtractor(BaseExtractor):
     """Extract text, metadata and tables from PDF files."""
@@ -45,8 +43,8 @@ class PDFExtractor(BaseExtractor):
                 parts.append(text)
         return "".join(parts)
 
-    def _extract_tables(self, file_path: Path) -> List[Dict[str, object]]:
-        tables: List[Dict[str, object]] = []
+    def _extract_tables(self, file_path: Path) -> list[dict[str, object]]:
+        tables: list[dict[str, object]] = []
         try:
             with pdfplumber.open(file_path) as pdf:
                 for page_index, page in enumerate(pdf.pages, start=1):
@@ -56,7 +54,7 @@ class PDFExtractor(BaseExtractor):
             logger.warning("Failed to extract tables from %s: %s", file_path.name, exc)
         return tables
 
-    def _extract_metadata(self, file_path: Path) -> Dict[str, object]:
+    def _extract_metadata(self, file_path: Path) -> dict[str, object]:
         try:
             with pdfplumber.open(file_path) as pdf:
                 pages = len(pdf.pages)
@@ -64,8 +62,8 @@ class PDFExtractor(BaseExtractor):
         except Exception:
             return {"pages": None}
 
-    def _split_sections(self, text: str) -> Dict[int, str]:
-        sections: Dict[int, str] = {}
+    def _split_sections(self, text: str) -> dict[int, str]:
+        sections: dict[int, str] = {}
         matches = list(self.section_pattern.finditer(text))
         for index, match in enumerate(matches):
             section_number = int(match.group(1))

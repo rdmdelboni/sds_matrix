@@ -6,18 +6,15 @@ from pathlib import Path
 
 import pytest
 
-
 @pytest.fixture(scope="session")
 def project_root() -> Path:
     """Return the project root directory."""
     return Path(__file__).parent.parent
 
-
 @pytest.fixture(scope="session")
 def examples_dir(project_root: Path) -> Path:
     """Return the examples directory with sample PDFs."""
     return project_root / "examples"
-
 
 @pytest.fixture(scope="session")
 def test_data_dir(project_root: Path) -> Path:
@@ -25,7 +22,6 @@ def test_data_dir(project_root: Path) -> Path:
     test_dir = project_root / "tests" / "test_data"
     test_dir.mkdir(exist_ok=True)
     return test_dir
-
 
 @pytest.fixture
 def sample_fds_text() -> str:
@@ -49,7 +45,6 @@ def sample_fds_text() -> str:
     Grupo de embalagem: II
     Risco subsidiário: Não aplicável
     """
-
 
 @pytest.fixture
 def sample_fds_sections() -> dict[int, str]:

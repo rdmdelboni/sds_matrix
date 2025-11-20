@@ -3,10 +3,9 @@
 from __future__ import annotations
 
 from pathlib import Path
-from typing import Iterable, List
+from typing import Iterable
 
 from .config import SUPPORTED_FORMATS
-
 
 def iter_supported_files(folder: Path, recursive: bool = True) -> Iterable[Path]:
     """Yield supported files contained in the given folder.
@@ -26,8 +25,7 @@ def iter_supported_files(folder: Path, recursive: bool = True) -> Iterable[Path]
             if entry.is_file() and entry.suffix.lower() in SUPPORTED_FORMATS:
                 yield entry
 
-
-def list_supported_files(folder: Path, recursive: bool = True) -> List[Path]:
+def list_supported_files(folder: Path, recursive: bool = True) -> list[Path]:
     """Return a sorted list of supported files in the folder.
 
     Args:

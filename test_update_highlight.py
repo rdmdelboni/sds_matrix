@@ -5,12 +5,11 @@ import os
 import sys
 from pathlib import Path
 
-# Set environment to use SearXNG
+# set environment to use SearXNG
 os.environ['ONLINE_SEARCH_PROVIDER'] = 'searxng'
 os.environ['SEARXNG_INSTANCES'] = 'http://localhost:8080'
 
 from src.database.duckdb_manager import DuckDBManager
-
 
 def main():
     """Show how the system detects and highlights updated fields."""
@@ -83,7 +82,7 @@ Legend:
 
 3. Select a document that has missing fields
 
-4. Set mode to "online"
+4. set mode to "online"
 
 5. Click "Iniciar Processamento"
 
@@ -99,7 +98,6 @@ Legend:
     print("=" * 70)
     print("✅ Feature is ready to use!")
     print("=" * 70)
-
 
 if __name__ == "__main__":
     main()

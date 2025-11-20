@@ -13,7 +13,6 @@ from pathlib import Path
 from src.export.exporters import export_to_csv, export_to_excel
 from src.utils.config import DATA_DIR
 
-
 def main() -> None:
     parser = argparse.ArgumentParser(description="Export processed FDS results to CSV/Excel.")
     parser.add_argument(
@@ -45,7 +44,6 @@ def main() -> None:
         export_to_excel(out_path, limit=args.limit)
 
     print(f"Export complete: {out_path}")
-
 
 if __name__ == "__main__":
     main()

@@ -8,12 +8,10 @@ import os
 import sys
 import time
 from pathlib import Path
-from typing import List
 
 # Adiciona o diretório do projeto ao path
 project_root = Path(__file__).parent
 sys.path.insert(0, str(project_root))
-
 
 def benchmark_configuration(folder: Path, max_files: int = 10, workers: int = 2) -> dict:
     """
@@ -67,7 +65,7 @@ def benchmark_configuration(folder: Path, max_files: int = 10, workers: int = 2)
     # Estatísticas
     processed = 0
     failed = 0
-    times: List[float] = []
+    times: list[float] = []
 
     def on_started(_, file_path: Path):
         print(f"⚡ Processando: {file_path.name}")
@@ -139,7 +137,6 @@ def benchmark_configuration(folder: Path, max_files: int = 10, workers: int = 2)
 
     return results
 
-
 def compare_configurations(folder: Path, max_files: int = 10):
     """
     Compara diferentes configurações de workers.
@@ -199,7 +196,6 @@ def compare_configurations(folder: Path, max_files: int = 10):
     print(f"   ⏱️  Tempo médio: {best['avg_time_per_file']:.2f}s por arquivo")
     print(f"   📈 Projeção 500 arquivos: {(500 * best['avg_time_per_file'])/60:.1f} minutos")
     print()
-
 
 def main():
     """Função principal do benchmark."""
@@ -265,7 +261,6 @@ Exemplos de uso:
     print("\n💡 Dica: Use a configuração com melhor throughput no seu .env:")
     print("   MAX_WORKERS=<número_ideal>")
     print()
-
 
 if __name__ == "__main__":
     main()

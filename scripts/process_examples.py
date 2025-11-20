@@ -6,7 +6,6 @@ import argparse
 import sys
 from pathlib import Path
 
-
 def _extend_path() -> Path:
     base_dir = Path(__file__).resolve().parent.parent
     src_dir = base_dir / "src"
@@ -16,7 +15,6 @@ def _extend_path() -> Path:
         sys.path.insert(0, str(src_dir))
     return base_dir
 
-
 BASE_DIR = _extend_path()
 
 from src.core.chunk_strategy import ChunkStrategy  # noqa: E402
@@ -25,7 +23,6 @@ from src.core.llm_client import LMStudioClient  # noqa: E402
 from src.database.duckdb_manager import DuckDBManager  # noqa: E402
 from src.utils.file_utils import list_supported_files  # noqa: E402
 from src.utils.logger import logger  # noqa: E402
-
 
 def _init_llm(disable_llm: bool) -> LMStudioClient | None:
     if disable_llm:
@@ -40,7 +37,6 @@ def _init_llm(disable_llm: bool) -> LMStudioClient | None:
     except Exception as exc:  # noqa: BLE001
         logger.warning("Failed to initialise LLM client: %s", exc)
         return None
-
 
 def process_examples(use_llm: bool) -> None:
     examples_dir = BASE_DIR / "examples"
@@ -87,7 +83,6 @@ def process_examples(use_llm: bool) -> None:
             row.get("classificacao_onu_status") or "-",
         )
 
-
 def main() -> None:
     parser = argparse.ArgumentParser(
         description="Process sample FDS documents from the examples folder.",
@@ -99,7 +94,6 @@ def main() -> None:
     )
     args = parser.parse_args()
     process_examples(use_llm=not args.heuristics_only)
-
 
 if __name__ == "__main__":
     main()

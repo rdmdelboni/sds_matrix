@@ -8,10 +8,8 @@ from typing import Final
 
 from .config import LOG_FILE, LOG_LEVEL
 
-
 LOG_FORMAT: Final[str] = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
 DATE_FORMAT: Final[str] = "%Y-%m-%d %H:%M:%S"
-
 
 def setup_logger(name: str = "fds_reader") -> logging.Logger:
     """Configure and return a logger with console and file handlers."""
@@ -33,6 +31,5 @@ def setup_logger(name: str = "fds_reader") -> logging.Logger:
     logger.addHandler(file_handler)
 
     return logger
-
 
 logger = setup_logger()

@@ -7,13 +7,13 @@ import threading
 from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
-from typing import Iterable, Optional, Sequence
+
+from collections.abc import Iterable, Sequence
 
 import duckdb
 
 from ..utils.config import DUCKDB_FILE
 from ..utils.logger import logger
-
 
 @dataclass(slots=True)
 class DocumentRecord:
@@ -23,9 +23,8 @@ class DocumentRecord:
     filename: str
     file_path: str
     status: str
-    processed_at: Optional[datetime]
-    error_message: Optional[str]
-
+    processed_at: datetime | None
+    error_message: str | None
 
 class DuckDBManager:
     """Lightweight wrapper for DuckDB operations used in the MVP."""
@@ -33,8 +32,10 @@ class DuckDBManager:
     def __init__(self, db_path: Path | None = None) -> None:
         self.db_path = db_path or DUCKDB_FILE
         self.conn = duckdb.connect(str(self.db_path))
-        self._lock = threading.Lock()  # Thread-safe access to DuckDB connection
-        logger.info("Connected to DuckDB database at %s", self.db_path)
+        self._lock = threading.Lock()
+        logger.info(
+            "Connected to DuckDB database at %s", self.db_path
+        )
         self._initialize_schema()
 
     def _initialize_schema(self) -> None:
@@ -42,8 +43,12 @@ class DuckDBManager:
         logger.debug("Ensuring DuckDB schema is ready.")
         with self._lock:
             # Create sequences for auto-increment behavior
-            self.conn.execute("CREATE SEQUENCE IF NOT EXISTS documents_seq START 1;")
-            self.conn.execute("CREATE SEQUENCE IF NOT EXISTS extractions_seq START 1;")
+            self.conn.execute(
+                "CREATE SEQUENCE IF NOT EXISTS documents_seq START 1;"
+            )
+            self.conn.execute(
+                "CREATE SEQUENCE IF NOT EXISTS extractions_seq START 1;"
+            )
 
             self.conn.execute(
                 """
@@ -72,9 +77,25 @@ class DuckDBManager:
                     value TEXT,
                     confidence DOUBLE,
                     context TEXT,
+                    source_urls TEXT,
                     validation_status VARCHAR,
                     validation_message TEXT,
                     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                );
+                """
+            )
+
+            # Store crawled page raw content (optional enrichment provenance)
+            self.conn.execute(
+                """
+                CREATE TABLE IF NOT EXISTS pages (
+                    url VARCHAR PRIMARY KEY,
+                    document_id INTEGER,
+                    field_name VARCHAR,
+                    title VARCHAR,
+                    content TEXT,
+                    status VARCHAR,
+                    fetched_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
                 );
                 """
             )
@@ -94,7 +115,7 @@ class DuckDBManager:
         file_path: Path,
         file_size: int,
         file_type: str,
-        num_pages: Optional[int] = None,
+        num_pages: int | None = None,
     ) -> int:
         """Create or reuse a document entry and return its id."""
         file_hash = self.calculate_hash(file_path)
@@ -123,7 +144,14 @@ class DuckDBManager:
                 VALUES (?, ?, ?, ?, ?, ?, 'pending')
                 RETURNING id;
                 """,
-                [filename, str(file_path), file_hash, file_size, file_type, num_pages],
+                [
+                    filename,
+                    str(file_path),
+                    file_hash,
+                    file_size,
+                    file_type,
+                    num_pages,
+                ],
             ).fetchone()
 
             if not result:
@@ -136,8 +164,8 @@ class DuckDBManager:
         document_id: int,
         *,
         status: str,
-        processing_time_seconds: Optional[float] = None,
-        error_message: Optional[str] = None,
+        processing_time_seconds: float | None = None,
+        error_message: str | None = None,
     ) -> None:
         """Update a document status."""
         logger.info(
@@ -167,7 +195,8 @@ class DuckDBManager:
         confidence: float,
         context: str,
         validation_status: str,
-        validation_message: Optional[str],
+        validation_message: str | None,
+        source_urls: list[str] | None = None,
     ) -> None:
         """Persist an extraction result."""
         logger.debug(
@@ -176,6 +205,11 @@ class DuckDBManager:
             field_name,
             value,
         )
+        # Serialize source_urls as JSON string
+        import json
+
+        source_urls_str = json.dumps(source_urls) if source_urls else "[]"
+
         with self._lock:
             self.conn.execute(
                 """
@@ -185,10 +219,11 @@ class DuckDBManager:
                     value,
                     confidence,
                     context,
+                    source_urls,
                     validation_status,
                     validation_message
                 )
-                VALUES (?, ?, ?, ?, ?, ?, ?);
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?);
                 """,
                 [
                     document_id,
@@ -196,6 +231,7 @@ class DuckDBManager:
                     value,
                     confidence,
                     context,
+                    source_urls_str,
                     validation_status,
                     validation_message,
                 ],
@@ -238,7 +274,7 @@ class DuckDBManager:
                 [document_id],
             ).fetchall()
 
-    def get_document_id(self, file_path: Path) -> Optional[int]:
+    def get_document_id(self, file_path: Path) -> int | None:
         """Return the document id for a persisted path, if present."""
         with self._lock:
             row = self.conn.execute(
@@ -284,6 +320,48 @@ class DuckDBManager:
         """Return only the latest field values (compatibility helper)."""
         details = self.get_field_details(document_id)
         return {field: str(data.get("value") or "") for field, data in details.items()}
+
+    def store_crawled_page(
+        self,
+        *,
+        url: str,
+        document_id: int | None,
+        field_name: str | None,
+        title: str,
+        content: str,
+        status: str = "ok",
+    ) -> None:
+        """Persist crawled page content (deduplicated by URL)."""
+        with self._lock:
+            try:
+                self.conn.execute(
+                    """
+                    INSERT OR REPLACE INTO pages (
+                        url, document_id, field_name, title, content, status
+                    ) VALUES (?, ?, ?, ?, ?, ?);
+                    """,
+                    [
+                        url,
+                        document_id,
+                        field_name,
+                        title[:256],
+                        content[:50000],
+                        status,
+                    ],
+                )
+            except Exception as exc:  # noqa: BLE001
+                logger.warning("Failed to store page %s: %s", url, exc)
+
+    def fetch_page_content(self, url: str) -> str | None:
+        """Return stored page content if present."""
+        with self._lock:
+            try:
+                row = self.conn.execute(
+                    "SELECT content FROM pages WHERE url = ?", [url]
+                ).fetchone()
+                return row[0] if row else None
+            except Exception:  # noqa: BLE001
+                return None
 
     def fetch_recent_results(self, limit: int = 100) -> list[dict[str, object]]:
         """Return aggregated results ready for GUI presentation."""

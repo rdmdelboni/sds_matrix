@@ -21,7 +21,6 @@ from ..utils.file_utils import list_supported_files
 from ..utils.config import DATA_DIR, ONLINE_SEARCH_PROVIDER
 from ..utils.logger import logger
 
-
 # Modern Color Palette
 COLORS = {
     "primary": "#2563eb",      # Blue
@@ -47,7 +46,6 @@ COLORS = {
     "text_primary": "#111827",
     "text_secondary": "#6b7280",
 }
-
 
 class SetupTab(ttk.Frame):
     """Tab responsible for folder selection and file preview."""
@@ -357,7 +355,6 @@ class SetupTab(ttk.Frame):
         except Exception:
             # Silent UI failure tolerance
             pass
-
 
 class ProcessingTab(ttk.Frame):
     """Tab displaying processing progress and extracted results."""
@@ -675,7 +672,6 @@ class ProcessingTab(ttk.Frame):
 
     def _set_selected_mode_local(self) -> None:
         self._set_selected_mode("local")
-
 
 class ResultsTab(ttk.Frame):
     """Tab to show processed outputs and trigger exports."""
@@ -1013,7 +1009,6 @@ class ResultsTab(ttk.Frame):
             )
             return False
 
-
 class Application(tk.Tk):
     """Main Tkinter application."""
 
@@ -1023,7 +1018,7 @@ class Application(tk.Tk):
         self.geometry("1700x1000")
         self.minsize(1200, 700)
 
-        # Set window background
+        # set window background
         self.configure(bg=COLORS["neutral_50"])
 
         # Configure LARGE fonts for better readability with emoji support
@@ -1291,7 +1286,7 @@ class Application(tk.Tk):
         self._progress_done: int = 0
 
     def set_selected_files(self, files: list[Path]) -> None:
-        """Set the list of files chosen by the user."""
+        """set the list of files chosen by the user."""
         self.selected_files = files
         for file_path in files:
             self.processing_tab.update_status(file_path, "Na fila", field_details={})
@@ -1542,12 +1537,10 @@ class Application(tk.Tk):
         btn_frame.pack(fill="x", padx=24, pady=16)
         ttk.Button(btn_frame, text="Fechar", command=dlg.destroy, style="Primary.TButton").pack(side="right")
 
-
 def run_app() -> None:
     """Entrypoint for launching the GUI."""
     app = Application()
     app.mainloop()
-
 
 class ProgressDialog:
     """Modern modal progress dialog with enhanced styling."""

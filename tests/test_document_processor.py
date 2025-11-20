@@ -12,14 +12,12 @@ from src.core.document_processor import DocumentProcessor
 from src.core.heuristics import HeuristicExtractor
 from src.database.duckdb_manager import DuckDBManager
 
-
 @pytest.fixture
 def mock_db_manager() -> MagicMock:
     """Create a mock database manager."""
     mock = MagicMock(spec=DuckDBManager)
     mock.register_document.return_value = 1
     return mock
-
 
 @pytest.fixture
 def mock_llm_client() -> MagicMock:
@@ -32,7 +30,6 @@ def mock_llm_client() -> MagicMock:
     }
     return mock
 
-
 @pytest.fixture
 def processor(mock_db_manager: MagicMock, mock_llm_client: MagicMock) -> DocumentProcessor:
     """Create a DocumentProcessor with mocked dependencies."""
@@ -42,7 +39,6 @@ def processor(mock_db_manager: MagicMock, mock_llm_client: MagicMock) -> Documen
         chunk_strategy=ChunkStrategy(),
         heuristic_extractor=HeuristicExtractor(),
     )
-
 
 class TestDocumentProcessorFlow:
     """Test the complete document processing flow."""
@@ -131,7 +127,6 @@ class TestDocumentProcessorFlow:
         assert status_call is not None
         assert status_call[1]["status"] == "failed"
         assert "Extraction failed" in status_call[1]["error_message"]
-
 
 class TestHeuristicConfidenceThreshold:
     """Test the heuristic confidence skip threshold."""

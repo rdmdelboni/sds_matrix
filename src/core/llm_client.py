@@ -8,10 +8,7 @@ Improvements:
 from __future__ import annotations
 
 import json
-import os
-import random
-import time
-from typing import Dict, Optional, Callable, cast
+from typing import cast
 
 import httpx
 
@@ -21,16 +18,18 @@ from ..utils.config import (
     GEMINI_CONFIG,
     GROK_CONFIG,
     LM_STUDIO_CONFIG,
+    STRICT_SOURCE_VALIDATION,
 )
 from ..utils.logger import logger
-
+from ..utils.url_validator import validate_source_urls
 
 DEFAULT_SYSTEM_PROMPT = (
     "Voce e um assistente especialista em Fichas de Dados de Seguranca."
-    " Responda em JSON: {value, confidence (0-1.0), context}."
+    " Responda em JSON: {value, confidence (0-1.0), context, source_urls: [list of URLs]}."
+    " SEMPRE inclua source_urls com URLs das fontes consultadas."
+    " Se nao tiver fontes, use lista vazia []."
     " Nao invente dados."
 )
-
 
 class LMStudioClient:
     """Wrapper for local OpenAI-compatible server (Ollama / LM Studio)."""
@@ -48,8 +47,8 @@ class LMStudioClient:
         *,
         field_name: str,
         prompt_template: str,
-        system_prompt: Optional[str] = None,
-    ) -> Dict[str, object]:
+        system_prompt: str | None = None,
+    ) -> dict[str, object]:
         """Send a prompt and parse the JSON result."""
         prompt = prompt_template.strip()
         logger.info("Consulting LLM for %s", field_name)
@@ -85,6 +84,25 @@ class LMStudioClient:
         parsed.setdefault("value", "NAO ENCONTRADO")
         parsed.setdefault("confidence", 0.0)
         parsed.setdefault("context", "")
+        parsed.setdefault("source_urls", [])
+        
+        # Validate source URLs if strict mode enabled
+        if STRICT_SOURCE_VALIDATION:
+            source_urls = parsed.get("source_urls", [])
+            # Ensure it's a list
+            if not isinstance(source_urls, list):
+                source_urls = []
+            
+            is_valid, error_msg = validate_source_urls(source_urls, strict=True)
+            if not is_valid:
+                logger.warning(
+                    "Source validation failed for %s: %s", field_name, error_msg
+                )
+                # Downgrade confidence if validation fails
+                current_conf = float(parsed.get("confidence", 0.0))
+                parsed["confidence"] = min(current_conf * 0.5, 0.6)
+                parsed["context"] = f"{parsed.get('context', '')} [AVISO: {error_msg}]"
+        
         return parsed
 
     def test_connection(self) -> bool:
@@ -103,18 +121,18 @@ class LMStudioClient:
     def search_online_for_missing_fields(
         self,
         *,
-        product_name: Optional[str] = None,
-        cas_number: Optional[str] = None,
-        un_number: Optional[str] = None,
+        product_name: str | None = None,
+        cas_number: str | None = None,
+        un_number: str | None = None,
         missing_fields: list[str],
-    ) -> Dict[str, Dict[str, object]]:
+    ) -> dict[str, dict[str, object]]:
         """Search online for missing field values using web-enhanced LLM.
         
         Args:
             product_name: Known product name
             cas_number: Known CAS number
             un_number: Known UN number
-            missing_fields: List of field names that need values
+            missing_fields: list of field names that need values
             
         Returns:
             Dictionary mapping field names to extracted data
@@ -203,7 +221,6 @@ class LMStudioClient:
                 for field in missing_fields
             }
 
-
 class GeminiClient:
     """Client for Google's Generative Language API (Gemini) used for online search."""
 
@@ -254,11 +271,11 @@ class GeminiClient:
     def search_online_for_missing_fields(
         self,
         *,
-        product_name: Optional[str] = None,
-        cas_number: Optional[str] = None,
-        un_number: Optional[str] = None,
+        product_name: str | None = None,
+        cas_number: str | None = None,
+        un_number: str | None = None,
         missing_fields: list[str],
-    ) -> Dict[str, Dict[str, object]]:
+    ) -> dict[str, dict[str, object]]:
         if not self.api_key:
             logger.warning("GOOGLE_API_KEY not set; skipping Gemini online search")
             return {field: {"value": "NAO ENCONTRADO", "confidence": 0.0, "context": "Gemini disabled"} for field in missing_fields}
@@ -306,7 +323,7 @@ Se algum campo nao for encontrado com confianca, use value="NAO ENCONTRADO" e co
             if not isinstance(parsed, dict):
                 raise ValueError("Gemini response is not a JSON object")
 
-            results: Dict[str, Dict[str, object]] = {}
+            results: dict[str, dict[str, object]] = {}
             for field_name in missing_fields:
                 entry = parsed.get(field_name, {}) if isinstance(parsed.get(field_name, {}), dict) else {}
                 results[field_name] = {
@@ -320,7 +337,6 @@ Se algum campo nao for encontrado com confianca, use value="NAO ENCONTRADO" e co
         except Exception as exc:  # noqa: BLE001
             logger.error("Gemini online search failed: %s", exc)
             return {field: {"value": "ERRO", "confidence": 0.0, "context": str(exc)} for field in missing_fields}
-
 
 class GrokClient:
     """Client for xAI's Grok API used for online search."""
@@ -372,11 +388,11 @@ class GrokClient:
     def search_online_for_missing_fields(
         self,
         *,
-        product_name: Optional[str] = None,
-        cas_number: Optional[str] = None,
-        un_number: Optional[str] = None,
+        product_name: str | None = None,
+        cas_number: str | None = None,
+        un_number: str | None = None,
         missing_fields: list[str],
-    ) -> Dict[str, Dict[str, object]]:
+    ) -> dict[str, dict[str, object]]:
         if not self.api_key:
             logger.warning("GROK_API_KEY not set; skipping Grok online search")
             return {field: {"value": "NAO ENCONTRADO", "confidence": 0.0, "context": "Grok disabled"} for field in missing_fields}
@@ -424,7 +440,7 @@ Se algum campo nao for encontrado com confianca, use value="NAO ENCONTRADO" e co
             if not isinstance(parsed, dict):
                 raise ValueError("Grok response is not a JSON object")
 
-            results: Dict[str, Dict[str, object]] = {}
+            results: dict[str, dict[str, object]] = {}
             for field_name in missing_fields:
                 entry = parsed.get(field_name, {}) if isinstance(parsed.get(field_name, {}), dict) else {}
                 results[field_name] = {
@@ -438,3 +454,4 @@ Se algum campo nao for encontrado com confianca, use value="NAO ENCONTRADO" e co
         except Exception as exc:  # noqa: BLE001
             logger.error("Grok online search failed: %s", exc)
             return {field: {"value": "ERRO", "confidence": 0.0, "context": str(exc)} for field in missing_fields}
+

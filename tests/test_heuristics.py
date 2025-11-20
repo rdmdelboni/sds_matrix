@@ -6,12 +6,10 @@ import pytest
 
 from src.core.heuristics import HeuristicExtractor
 
-
 @pytest.fixture
 def extractor() -> HeuristicExtractor:
     """Create a fresh HeuristicExtractor instance for testing."""
     return HeuristicExtractor()
-
 
 class TestNumeroONU:
     """Test suite for ONU number extraction."""
@@ -74,7 +72,6 @@ class TestNumeroONU:
         
         assert result is None
 
-
 class TestNumeroCAS:
     """Test suite for CAS number extraction."""
 
@@ -111,7 +108,6 @@ class TestNumeroCAS:
         result = extractor._extract_numero_cas(text, None)
         
         assert result is None
-
 
 class TestClassificacaoONU:
     """Test suite for UN classification extraction."""
@@ -157,7 +153,6 @@ class TestClassificacaoONU:
         result = extractor._extract_classificacao(text, None)
         
         assert result is None
-
 
 class TestFullExtraction:
     """Integration tests for complete extraction flow."""

@@ -5,7 +5,6 @@ import tkinter as tk
 from tkinter import ttk
 import platform
 
-
 def test_emoji_rendering():
     """Test emoji rendering with different font configurations."""
     
@@ -114,7 +113,6 @@ def test_emoji_rendering():
     close_btn.pack(pady=(10, 0))
     
     root.mainloop()
-
 
 if __name__ == "__main__":
     print("=" * 70)
