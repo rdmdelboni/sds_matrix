@@ -4,7 +4,7 @@
 import os
 import sys
 
-# Set environment to use SearXNG
+# set environment to use SearXNG
 os.environ['ONLINE_SEARCH_PROVIDER'] = 'searxng'
 os.environ['SEARXNG_INSTANCES'] = 'http://localhost:8080'
 

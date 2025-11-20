@@ -5,7 +5,7 @@ import os
 import sys
 from pathlib import Path
 
-# Set environment to use SearXNG
+# set environment to use SearXNG
 os.environ['ONLINE_SEARCH_PROVIDER'] = 'searxng'
 os.environ['SEARXNG_INSTANCES'] = 'http://localhost:8080'
 
@@ -13,7 +13,6 @@ from src.database.duckdb_manager import DuckDBManager
 from src.core.document_processor import DocumentProcessor
 from src.core.searxng_client import SearXNGClient
 from src.utils.config import DATA_DIR
-
 
 def test_reprocess_with_online_search():
     """Test that reprocessing a document triggers online search."""
@@ -128,7 +127,6 @@ def test_reprocess_with_online_search():
         import traceback
         traceback.print_exc()
         sys.exit(1)
-
 
 if __name__ == "__main__":
     test_reprocess_with_online_search()

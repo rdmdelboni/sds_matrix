@@ -1,0 +1,29 @@
+{
+  "_comment": "Ground truth data for evaluation. Add your test documents here.",
+  "_format": {
+    "document_filename.pdf": {
+      "numero_onu": "1234",
+      "numero_cas": "1234-56-7",
+      "classificacao_onu": "3",
+      "grupo_embalagem": "II",
+      "nome_produto": "Product Name",
+      "fabricante": "Manufacturer Name"
+    }
+  },
+  "example_acetone.pdf": {
+    "numero_onu": "1090",
+    "numero_cas": "67-64-1",
+    "classificacao_onu": "3",
+    "grupo_embalagem": "II",
+    "nome_produto": "ACETONE",
+    "fabricante": "Example Chemical Co"
+  },
+  "example_ethanol.pdf": {
+    "numero_onu": "1170",
+    "numero_cas": "64-17-5",
+    "classificacao_onu": "3",
+    "grupo_embalagem": "II",
+    "nome_produto": "ETHANOL",
+    "fabricante": "Example Chemicals Ltd"
+  }
+}

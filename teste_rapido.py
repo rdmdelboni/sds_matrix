@@ -12,7 +12,6 @@ from pathlib import Path
 project_root = Path(__file__).parent
 sys.path.insert(0, str(project_root))
 
-
 def test_env_config():
     """Testa se as variáveis de ambiente estão corretas."""
     print("\n" + "="*60)
@@ -45,7 +44,6 @@ def test_env_config():
 
     print("\n✅ Configuração do .env carregada!")
     return True
-
 
 def test_ollama_connection():
     """Testa conexão com Ollama e modelo phi3:mini."""
@@ -97,7 +95,6 @@ def test_ollama_connection():
         print(f"❌ Erro: {e}")
         return False
 
-
 def test_cpu_cores():
     """Verifica número de cores disponíveis."""
     print("\n" + "="*60)
@@ -116,7 +113,6 @@ def test_cpu_cores():
         print("✅ Hardware adequado para configuração agressiva!")
 
     return True
-
 
 def test_database():
     """Testa conexão com banco de dados DuckDB."""
@@ -141,7 +137,6 @@ def test_database():
     except Exception as e:
         print(f"❌ Erro ao conectar com banco: {e}")
         return False
-
 
 def main():
     """Executa todos os testes."""
@@ -180,7 +175,6 @@ def main():
         print("📝 Revise as mensagens de erro acima e corrija os problemas")
 
     print()
-
 
 if __name__ == "__main__":
     try:

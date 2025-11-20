@@ -5,7 +5,6 @@ import pytest
 
 from src.core.llm_client import GeminiClient
 
-
 class DummyResponse:
     def __init__(self, data):
         self._data = data
@@ -15,7 +14,6 @@ class DummyResponse:
 
     def json(self):
         return self._data
-
 
 class DummyClient:
     def __init__(self, data):
@@ -31,7 +29,6 @@ class DummyClient:
 
     def __exit__(self, *exc):
         return False
-
 
 def test_gemini_client_parses_json(monkeypatch):
     data = {

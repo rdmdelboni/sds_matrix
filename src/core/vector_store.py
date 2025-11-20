@@ -12,7 +12,6 @@ from chromadb.utils.embedding_functions import (
 
 from src.utils.logger import logger
 
-
 class VectorStore:
     """
     Lightweight wrapper around ChromaDB with Sentence-Transformer embeddings.
@@ -210,7 +209,6 @@ class VectorStore:
             for i in range(len(chunks))
         ]
         return self.add_documents(chunks, metas)
-
 
 def _chunk_text(
     text: str,

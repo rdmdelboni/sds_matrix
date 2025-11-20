@@ -19,13 +19,13 @@ import os
 import random
 import time
 from dataclasses import dataclass
-from typing import Any, Optional, cast
+from typing import Any, cast
 
 import httpx
 
 from ..utils.config import DATA_DIR
 from ..utils.logger import logger
-
+from ..utils.onu_lookup import lookup_un
 
 @dataclass
 class TokenBucket:
@@ -59,7 +59,6 @@ class TokenBucket:
         self.tokens = min(self.capacity, self.tokens + elapsed * self.rate)
         self.last_update = now
 
-
 class SearXNGClient:
     """SearXNG search client with Crawl4AI content extraction.
 
@@ -82,7 +81,7 @@ class SearXNGClient:
         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 Edg/120.0.0.0",
     ]
 
-    def __init__(self, http_client_factory: Optional[Any] = None) -> None:
+    def __init__(self, http_client_factory: Any | None = None) -> None:
         # SearXNG instances (with fallback)
         default_instances = [
             "https://searx.be",
@@ -179,7 +178,7 @@ class SearXNGClient:
         key_str = f"{query}|{num_results}"
         return hashlib.md5(key_str.encode()).hexdigest()
 
-    def _get_cached_search(self, key: str) -> Optional[list[dict[str, str]]]:
+    def _get_cached_search(self, key: str) -> list[dict[str, str | None]]:
         """Get cached search results if available and not expired."""
         if not self.cache_enabled or not self._cache_conn:
             return None
@@ -208,7 +207,7 @@ class SearXNGClient:
         except Exception as exc:  # noqa: BLE001
             logger.warning("Cache write error: %s", exc)
 
-    def _get_cached_crawl(self, url: str) -> Optional[str]:
+    def _get_cached_crawl(self, url: str) -> str | None:
         """Get cached crawled content."""
         if not self.cache_enabled or not self._cache_conn:
             return None
@@ -368,12 +367,64 @@ class SearXNGClient:
         raise RuntimeError(f"SearXNG exhausted retries: {last_error}")
 
     async def _crawl_url_async(self, url: str) -> str:
-        """Crawl URL using Crawl4AI to extract clean text."""
+        """Crawl URL using Crawl4AI with IP ban prevention safeguards.
+        
+        IP Ban Prevention:
+        - Respects robots.txt by default
+        - Rotates user-agents
+        - Enforces minimum delays between requests
+        - Uses sensible timeouts
+        - Handles errors gracefully
+        """
         try:
-            from crawl4ai import AsyncWebCrawler
-
-            async with AsyncWebCrawler(verbose=False) as crawler:
-                result = await crawler.arun(url=url)
+            from crawl4ai import AsyncWebCrawler, BrowserConfig
+            from ..utils.config import (
+                CRAWL4AI_BROWSER_TYPE,
+                CRAWL4AI_RESPECT_ROBOTS,
+                CRAWL4AI_USER_AGENT_ROTATION,
+                CRAWL4AI_TIMEOUT,
+                CRAWL4AI_PROXY,
+            )
+            
+            # Configure browser with safety settings
+            browser_config = BrowserConfig(
+                headless=True,
+                browser_type=CRAWL4AI_BROWSER_TYPE,  # chromium or firefox
+            )
+            
+            # User agents for rotation (include realistic ones)
+            user_agents = [
+                "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36"
+                " (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+                "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/"
+                "537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+                "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)"
+                " AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0"
+                " Safari/537.36",
+                "Mozilla/5.0 (X11; Linux x86_64; rv:121.0)"
+                " Gecko/20100101 Firefox/121.0",
+            ]
+            
+            # Select user agent
+            user_agent = (
+                random.choice(user_agents)
+                if CRAWL4AI_USER_AGENT_ROTATION
+                else user_agents[0]
+            )
+            
+            crawl_config = {
+                "user_agent": user_agent,
+                "respect_robots_txt": CRAWL4AI_RESPECT_ROBOTS,
+                "timeout": CRAWL4AI_TIMEOUT,
+            }
+            
+            if CRAWL4AI_PROXY:
+                crawl_config["proxy"] = CRAWL4AI_PROXY
+            
+            async with AsyncWebCrawler(
+                browser_config=browser_config, verbose=False
+            ) as crawler:
+                result = await crawler.arun(url=url, **crawl_config)
                 if result.success:
                     # Try fit_markdown (clean, ads/nav removed) first
                     # Fall back to markdown, then cleaned_html
@@ -381,23 +432,38 @@ class SearXNGClient:
                     if hasattr(result.markdown, "fit_markdown"):
                         content = result.markdown.fit_markdown
                     if not content:
-                        content = result.markdown or result.cleaned_html or ""
+                        content = (
+                            result.markdown
+                            or result.cleaned_html
+                            or ""
+                        )
                     return content
                 return ""
+        except ImportError:
+            logger.warning("Crawl4AI not installed - skipping crawl")
+            return ""
         except Exception as exc:  # noqa: BLE001
             logger.warning("Crawl4AI failed for %s: %s", url, exc)
             return ""
 
     def _crawl_url(self, url: str) -> str:
-        """Synchronous wrapper for crawling URL."""
+        """Synchronous wrapper for crawling URL with IP ban prevention.
+        
+        Applies:
+        - Cache check to avoid redundant crawls
+        - Rate limiting with enforced minimum delay
+        - Graceful error handling
+        """
+        from ..utils.config import CRAWL4AI_MIN_DELAY
+
         # Check cache first
         cached = self._get_cached_crawl(url)
         if cached:
             logger.debug("Crawl cache hit for %s", url)
             return cached
 
-        # Rate limit crawling too
-        self._wait_for_rate_limit()
+        # Apply minimum crawl delay (stricter than search)
+        time.sleep(CRAWL4AI_MIN_DELAY)
 
         try:
             content = asyncio.run(self._crawl_url_async(url))
@@ -410,9 +476,9 @@ class SearXNGClient:
     def search_online_for_missing_fields(
         self,
         *,
-        product_name: Optional[str] = None,
-        cas_number: Optional[str] = None,
-        un_number: Optional[str] = None,
+        product_name: str | None = None,
+        cas_number: str | None = None,
+        un_number: str | None = None,
         missing_fields: list[str],
     ) -> dict[str, dict[str, object]]:
         """Search for missing field values using SearXNG + Crawl4AI.
@@ -421,7 +487,7 @@ class SearXNGClient:
             product_name: Known product name
             cas_number: Known CAS number
             un_number: Known UN number
-            missing_fields: List of field names that need values
+            missing_fields: list of field names that need values
 
         Returns:
             Dictionary mapping field names to extracted data
@@ -441,6 +507,20 @@ class SearXNGClient:
         identifier_text = " ".join(identifiers).strip()
         results: dict[str, dict[str, object]] = {}
 
+        # Fallback rápido: tabela ONU local para classe/grupo (evita rede)
+        if un_number and any(f in missing_fields for f in ("classificacao_onu", "grupo_embalagem")):
+            entry = lookup_un(un_number)
+            if entry:
+                for field_name in ("classificacao_onu", "grupo_embalagem"):
+                    if field_name in missing_fields:
+                        val = entry.get(field_name, "")
+                        if val:
+                            results[field_name] = {
+                                "value": val,
+                                "confidence": 0.95,
+                                "context": "Tabela ONU (offline)",
+                            }
+
         field_translations = {
             "numero_cas": "CAS number",
             "numero_onu": "UN number",
@@ -453,6 +533,8 @@ class SearXNGClient:
 
         # Search for each field
         for field_name in missing_fields:
+            if field_name in results:
+                continue  # already resolved via lookup
             try:
                 field_display = field_translations.get(field_name, field_name)
                 query = f"{identifier_text} {field_display} safety data sheet"

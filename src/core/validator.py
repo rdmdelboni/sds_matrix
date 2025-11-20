@@ -3,10 +3,11 @@
 from __future__ import annotations
 
 import re
-from typing import ClassVar, Dict, Optional
+from typing import ClassVar
 
 from pydantic import BaseModel, Field, ValidationError, field_validator
 
+from ..utils.url_validator import validate_source_urls
 
 class ExtractionResult(BaseModel):
     """Base schema for a validated extraction."""
@@ -14,7 +15,7 @@ class ExtractionResult(BaseModel):
     value: str
     confidence: float = Field(ge=0.0, le=1.0)
     context: str = ""
-
+    source_urls: list[str] = Field(default_factory=list)
 
 class NumeroONU(ExtractionResult):
     """Validate ONU number format and range."""
@@ -34,7 +35,6 @@ class NumeroONU(ExtractionResult):
             raise ValueError("Numero ONU fora do intervalo valido.")
         return value
 
-
 class NumeroCAS(ExtractionResult):
     """Validate CAS number formatting."""
 
@@ -49,7 +49,6 @@ class NumeroCAS(ExtractionResult):
         if not cls.CAS_PATTERN.match(value):
             raise ValueError("Numero CAS deve seguir o formato ####-##-#.")
         return value
-
 
 class ClassificacaoONU(ExtractionResult):
     """Validate ONU class enumeration."""
@@ -92,7 +91,6 @@ class ClassificacaoONU(ExtractionResult):
             raise ValueError("Classe ONU invalida.")
         return value
 
-
 class NomeProduto(ExtractionResult):
     """Validate product name."""
 
@@ -107,7 +105,6 @@ class NomeProduto(ExtractionResult):
         if len(value) > 200:
             raise ValueError("Nome do produto muito longo.")
         return value
-
 
 class Fabricante(ExtractionResult):
     """Validate manufacturer name."""
@@ -124,7 +121,6 @@ class Fabricante(ExtractionResult):
             raise ValueError("Nome do fabricante muito longo.")
         return value
 
-
 class GrupoEmbalagem(ExtractionResult):
     """Validate packing group."""
 
@@ -140,8 +136,7 @@ class GrupoEmbalagem(ExtractionResult):
             raise ValueError("Grupo de embalagem deve ser I, II ou III.")
         return value
 
-
-VALIDATORS: Dict[str, type[ExtractionResult]] = {
+VALIDATORS: dict[str, type[ExtractionResult]] = {
     "numero_onu": NumeroONU,
     "numero_cas": NumeroCAS,
     "classificacao_onu": ClassificacaoONU,
@@ -150,8 +145,7 @@ VALIDATORS: Dict[str, type[ExtractionResult]] = {
     "grupo_embalagem": GrupoEmbalagem,
 }
 
-
-def validate_field(field_name: str, payload: Dict[str, object]) -> tuple[str, Optional[str]]:
+def validate_field(field_name: str, payload: dict[str, object]) -> tuple[str, str | None]:
     """Validate a field and return status plus optional message."""
     schema = VALIDATORS.get(field_name)
     if not schema:
