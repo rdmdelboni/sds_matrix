@@ -100,6 +100,27 @@ class DuckDBManager:
                 """
             )
 
+            # Migrate existing tables to add missing columns
+            self._migrate_schema()
+
+    def _migrate_schema(self) -> None:
+        """Add missing columns to existing tables for backward compatibility."""
+        logger.debug("Checking for schema migrations.")
+        
+        # Check if source_urls column exists in extractions table
+        try:
+            columns = self.conn.execute("DESCRIBE extractions").fetchall()
+            column_names = [col[0] for col in columns]
+            
+            if "source_urls" not in column_names:
+                logger.info("Adding missing source_urls column to extractions table")
+                self.conn.execute(
+                    "ALTER TABLE extractions ADD COLUMN source_urls TEXT"
+                )
+                logger.info("Migration complete: source_urls column added")
+        except Exception as exc:  # noqa: BLE001
+            logger.error("Failed to check/migrate extractions table: %s", exc)
+
     @staticmethod
     def calculate_hash(file_path: Path) -> str:
         """Return the SHA256 hash for the given file."""
