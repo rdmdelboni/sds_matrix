@@ -134,29 +134,41 @@ GROK_CONFIG: Final[dict[str, object]] = {
     "timeout": int(os.getenv("GROK_TIMEOUT", "60")),
 }
 
-# Tavily AI Research API configuration
-# To enable online search via Tavily, set TAVILY_API_KEY in your environment
-# Optional overrides:
-#   TAVILY_BASE_URL (default: https://api.tavily.com)
-TAVILY_CONFIG: Final[dict[str, object]] = {
-    "api_key": os.getenv("TAVILY_API_KEY", ""),
-    "base_url": os.getenv("TAVILY_BASE_URL", "https://api.tavily.com"),
-    "timeout": int(os.getenv("TAVILY_TIMEOUT", "60")),
+# SearXNG + Crawl4AI configuration (open-source alternative - no API key required!)
+# No API key required; uses public SearXNG instances by default
+# Configuration:
+#   SEARXNG_INSTANCES: Comma-separated list of SearXNG URLs
+#   SEARXNG_RATE_LIMIT: Requests per second (default: 2.0)
+#   SEARXNG_BURST_LIMIT: Max burst tokens (default: 5.0)
+#   SEARXNG_MIN_DELAY: Minimum seconds between requests (default: 1.0)
+#   SEARXNG_MAX_RETRIES: Max retry attempts (default: 3)
+#   SEARXNG_BACKOFF: Initial backoff in seconds (default: 2.0)
+#   SEARXNG_TIMEOUT: Request timeout in seconds (default: 30)
+#   SEARXNG_LANGUAGE: Search language (default: en; examples: pt-BR, es, fr)
+#   SEARXNG_CACHE: Enable persistent cache (default: 1)
+#   SEARXNG_CACHE_TTL: Cache TTL in seconds (default: 7 days)
+#   SEARXNG_CRAWL: Enable Crawl4AI for content extraction (default: 0)
+SEARXNG_CONFIG: Final[dict[str, object]] = {
+    "instances": os.getenv(
+        "SEARXNG_INSTANCES",
+        "https://searx.be,https://search.bus-hit.me,https://searx.tiekoetter.com",
+    ),
+    "rate_limit": float(os.getenv("SEARXNG_RATE_LIMIT", "2.0")),
+    "burst_limit": float(os.getenv("SEARXNG_BURST_LIMIT", "5.0")),
+    "min_delay": float(os.getenv("SEARXNG_MIN_DELAY", "1.0")),
+    "max_retries": int(os.getenv("SEARXNG_MAX_RETRIES", "3")),
+    "backoff": float(os.getenv("SEARXNG_BACKOFF", "2.0")),
+    "timeout": int(os.getenv("SEARXNG_TIMEOUT", "30")),
+    "cache_enabled": os.getenv("SEARXNG_CACHE", "1") in {"1", "true", "True"},
+    "cache_ttl": int(os.getenv("SEARXNG_CACHE_TTL", str(7 * 24 * 3600))),
+    "crawl_enabled": os.getenv("SEARXNG_CRAWL", "0") in {"1", "true", "True"},
 }
 
-# Provider for online search. Options: "tavily", "grok", "gemini", "lmstudio".
-# Priority: TAVILY_API_KEY > GROK_API_KEY > GOOGLE_API_KEY > lmstudio
+# Provider for online search. Options: "searxng", "grok", "gemini", "lmstudio".
+# Default: SearXNG (no API key needed - free and open source!)
 ONLINE_SEARCH_PROVIDER: Final[str] = os.getenv(
     "ONLINE_SEARCH_PROVIDER",
-    (
-        "tavily"
-        if os.getenv("TAVILY_API_KEY")
-        else (
-            "grok"
-            if os.getenv("GROK_API_KEY")
-            else ("gemini" if os.getenv("GOOGLE_API_KEY") else "lmstudio")
-        )
-    ),
+    "searxng",  # SearXNG as default (no API key needed)
 )
 
 MAX_WORKERS: Final[int] = int(os.getenv("MAX_WORKERS", "2"))

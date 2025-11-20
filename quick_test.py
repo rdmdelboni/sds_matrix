@@ -35,7 +35,8 @@ def test_pdf_extraction():
     
     # Extrair texto do PDF
     extractor = PDFExtractor()
-    text = extractor.extract_text(pdf_path)
+    payload = extractor.extract(pdf_path)
+    text = payload.get("text")
     
     if text:
         print(f"   ✅ Texto extraído: {len(text)} caracteres")

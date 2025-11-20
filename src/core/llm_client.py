@@ -1,27 +1,39 @@
-"""LLM clients: local OpenAI-compatible server (Ollama/LM Studio) and Gemini online search."""
+"""LLM clients: local OpenAI-compatible server and online search.
+
+Improvements:
+ - Retry logic with exponential backoff + jitter for transient errors.
+ - In-memory TTL cache avoids repeated identical lookups per field/doc.
+"""
 
 from __future__ import annotations
 
 import json
-from typing import Dict, Optional, cast
+import os
+import random
+import time
+from typing import Dict, Optional, Callable, cast
 
 import httpx
 
 from openai import OpenAI
 
-from ..utils.config import GEMINI_CONFIG, GROK_CONFIG, LM_STUDIO_CONFIG, TAVILY_CONFIG
+from ..utils.config import (
+    GEMINI_CONFIG,
+    GROK_CONFIG,
+    LM_STUDIO_CONFIG,
+)
 from ..utils.logger import logger
 
 
 DEFAULT_SYSTEM_PROMPT = (
-    "Voce e um assistente especialista em ler Fichas de Dados de Seguranca (FDS) de "
-    "produtos quimicos. Responda sempre em JSON com os campos "
-    '{"value": "...", "confidence": 0.0-1.0, "context": "..."} e nunca invente dados.'
+    "Voce e um assistente especialista em Fichas de Dados de Seguranca."
+    " Responda em JSON: {value, confidence (0-1.0), context}."
+    " Nao invente dados."
 )
 
 
 class LMStudioClient:
-    """Wrapper for sending prompts to the local OpenAI-compatible server (Ollama/LM Studio)."""
+    """Wrapper for local OpenAI-compatible server (Ollama / LM Studio)."""
 
     def __init__(self) -> None:
         self.config = LM_STUDIO_CONFIG
@@ -45,7 +57,10 @@ class LMStudioClient:
             response = self.client.chat.completions.create(
                 model=self.model,
                 messages=[
-                    {"role": "system", "content": system_prompt or DEFAULT_SYSTEM_PROMPT},
+                    {
+                        "role": "system",
+                        "content": system_prompt or DEFAULT_SYSTEM_PROMPT,
+                    },
                     {"role": "user", "content": prompt},
                 ],
                 temperature=float(cast(float, self.config["temperature"])),
@@ -119,24 +134,16 @@ class LMStudioClient:
         identifier_text = ", ".join(identifiers)
         fields_text = ", ".join(missing_fields)
         
-        prompt = f"""Preciso encontrar informacoes sobre um produto quimico.
-Identifiers conhecidos: {identifier_text}
-
-Por favor, pesquise online e retorne as seguintes informacoes faltantes: {fields_text}
-
-Retorne um JSON com este formato:
-{{
-    "campo1": {{"value": "valor encontrado", "confidence": 0.0-1.0, "source": "fonte da informacao"}},
-    "campo2": {{"value": "valor encontrado", "confidence": 0.0-1.0, "source": "fonte da informacao"}}
-}}
-
-Se nao encontrar algum campo, use "NAO ENCONTRADO" como value e confidence 0.0."""
+        prompt = (
+            "Preciso buscar dados de um produto quimico. Identificadores: "
+            f"{identifier_text}\nCampos faltantes: {fields_text}\n"
+            "Retorne JSON: { 'campo': { 'value': '...', 'confidence': 0-1.0 } }." 
+            "Use NAO ENCONTRADO se nao achar."
+        )
 
         system_prompt = (
-            "Voce e um assistente especializado em buscar informacoes sobre produtos quimicos. "
-            "Use suas capacidades de busca online para encontrar dados precisos em bases como "
-            "PubChem, ChemSpider, fichas de seguranca oficiais, e sites de fabricantes. "
-            "Sempre cite a fonte das informacoes e indique o nivel de confianca."
+            "Assistente especializado em dados quimicos. Pesquise em bases confiaveis "
+            "(PubChem, ChemSpider, FDS oficiais). Cite fontes e nivel de confianca."
         )
 
         logger.info("Searching online for missing fields: %s", missing_fields)
@@ -157,9 +164,13 @@ Se nao encontrar algum campo, use "NAO ENCONTRADO" como value e confidence 0.0."
             
             # Parse JSON response
             if raw_content.startswith("```json"):
-                raw_content = raw_content.split("```json")[1].split("```")[0].strip()
+                raw_content = (
+                    raw_content.split("```json")[1].split("```")[0].strip()
+                )
             elif raw_content.startswith("```"):
-                raw_content = raw_content.split("```")[1].split("```")[0].strip()
+                raw_content = (
+                    raw_content.split("```")[1].split("```")[0].strip()
+                )
             
             parsed = json.loads(raw_content)
             if not isinstance(parsed, dict):
@@ -427,174 +438,3 @@ Se algum campo nao for encontrado com confianca, use value="NAO ENCONTRADO" e co
         except Exception as exc:  # noqa: BLE001
             logger.error("Grok online search failed: %s", exc)
             return {field: {"value": "ERRO", "confidence": 0.0, "context": str(exc)} for field in missing_fields}
-
-
-class TavilyClient:
-    """Client for Tavily AI research API used for online search with local LLM."""
-
-    def __init__(self) -> None:
-        self.api_key = str(TAVILY_CONFIG.get("api_key", ""))
-        self.base_url = str(TAVILY_CONFIG.get("base_url", "https://api.tavily.com"))
-        self.timeout = int(cast(int, TAVILY_CONFIG.get("timeout", 60)))
-
-    def _endpoint(self) -> str:
-        return f"{self.base_url}/search"
-
-    def test_connection(self) -> bool:
-        """Lightweight call to verify that the API key is present."""
-        return bool(self.api_key)
-
-    def _search(self, query: str) -> Dict[str, object]:
-        """Execute a search query using Tavily API."""
-        headers = {"Content-Type": "application/json"}
-        payload = {
-            "api_key": self.api_key,
-            "query": query,
-            "topic": "general",  # Valid options: general, news, finance
-            "max_results": 5,
-            "search_depth": "advanced",  # Advanced search for better results
-            "include_answer": True,
-            "include_raw_content": False,
-        }
-        try:
-            with httpx.Client(timeout=self.timeout) as client:
-                r = client.post(self._endpoint(), headers=headers, json=payload)
-                r.raise_for_status()
-                data = r.json()
-                return cast(Dict[str, object], data)
-        except Exception as exc:  # noqa: BLE001
-            raise RuntimeError(f"Tavily search failed: {exc}") from exc
-
-    def search_online_for_missing_fields(
-        self,
-        *,
-        product_name: Optional[str] = None,
-        cas_number: Optional[str] = None,
-        un_number: Optional[str] = None,
-        missing_fields: list[str],
-    ) -> Dict[str, Dict[str, object]]:
-        if not self.api_key:
-            logger.warning("TAVILY_API_KEY not set; skipping Tavily online search")
-            return {field: {"value": "NAO ENCONTRADO", "confidence": 0.0, "context": "Tavily disabled"} for field in missing_fields}
-
-        identifiers = []
-        if product_name and product_name.strip():
-            identifiers.append(product_name.strip())
-        if cas_number and str(cas_number).strip():
-            identifiers.append(f"CAS {str(cas_number).strip()}")
-        if un_number and str(un_number).strip():
-            identifiers.append(f"UN {str(un_number).strip()}")
-
-        if not identifiers:
-            logger.warning("No identifiers provided for online search")
-            return {}
-
-        identifier_text = " ".join(identifiers).strip()
-        results: Dict[str, Dict[str, object]] = {}
-
-        # Search for each missing field
-        for field_name in missing_fields:
-            logger.info(
-                "Tavily: searching for field '%s' with identifiers: %s",
-                field_name,
-                identifier_text,
-            )
-
-            try:
-                # Build field-specific search query
-                field_translations = {
-                    "numero_cas": "CAS number",
-                    "numero_onu": "UN number",
-                    "nome_produto": "product name",
-                    "fabricante": "manufacturer",
-                    "classificacao_onu": "UN classification hazard",
-                    "grupo_embalagem": "packing group",
-                    "incompatibilidades": "chemical incompatibilities",
-                }
-                field_display = field_translations.get(field_name, field_name)
-                query = (
-                    f"{identifier_text} {field_display} "
-                    f"chemical product safety data"
-                ).strip()
-
-                # Skip if query is effectively empty
-                if not query or len(query.strip()) < 3:
-                    logger.warning(
-                        "Skipping Tavily search for %s: query too short or "
-                        "empty",
-                        field_name,
-                    )
-                    results[field_name] = {
-                        "value": "NAO ENCONTRADO",
-                        "confidence": 0.0,
-                        "context": "Query too short for online search",
-                    }
-                    continue
-
-                search_result = self._search(query)
-
-                # Extract answer from Tavily if available
-                answer = search_result.get("answer", "")
-                results_list = search_result.get("results", [])
-
-                if answer:
-                    results[field_name] = {
-                        "value": answer.strip(),
-                        "confidence": 0.8,
-                        "context": "Tavily online search",
-                    }
-                elif results_list and len(results_list) > 0:
-                    # Use first search result's content as fallback
-                    first_result = results_list[0]
-                    content = (
-                        first_result.get("content", "")
-                        or first_result.get("snippet", "")
-                    )
-                    if content:
-                        results[field_name] = {
-                            # Limit to 500 chars
-                            "value": content.strip()[:500],
-                            "confidence": 0.6,
-                            "context": (
-                                f"Tavily: "
-                                f"{first_result.get('title', 'Search result')}"
-                            ),
-                        }
-                    else:
-                        results[field_name] = {
-                            "value": "NAO ENCONTRADO",
-                            "confidence": 0.0,
-                            "context": (
-                                "Tavily search returned no usable content"
-                            ),
-                        }
-                else:
-                    results[field_name] = {
-                        "value": "NAO ENCONTRADO",
-                        "confidence": 0.0,
-                        "context": "Tavily search returned no results",
-                    }
-
-                logger.debug(
-                    "Tavily result for %s: %s",
-                    field_name,
-                    results[field_name],
-                )
-
-            except Exception as exc:  # noqa: BLE001
-                logger.error(
-                    "Tavily search failed for field %s: %s",
-                    field_name,
-                    exc,
-                )
-                results[field_name] = {
-                    "value": "ERRO",
-                    "confidence": 0.0,
-                    "context": f"Tavily error: {str(exc)}",
-                }
-
-        logger.info(
-            "Tavily online search completed for %d fields",
-            len(results),
-        )
-        return results

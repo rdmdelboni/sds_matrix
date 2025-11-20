@@ -5,7 +5,7 @@
 ![License](https://img.shields.io/badge/license-MIT-green)
 ![Coverage](https://img.shields.io/badge/coverage-95%25-brightgreen)
 
-Aplicacao desktop (Tkinter) e pipeline de processamento para extrair dados de Fichas de Dados de Seguranca (FDS) usando heuristicas locais e, opcionalmente, um endpoint OpenAI-compat como **Ollama** (padrao) ou LM Studio. Para complementar campos ausentes/baixa confianca, a aplicacao tambem pode usar o Gemini (Google Generative Language API) para pesquisa online.
+Aplicacao desktop (Tkinter) e pipeline de processamento para extrair dados de Fichas de Dados de Seguranca (FDS) usando heuristicas locais e, opcionalmente, um endpoint OpenAI-compat como **Ollama** (padrao) ou LM Studio. Para complementar campos ausentes/baixa confianca, a aplicacao usa **SearXNG + Crawl4AI** (busca online gratuita e open-source) ou, alternativamente, APIs como Gemini ou Grok.
 
 ## Estrutura principal
 
@@ -43,17 +43,72 @@ Veja `USAGE.md` para instrucoes completas (GUI e CLI) com screenshots.
 
    - Aba **Configuracao**: selecione uma pasta (por exemplo `examples/`) e adicione os arquivos a fila. Barra de progresso modal rastreia processamento.
    - Aba **Processamento**: acompanhe status em tempo real com colunas para **Modo (online/local), Produto, Fabricante, ONU, CAS, Classe ONU, Grupo de Embalagem e Incompatibilidades**. Dica: dê um duplo clique na coluna "Modo" para alternar entre processamento local ou online por arquivo; use clique direito para trocar o modo nas linhas selecionadas; ou use os botões de atalho na barra superior ("Modo: Online" e "Modo: Local"). Ícones de validação (✓/⚠/✗) indicam status.
-   - Aba **Resultados**: filtre por status/validacao, pesquise, exporte CSV/Excel. Os campos (incluindo **Incompatibilidades**) e metadados de confianca/validacao sao exibidos e exportados. Use o botao "Reprocessar selecao (online)" para tentar preencher campos vazios via Gemini; tambem disponivel no clique direito sobre a linha.
+   - Aba **Resultados**: filtre por status/validacao, pesquise, exporte CSV/Excel. Os campos (incluindo **Incompatibilidades**) e metadados de confianca/validacao sao exibidos e exportados. Use o botao "Reprocessar selecao (online)" para tentar preencher campos vazios via pesquisa online; tambem disponivel no clique direito sobre a linha.
    - **Menu**: Arquivo → Abrir pasta de exportacao (abre `data/` no Explorer); Exportar CSV/Excel (atalhos rapidos).
 
-### Pesquisa online com Gemini (opcional)
+### Pesquisa online (SearXNG + Crawl4AI - Gratuito!)
 
-Para habilitar a pesquisa online dos campos faltantes via Gemini:
+Por padrão, o sistema usa **SearXNG** (metabuscador open-source) + **Crawl4AI** (crawler IA) para busca online. **Nenhuma API key necessária!**
 
-1. Defina a variavel de ambiente `GOOGLE_API_KEY` (ou crie um arquivo `.env` com essa chave).
-2. Opcionalmente defina `ONLINE_SEARCH_PROVIDER=gemini` e/ou `GEMINI_MODEL` (padrao `gemini-2.0-flash`).
+**Setup rápido:**
 
-Quando habilitado, a aba de configuracao exibira “Gemini pronto para pesquisa online.” e o pipeline tentara preencher valores faltantes consultando fontes abertas (ex.: PubChem) com citacao da fonte.
+```bash
+# 1. Instalar Crawl4AI
+pip install crawl4ai
+crawl4ai-setup
+
+# 2. Iniciar SearXNG (Docker)
+./setup_searxng.sh
+
+# 3. Pronto! O sistema já está configurado para usar SearXNG
+```
+
+Veja `SEARXNG_COMPLETE_GUIDE.md` para configuração avançada.
+
+#### 🛡️ Evitando bloqueios de IP (Rate Limiting)
+
+O sistema tem **múltiplas camadas de proteção** para evitar banimento:
+
+- ✅ Rate limiting (2 req/sec por padrão)
+- ✅ Delays mínimos entre requisições (1s)
+- ✅ Cache persistente (7 dias)
+- ✅ Exponential backoff automático
+- ✅ Rotação de user-agents
+
+**Configuração rápida (adicione ao `.env.local`):**
+
+```bash
+# Máxima segurança (lento mas seguro)
+SEARXNG_RATE_LIMIT=1.0    # 1 busca por segundo
+SEARXNG_MIN_DELAY=2.0     # 2 segundos entre buscas
+
+# Balanceado (padrão - recomendado)
+SEARXNG_RATE_LIMIT=2.0    # 2 buscas por segundo
+SEARXNG_MIN_DELAY=1.0     # 1 segundo entre buscas
+
+# Ou use o assistente interativo:
+./configure_rate_limiting.sh
+```
+
+📚 **Guias completos:**
+- `IP_BAN_QUICK_REFERENCE.md` - Referência rápida com soluções emergenciais
+- `IP_BAN_PREVENTION.md` - Guia completo com todas as técnicas avançadas
+
+**Alternativas (com API key):**
+
+Para usar Gemini ou Grok em vez de SearXNG:
+
+```bash
+# Opção 1: Google Gemini
+ONLINE_SEARCH_PROVIDER=gemini
+GOOGLE_API_KEY=sua_chave_aqui
+
+# Opção 2: xAI Grok
+ONLINE_SEARCH_PROVIDER=grok
+GROK_API_KEY=sua_chave_aqui
+```
+
+Quando habilitado, a aba de configuração exibirá o status da pesquisa online e o pipeline tentará preencher valores faltantes consultando fontes abertas (ex.: PubChem) com citação da fonte.
 
 ## Processando exemplos via CLI
 
@@ -120,4 +175,5 @@ Veja o arquivo `IMPROVEMENTS.md` para detalhes completos sobre:
 - ✅ Menu rapido: Abrir pasta de exportacao, Exportar CSV/Excel
 - ✅ CLI export: `scripts/export_results.py` para CSV/Excel
 - ✅ USAGE.md com instrucoes e referencias de screenshots
-- ✅ Pesquisa online de campos com Gemini (Google Generative Language API)
+- ✅ **Pesquisa online gratuita com SearXNG + Crawl4AI (substituiu Tavily)**
+- ✅ Suporte alternativo para Gemini e Grok APIs

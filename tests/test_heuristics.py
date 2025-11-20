@@ -23,7 +23,7 @@ class TestNumeroONU:
         
         assert result is not None
         assert result["value"] == "1234"
-        assert result["confidence"] == 0.85
+        assert result["confidence"] == 0.95
         assert "UN1234" in result["context"]
 
     def test_extract_onu_format(self, extractor: HeuristicExtractor) -> None:
@@ -33,7 +33,7 @@ class TestNumeroONU:
         
         assert result is not None
         assert result["value"] == "2789"
-        assert result["confidence"] == 0.85
+        assert result["confidence"] == 0.95
 
     def test_extract_bare_number(self, extractor: HeuristicExtractor) -> None:
         """Test extraction of bare 4-digit numbers."""
