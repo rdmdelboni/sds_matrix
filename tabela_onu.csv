@@ -1,0 +1,2917 @@
+numero_onu,classificacao_onu,proper_shipping_name
+1,?,"(UN No. no longer in use) Alarm devices, explosive (UN No. no longer in use)[1]"
+2,?,(UN No.s no longer in use)
+3,?,(UN No.s no longer in use)
+4,1.1D,"Ammonium picrate, dry or wetted with less than 10 percent water, by mass"
+5,1.1F,"Cartridges for weapons, with bursting charge"
+6,1.1E,"Cartridges for weapons, with bursting charge"
+7,1.2F,"Cartridges for weapons, with bursting charge"
+8,?,(UN No. no longer in use)
+9,1.2G,"Ammunition, incendiary with or without burster, expelling charge, or propelling charge"
+10,1.3G,"Ammunition, incendiary with or without burster, expelling charge, or propelling charge"
+11,?,(UN No. no longer in use)
+12,1.4S,"Cartridges for weapons, inert projectile or Cartridges, small arms"
+13,?,(UN No. no longer in use)
+14,1.4S,"Cartridges for weapons, blank or Cartridges, small arms, blank"
+15,1.2G,"Ammunition, smoke with or without burster, expelling charge, or propelling charge"
+16,1.3G,"Ammunition, smoke with or without burster, expelling charge, or propelling charge"
+17,?,(UN No. no longer in use)
+18,1.2G,"Ammunition, tear-producing with burster, expelling charge, or propelling charge"
+19,1.3G,"Ammunition, tear-producing with burster, expelling charge, or propelling charge"
+20,1.2K,"Ammunition, toxic with burster, expelling charge, or propelling charge"
+21,1.3K,"Ammunition, toxic with burster, expelling charge, or propelling charge"
+22,?,(UN No. no longer in use) Amorces[2]
+23,?,(UN No.s no longer in use)
+24,?,(UN No.s no longer in use)
+25,?,(UN No.s no longer in use)
+26,?,(UN No.s no longer in use)
+27,1.1D,"Black powder or Gunpowder, granular or as a meal"
+28,1.1D,"Black powder, compressed or Gunpowder, compressed or Black powder, in pellets or Gunpowder, in pellets"
+29,1.1B,"Detonators, non-electric, for blasting"
+30,1.1B,"Detonators, electric, for blasting"
+31,?,(UN No.s no longer in use)
+32,?,(UN No.s no longer in use)
+33,1.1F,"Bombs, with bursting charge"
+34,1.1D,"Bombs, with bursting charge"
+35,1.2D,"Bombs, with bursting charge"
+36,?,(UN No. no longer in use)
+37,1.1F,"Bombs, photo-flash"
+38,1.1D,"Bombs, photo-flash"
+39,1.2G,"Bombs, photo-flash"
+40,?,(UN No.s no longer in use)
+41,?,(UN No.s no longer in use)
+42,1.1D,"Boosters, without detonator"
+43,1.1D,"Bursters, explosive"
+44,1.4S,"Primers, cap type"
+45,?,(UN No.s no longer in use)
+46,?,(UN No.s no longer in use)
+47,?,(UN No.s no longer in use)
+48,1.1D,"Charges, demolition"
+49,1.1G,"Cartridges, flash"
+50,1.3G,"Cartridges, flash"
+51,?,(UN No.s no longer in use)
+52,?,(UN No.s no longer in use)
+53,?,(UN No.s no longer in use)
+54,1.3G,"Cartridges, signal"
+55,1.4S,"Cases, cartridge, empty with primer"
+56,1.1D,"Charges, depth"
+57,?,(UN No.s no longer in use)
+58,?,(UN No.s no longer in use)
+59,1.1D,"Charges, shaped, without detonator"
+60,1.1D,"Charges, supplementary explosive"
+61,?,(UN No.s no longer in use)
+62,?,(UN No.s no longer in use)
+63,?,(UN No.s no longer in use)
+64,?,(UN No.s no longer in use)
+65,1.1D,"Cord, detonating, flexible"
+66,1.4G,"Cord, igniter"
+67,?,(UN No.s no longer in use)
+68,?,(UN No.s no longer in use)
+69,?,(UN No.s no longer in use)
+70,1.4S,"Cutters, cable, explosive"
+71,?,(UN No. no longer in use)
+72,1.1D,"Cyclotrimethylenetrinitramine, wetted or Cyclonite, wetted or Hexogen, wetted or RDX, wetted with not less than 15 percent water by mass"
+73,1.1B,Detonators for ammunition
+74,1.1A,"Diazodinitrophenol, wetted with not less than 40 percent water or mixture of alcohol and water, by mass"
+75,1.1D,"Diethylene glycol dinitrate, desensitized with not less than 25 percent non-volatile water-insoluble phlegmatizer, by mass"
+76,1.1D,"Dinitrophenol, dry or wetted with less than 15 percent water, by mass"
+77,1.3C,"Dinitrophenolates alkali metals, dry or wetted with less than 15 percent water, by mass"
+78,1.1D,"Dinitroresorcinol, dry or wetted with less than 15 percent water, by mass"
+79,1.1D,Hexanitrodiphenylamine or Dipicrylamine or Hexyl
+80,?,(UN No. no longer in use)
+81,1.1D,"Explosive, blasting, type A"
+82,1.1D,"Explosive, blasting, type B"
+83,1.1D,"Explosive, blasting, type C"
+84,1.1D,"Explosive, blasting, type D"
+85,?,(UN No.s no longer in use)
+86,?,(UN No.s no longer in use)
+87,?,(UN No.s no longer in use)
+88,?,(UN No.s no longer in use)
+89,?,(UN No.s no longer in use)
+90,?,(UN No.s no longer in use)
+91,?,(UN No.s no longer in use)
+92,1.3D,"Flares, surface"
+93,1.3G,"Flares, aerial"
+94,1.1G,Flash powder
+95,?,(UN No. no longer in use)
+96,?,"(UN No. no longer in use) Flash powder, photo-flash (UN No. no longer in use)[1]"
+97,?,(UN No.s no longer in use)
+98,?,(UN No.s no longer in use)
+99,1.1D,"Fracturing devices, explosives, without detonators for oil wells"
+100,?,(UN No. no longer in use)
+101,1.3G,"Fuse, non-detonating instantaneous or quickmatch"
+102,1.2D,Cord detonating or Fuse detonating metal clad
+103,1.4G,"Fuse, igniter tubular metal clad"
+104,1.4D,"Cord, detonating, mild effect or Fuse, detonating, mild effect metal clad"
+105,1.4S,"Fuse, safety"
+106,1.1B,"Fuzes, detonating"
+107,1.2B,"Fuzes, detonating"
+108,?,(UN No.s no longer in use)
+109,?,(UN No.s no longer in use)
+110,1.4S,"Grenades, practice, hand or rifle"
+111,?,(UN No.s no longer in use)
+112,?,(UN No.s no longer in use)
+113,1.1A,"Guanyl nitrosaminoguanylidene hydrazine, wetted with not less than 30 percent water, by mass"
+114,1.1A,"Guanyl nitrosaminoguanyltetrazene, wetted or Tetrazene, wetted with not less than 30 percent water or mixture of alcohol and water, by mass"
+115,?,(UN No.s no longer in use)
+116,?,(UN No.s no longer in use)
+117,?,(UN No.s no longer in use)
+118,1.1D,"Hexolite, or Hexotol dry or wetted with less than 15 percent water, by mass"
+119,?,(UN No.s no longer in use)
+120,?,(UN No.s no longer in use)
+121,1.1G,Igniters
+122,?,(UN No.s no longer in use)
+124,1.1D,"Jet, perforating guns, charged oil well, without detonator"
+125,?,(UN No.s no longer in use)
+126,?,(UN No.s no longer in use)
+127,?,(UN No.s no longer in use)
+128,?,(UN No.s no longer in use)
+129,1.1A,"Lead azide, wetted with not less than 20 percent water or mixture of alcohol and water, by mass"
+130,1.1A,"Lead styphnate, wetted or Lead trinitroresorcinate, wetted with not less than 20 percent water or mixture of alcohol and water, by mass"
+131,1.4S,"Lighters, fuse"
+132,1.3C,"Deflagrating metal salts of aromatic nitroderivatives, n.o.s."
+133,1.1D,"Mannitol hexanitrate, wetted or Nitromannite, wetted with not less than 40 percent water, or mixture of alcohol and water, by mass"
+134,?,(UN No. no longer in use)
+135,1.1A,"Mercury fulminate, wetted with not less than 20 percent water, or mixture of alcohol and water, by mass"
+136,1.1F,Mines with bursting charge
+137,1.1D,Mines with bursting charge
+138,1.2D,Mines with bursting charge
+139,?,(UN No.s no longer in use)
+140,?,(UN No.s no longer in use)
+141,?,(UN No.s no longer in use)
+142,?,(UN No.s no longer in use)
+143,1.1D,"Nitroglycerin, desensitized with not less than 40 percent non-volatile water-insoluble phlegmatizer, by mass"
+144,1.1D,"Nitroglycerin, solution in alcohol, with more than 1 percent but not more than 10 percent nitroglycerin"
+145,?,(UN No. no longer in use)
+146,1.1D,"Nitrostarch, dry or wetted with less than 20 percent water, by mass"
+147,1.1D,Nitro urea
+148,?,(UN No.s no longer in use)
+149,?,(UN No.s no longer in use)
+150,1.1D,"Pentaerythrite tetranitrate, wetted or Pentaerythritol tetranitrate, wetted or PETN, wetted with not less than 25 percent water, by mass, or Pentaerythrite tetranitrate, or Pentaerythritol tetranitrate, or PETN, desensitized with not less than 15 percent phlegmatizer, by mass"
+151,1.1D,"Pentolite, dry or wetted with less than 15 percent water, by mass"
+152,?,(UN No. no longer in use)
+153,1.1D,Trinitroaniline or Picramide
+154,1.1D,"Trinitrophenol or picric acid, dry or wetted with less than 30 percent water, by mass"
+155,1.1D,Trinitrochlorobenzene or Picryl chloride
+156,?,(UN No.s no longer in use)
+157,?,(UN No.s no longer in use)
+158,?,(UN No. no longer in use) Potassium salts of nitroaromatic derivatives (UN No. no longer in use)[1]
+159,1.3C,"Powder cake, wetted or Powder paste, wetted with not less than 25 percent water, by mass"
+160,1.1C,"Powder, smokeless"
+161,1.3C,"Powder, smokeless"
+162,?,(UN No.s no longer in use)
+163,?,(UN No.s no longer in use)
+164,?,(UN No.s no longer in use)
+165,?,(UN No.s no longer in use)
+166,?,(UN No.s no longer in use)
+167,1.1F,"Projectiles, with bursting charge"
+168,1.1D,"Projectiles, with bursting charge"
+169,1.2D,"Projectiles, with bursting charge"
+170,?,(UN No. no longer in use)
+171,1.2G,"Ammunition, illuminating with or without burster, expelling charge, or propelling charge"
+172,?,(UN No. no longer in use)
+173,1.4S,"Release devices, explosive"
+174,1.4S,"Rivets, explosive"
+175,?,(UN No.s no longer in use)
+176,?,(UN No.s no longer in use)
+177,?,(UN No.s no longer in use)
+178,?,(UN No.s no longer in use)
+179,?,(UN No.s no longer in use)
+180,1.1F,"Rockets, with bursting charge"
+181,1.1E,"Rockets, with bursting charge"
+182,1.2E,"Rockets, with bursting charge"
+183,1.3C,"Rockets, with inert head"
+184,?,(UN No.s no longer in use)
+185,?,(UN No.s no longer in use)
+186,1.3C,Rocket motors
+187,?,(UN No.s no longer in use)
+188,?,(UN No.s no longer in use)
+189,?,(UN No.s no longer in use)
+190,1,"Samples, explosive, other than initiating explosives"
+191,1.4G,"Signal devices, hand"
+192,1.1G,"Signals, railway track, explosive"
+193,1.4S,"Signals, railway track, explosive"
+194,1.1G,"Signals, distress, ship"
+195,1.3G,"Signals, distress, ship"
+196,1.1G,"Signals, smoke"
+197,1.4G,"Signals, smoke"
+198,?,(UN No.s no longer in use)
+199,?,(UN No.s no longer in use)
+200,?,(UN No.s no longer in use)
+201,?,(UN No.s no longer in use)
+203,?,"(UN No. no longer in use) Sodium salts of nitro-aromatic derivatives, n.o.s. (UN No. no longer in use)[1]"
+204,1.2F,"Sounding devices, explosive"
+205,?,(UN No. no longer in use)
+206,?,(UN No. no longer in use) Squibs (UN No. no longer in use)[1]
+207,1.1D,Tetranitroaniline
+208,1.1D,Trinitrophenylmethylnitramine or Tetryl
+209,1.1D,"Trinitrotoluene or TNT, dry or wetted with less than 30 percent water, by mass"
+210,?,(UN No.s no longer in use)
+212,1.3G,Tracers for ammunition
+213,1.1D,Trinitroanisole
+214,1.1D,"Trinitrobenzene, dry or wetted with less than 30 percent water, by mass"
+215,1.1D,"Trinitrobenzoic acid, dry or wetted with less than 30 percent water, by mass"
+216,1.1D,Trinitro-meta-cresol
+217,1.1D,Trinitronaphthalene
+218,1.1D,Trinitrophenetole
+219,1.1D,"Trinitroresorcinol or Styphnic acid, dry or wetted with less than 20 percent water, or mixture of alcohol and water, by mass"
+220,1.1D,"Urea nitrate, dry or wetted with less than 20 percent water, by mass"
+221,1.1D,"Warheads, torpedo with bursting charge"
+222,1.1D,"Ammonium nitrate, with more than 0.2 percent combustible substances, including any organic substance calculated as carbon, to the exclusion of any other added substance"
+223,1,(UN No. no longer in use) Ammonium nitrate fertilizers (UN No. no longer in use)[1]
+224,1.1A,"Barium azide, dry or wetted with less than 50 percent water, by mass"
+225,1.1B,Boosters with detonator
+226,1.1D,"Cyclotetramethylenetetranitramine, wetted or HMX, wetted or Octogen, wetted with not less than 15 percent water, by mass"
+227,?,(UN No.s no longer in use)
+234,1.3C,"Sodium dinitro-o-cresolate, dry or wetted with less than 15 percent of water, by mass"
+235,1.3C,"Sodium picramate, dry or wetted with less than 20 percent water, by mass"
+236,1.3C,"Zirconium picramate, dry or wetted less than 20 percent water, by mass"
+237,1.4D,"Charges, shaped, flexible, linear"
+238,1.2G,"Rockets, line-throwing"
+239,?,(UN No. no longer in use)
+240,1.3G,"Rockets, line-throwing"
+241,1.1D,"Explosive, blasting, type E"
+242,1.3C,"Charges, propelling, for cannon"
+243,1.2H,"Ammunition, incendiary, white phosphorus, with burster, expelling charge, or propelling charge"
+244,1.3H,"Ammunition, incendiary, white phosphorus, with burster, expelling charge, or propelling charge"
+245,1.2H,"Ammunition smoke, white phosphorus with burster, expelling charge, or propelling charge"
+246,1.3H,"Ammunition smoke, white phosphorus with burster, expelling charge, or propelling charge"
+247,1.3J,"Ammunition, incendiary liquid or gel, with burster, expelling charge, or propelling charge"
+248,1.2L,"Contrivances, water-activated, with burster, expelling charge, or propelling charge"
+249,1.3L,"Contrivances, water-activated, with burster, expelling charge, or propelling charge"
+250,1.3L,Rocket motors with hypergolic liquids with or without an expelling charge
+251,?,(UN No.s no longer in use)
+254,1.3G,"Ammunition, illuminating with or without burster, expelling charge, or propelling charge"
+255,1.4B,"Detonators, electric, for blasting"
+256,?,(UN No. no longer in use)
+257,1.4B,"Fuzes, detonating"
+258,?,(UN No.s no longer in use)
+266,1.1D,"Octolite or Octol, dry or wetted with less than 15 percent water, by mass"
+267,1.4B,"Detonators, non-electric, for blasting"
+268,1.2B,Boosters with detonator
+269,?,(UN No.s no longer in use)
+271,1.1C,"Charges, propelling"
+272,1.3C,"Charges, propelling"
+273,?,"(UN No. no longer in use) Charges, propelling, for rocket motors (UN No. no longer in use)[1]"
+274,?,"(UN No. no longer in use) Charges, propelling, for rocket motors (UN No. no longer in use)[1]"
+275,1.3C,"Cartridges, power device"
+276,1.4C,"Cartridges, power device"
+277,1.3C,"Cartridges, oil well"
+278,1.4C,"Cartridges, oil well"
+279,1.1C,"Charges, propelling, for cannon"
+280,1.1C,Rocket motors
+281,1.2C,Rocket motors
+282,1.1D,"Nitroguanidine or Picrite, dry or wetted with less than 20 percent water, by mass"
+283,1.2D,"Boosters, without detonator"
+284,1.1D,"Grenades, hand or rifle, with bursting charge"
+285,1.2D,"Grenades, hand or rifle, with bursting charge"
+286,1.1D,"Warheads, rocket with bursting charge"
+287,1.2D,"Warheads, rocket with bursting charge"
+288,1.1D,"Charges, shaped, flexible, linear"
+289,1.4D,"Cord, detonating, flexible"
+290,1.1D,"Cord, detonating or Fuse, detonating metal clad"
+291,1.2F,"Bombs, with bursting charge"
+292,1.1F,"Grenades, hand or rifle, with bursting charge"
+293,1.2F,"Grenades, hand or rifle, with bursting charge"
+294,1.2F,Mines with bursting charge
+295,1.2F,"Rockets, with bursting charge"
+296,1.1F,"Sounding devices, explosive"
+297,1.4G,"Ammunition, illuminating with or without burster, expelling charge, or propelling charge"
+298,?,(UN No. no longer in use)
+299,1.3G,"Bombs, photo-flash"
+300,1.4G,"Ammunition, incendiary with or without burster, expelling charge, or propelling charge"
+301,1.4G,"Ammunition, tear-producing with burster, expelling charge, or propelling charge"
+302,?,(UN No. no longer in use)
+303,1.4G,"Ammunition, smoke, with or without burster, expelling charge, or propelling charge"
+304,?,(UN No. no longer in use)
+305,1.3G,Flash powder
+306,1.4G,Tracers for ammunition
+307,?,(UN No.s no longer in use)
+312,1.4G,"Cartridges, signal"
+313,1.2G,"Signals, smoke"
+314,1.2G,Igniters
+315,1.3G,Igniters
+316,1.3G,"Fuzes, igniting"
+317,1.4G,"Fuzes, igniting"
+318,1.3G,"Grenades, practice, hand or rifle"
+319,1.3G,"Primers, tubular"
+320,1.4G,"Primers, tubular"
+321,1.2E,"Cartridges for weapons, with bursting charge"
+322,1.2L,Rocket motors with hypergolic liquids with or without an expelling charge
+323,1.4S,"Cartridges, power device"
+324,1.2F,"Projectiles, with bursting charge"
+325,1.4G,Igniters
+326,1.1C,"Cartridges for weapons, blank"
+327,1.3C,"Cartridges for weapons, blank or Cartridges, small arms, blank"
+328,1.2C,"Cartridges for weapons, inert projectile"
+329,1.1E,Torpedoes with bursting charge
+330,1.1F,Torpedoes with bursting charge
+331,1.5D,"Explosive, blasting, type B or Agent, blasting, Type B"
+332,1.5D,"Explosive, blasting, type E or Agent, blasting, Type E"
+333,1.1G,Fireworks
+334,1.2G,Fireworks
+335,1.3G,Fireworks
+336,1.4G,Fireworks
+337,1.4S,Fireworks
+338,1.4C,"Cartridges for weapons, blank or Cartridges, small arms, blank"
+339,1.4C,"Cartridges for weapons, inert projectile or Cartridges, small arms"
+340,1.1D,"Nitrocellulose, dry or wetted with less than 25 percent water (or alcohol), by mass"
+341,1.1D,"Nitrocellulose, unmodified or plasticized with less than 18 percent plasticizing substance, by mass"
+342,1.3C,"Nitrocellulose, wetted with not less than 25 percent alcohol, by mass"
+343,1.3C,"Nitrocellulose, plasticized with not less than 18 percent plasticizing substance, by mass"
+344,1.4D,"Projectiles, with bursting charge"
+345,1.4S,"Projectiles, inert with tracer"
+346,1.2D,"Projectiles, with burster or expelling charge"
+347,1.4D,"Projectiles, with burster or expelling charge"
+348,1.4F,"Cartridges for weapons, with bursting charge"
+349,1.4S,"Articles, explosive, n.o.s."
+350,1.4B,"Articles, explosive, n.o.s."
+351,1.4C,"Articles, explosive, n.o.s."
+352,1.4D,"Articles, explosive, n.o.s."
+353,1.4G,"Articles, explosive, n.o.s."
+354,1.1L,"Articles, explosive, n.o.s."
+355,1.2L,"Articles, explosive, n.o.s."
+356,1.3L,"Articles, explosive, n.o.s."
+357,1.1L,"Substances, explosive, n.o.s."
+358,1.2L,"Substances, explosive, n.o.s."
+359,1.3L,"Substances, explosive, n.o.s."
+360,1.1B,"Detonator assemblies, non-electric for blasting"
+361,1.4B,"Detonator assemblies, non-electric for blasting"
+362,1.4G,"Ammunition, practice"
+363,1.4G,"Ammunition, proof"
+364,1.2B,Detonators for ammunition
+365,1.4B,Detonators for ammunition
+366,1.4S,Detonators for ammunition
+367,1.4S,"Fuzes, detonating"
+368,1.4S,"Fuzes, igniting"
+369,1.1F,"Warheads, rocket with bursting charge"
+370,1.4D,"Warheads, rocket with burster or expelling charge"
+371,1.4F,"Warheads, rocket with burster or expelling charge"
+372,1.2G,"Grenades, practice, hand or rifle"
+373,1.4S,"Signal devices, hand"
+374,1.1D,"Sounding devices, explosive"
+375,1.2D,"Sounding devices, explosive"
+376,1.4S,"Primers, tubular"
+377,1.1B,"Primers, cap type"
+378,1.4B,"Primers, cap type"
+379,1.4C,"Cases, cartridges, empty with primer"
+380,1.2L,"Articles, pyrophoric"
+381,1.2C,"Cartridges, power device"
+382,1.2B,"Components, explosive train, n.o.s."
+383,1.4B,"Components, explosive train, n.o.s."
+384,1.4S,"Components, explosive train, n.o.s."
+385,1.1D,5-Nitrobenzotriazol
+386,1.1D,Trinitrobenzenesulfonic acid
+387,1.1D,Trinitrofluorenone
+388,1.1D,Trinitrotoluene and Trinitrobenzene mixtures or TNT and trinitrobenzene mixtures or TNT and hexanitrostilbene mixtures or Trinitrotoluene and hexanitrostilnene mixtures
+389,1.1D,Trinitrotoluene mixtures containing Trinitrobenzene and Hexanitrostilbene or TNT mixtures containing trinitrobenzene and hexanitrostilbene
+390,1.1D,Tritonal
+391,1.1D,"RDX and HMX mixtures, wetted with not less than 15 percent water by mass or RDX and HMX mixtures, desensitized with not less than 10 percent phlegmatizer by mass"
+392,1.1D,Hexanitrostilbene
+393,1.1D,Hexotonal
+394,1.1D,"Trinitroresorcinol, wetted or Styphnic acid, wetted with not less than 20 percent water, or mixture of alcohol and water, by mass"
+395,1.2J,"Rocket motors, liquid fueled"
+396,1.3J,"Rocket motors, liquid fueled"
+397,1.1J,"Rockets, liquid fueled with bursting charge"
+398,1.2J,"Rockets, liquid fueled with bursting charge"
+399,1.1J,"Bombs with flammable liquid, with bursting charge"
+400,1.2J,"Bombs with flammable liquid, with bursting charge"
+401,1.1D,"Dipicryl sulfide, dry or wetted with less than 10 percent water, by mass"
+402,1.1D,Ammonium perchlorate
+403,1.4G,"Flares, aerial"
+404,1.4S,"Flares, aerial"
+405,1.4S,"Cartridges, signal"
+406,1.3C,Dinitrosobenzene
+407,1.4C,Tetrazol-1-acetic acid
+408,1.1D,"Fuzes, detonating, with protective features"
+409,1.3D,"Fuzes, detonating, with protective features"
+410,1.4D,"Fuzes, detonating, with protective features"
+411,1.1D,"Pentaerythrite tetranitrate or Pentaerythritol tetranitrate or PETN, with not less than 7 percent wax by mass"
+412,1.4E,"Cartridges for weapons, with bursting charge"
+413,1.2C,"Cartridges for weapons, blank"
+414,1.2C,"Charges, propelling, for cannon"
+415,1.2C,"Charges, propelling"
+416,?,"(UN No. no longer in use) Charges, propelling, for rocket motors (UN No. no longer in use)[1]"
+417,1.3C,"Cartridges for weapons, inert projectile or Cartridges, small arms"
+418,1.1G,"Flares, surface"
+419,1.2G,"Flares, surface"
+420,1.1G,"Flares, aerial"
+421,1.2G,"Flares, aerial"
+422,?,(UN No. no longer in use) Squibs (UN No. no longer in use)[1]
+423,?,(UN No. no longer in use) Squibs (UN No. no longer in use)[1]
+424,1.3G,"Projectiles, inert with tracer"
+425,1.4G,"Projectiles, inert with tracer"
+426,1.2F,"Projectiles, with burster or expelling charge"
+427,1.4F,"Projectiles, with burster or expelling charge"
+428,1.1G,"Articles, pyrotechnic for technical purposes"
+429,1.2G,"Articles, pyrotechnic for technical purposes"
+430,1.3G,"Articles, pyrotechnic for technical purposes"
+431,1.4G,"Articles, pyrotechnic for technical purposes"
+432,1.4S,"Articles, pyrotechnic for technical purposes"
+433,1.1C,"Powder cake, wetted or Powder paste, wetted with not less than 17 percent alcohol by mass"
+434,1.2G,"Projectiles, with burster or expelling charge"
+435,1.4G,"Projectiles, with burster or expelling charge"
+436,1.2C,"Rockets, with expelling charge"
+437,1.3C,"Rockets, with expelling charge"
+438,1.4C,"Rockets, with expelling charge"
+439,1.2D,"Charges, shaped, without detonator"
+440,1.4D,"Charges, shaped, without detonator"
+441,1.4S,"Charges, shaped, without detonator"
+442,1.1D,"Charges, explosive, commercial without detonator"
+443,1.2D,"Charges, explosive, commercial without detonator"
+444,1.4D,"Charges, explosive, commercial without detonator"
+445,1.4S,"Charges, explosive, commercial without detonator"
+446,1.4C,"Cases, combustible, empty, without primer"
+447,1.3C,"Cases, combustible, empty, without primer"
+448,1.4C,5-Mercaptotetrazol-1-acetic acid
+449,1.1J,"Torpedoes, liquid fueled, with or without bursting charge"
+450,1.3J,"Torpedoes, liquid fueled, with inert head"
+451,1.1D,Torpedoes with bursting charge
+452,1.4G,"Grenades, practice, hand or rifle"
+453,1.4G,"Rockets, line-throwing"
+454,1.4S,Igniters
+455,1.4S,"Detonators, non-electric, for blasting"
+456,1.4S,"Detonators, electric, for blasting"
+457,1.1D,"Charges, bursting, plastics bonded"
+458,1.2D,"Charges, bursting, plastics bonded"
+459,1.4D,"Charges, bursting, plastics bonded"
+460,1.4S,"Charges, bursting, plastics bonded"
+461,1.1B,"Components, explosive train, n.o.s."
+462,1.1C,"Articles, explosive, n.o.s."
+463,1.1D,"Articles, explosive, n.o.s."
+464,1.1E,"Articles, explosive, n.o.s."
+465,1.1F,"Articles, explosive, n.o.s."
+466,1.2C,"Articles, explosive, n.o.s."
+467,1.2D,"Articles, explosive, n.o.s."
+468,1.2E,"Articles, explosive, n.o.s."
+469,1.2F,"Articles, explosive, n.o.s."
+470,1.3C,"Articles, explosive, n.o.s."
+471,1.4E,"Articles, explosive, n.o.s."
+472,1.4F,"Articles, explosive, n.o.s."
+473,1.1A,"Substances, explosive, n.o.s."
+474,1.1C,"Substances, explosive, n.o.s."
+475,1.1D,"Substances, explosive, n.o.s."
+476,1.1G,"Substances, explosive, n.o.s."
+477,1.3C,"Substances, explosive, n.o.s."
+478,1.3G,"Substances, explosive, n.o.s."
+479,1.4C,"Substances, explosive, n.o.s."
+480,1.4D,"Substances, explosive, n.o.s."
+481,1.4S,"Substances, explosive, n.o.s."
+482,1.5D,"Substances, explosive, very insensitive, n.o.s. or Substances, EVI, n.o.s."
+483,1.1D,"Cyclotrimethylenetrinitramine, desensitized or Cyclonite, desensitized or Hexogen, desensitized or RDX, desensitized"
+484,1.1D,"Cyclotetramethylenetetranitramine, desensitized or Octogen, desensitized or HMX, desensitized"
+485,1.4G,"Substances, explosive, n.o.s."
+486,1.6N,"Articles, explosive, extremely insensitive or Articles, EEI"
+487,1.3G,"Signals, smoke"
+488,1.3G,"Ammunition, practice"
+489,1.1D,Dinitroglycoluril or Dingu
+490,1.1D,Nitrotriazolone or NTO
+491,1.4C,"Charges, propelling"
+492,1.3G,"Signals, railway track, explosive"
+493,1.4G,"Signals, railway track, explosive"
+494,1.4D,"Jet, perforating guns, charged, oil well, without detonator"
+495,1.3C,"Propellant, liquid"
+496,1.1D,Octonal
+497,1.1C,"Propellant, liquid"
+498,1.1C,"Propellant, solid"
+499,1.3C,"Propellant, solid"
+500,1.4S,"Detonator assemblies, non-electric, for blasting"
+501,1.4C,"Propellant, solid"
+502,1.2C,"Rockets, with inert head"
+503,1.4G,"Safety devices, pyrotechnic"
+504,1.1D,1H-Tetrazole
+505,1.4G,"Signals, distress, ship"
+506,1.4S,"Signals, distress, ship"
+507,1.4S,"Signals, smoke"
+508,1.3C,"1-Hydroxybenzotriazole, anhydrous, dry or wetted with less than 20% water, by mass"
+509,1.4C,"Powder, smokeless"
+510,1.4C,Rocket motors
+511,1.1B,"Detonators, electronic, programmable for blasting"
+512,1.4B,"Detonators, electronic, programmable for blasting"
+513,1.4S,"Detonators, electronic, programmable for blasting"
+514,1.4S,Fire suppressant dispersing devices†
+515,?,(UN No.s not yet in use)
+1001,2.1,"Acetylene, dissolved"
+1002,2.2,"Air, compressed"
+1003,2.2,"Air, refrigerated liquid, (cryogenic liquid)"
+1004,?,(UN No. no longer in use)
+1005,2.2,"Ammonia, anhydrous"
+1006,2.2,"Argon, compressed"
+1007,?,(UN No. no longer in use)
+1008,2.3,Boron trifluoride
+1009,2.2,"Bromotrifluoromethane or Refrigerant gas, R 13B1."
+1010,2.1,"Butadienes, stabilized or Butadienes and Hydrocarbon mixture, stabilized containing more than 40% butadienes"
+1011,2.1,"Butane see also Petroleum gases, liquefied"
+1012,2.1,"Butylene see also Petroleum gases, liquefied"
+1013,2.2,Carbon dioxide
+1014,2,"(UN No. no longer in use) Carbon dioxide and oxygen mixtures, compressed (UN No. no longer in use)[1]"
+1015,2,(UN No. no longer in use) Carbon dioxide and nitrous oxide mixtures (UN No. no longer in use)[1]
+1016,2.3,"Carbon monoxide, compressed"
+1017,2.3,Chlorine
+1018,2.2,Chlorodifluoromethane or Refrigerant gas R 22
+1019,?,(UN No. no longer in use)
+1020,2.2,Chloropentafluoroethane or Refrigerant gas R 115
+1021,2.2,"1-Chloro-1,2,2,2-tetrafluoroethane or Refrigerant gas R 124"
+1022,2.2,Chlorotrifluoromethane or Refrigerant gas R 13
+1023,2.3,"Coal gas, compressed"
+1024,?,(UN No.s no longer in use)
+1026,2.3,Cyanogen
+1027,2.1,Cyclopropane
+1028,2.2,Dichlorodifluoromethane or Refrigerant gas R 12
+1029,2.2,Dichlorofluoromethane or Refrigerant gas R 21
+1030,2.1,"1,1-Difluoroethane or Refrigerant gas R 152a"
+1031,?,(UN No. no longer in use)
+1032,2.1,"Dimethylamine, anhydrous"
+1033,2.1,Dimethyl ether
+1034,?,(UN No. no longer in use)
+1035,2.1,Ethane
+1036,2.1,Ethylamine
+1037,2.1,Ethyl chloride
+1038,2.1,"Ethylene, refrigerated liquid (cryogenic liquid)"
+1039,2.1,Ethyl methyl ether
+1040,2.3,Ethylene oxide or Ethylene oxide with nitrogen up to a total pressure of 1MPa (10 bar) at 50 °C
+1041,2.1,Ethylene oxide and carbon dioxide mixtures with more than 9 percent but not more than 87 percent ethylene oxide
+1042,?,(UN No. no longer in use)
+1043,2.2,Fertilizer ammoniating solution with free ammonia
+1044,2.2,Fire extinguishers containing compressed or liquefied gas
+1045,2.3,"Fluorine, compressed"
+1046,2.2,"Helium, compressed"
+1047,?,(UN No. no longer in use)
+1048,2.3,"Hydrogen bromide, anhydrous"
+1049,2.1,"Hydrogen, compressed"
+1050,2.3,"Hydrogen chloride, anhydrous"
+1051,6.1,"Hydrogen cyanide, stabilized with less than 3 percent water"
+1052,8,"Hydrogen fluoride, anhydrous"
+1053,2.3,Hydrogen sulfide
+1054,?,(UN No. no longer in use)
+1055,2.1,"Isobutylene see also Petroleum gases, liquefied"
+1056,2.2,"Krypton, compressed"
+1057,2.1,Lighters containing flammable gas
+1058,2.2,"Liquified gases, nonflammable charged with nitrogen, carbon dioxide, or air"
+1059,?,(UN No. no longer in use)
+1060,2.1,"Methyl acetylene and propadiene mixtures, stabilized"
+1061,2.1,"Methylamine, anhydrous"
+1062,2.3,Methyl bromide
+1063,2.1,"Methyl chloride, or Refrigerant gas R 40"
+1064,2.3,Methyl mercaptan
+1065,2.2,"Neon, compressed"
+1066,2.2,"Nitrogen, compressed"
+1067,2.3,Dinitrogen tetroxide
+1068,?,(UN No. no longer in use)
+1069,2.3,Nitrosyl chloride
+1070,2.2,Nitrous oxide
+1071,2.3,"Oil gas, compressed"
+1072,2.2,"Oxygen, compressed"
+1073,2.2,"Oxygen, refrigerated liquid (cryogenic liquid)"
+1074,?,(UN No. no longer in use)
+1075,2.1,"Petroleum gases, liquefied or Liquefied petroleum gas"
+1076,2.3,Phosgene
+1077,2.1,"Propylene see also Petroleum gases, liquefied"
+1078,2.2,"Refrigerant gases, n.o.s."
+1079,2.3,Sulfur dioxide
+1080,2.2,Sulfur hexafluoride
+1081,2.1,"Tetrafluoroethylene, stabilized"
+1082,2.3,"Trifluorochloroethylene, stabilized or Refrigerant gas R 1113"
+1083,2.1,"Trimethylamine, anhydrous"
+1084,?,(UN No. no longer in use)
+1085,2.1,"Vinyl bromide, stabilized"
+1086,2.1,"Vinyl chloride, stabilized or Vinyl chloride, stabilized"
+1087,2.1,"Vinyl methyl ether, stabilized"
+1088,3,Acetal
+1089,3,Acetaldehyde
+1090,3,Acetone
+1091,3,Acetone oils
+1092,6.1,"Acrolein, stabilized"
+1093,3,"Acrylonitrile, stabilized"
+1094,?,(UN No.s no longer in use)
+1098,6.1,Allyl alcohol
+1099,3,Allyl bromide
+1100,3,Allyl chloride
+1101,?,(UN No. no longer in use) Diethylaluminium chloride (UN No. no longer in use)[1]
+1102,?,(UN No. no longer in use) Triethylaluminium (UN No. no longer in use)[1]
+1103,?,(UN No. no longer in use) Trimethylaluminium (UN No. no longer in use)[1]
+1104,3,Amyl acetates
+1105,3,Pentanols
+1106,3,Amylamines
+1107,3,Amyl chlorides
+1108,3,1-Pentene (n-amylene)
+1109,3,Amyl formates
+1110,3,n-Amyl methyl ketone
+1111,3,Amyl mercaptans
+1112,3,Amyl nitrate
+1113,3,Amyl nitrites
+1114,3,Benzene
+1115,?,(UN No. no longer in use) Benzine (UN No. no longer in use)[1]
+1116,?,(UN No.s no longer in use)
+1118,?,(UN No. no longer in use) Brake fluid (UN No. no longer in use)[1]
+1119,?,(UN No. no longer in use)
+1120,3,Butanols
+1121,?,(UN No.s no longer in use)
+1123,3,Butyl acetates
+1124,?,(UN No. no longer in use)
+1125,3,n-Butylamine
+1126,3,1-Bromobutane
+1127,3,Chlorobutanes
+1128,3,n-Butyl formate
+1129,3,Butyraldehyde
+1130,3,Camphor oil
+1131,3,Carbon disulfide
+1132,?,"(UN No. no longer in use) Carbon remover or Carbon remover, liquid (UN No. no longer in use)[1]"
+1133,3,"Adhesives, containing a flammable liquid"
+1134,3,Chlorobenzene
+1135,6.1,Ethylene chlorohydrin
+1136,3,"Coal tar distillates, flammable"
+1137,?,(UN No. no longer in use) Coal tar distillate (UN No. no longer in use)[1]
+1138,?,(UN No. no longer in use)
+1139,3,"Coating solution (includes surface treatments or coatings used for industrial or other purposes such as vehicle undercoating, drum or barrel lining)"
+1140,?,(UN No.s no longer in use)
+1142,?,"(UN No. no longer in use) Flammable liquid preparations, n.o.s. (UN No. no longer in use)[1]"
+1143,6.1,"Crotonaldehyde, stabilized"
+1144,3,Crotonylene
+1145,3,Cyclohexane
+1146,3,Cyclopentane
+1147,3,Decahydronaphthalene
+1148,3,Diacetone alcohol
+1149,3,Dibutyl ethers
+1150,3,"1,2-Dichloroethylene"
+1151,?,(UN No. no longer in use)
+1152,3,Dichloropentanes
+1153,3,Ethylene glycol diethyl ether
+1154,3,Diethylamine
+1155,3,Diethyl ether or Ethyl ether
+1156,3,Diethyl ketone
+1157,3,Diisobutyl ketone
+1158,3,Diisopropylamine
+1159,3,Diisopropyl ether
+1160,3,Dimethylamine solution
+1161,3,Dimethyl carbonate
+1162,3,Dimethyldichlorosilane
+1163,6.1,"Dimethylhydrazine, unsymmetrical"
+1164,3,Dimethyl sulfide
+1165,3,Dioxane
+1166,3,Dioxolane
+1167,3,"Divinyl ether, inhibited"
+1168,?,"(UN No. no longer in use) Driers or varnish, liquid, n.o.s. (UN No. no longer in use)[1]"
+1169,(3),"(UN No. no longer in use) Extracts, aromatic, liquid (UN No. no longer in use)"
+1170,3,Ethanol (Ethyl alcohol) or Ethanol solution (Ethyl alcohol solution)
+1171,3,Ethylene glycol monoethyl ether
+1172,3,Ethylene glycol monoethyl ether acetate
+1173,3,Ethyl acetate
+1174,?,(UN No. no longer in use)
+1175,3,Ethylbenzene
+1176,3,Ethyl borate
+1177,3,2-Ethylbutyl acetate
+1178,3,2-Ethylbutyraldehyde
+1179,3,Ethyl butyl ether
+1180,3,Ethyl butyrate
+1181,6.1,Ethyl chloroacetate
+1182,6.1,Ethyl chloroformate
+1183,4.3,Ethyldichlorosilane
+1184,3,Ethylene dichloride
+1185,6.1,"Ethyleneimine, inhibited"
+1186,?,(UN No.s no longer in use)
+1188,3,Ethylene glycol monomethyl ether
+1189,3,Ethylene glycol monomethyl ether acetate
+1190,3,Ethyl formate
+1191,3,Octyl aldehydes
+1192,3,Ethyl lactate
+1193,3,Ethyl methyl ketone or Methyl ethyl ketone
+1194,3,Ethyl nitrate solutions
+1195,3,Ethyl propionate
+1196,3,Ethyltrichlorosilane
+1197,3,"Extracts, liquid, for flavoring or aroma"
+1198,3,"Formaldehyde, solutions, flammable"
+1199,6.1,Furaldehydes
+1200,?,(UN No. no longer in use)
+1201,3,Fusel oil
+1202,3,"Gas oil or diesel fuel or heating oil, light"
+1203,3,Gasoline or petrol or motor spirit
+1204,3,"Nitroglycerin, solution in alcohol, with not more than 1 percent nitroglycerin"
+1205,?,(UN No. no longer in use)
+1206,3,Heptanes
+1207,3,Hexaldehyde
+1208,3,Hexanes
+1209,?,(UN No. no longer in use)
+1210,3,"Printing ink, flammable or Printing ink related material (including printing ink thinning or reducing compound), flammable"
+1211,?,(UN No. no longer in use)
+1212,3,Isobutanol or isobutyl alcohol
+1213,3,Isobutyl acetate
+1214,3,Isobutylamine
+1215,?,(UN No. no longer in use)
+1216,3,Isooctenes
+1217,?,(UN No. no longer in use)
+1218,3,"Isoprene, inhibited"
+1219,3,Isopropanol or isopropyl alcohol
+1220,3,Isopropyl acetate
+1221,3,Isopropylamine
+1222,3,Isopropyl nitrate
+1223,3,Kerosene
+1224,3,"Ketones, liquid, n.o.s."
+1225,?,(UN No. no longer in use)
+1226,?,(UN No. no longer in use) Cigarette lighter or Lighter fluid or Lighter fuels or Lighters (UN No. no longer in use)[1]
+1227,?,(UN No. no longer in use)
+1228,3,"Mercaptans, liquid, flammable, toxic, n.o.s. or mercaptan mixtures, liquid, flammable, toxic, n.o.s."
+1229,3,Mesityl oxide
+1230,3,Methanol
+1231,3,Methyl acetate
+1232,?,(UN No. no longer in use) Methyl acetone (UN No. no longer in use)[1]
+1233,3,Methylamyl acetate
+1234,3,Methylal
+1235,3,"Methylamine, aqueous solution"
+1236,?,(UN No. no longer in use)
+1237,3,Methyl butyrate
+1238,6.1,Methyl chloroformate
+1239,6.1,Methyl chloromethyl ether
+1240,?,(UN No.s no longer in use)
+1242,4.3,Methyldichlorosilane
+1243,3,Methyl formate
+1244,6.1,Methylhydrazine
+1245,3,Methyl isobutyl ketone
+1246,3,"Methyl isopropenyl ketone, inhibited"
+1247,3,"Methyl methacrylate monomer, inhibited"
+1248,3,Methyl propionate
+1249,3,Methyl propyl ketone
+1250,3,Methyltrichlorosilane
+1251,6.1,"Methyl vinyl ketone, stabilized"
+1252,?,(UN No.s no longer in use)
+1255,3,"(UN No. no longer in use) Naphtha, petroleum (UN No. no longer in use)[1]"
+1256,3,"(UN No. no longer in use) Naphtha, solvent (UN No. no longer in use)[1]"
+1257,?,(UN No. no longer in use) Casinghead gasoline (natural gasoline) (UN No. no longer in use)[1][2]
+1258,?,(UN No. no longer in use)
+1259,6.1,Nickel carbonyl
+1260,?,(UN No. no longer in use)
+1261,3,Nitromethane
+1262,3,Octanes
+1263,3,"Paint-related materials including paint, lacquer, enamel, stain, shellac solutions, varnish, polish, liquid filler, and liquid lacquer base, or paint related material including paint thinning, drying, removing, or reducing compound"
+1264,3,Paraldehyde
+1265,3,Pentanes
+1266,3,Perfumery products with flammable solvents
+1267,3,Petroleum crude oil
+1268,3,"Petroleum distillates, n.o.s. or petroleum products, n.o.s."
+1269,?,(UN No. no longer in use)
+1270,(3),"(UN No. no longer in use) petroleum fuel, generally used in Australia where mixed refined petroleum products are carried in the same tanker i.e.: petrol/diesel/kerosene/toluene etc. (UN No. no longer in use)[1][3]"
+1271,(3),(UN No. no longer in use) petroleum spirit (UN No. no longer in use)[1][3]
+1272,3,Pine oil
+1273,?,(UN No. no longer in use)
+1274,3,"n-Propanol or propyl alcohol, normal"
+1275,3,Propionaldehyde
+1276,3,n-Propyl acetate
+1277,3,Propylamine
+1278,3,Propyl chloride
+1279,3,"1,2-Dichloropropane"
+1280,3,Propylene oxide
+1281,3,Propyl formates
+1282,3,Pyridine
+1283,?,(UN No.s no longer in use)
+1286,3,Rosin oil
+1287,3,Rubber solution
+1288,3,Shale oil
+1289,3,Sodium methylate solutions in alcohol
+1290,?,(UN No.s no longer in use)
+1292,3,Tetraethyl silicate
+1293,3,"Tinctures, medicinal"
+1294,3,Toluene
+1295,4.3,Trichlorosilane
+1296,3,Triethylamine
+1297,3,"Trimethylamine, aqueous solutions with not more than 50 percent trimethylamine by mass"
+1298,3,Trimethylchlorosilane
+1299,3,Turpentine
+1300,3,Turpentine substitute or mineral turpentine (Australia)
+1301,3,"Vinyl acetate, inhibited"
+1302,3,"Vinyl ethyl ether, inhibited"
+1303,3,"Vinylidene chloride, inhibited"
+1304,3,"Vinyl isobutyl ether, inhibited"
+1305,3,"Vinyltrichlorosilane, inhibited"
+1306,3,"Wood preservatives, liquid"
+1307,3,Xylenes
+1308,3,Zirconium suspended in a liquid
+1309,4.1,"Aluminium powder, coated"
+1310,4.1,"Ammonium picrate, wetted with not less than 10 percent water, by mass"
+1311,?,(UN No. no longer in use)
+1312,4.1,Borneol
+1313,4.1,Calcium resinate
+1314,4.1,"Calcium resinate, fused"
+1315,?,(UN No.s no longer in use)
+1318,4.1,"Cobalt resinate, precipitated"
+1319,?,(UN No. no longer in use)
+1320,4.1,"Dinitrophenol, wetted with not less than 15 percent water, by mass"
+1321,4.1,"Dinitrophenolates, wetted with not less than 15 percent water, by mass"
+1322,4.1,"Dinitroresorcinol, wetted with not less than 15 percent water, by mass"
+1323,4.1,Ferrocerium
+1324,4.1,"Films, nitrocellulose base, gelatine coated (except scrap)"
+1325,4.1,"Flammable solids, organic, n.o.s."
+1326,4.1,"Hafnium powder, wetted with not less than 25% water (a visible excess of water must be present) (a) mechanically produced, particle size less than 53 micrometres; (b) chemically produced, particle size less than 840 micrometres"
+1327,4.1,"Hay, Straw or Bhusa, wet, damp or contaminated with oil"
+1328,4.1,Hexamethylenetetramine
+1329,?,(UN No. no longer in use)
+1330,4.1,Manganese resinate
+1331,4.1,"Matches, strike anywhere"
+1332,4.1,Metaldehyde
+1333,4.1,"Cerium, slabs, ingots, or rods"
+1334,4.1,"Naphthalene, crude or Naphthalene, refined"
+1335,?,(UN No. no longer in use)
+1336,4.1,"Nitroguanidine, wetted or Picrite, wetted with not less than 20 percent water, by mass"
+1337,4.1,"Nitrostarch, wetted with not less than 20 percent water, by mass"
+1338,4.1,"Phosphorus, amorphous"
+1339,4.1,"Phosphorus heptasulfide, free from yellow or white phosphorus"
+1340,4.3,"Phosphorus pentasulfide, free from yellow or white phosphorus"
+1341,4.1,"Phosphorus sesquisulfide, free from yellow or white phosphorus"
+1342,?,(UN No. no longer in use)
+1343,4.1,"Phosphorus trisulfide, free from yellow or white phosphorus"
+1344,4.1,"Trinitrophenol, wetted with not less than 30 percent water, by mass"
+1345,4.1,Rubber scrap or shoddy
+1346,4.1,"Silicon powder, amorphous"
+1347,4.1,"Silver picrate, wetted with not less than 30 percent water, by mass"
+1348,4.1,"Sodium dinitro-o-cresolate, wetted with not less than 15 percent water, by mass"
+1349,4.1,"Sodium picramate, wetted with not less than 20 percent water, by mass"
+1350,4.1,Sulfur
+1351,?,(UN No. no longer in use)
+1352,4.1,"Titanium powder, wetted with not less than 25 percent water (a visible excess of water must be present) (a) mechanically produced, particle size less than 53 micrometres; (b) chemically produced, particle size less than 840 micrometres"
+1353,4.1,"Fibers or Fabrics impregnated with weakly nitrated nitrocellulose, n.o.s."
+1354,4.1,"Trinitrobenzene, wetted with not less than 30 percent water, by mass"
+1355,4.1,"Trinitrobenzoic acid, wetted with not less than 30 percent water, by mass"
+1356,4.1,"Trinitrotoluene wetted with not less than 30 percent water, by mass"
+1357,4.1,"Urea nitrate, wetted with not less than 20 percent water, by mass"
+1358,4.1,"Zirconium powder, wetted with not less than 25 percent water (a visible excess of water must be present) (a) mechanically produced, particle size less than 53 micrometres; (b) chemically produced, particle size less than 840 micrometres"
+1359,?,"(UN No. no longer in use) Bags, empty and unwashed (UN No. no longer in use)[1]"
+1360,4.3,Calcium phosphide
+1361,4.2,"Carbon, animal or vegetable origin"
+1362,4.2,"Carbon, activated"
+1363,4.2,Copra
+1364,4.2,"Cotton waste, oily"
+1365,4.2,"Cotton, wet"
+1366,4.2,(UN No. no longer in use) Diethylzinc (UN No. no longer in use)[1]
+1367,?,(UN No. no longer in use) Diethylmagnesium (UN No. no longer in use)[1]
+1368,?,(UN No. no longer in use) Dimethylmagnesium (UN No. no longer in use)[1]
+1369,4.2,p-Nitrosodimethylaniline
+1370,4.2,(UN No. no longer in use) Dimethylzinc (UN No. no longer in use)[1]
+1371,?,(UN No. no longer in use) Driers (UN No. no longer in use)[1]
+1372,4.2,"Fibers, animal or Fibers, vegetable, burnt, wet or damp"
+1373,4.2,"Fibers or Fabrics, animal or vegetable or Synthetic, n.o.s. with animal or vegetable oil"
+1374,4.2,"Fish meal, unstabilized or Fish scrap, unstabilized"
+1375,?,"(UN No. no longer in use) Fuel, pyrophoric, n.o.s. (UN No. no longer in use)[1]"
+1376,4.2,"Iron oxide, spent, or Iron sponge, spent obtained from coal gas purification"
+1377,3,Resin (UN No. no longer in use)
+1378,4.2,"Metal catalyst, wetted with a visible excess of liquid"
+1379,4.2,"Paper, unsaturated oil treated incompletely dried (including carbon paper)"
+1380,4.2,Pentaborane
+1381,4.2,"Phosphorus, white dry or Phosphorus, white, under water or Phosphorus white, in solution or Phosphorus, yellow dry or Phosphorus, yellow, under water or Phosphorus, yellow, in solution"
+1382,4.2,"Potassium sulfide, anhydrous or Potassium sulfide with less than 30 percent water of crystallization"
+1383,4.2,"Pyrophoric metals, n.o.s. or Pyrophoric alloys, n.o.s."
+1384,4.2,Sodium dithionite or Sodium hydrosulfite
+1385,4.2,"Sodium sulfide, anhydrous or Sodium sulfide with less than 30 percent water of crystallization"
+1386,4.2,"Seed cake, containing vegetable oil solvent extractions and expelled seeds, with not more than 10 percent of oil and when the amount of moisture is higher than 11 percent, with not more than 20 percent of oil and moisture combined or Seed cake with more than 1.5 percent oil and not more than 11 percent moisture. It is not to be confused with bush bread, which is also referred to as seed cake."
+1387,4.2,"Wool waste, wet"
+1388,?,(UN No. no longer in use)
+1389,4.3,"Alkali metal amalgam, liquid or Alkali metal amalgam, solid"
+1390,4.3,Alkali metal amides
+1391,4.3,"Alkali metal dispersions, or Alkaline earth metal dispersions"
+1392,4.3,Alkaline earth metal amalgams
+1393,4.3,"Alkaline earth metal alloys, n.o.s."
+1394,4.3,Aluminium carbide
+1395,4.3,Aluminium ferrosilicon powder
+1396,4.3,"Aluminium powder, uncoated"
+1397,4.3,Aluminium phosphide
+1398,4.3,"Aluminium silicon powder, uncoated"
+1399,4.3,(UN No. no longer in use) Barium (UN No. no longer in use)[1]
+1400,4.3,Barium
+1401,4.3,Calcium
+1402,4.3,Calcium carbide
+1403,4.3,Calcium cyanamide with more than 0.1 percent of calcium carbide
+1404,4.3,Calcium hydride
+1405,4.3,Calcium silicide
+1406,?,(UN No. no longer in use) Calcium-Silicon alloy (UN No. no longer in use)[1]
+1407,4.3,Caesium or Cesium
+1408,4.3,"Ferrosilicon, with 30 percent or more but less than 90 percent silicon"
+1409,4.3,"Metal hydrides, water-reactive, n.o.s."
+1410,4.3,Lithium aluminium hydride
+1411,4.3,"Lithium aluminium hydride, ethereal"
+1412,?,"(UN No. no longer in use) Lithium amide, powdered (UN No. no longer in use)[1]"
+1413,4.3,Lithium borohydride
+1414,4.3,Lithium hydride
+1415,4.3,Lithium
+1416,?,(UN No. no longer in use)
+1417,4.3,Lithium silicon
+1418,4.3,"Magnesium, powder or Magnesium alloys, powder"
+1419,4.3,Magnesium aluminium phosphide
+1420,4.3,"Potassium, metal alloys"
+1421,4.3,"Alkali metal alloys, liquid, n.o.s."
+1422,4.3,Potassium sodium alloys
+1423,4.3,Rubidium
+1424,?,(UN No. no longer in use) Sodium amalgam (UN No. no longer in use)[1]
+1425,?,(UN No. no longer in use) Sodium amide (UN No. no longer in use)[1]
+1426,4.3,Sodium borohydride
+1427,4.3,Sodium hydride
+1428,4.3,Sodium
+1429,?,(UN No. no longer in use) Sodium metal dispersion in organic solvent (UN No. no longer in use)[1]
+1430,?,(UN No. no longer in use)
+1431,4.2,Sodium methylate
+1432,4.3,Sodium phosphide
+1433,4.3,Stannic phosphide
+1434,4.2,Strontium
+1435,4.3,Zinc ashes
+1436,4.3,Zinc powder or Zinc dust
+1437,4.1,Zirconium hydride
+1438,5.1,Aluminium nitrate
+1439,5.1,Ammonium dichromate
+1440,?,(UN No.s no longer in use)
+1442,5.1,Ammonium perchlorate
+1443,?,(UN No. no longer in use)
+1444,5.1,Ammonium persulfate
+1445,5.1,Barium chlorate
+1446,5.1,Barium nitrate
+1447,5.1,Barium perchlorate
+1448,5.1,Barium permanganate
+1449,5.1,Barium peroxide
+1450,5.1,"Bromates, inorganic, n.o.s."
+1451,5.1,Caesium nitrate or Cesium nitrate
+1452,5.1,Calcium chlorate
+1453,5.1,Calcium chlorite
+1454,5.1,Calcium nitrate
+1455,5.1,Calcium perchlorate
+1456,5.1,Calcium permanganate
+1457,5.1,Calcium peroxide
+1458,5.1,Chlorate and borate mixtures
+1459,5.1,"Chlorate and Magnesium chloride mixtures, solid"
+1460,?,(UN No. no longer in use)
+1461,5.1,"Chlorates, inorganic, n.o.s."
+1462,5.1,"Chlorites, inorganic, n.o.s."
+1463,5.1,"Chromium trioxide, anhydrous"
+1464,?,(UN No. no longer in use)
+1465,5.1,Didymium nitrate
+1466,5.1,Ferric nitrate
+1467,5.1,Guanidine nitrate
+1468,?,(UN No. no longer in use)
+1469,5.1,Lead nitrate
+1470,5.1,"Lead perchlorate, solid or Lead perchlorate, solution"
+1471,5.1,"Lithium hypochlorite, dry or Lithium hypochlorite mixtures, dry"
+1472,5.1,Lithium peroxide
+1473,5.1,Magnesium bromate
+1474,5.1,Magnesium nitrate
+1475,5.1,Magnesium perchlorate
+1476,5.1,Magnesium peroxide
+1477,5.1,"Nitrates, inorganic, n.o.s."
+1478,?,(UN No. no longer in use) Sodium nitrate and potash mixtures (UN No. no longer in use)[1]
+1479,5.1,"Oxidizing solid, n.o.s."
+1480,?,(UN No. no longer in use)
+1481,5.1,"Perchlorates, inorganic, n.o.s."
+1482,5.1,"Permanganates, inorganic, n.o.s."
+1483,5.1,"Peroxides, inorganic, n.o.s."
+1484,5.1,Potassium bromate
+1485,5.1,Potassium chlorate
+1486,5.1,Potassium nitrate
+1487,5.1,Potassium nitrate and sodium nitrite mixtures
+1488,5.1,Potassium nitrite
+1489,5.1,"Potassium perchlorate, solid or Potassium perchlorate, solution"
+1490,5.1,Potassium permanganate
+1491,5.1,Potassium peroxide
+1492,5.1,Potassium persulfate
+1493,5.1,Silver nitrate
+1494,5.1,Sodium bromate
+1495,5.1,Sodium chlorate
+1496,5.1,Sodium chlorite
+1497,?,(UN No. no longer in use)
+1498,5.1,Sodium nitrate
+1499,5.1,Sodium nitrate and potassium nitrate mixtures
+1500,5.1,Sodium nitrite
+1501,?,(UN No. no longer in use)
+1502,5.1,Sodium perchlorate
+1503,5.1,Sodium permanganate
+1504,5.1,Sodium peroxide
+1505,5.1,Sodium persulfate
+1506,5.1,Strontium chlorate
+1507,5.1,Strontium nitrate
+1508,5.1,Strontium perchlorate
+1509,5.1,Strontium peroxide
+1510,5.1,Tetranitromethane
+1511,5.1,Urea hydrogen peroxide
+1512,5.1,Zinc ammonium nitrite
+1513,5.1,Zinc chlorate
+1514,5.1,Zinc nitrate
+1515,5.1,Zinc permanganate
+1516,5.1,Zinc peroxide
+1517,4.1,"Zirconium picramate, wetted with not less than 20 percent water, by mass"
+1518,?,(UN No.s no longer in use)
+1541,6.1,"Acetone cyanohydrin, stabilized"
+1542,?,(UN No.s no longer in use)
+1544,6.1,"Alkaloids, solid, n.o.s. or Alkaloid salts, solid, n.o.s., toxic"
+1545,6.1,"Allyl isothiocyanate, stabilized"
+1546,6.1,Ammonium arsenate
+1547,6.1,Aniline
+1548,6.1,Aniline hydrochloride
+1549,6.1,"Antimony compounds, inorganic, solid, n.o.s."
+1550,6.1,Antimony lactate
+1551,6.1,Antimony potassium tartrate
+1552,?,(UN No. no longer in use)
+1553,6.1,"Arsenic acid, liquid"
+1554,6.1,"Arsenic acid, solid"
+1555,6.1,Arsenic bromide
+1556,6.1,"Arsenic compounds, liquid, n.o.s. inorganic, including arsenates, n.o.s.; arsenites, n.o.s.; arsenic sulfides, n.o.s.; and organic compounds of arsenic, n.o.s."
+1557,6.1,"Arsenic compounds, solid, n.o.s. inorganic, including arsenates, n.o.s.; arsenites, n.o.s.; arsenic sulfides, n.o.s.; and organic compounds of arsenic, n.o.s."
+1558,6.1,Arsenic
+1559,6.1,Arsenic pentoxide
+1560,6.1,Arsenic trichloride
+1561,6.1,Arsenic trioxide
+1562,6.1,Arsenical dust
+1563,?,(UN No. no longer in use)
+1564,6.1,"Barium compounds, n.o.s."
+1565,6.1,Barium cyanide
+1566,6.1,"Beryllium compounds, n.o.s."
+1567,6.1,"Beryllium, powder"
+1568,?,(UN No. no longer in use)
+1569,6.1,Bromoacetone
+1570,6.1,Brucine
+1571,4.1,"Barium azide, wetted with not less than 50 percent water, by mass"
+1572,6.1,Cacodylic acid
+1573,6.1,Calcium arsenate
+1574,6.1,"Calcium arsenate and calcium arsenite, mixtures, solid"
+1575,6.1,Calcium cyanide
+1576,?,(UN No. no longer in use)
+1577,6.1,Chlorodinitrobenzenes
+1578,6.1,"Chloronitrobenzene, ortho, liquid or Chloronitrobenzenes meta or para, solid"
+1579,6.1,4-Chloro-o-toluidine hydrochloride
+1580,6.1,Chloropicrin
+1581,2,Chloropicrin and methyl bromide mixtures
+1582,2,Chloropicrin and methyl chloride mixtures
+1583,6.1,"Chloropicrin mixtures, n.o.s."
+1584,?,(UN No. no longer in use) Cocculus (Indian berry) (UN No. no longer in use)[1]
+1585,6.1,Copper acetoarsenite
+1586,6.1,Copper arsenite
+1587,6.1,Copper cyanide
+1588,6.1,"Cyanides, inorganic, solid, n.o.s."
+1589,2,"Cyanogen chloride, inhibited"
+1590,6.1,"Dichloroanilines, liquid or Dichloroanilines, solid"
+1591,6.1,o-Dichlorobenzene
+1592,?,(UN No. no longer in use) p-Dichlorobenzene (UN No. no longer in use)[1]
+1593,6.1,Dichloromethane
+1594,6.1,Diethyl sulfate
+1595,6.1,Dimethyl sulfate
+1596,6.1,Dinitroanilines
+1597,6.1,"Dinitrobenzenes, liquid or Dinitrobenzenes, solid"
+1598,6.1,"Dinitro-o-cresol, solid or Dinitro-o-cresol, solution"
+1599,6.1,Dinitrophenol solutions
+1600,6.1,"Dinitrotoluenes, molten"
+1601,6.1,"Disinfectants, solid, toxic, n.o.s."
+1602,6.1,"Dyes, liquid, toxic, n.o.s. or Dye intermediates, liquid, toxic, n.o.s."
+1603,6.1,Ethyl bromoacetate
+1604,8,Ethylenediamine
+1605,6.1,Ethylene dibromide
+1606,6.1,Ferric arsenate
+1607,6.1,Ferric arsenite
+1608,6.1,Ferrous arsenate
+1609,?,(UN No. no longer in use)
+1610,?,"(UN No. no longer in use) Halogenated irritating liquids, n.o.s. (UN No. no longer in use)[1]"
+1611,6.1,"Hexaethyl tetraphosphate, liquid or Hexaethyl tetraphosphate, solid"
+1612,2,Hexaethyl tetraphosphate and compressed gas mixtures
+1613,6.1,"Hydrocyanic acid, aqueous solutions or Hydrogen cyanide, aqueous solutions with not more than 20 percent hydrogen cyanide or Hydrocyanic acid, aqueous solutions with less than 5 percent hydrogen cyanide"
+1614,6.1,"Hydrogen cyanide, stabilized with less than 3 percent water and absorbed in a porous inert material"
+1615,?,(UN No. no longer in use)
+1616,6.1,Lead acetate
+1617,6.1,Lead arsenates
+1618,6.1,Lead arsenites
+1619,?,(UN No. no longer in use)
+1620,6.1,Lead cyanide
+1621,6.1,London purple
+1622,6.1,Magnesium arsenate
+1623,6.1,Mercuric arsenate
+1624,6.1,Mercuric chloride
+1625,6.1,Mercuric nitrate
+1626,6.1,Mercuric potassium cyanide
+1627,6.1,Mercurous nitrate
+1628,?,"(UN No. no longer in use) Mercurous sulfate, solid (UN No. no longer in use)[1]"
+1629,6.1,Mercury acetate
+1630,6.1,Mercury ammonium chloride
+1631,6.1,Mercury benzoate
+1632,?,(UN No. no longer in use)
+1633,?,(UN No. no longer in use) Mercury bisulfate (UN No. no longer in use)[1]
+1634,6.1,Mercury bromides
+1635,?,(UN No. no longer in use)
+1636,6.1,Mercury cyanide
+1637,6.1,Mercury gluconate
+1638,6.1,"Mercury iodide, solution or Mercury iodide, solid"
+1639,6.1,Mercury nucleate
+1640,6.1,Mercury oleate
+1641,6.1,Mercury oxide
+1642,6.1,"Mercury oxycyanide, desensitized"
+1643,6.1,Mercury potassium iodide
+1644,6.1,Mercury salicylate
+1645,6.1,Mercury sulfates
+1646,6.1,Mercury thiocyanate
+1647,6.1,"Methyl bromide and ethylene dibromide mixtures, liquid"
+1648,3,Acetonitrile
+1649,6.1,Motor fuel anti-knock mixtures
+1650,6.1,beta-Naphthylamine
+1651,6.1,Naphthylthiourea
+1652,6.1,Naphthylurea
+1653,6.1,Nickel cyanide
+1654,6.1,Nicotine
+1655,6.1,"Nicotine compounds, solid, n.o.s. or Nicotine preparations, solid, n.o.s."
+1656,6.1,Nicotine hydrochloride or Nicotine hydrochloride solution
+1657,6.1,Nicotine salicylate
+1658,6.1,"Nicotine sulfate, solid or Nicotine sulfate, solution"
+1659,6.1,Nicotine tartrate
+1660,2,"Nitric oxide, compressed"
+1661,6.1,Nitroanilines (o-; m-; p-;)
+1662,6.1,Nitrobenzene
+1663,6.1,Nitrophenols (o-; m-; p-;)
+1664,6.1,"Nitrotoluenes, liquid (o-; m-; p-;) or Nitrotoluenes, solid (o-; m-; p-;)"
+1665,6.1,Nitroxylenes (o-; m-; p-;)
+1666,?,(UN No.s no longer in use)
+1669,6.1,Pentachloroethane
+1670,6.1,Perchloromethyl mercaptan
+1671,6.1,"Phenol, solid"
+1672,6.1,Phenylcarbylamine chloride
+1673,6.1,Phenylenediamines (o-; m-; p-;)
+1674,6.1,Phenylmercuric acetate
+1675,?,(UN No.s no longer in use)
+1677,6.1,Potassium arsenate
+1678,6.1,Potassium arsenite
+1679,6.1,Potassium cuprocyanide
+1680,6.1,Potassium cyanide
+1681,?,"(UN No. no longer in use) Rodenticides, n.o.s. (UN No. no longer in use)[1]"
+1682,?,(UN No. no longer in use)
+1683,6.1,Silver arsenite
+1684,6.1,Silver cyanide
+1685,6.1,Sodium arsenate
+1686,6.1,"Sodium arsenite, aqueous solutions"
+1687,6.1,Sodium azide
+1688,6.1,Sodium cacodylate
+1689,6.1,Sodium cyanide
+1690,6.1,Sodium fluoride
+1691,6.1,Strontium arsenite
+1692,6.1,Strychnine or Strychnine salts
+1693,6.1,"Tear gas substances, liquid, n.o.s. or Tear gas substances, solid, n.o.s."
+1694,6.1,"Bromobenzyl cyanides, liquid or Bromobenzyl cyanides, solid"
+1695,6.1,"Chloroacetone, stabilized"
+1696,?,(UN No. no longer in use)
+1697,6.1,"Chloroacetophenone (CN), liquid or Chloroacetophenone (CN), solid"
+1698,6.1,Diphenylaminechloroarsine
+1699,6.1,"Diphenylchloroarsine, liquid or Diphenylchloroarsine, solid"
+1700,6.1,Tear gas candles
+1701,6.1,"Xylyl bromide, liquid"
+1702,6.1,"1,1,2,2-Tetrachloroethane"
+1703,?,(UN No. no longer in use) Tetraethyl dithiopyrophosphate and compressed gas mixture (UN No. no longer in use)[1]
+1704,6.1,Tetraethyl dithiopyrophosphate
+1705,?,(UN No. no longer in use) Tetraethyl pyrophosphate and compressed gas mixture (UN No. no longer in use)[1]
+1706,?,(UN No. no longer in use)
+1707,6.1,"Thallium compounds, n.o.s."
+1708,6.1,"Toluidines, liquid"
+1709,6.1,"2,4-Toluylenediamine, solid (2,4-Toluenediamine)"
+1710,6.1,Trichloroethylene
+1711,6.1,"Xylidines, liquid"
+1712,6.1,Zinc arsenate or Zinc arsenite or Zinc arsenate and zinc arsenite mixtures
+1713,6.1,Zinc cyanide
+1714,4.3,Zinc phosphide
+1715,8,Acetic anhydride
+1716,8,Acetyl bromide
+1717,3,Acetyl chloride
+1718,8,Butyl acid phosphate
+1719,8,"Caustic alkali liquid, n.o.s."
+1720,?,(UN No.s no longer in use)
+1722,6.1,Allyl chloroformate
+1723,3,Allyl iodide
+1724,8,"Allyltrichlorosilane, stabilized"
+1725,8,"Aluminum bromide, anhydrous"
+1726,8,"Aluminum chloride, anhydrous"
+1727,8,"Ammonium hydrogendifluoride, solid"
+1728,8,Amyltrichlorosilane
+1729,8,Anisoyl chloride
+1730,8,"Antimony pentachloride, liquid"
+1731,8,"Antimony pentachloride, solution"
+1732,8,Antimony pentafluoride
+1733,8,Antimony trichloride
+1734,?,(UN No.s no longer in use)
+1736,8,Benzoyl chloride
+1737,6.1,Benzyl bromide
+1738,6.1,Benzyl chloride or Benzyl chloride unstabilized
+1739,8,Benzyl chloroformate
+1740,8,"Hydrogen difluorides, n.o.s. solid"
+1741,2.3,Boron trichloride
+1742,8,Boron trifluoride acetic acid complex
+1743,8,Boron trifluoride propionic acid complex
+1744,8,Bromine or Bromine solutions
+1745,5.1,Bromine pentafluoride
+1746,5.1,Bromine trifluoride
+1747,8,Butyltrichlorosilane
+1748,5.1,"Calcium hypochlorite, dry or Calcium hypochlorite mixtures dry with more than 39 percent available chlorine (8.8 percent available oxygen)"
+1749,2.3,Chlorine trifluoride
+1750,6.1,"Chloroacetic acid, solution"
+1751,6.1,"Chloroacetic acid, solid"
+1752,6.1,Chloroacetyl chloride
+1753,8,Chlorophenyltrichlorosilane
+1754,8,Chlorosulfonic acid (with or without sulfur trioxide)
+1755,8,Chromic acid solution
+1756,8,"Chromic fluoride, solid"
+1757,8,"Chromic fluoride, solution"
+1758,8,Chromium oxychloride
+1759,8,"Corrosive solids, n.o.s."
+1760,8,"Corrosive liquids, n.o.s."
+1761,8,Cupriethylenediamine solution
+1762,8,Cyclohexenyltrichlorosilane
+1763,8,Cyclohexyltrichlorosilane
+1764,8,Dichloroacetic acid
+1765,8,Dichloroacetyl chloride
+1766,8,Dichlorophenyltrichlorosilane
+1767,8,Diethyldichlorosilane
+1768,8,"Difluorophosphoric acid, anhydrous"
+1769,8,Diphenyldichlorosilane
+1770,8,Diphenylmethyl bromide
+1771,8,Dodecyltrichlorosilane
+1772,?,(UN No. no longer in use)
+1773,8,"Ferric chloride, anhydrous"
+1774,8,"Fire extinguisher charges, corrosive liquid"
+1775,8,Fluoroboric acid
+1776,8,Fluorophosphoric acid anhydrous
+1777,8,Fluorosulfonic acid
+1778,8,Fluorosilicic acid
+1779,8,Formic acid
+1780,8,Fumaryl chloride
+1781,8,Hexadecyltrichlorosilane
+1782,8,Hexafluorophosphoric acid
+1783,8,Hexamethylenediamine solution
+1784,8,Hexyltrichlorosilane
+1785,?,(UN No. no longer in use)
+1786,8,Hydrofluoric acid and Sulfuric acid mixtures
+1787,8,Hydriodic acid
+1788,8,"Hydrobromic acid, with more than 49 percent hydrobromic acid or Hydrobromic acid, with not more than 49 percent hydrobromic acid"
+1789,8,Hydrochloric acid
+1790,8,"Hydrofluoric acid, with more than 60 percent strength or Hydrofluoric acid, with not more than 60 percent strength"
+1791,8,Hypochlorite solutions
+1792,8,"Iodine monochloride, solid"
+1793,8,Isopropyl acid phosphate
+1794,8,Lead sulfate with more than 3 percent free acid
+1795,?,(UN No. no longer in use)
+1796,8,"Nitrating acid mixtures, with more than 50 percent nitric acid or Nitrating acid mixtures, with not more than 50 percent nitric acid"
+1797,?,(UN No. no longer in use)
+1798,8,Nitrohydrochloric acid
+1799,8,Nonyltrichlorosilane
+1800,8,Octadecyltrichlorosilane
+1801,8,Octyltrichlorosilane
+1802,8,Perchloric acid with not more than 50 percent acid by mass
+1803,8,"Phenolsulfonic acid, liquid"
+1804,8,Phenyltrichlorosilane
+1805,8,Phosphoric acid
+1806,8,Phosphorus pentachloride
+1807,8,Phosphorus pentoxide
+1808,8,Phosphorus tribromide
+1809,6.1,Phosphorus trichloride
+1810,8,Phosphorus oxychloride
+1811,8,"Potassium hydrogendifluoride, solid or Potassium hydrogendifluoride, solution"
+1812,8,Potassium fluoride
+1813,8,"Potassium hydroxide, solid"
+1814,8,"Potassium hydroxide, solution"
+1815,3,Propionyl chloride
+1816,8,Propyltrichlorosilane
+1817,8,Pyrosulfuryl chloride
+1818,8,Silicon tetrachloride
+1819,8,"Sodium aluminate, solution"
+1820,?,(UN No. no longer in use)
+1821,?,"(UN No. no longer in use) Sodium hydrogen sulfate, solid (UN No. no longer in use)[1]"
+1822,?,(UN No. no longer in use)
+1823,8,"Sodium hydroxide, solid"
+1824,8,Sodium hydroxide solution
+1825,8,Sodium monoxide
+1826,8,"Nitrating acid mixtures, spent with more than 50 percent nitric acid or Nitrating acid mixtures, spent with not more than 50 percent nitric acid"
+1827,8,"Stannic chloride, anhydrous"
+1828,8,Sulfur chlorides
+1829,8,"Sulfur trioxide, inhibited or Sulfur trioxide, stabilized"
+1830,8,Sulfuric acid with more than 51 percent acid
+1831,8,"Sulfuric acid, fuming with 30 percent or more free sulfur trioxide or Sulfuric acid, fuming with less than 30 percent free sulfur trioxide"
+1832,8,"Sulfuric acid, spent"
+1833,8,Sulfurous acid
+1834,8,Sulfuryl chloride
+1835,8,Tetramethylammonium hydroxide
+1836,8,Thionyl chloride
+1837,8,Thiophosphoryl chloride
+1838,8,Titanium tetrachloride
+1839,8,Trichloroacetic acid
+1840,8,"Zinc chloride, solution"
+1841,9,Acetaldehyde ammonia
+1842,?,(UN No. no longer in use) Acetic acid (UN No. no longer in use)
+1843,6.1,Ammonium dinitro-o-cresolate
+1844,?,(UN No. no longer in use)
+1845,9,"Carbon dioxide, solid, also called Dry ice"
+1846,8,Carbon tetrachloride
+1847,8,"Potassium sulfide, hydrated with not less than 30 percent water of crystallization"
+1848,8,Propionic acid
+1849,6.1,"Sodium sulfide, hydrated with not less than 30 percent water"
+1850,?,"(UN No. no longer in use) Eradicator, paint, liquid or Eradicator, grease, liquid (UN No. no longer in use)[1]"
+1851,6.1,"Medicine, liquid, toxic, n.o.s."
+1852,?,(UN No. no longer in use)
+1854,4.2,"Barium alloys, pyrophoric"
+1855,4.2,"Calcium, pyrophoric or Calcium alloys, pyrophoric"
+1856,4.2,"Rags, oily"
+1857,4.2,"Textile waste, wet"
+1858,2,"Hexafluoropropylene, compressed or Refrigerant gas R 1216"
+1859,2,"Silicon tetrafluoride, compressed"
+1860,3,"Vinyl fluoride, inhibited"
+1861,?,(UN No. no longer in use)
+1862,3,Ethyl crotonate
+1863,3,"Fuel, aviation, turbine engine"
+1864,?,"(UN No. no longer in use) Gas drips or Gas drips, hydrocarbon (UN No. no longer in use)[1]"
+1865,3,n-Propyl nitrate
+1866,3,"Resin solution, flammable"
+1867,?,(UN No. no longer in use) Cigarettes or Self-lighting cigarettes (UN No. no longer in use)[1]
+1868,4.1,Decaborane
+1869,4.3,"Magnesium or Magnesium alloys with more than 50 percent magnesium in pellets, turnings, or ribbons"
+1870,4.1,Potassium borohydride
+1871,5.1,Titanium hydride
+1872,5.1,Lead dioxide
+1873,5.1,"Perchloric acid with more than 50 percent but not more than 72 percent acid, by mass"
+1874,?,(UN No.s no longer in use)
+1884,6.1,Barium oxide
+1885,6.1,Benzidine
+1886,6.1,Benzylidene chloride
+1887,6.1,Bromochloromethane
+1888,6.1,Chloroform
+1889,6.1,Cyanogen bromide
+1890,?,(UN No. no longer in use)
+1891,6.1,Ethyl bromide
+1892,6.1,Ethyldichloroarsine
+1893,?,(UN No. no longer in use)
+1894,6.1,Phenylmercuric hydroxide
+1895,6.1,Phenylmercuric nitrate
+1896,?,"(UN No. no longer in use) Resin solution, toxic (UN No. no longer in use)[1]"
+1897,6.1,Tetrachloroethylene
+1898,8,Acetyl iodide
+1899,?,(UN No.s no longer in use)
+1901,?,(UN No. no longer in use)
+1902,8,Diisooctyl acid phosphate
+1903,8,"Disinfectants, liquid, corrosive, n.o.s."
+1904,?,(UN No. no longer in use) Poison Hydrochloride (UN No. no longer in use)
+1905,8,Selenic Acid
+1906,8,Sludge Acid
+1907,8,Soda lime with more than 4 percent sodium hydroxide
+1908,8,Chlorite solution
+1909,?,(UN No. no longer in use)
+1910,8,Calcium oxide
+1911,2,"Diborane, compressed"
+1912,2,Methyl chloride and methylene chloride mixtures
+1913,2,"Neon, refrigerated liquid (cryogenic liquid)"
+1914,3,Butyl propionates
+1915,3,Cyclohexanone
+1916,6.1,"2,2'-Dichlorodiethyl ether"
+1917,3,"Ethyl acrylate, inhibited"
+1918,3,Isopropylbenzene
+1919,3,"Methyl acrylate, inhibited"
+1920,3,Nonanes
+1921,3,"Propyleneimine, inhibited"
+1922,3,Pyrrolidine
+1923,4.2,Calcium dithionite or Calcium hydrosulfite
+1924,?,(UN No. no longer in use) Ethyl aluminium dichloride (UN No. no longer in use)[1]
+1925,?,(UN No. no longer in use) Ethylaluminium sesquichloride (UN No. no longer in use)[1]
+1926,?,(UN No. no longer in use) Methyl aluminium sesquibromide (UN No. no longer in use)[1]
+1927,?,(UN No. no longer in use) Methyl aluminium sesquichloride (UN No. no longer in use)[1]
+1928,4.3,"Methyl magnesium bromide, in ethyl ether"
+1929,4.2,Potassium dithionite or Potassium hydrosulfite
+1930,?,(UN No. no longer in use) Triisobutyl aluminium (UN No. no longer in use)[1]
+1931,9,Zinc dithionite or Zinc hydrosulfite
+1932,4.2,Zirconium scrap
+1933,?,(UN No.s no longer in use)
+1935,6.1,"Cyanide solutions, n.o.s."
+1936,?,(UN No.s no longer in use)
+1938,8,"Bromoacetic acid, solution or Bromoacetic acid, solid"
+1939,8,Phosphorus oxybromide
+1940,8,Thioglycolic acid
+1941,9,"Dibromodifluoromethane, R12B2"
+1942,5.1,"Ammonium nitrate, with not more than 0.2 percent of combustible substances, including any organic substance calculated as carbon, to the exclusion of any other added substance"
+1943,?,(UN No. no longer in use)
+1944,4.1,"Matches, safety (book, card, or strike on box)"
+1945,4.1,"Matches, wax, Vesta"
+1946,?,(UN No.s no longer in use)
+1950,2,"Aerosols, corrosive, Packing Group II or III, (each not exceeding 1 L capacity) or Aerosols, flammable (each not exceeding 1 L capacity) or Aerosols, flammable, n.o.s. (engine starting fluid) (each not exceeding 1 L capacity) or Aerosols, nonflammable (each not exceeding 1 L capacity) or Aerosols, toxic, (each not exceeding 1 L capacity)"
+1951,2,"Argon, refrigerated liquid (cryogenic liquid)"
+1952,2,Ethylene oxide and carbon dioxide mixtures with not more than 9 percent ethylene oxide
+1953,2,"Compressed gas, toxic, flammable, n.o.s. Inhalation Hazard Zone A, B, C, or D"
+1954,2,"Compressed gas, flammable, n.o.s."
+1955,2,"Compressed gas, toxic, n.o.s. Inhalation Hazard Zone A, B, C, or D"
+1956,2,"Compressed gas, n.o.s."
+1957,2,"Deuterium, compressed"
+1958,2,"1,2-dichloro-1,1,2,2-tetrafluoroethane or Refrigerant gas R 114"
+1959,2,"1,1-Difluoroethylene or Refrigerant gas R 1132a"
+1960,?,(UN No. no longer in use) Engine starting fluid (UN No. no longer in use)[1]
+1961,2,"Ethane, refrigerated liquid"
+1962,2,"Ethylene, compressed"
+1963,2,"Helium, refrigerated liquid (cryogenic liquid)"
+1964,2,"Hydrocarbon gas mixture, compressed, n.o.s."
+1965,2,"Hydrocarbon gas mixtures, liquefied, n.o.s."
+1966,2,"Liquid hydrogen, refrigerated liquid (cryogenic liquid)"
+1967,2,"Insecticide gases, toxic, n.o.s."
+1968,2,"Insecticide gases, n.o.s."
+1969,2,"Isobutane see also Petroleum gases, liquified"
+1970,2,"Krypton, refrigerated liquid (cryogenic liquid)"
+1971,2,"Methane, compressed or Natural gas, compressed (with high methane content)"
+1972,2,"Methane, refrigerated liquid (cryogenic liquid) or Natural gas, refrigerated liquid (cryogenic liquid), with high methane content"
+1973,2,"Chlorodifluoromethane and chloropentafluoroethane mixture or Refrigerant gas R 502 with fixed boiling point, with approximately 49 percent chlorodifluoromethane"
+1974,2,Chlorodifluorobromomethane or Refrigerant gas R 12B1
+1975,2,Nitric oxide and dinitrogen tetroxide mixtures or Nitric oxide and nitrogen dioxide mixtures
+1976,2,"Octafluorocyclobutane, or Refrigerant gas RC 318"
+1977,2,"Nitrogen, refrigerated liquid cryogenic liquid"
+1978,2,"Propane see also Petroleum gases, liquefied"
+1979,2,"(UN No. no longer in use) Rare gases, mixtures, compressed (UN No. no longer in use)[1][2]"
+1980,2,"(UN No. no longer in use) Rare gases and oxygen mixtures, compressed (UN No. no longer in use)[1][2]"
+1981,2,"(UN No. no longer in use) Rare gases and nitrogen mixtures, compressed (UN No. no longer in use)[1][2]"
+1982,2,"Tetrafluoromethane, compressed or Refrigerant gas R 14"
+1983,2,"1-Chloro-2,2,2-trifluoroethane or Refrigerant gas R133a"
+1984,2,Trifluoromethane or Refrigerant gas R 23
+1985,?,(UN No. no longer in use)
+1986,3,"Alcohols, flammable, toxic, n.o.s."
+1987,3,"Alcohols, (Ethanol), n.o.s."
+1988,3,"Aldehydes, flammable, toxic, n.o.s."
+1989,3,"Aldehydes, n.o.s."
+1990,9,Benzaldehyde
+1991,3,"Chloroprene, inhibited"
+1992,3,"Flammable liquids, toxic, n.o.s."
+1993,3,"Flammable liquids, n.o.s."
+1994,6.1,Iron pentacarbonyl
+1995,?,Propane
+1996,?,(UN No.s no longer in use)
+1999,3,"Tars, liquid including road asphalt and oils, bitumen and cut backs"
+2000,4.1,"Celluloid, in block, rods, rolls, sheets, tubes, etc., except scrap"
+2001,4.1,"Cobalt naphthenates, powder"
+2002,4.2,"Celluloid, scrape"
+2003,4.2,"(UN No. no longer in use) Metal alkyls, water-reactive, n.o.s. or Metal aryls, water-reactive, n.o.s. (UN No. no longer in use)"
+2004,4.2,Magnesium diamide
+2005,4.2,(UN No. no longer in use) Magnesium diphenyl (UN No. no longer in use)
+2006,4.2,"Plastics, nitrocellulose-based, self-heating, n.o.s."
+2007,?,(UN No. no longer in use)
+2008,4.2,"Zirconium powder, dry"
+2009,4.2,"Zirconium, dry, finished sheets, strip or coiled wire"
+2010,4.3,Magnesium hydride
+2011,4.3,Magnesium phosphide
+2012,4.3,Potassium phosphide
+2013,4.3,Strontium phosphide
+2014,5.1,"Hydrogen peroxide, aqueous solutions with more than 20 percent but not more than 60 percent hydrogen peroxide (stabilized as necessary)"
+2015,5.1,"Hydrogen peroxide, stabilized or Hydrogen peroxide aqueous solutions, stabilized with more than 60 percent hydrogen peroxide"
+2016,6.1,"Ammunition, toxic, non-explosive, without burster or expelling charge, non-fuzed"
+2017,6.1,"Ammunition, tear-producing, non-explosive, without burster or expelling charge, non-fuzed"
+2018,6.1,"Chloroanilines, solid"
+2019,6.1,"Chloroanilines, liquid"
+2020,6.1,"Chlorophenols, solid"
+2021,6.1,"Chlorophenols, liquid"
+2022,6.1,Cresylic acid
+2023,6.1,Epichlorohydrin
+2024,6.1,"Mercury compounds, liquid, n.o.s."
+2025,6.1,"Mercury compounds, solid, n.o.s."
+2026,6.1,"Phenylmercuric compounds, n.o.s."
+2027,6.1,"Sodium arsenite, solid"
+2028,8,"Bombs, smoke, non-explosive, with corrosive liquid, without initiating device"
+2029,8,"Hydrazine, anhydrous"
+2030,8,"Hydrazine aqueous solution, with more than 37 percent hydrazine, by mass"
+2031,8,"Nitric acid other than red fuming, with more than 70 percent nitric acid or Nitric acid other than red fuming, with not more than 70 percent nitric acid"
+2032,8,"Nitric acid, red fuming"
+2033,8,Potassium monoxide
+2034,2,"Hydrogen and Methane mixtures, compressed"
+2035,2,"1,1,1-Trifluoroethane, compressed or Refrigerant gas R 143a"
+2036,2,"Xenon, compressed"
+2037,2,"Gas cartridges (flammable) without a release device, non-refillable or Receptacles, small, containing gas (gas cartridges) flammable or nonflammable, without release device, not refillable and not exceeding 1 L capacity"
+2038,6.1,"Dinitrotoluenes, liquid or Dinitrotoluenes, solid"
+2039,?,(UN No.s no longer in use)
+2044,2,"2,2-Dimethylpropane"
+2045,3,Isobutyraldehyde or Isobutyl aldehyde
+2046,3,Cymenes
+2047,3,Dichloropropenes
+2048,3,Dicyclopentadiene
+2049,3,Diethylbenzene
+2050,3,"Diisobutylene, isomeric compounds"
+2051,8,2-Dimethylaminoethanol
+2052,3,Dipentene
+2053,3,Methyl isobutyl carbinol
+2054,3,Morpholine
+2055,3,"Styrene monomer, inhibited"
+2056,3,Tetrahydrofuran
+2057,3,Tripropylene
+2058,3,Valeraldehyde
+2059,3,"Nitrocellulose, solution, flammable with not less than 12.6 percent nitrogen, by mass, and not more than 55 percent nitrocellulose"
+2060,?,(UN No. no longer in use) Box toe gum (UN No. no longer in use)[1]
+2061,?,(UN No.s no longer in use)
+2067,5.1,"Ammonium nitrate fertilizers; uniform non-segregating mixtures of ammonium nitrate with added matter which is inorganic and chemically inert towards ammonium nitrate, with not less than 90 percent ammonium nitrate and not more than 0.2 percent combustible"
+2068,?,(UN No. no longer in use) Ammonium nitrate-carbonate mixture (UN No. no longer in use)[1]
+2069,?,(UN No. no longer in use) Ammonium nitrate mixed fertilizer (UN No. no longer in use)[1]
+2070,?,(UN No. no longer in use) Ammonium nitrate-phosphate mixture (UN No. no longer in use)[1]
+2071,9,"Ammonium nitrate fertilizers: uniform non-segregating mixtures of nitrogen/phosphate or nitrogen/potash types or complete fertilizers of nitrogen/phosphate/potash type, with not more than 70 percent ammonium nitrate and not more than 0.4 percent total combustible/organic material calculated as carbon or with not more than 45 percent ammonium nitrate and unrestricted combustible material"
+2072,?,"(UN No. no longer in use) Ammonium nitrate fertilizers, n.o.s. (UN No. no longer in use)[1]"
+2073,2.2,"Ammonia solution, relative density less than 0.880 at 15 °C in water, with more than 35 percent but not more than 50 percent ammonia"
+2074,6.1,"Acrylamide, Solid"
+2075,6.1,"Chloral, anhydrous, inhibited"
+2076,6.1,Cresols
+2077,6.1,alpha-Naphthylamine
+2078,6.1,Toluene diisocyanate
+2079,8,Diethylenetriamine
+2080,?,(UN No. no longer in use) Acetyl acetone peroxide (UN No. no longer in use)[1]
+2081,?,(UN No. no longer in use) Acetyl benzoyl peroxide or Acetyl benzoyl peroxide solution (UN No. no longer in use)[1]
+2082,?,(UN No. no longer in use) Acetyl cyclohexane sulphonyl peroxide (UN No. no longer in use)[1]
+2083,?,(UN no. no longer in use) Acetyl cyclohexane sulphonyl peroxide (UN No. no longer in use)[1]
+2084,?,(UN No. no longer in use) Acetyl peroxide or Acetyl peroxide solution (UN No. no longer in use)[1]
+2085,5.2,(UN No. no longer in use) Benzoyl peroxide (UN No. no longer in use)[1]
+2086,5.2,(UN No. no longer in use) Benzoyl peroxide (UN No. no longer in use)[1]
+2087,5.2,(UN No. no longer in use) Benzoyl peroxide (UN No. no longer in use)[1]
+2088,5.2,(UN No. no longer in use) Benzoyl peroxide (UN No. no longer in use)[1]
+2089,5.2,(UN No. no longer in use) Benzoyl peroxide (UN No. no longer in use)[1]
+2090,5.2,(UN No. no longer in use) Benzoyl peroxide (UN No. no longer in use)[1]
+2091,?,(UN No. no longer in use) tert-Butyl cumyl peroxide (UN No. no longer in use)[1]
+2092,?,(UN No. no longer in use) tert-Butyl hydroperoxide (UN No. no longer in use)[1]
+2093,?,(UN No. no longer in use) tert-Butyl hydroperoxide (UN No. no longer in use)[1]
+2094,?,(UN No. no longer in use) tert-Butyl hydroperoxide (UN No. no longer in use)[1]
+2095,?,(UN No. no longer in use) tert-Butyl peroxyacetate (UN No. no longer in use)[1]
+2096,?,(UN No. no longer in use) tert-Butyl peroxyacetate (UN No. no longer in use)[1]
+2097,?,(UN No. no longer in use) tert-Butyl peroxybenzoate (UN No. no longer in use)[1]
+2098,?,(UN No. no longer in use) tert-Butyl peroxybenzoate (UN No. no longer in use)[1]
+2099,?,(UN No. no longer in use) tert-Butyl peroxymaleate (UN No. no longer in use)[1]
+2100,?,(UN No. no longer in use) tert-Butyl peroxymaleate (UN No. no longer in use)[1]
+2101,?,(UN No. no longer in use) tert-Butyl peroxymaleate (UN No. no longer in use)[1]
+2102,?,(UN No. no longer in use) Di-tert-butyl peroxide (UN No. no longer in use)[1]
+2103,?,(UN No. no longer in use) tert-Butyl peroxyisopropyl carbonate (UN No. no longer in use)[1]
+2104,?,"(UN No. no longer in use) tert-Butyl peroxy-3,5,5-trimethylhexanoate or tert-Butyl peroxyisononanoate (UN No. no longer in use)[1]"
+2105,?,(UN No. no longer in use) tert-Butyl peroxyphthalate (UN No. no longer in use)[1]
+2106,?,(UN No. no longer in use) Di-(tert-butylperoxy)phthalate (UN No. no longer in use)[1]
+2107,?,(UN No. no longer in use) Di-(tert-butylperoxy)phthalate (UN No. no longer in use)[1]
+2108,?,(UN No. no longer in use) Di-(tert-butylperoxy)phthalate (UN No. no longer in use)[1]
+2109,?,(UN No. no longer in use)
+2110,?,(UN No. no longer in use) tert-Butyl peroxypivalate (UN No. no longer in use)[1]
+2111,?,"(UN No. no longer in use) 2,2-Di-(tert-butylperoxy)butane (UN No. no longer in use)[1]"
+2112,?,"(UN No. no longer in use) 1,3-Di-(2-tert-butylperoxyisopropyl)benzene, or 1,4-Di-(2-tert-butylperoxyisopropyl)benzene, or 1,3-Di-(2-tert-butylperoxyisopropyl)benzene and 1,4-Di-(tert-butylperoxyisopropyl)benzene mixtures (UN No. no longer in use)[1]"
+2113,?,(UN No. no longer in use) Di-(4-chlorobenzoyl)peroxide or p-Chlorobenzoyl peroxide (UN No. no longer in use)[1]
+2114,?,(UN No. no longer in use) Di-(4-chlorobenzoyl)peroxide or p-Chlorobenzoyl peroxide (UN No. no longer in use)[1]
+2115,?,(UN No. no longer in use) Di-(4-chlorobenzoyl)peroxide or p-Chlorobenzoyl peroxide (UN No. no longer in use)[1]
+2116,?,(UN No. no longer in use) Cumene hydroperoxide or Cumyl hydroperoxide (UN No. no longer in use)[1]
+2117,?,(UN No. no longer in use) Cyclohexanone peroxides (UN No. no longer in use)[1]
+2118,?,(UN No. no longer in use) Cyclohexanone peroxides (UN No. no longer in use)[1]
+2119,?,(UN No. no longer in use) Cyclohexanone peroxides (UN No. no longer in use)[1]
+2120,?,(UN No. no longer in use) Decanoyl peroxide or Didecanoyl peroxide (UN No. no longer in use)[1]
+2121,?,"(UN No. no longer in use) Dicumyl peroxide, dry (UN No. no longer in use)[1]"
+2122,?,(UN No. no longer in use) Di-(2-ethylhexyl)peroxydicarbonate (UN No. no longer in use)[1]
+2123,?,(UN No. no longer in use) Di-(2-ethylhexyl)peroxydicarbonate (UN No. no longer in use)[1]
+2124,?,(UN No. no longer in use) Lauroyl peroxide or Dilauroyl peroxide (UN No. no longer in use)[1]
+2125,?,(UN No. no longer in use) p-Menthane hydroperoxide (UN No. no longer in use)[1]
+2126,?,(UN No. no longer in use) Methyl isobutyl ketone peroxide (UN No. no longer in use)[1]
+2127,?,(UN No. no longer in use) Ethyl methyl ketone peroxides (UN No. no longer in use)[1]
+2128,?,"(UN No. no longer in use) Di-(3,5,5-trimethylhexanoyl)peroxide or Isononanyl peroxide (UN No. no longer in use)[1]"
+2129,?,(UN No. no longer in use) Di-n-octanoyl peroxide or n-Octanoyl peroxide (UN No. no longer in use)[1]
+2130,?,(UN No. no longer in use) Pelargonyl peroxide (UN No. no longer in use)[1]
+2131,?,(UN No. no longer in use) Peroxyacetic acid (UN No. no longer in use)[1]
+2132,?,(UN No. no longer in use) Dipropionyl peroxide or Propionyl peroxide (UN No. no longer in use)[1]
+2133,?,(UN No. no longer in use) Diisopropyl peroxydicarbonate or Isopropyl peroxydicarbonate (UN No. no longer in use)[1]
+2134,?,(UN No. no longer in use) Diisopropyl peroxydicarbonate or Isopropyl peroxydicarbonate (UN No. no longer in use)[1]
+2135,?,(UN No. no longer in use) Disuccinic acid peroxide or Succinic acid peroxide (UN No. no longer in use)[1]
+2136,?,(UN No. no longer in use) Tetralin hydroperoxide (UN No. no longer in use)[1]
+2137,?,"(UN No. no longer in use) 2,4-Dichlorobenzoyl peroxide (UN No. no longer in use)[1]"
+2138,?,"(UN No. no longer in use) 2,4-Dichlorobenzoyl peroxide (UN No. no longer in use)[1]"
+2139,?,"(UN No. no longer in use) 2,4-Dichlorobenzoyl peroxide (UN No. no longer in use)[1]"
+2140,?,"(UN No. no longer in use) n-Butyl-4,4-di-(tert-butylperoxy)valerate (UN No. no longer in use)[1]"
+2141,?,"(UN No. no longer in use) n-Butyl-4,4-di-(tert-butylperoxy)valerate (UN No. no longer in use)[1]"
+2142,?,(UN No. no longer in use) tert-Butyl peroxyisobutyrate (UN No. no longer in use)[1]
+2143,?,(UN No. no longer in use) tert-Butyl peroxy-2-ethylhexanoate (UN No. no longer in use)[1]
+2144,?,(UN No. no longer in use) tert-Butyl peroxydiethylacetate (UN No. no longer in use)[1]
+2145,?,"(UN No. no longer in use) 1,1-Di-(tert-butylperoxy)-3,3,5-trimethyl cyclohexane (UN No. no longer in use)[1]"
+2146,?,"(UN No. no longer in use) 1,1-Di-(tert-butylperoxy)-3,3,5-trimethyl cyclohexane (UN No. no longer in use)[1]"
+2147,?,"(UN No. no longer in use) 1,1-Di-(tert-butylperoxy)-3,3,5-trimethyl cyclohexane (UN No. no longer in use)[1]"
+2148,?,(UN No. no longer in use) Di-(1-hydroxycyclohexyl)peroxide (UN No. no longer in use)[1]
+2149,?,(UN No. no longer in use) Dibenzyl peroxydicarbonate (UN No. no longer in use)[1]
+2150,?,(UN No. no longer in use) Di-sec-butyl peroxydicarbonate (UN No. no longer in use)[1]
+2151,?,(UN No. no longer in use) Di-sec-butyl peroxydicarbonate (UN No. no longer in use)[1]
+2152,?,(UN No. no longer in use) Dicyclohexyl peroxydicarbonate (UN No. no longer in use)[1]
+2153,?,(UN No. no longer in use) Dicyclohexyl peroxydicarbonate]] (UN No. no longer in use)[1]
+2154,?,(UN No. no longer in use) Di-(4-tert-butylcyclohexyl)peroxydicarbonate (UN No. no longer in use)[1]
+2155,?,"(UN No. no longer in use) 2,5-Dimethyl-2,5-di-(tert-butylperoxy)hexane (UN No. no longer in use)[1]"
+2156,?,"(UN No. no longer in use) 2,5-Dimethyl-2,5-di-(tert-butylperoxy)hexane (UN No. no longer in use)[1]"
+2157,?,"(UN No. no longer in use) 2,5-Dimethyl-2,5-di-(2-ethylhexanoylperoxy)hexane (UN No. no longer in use)[1]"
+2158,?,"(UN No. no longer in use) 2,5-Dimethyl-2,5-di-(tert-butylperoxy)hexyne-3 (UN No. no longer in use)[1]"
+2159,?,"(UN No. no longer in use) 2,5-Dimethyl-2,5-di-(tert-butylperoxy)hexyne-3 (UN No. no longer in use)[1]"
+2160,?,"(UN No. no longer in use) 1,1,3,3-Tetramethyl butyl hydroperoxide (UN No. no longer in use)[1]"
+2161,?,"(UN No. no longer in use) 1,1,3,3-Tetramethyl butyl peroxy-2-ethylhexanoate (UN No. no longer in use)[1]"
+2162,?,(UN No. no longer in use) Pinane hydroperoxide or Pinanyl hydroperoxide or Pinane hydroperoxide solution (UN No. no longer in use)[1]
+2163,?,(UN No. no longer in use) Diacetone alcohol peroxides (UN No. no longer in use)[1]
+2164,?,(UN No. no longer in use) Dicetyl peroxydicarbonate (UN No. no longer in use)[1]
+2165,?,"(UN No. no longer in use) 3,3,6,6,9,9-Hexamethyl-1,2,4,5-tetraoxacyclononane (UN No. no longer in use)[1]"
+2166,?,"(UN No. no longer in use) 3,3,6,6,9,9-Hexamethyl-1,2,4,5-tetraoxacyclononane (UN No. no longer in use)[1]"
+2167,?,"(UN No. no longer in use) 3,3,6,6,9,9-Hexamethyl-1,2,4,5-tetraoxacyclononane (UN No. no longer in use)[1]"
+2168,?,"(UN No. no longer in use) 2,2-Di-(4,4-di-tert-butylperoxycyclohexyl)propane (UN No. no longer in use)[1]"
+2169,?,(UN No. no longer in use) n-Butyl peroxydicarbonate (UN No. no longer in use)[1]
+2170,?,(UN No. no longer in use) n-Butyl peroxydicarbonate (UN No. no longer in use)[1]
+2171,?,(UN No. no longer in use) Diisopropylbenzene hydroperoxide or Diisopropylbenzene hydroperoxide solution (UN No. no longer in use)[1]
+2172,?,"(UN No. no longer in use) 2,5-Dimethyl-2,5-di-(benzoylperoxy)hexane (UN No. no longer in use)[1]"
+2173,?,"(UN No. no longer in use) 2,5-Dimethyl-2,5-di-(benzoylperoxy)hexane (UN No. no longer in use)[1]"
+2174,?,"(UN No. no longer in use) 2,5-Dimethyl-2,5-dihydroperoxyhexane (UN No. no longer in use)[1]"
+2175,?,(UN No. no longer in use) Diethyl peroxydicarbonate (UN No. no longer in use)[1]
+2176,?,(UN No. no longer in use) Di-n-propyl peroxydicarbonate (UN No. no longer in use)[1]
+2177,?,(UN No. no longer in use) tert-Butyl peroxyneodecanoate (UN No. no longer in use)[1]
+2178,?,"(UN No. no longer in use) 2,2-Dihydroperoxy propane (UN No. no longer in use)[1]"
+2179,?,"(UN No. no longer in use) 1,1-Di-(tert-butylperoxy)cyclohexane (UN No. no longer in use)[1]"
+2180,?,"(UN No. no longer in use) 1,1-Di-(tert-butylperoxy)cyclohexane (UN No. no longer in use)[1]"
+2181,?,"(UN No. no longer in use) 1,2-Di-(tert-butylperoxy)cyclohexane (UN No. no longer in use)[1]"
+2182,?,(UN No. no longer in use) Diisobutyryl peroxide or Isobutyryl peroxide (UN No. no longer in use)[1]
+2183,?,(UN No. no longer in use) tert-Butyl peroxycrotonate (UN No. no longer in use)[1]
+2184,?,"(UN No. no longer in use) Ethyl-3,3-di-(tert-butylperoxy)butyrate (UN No. no longer in use)[1]"
+2185,?,"(UN No. no longer in use) Ethyl-3,3-di-(tert-butylperoxy)butyrate (UN No. no longer in use)[1]"
+2186,2,"Hydrogen chloride, refrigerated liquid"
+2187,2,"Carbon dioxide, refrigerated liquid"
+2188,2,Arsine
+2189,2,Dichlorosilane
+2190,2,"Oxygen difluoride, compressed"
+2191,2,Sulfuryl fluoride
+2192,2,Germane
+2193,2,"Hexafluoroethane, compressed or Refrigerant gas R 116"
+2194,2,Selenium hexafluoride
+2195,2,Tellurium hexafluoride
+2196,2,Tungsten hexafluoride
+2197,2,"Hydrogen iodide, anhydrous"
+2198,2,"Phosphorus pentafluoride, compressed"
+2199,2,Phosphine
+2200,2,"Propadiene, inhibited"
+2201,2,"Nitrous oxide, refrigerated liquid"
+2202,2,"Hydrogen selenide, anhydrous"
+2203,2,"Silane, compressed"
+2204,2,Carbonyl sulfide
+2205,6.1,Adiponitrile
+2206,6.1,"Isocyanates, toxic, n.o.s. or Isocyanate solutions, toxic, n.o.s. flashpoint more than 61 °C and boiling point less than 300 °C"
+2207,?,"(UN No. no longer in use) Isocyanates, n.o.s. or Isocyanate solutions, n.o.s. (UN No. no longer in use)[1]"
+2208,5.1,"Calcium hypochlorite mixtures, dry, with more than 10 percent but not more than 39 percent available chlorine"
+2209,8,"Formaldehyde, solutions, with not less than 25 percent formaldehyde"
+2210,4.2,Maneb or Maneb preparations with not less than 60 percent maneb
+2211,9,"Polymeric beads, expandable, evolving flammable vapor"
+2212,9,"Blue asbestos (Crocidolite) or Brown asbestos (amosite, mysorite)"
+2213,4.1,Paraformaldehyde
+2214,8,Phthalic anhydride with more than .05 percent maleic anhydride
+2215,8,Maleic anhydride
+2216,9,"Fish meal, stabilized or Fish scrap, stabilized"
+2217,4.2,Seed cake with not more than 1.5 percent oil and not more than 11 percent moisture
+2218,8,"Acrylic acid, inhibited"
+2219,3,Allyl glycidyl ether
+2220,?,"(UN No. no longer in use) Aluminium alkyl halides, in solution (UN No. no longer in use)[1]"
+2221,?,"(UN No. no longer in use) Aluminium alkyl halides, pure (UN No. no longer in use)[1]"
+2222,3,Anisole
+2223,?,(UN No. no longer in use)
+2224,6.1,Benzonitrile
+2225,8,Benzenesulfonyl chloride
+2226,8,Benzotrichloride
+2227,3,"n-Butyl methacrylate, inhibited"
+2228,?,"(UN No. no longer in use) Butylphenols, liquid (UN No. no longer in use)[1]"
+2229,?,"(UN No. no longer in use) Butylphenols, solid (UN No. no longer in use)[1]"
+2230,?,(UN No. no longer in use) Chlorinated anthracene oil (UN No. no longer in use)
+2231,?,(UN No. no longer in use)
+2232,6.1,2-Chloroethanal
+2233,6.1,Chloroanisidines
+2234,3,Chlorobenzotrifluorides
+2235,6.1,"Chlorobenzyl chlorides, liquid"
+2236,6.1,3-Chloro-4-methylphenyl isocyanate
+2237,6.1,Chloronitroanilines
+2238,3,Chlorotoluenes
+2239,6.1,"Chlorotoluidines, solid"
+2240,8,Chromosulfuric acid
+2241,3,Cycloheptane
+2242,3,Cycloheptene
+2243,3,Cyclohexyl acetate
+2244,3,Cyclopentanol
+2245,3,Cyclopentanone
+2246,3,Cyclopentene
+2247,3,n-Decane
+2248,8,Di-n-butylamine
+2249,6.1,"Dichlorodimethyl ether, symmetrical"
+2250,6.1,Dichlorophenyl isocyanates
+2251,3,"Bicyclo [2,2,1] hepta-2, 5-diene, inhibited or 2,5-Norbornadiene, inhibited"
+2252,3,"1,2-Dimethoxyethane"
+2253,6.1,"N,N-Dimethylaniline"
+2254,4.1,"Matches, Fusee"
+2255,?,"(UN No. no longer in use) Organic peroxides, sample, n.o.s. (UN No. no longer in use)[1]"
+2256,3,Cyclohexene
+2257,4.3,Potassium
+2258,8,"1,2-Propylenediamine"
+2259,8,Triethylenetetramine
+2260,3,Tripropylamine
+2261,6.1,Xylenols
+2262,8,Dimethylcarbamoyl chloride
+2263,3,Dimethylcyclohexanes
+2264,8,Dimethylcyclohexylamine
+2265,3,"N,N-Dimethylformamide"
+2266,3,Dimethyl-N-propylamine
+2267,6.1,Dimethyl thiophosphoryl chloride
+2268,?,(UN No. no longer in use)
+2269,8,"3,3'-Iminodipropylamine"
+2270,3,"Ethylamine, aqueous solution with not less than 50 percent but not more than 70 percent ethylamine"
+2271,3,Ethyl amyl ketone
+2272,6.1,N-Ethylaniline
+2273,6.1,2-Ethylaniline
+2274,6.1,N-Ethyl-N-benzylaniline
+2275,3,2-Ethylbutanol
+2276,3,2-Ethylhexylamine
+2277,3,Ethyl methacrylate
+2278,3,n-Heptane
+2279,6.1,Hexachlorobutadiene
+2280,8,"Hexamethylenediamine, solid"
+2281,6.1,Hexamethylene diisocyanate
+2282,3,Hexanols
+2283,3,"Isobutyl methacrylate, inhibited"
+2284,3,Isobutyronitrile
+2285,6.1,Isocyanatobenzotrifluorides
+2286,3,Pentamethylheptane
+2287,3,Isoheptenes
+2288,3,Isohexenes
+2289,8,Isophoronediamine
+2290,6.1,Isophorone diisocyanate
+2291,6.1,"Lead compounds, soluble, n.o.s."
+2292,?,(UN No. no longer in use)
+2293,3,4-Methoxy-4-methylpentan-2-one
+2294,6.1,N-Methylaniline
+2295,6.1,Methyl chloroacetate
+2296,3,Methylcyclohexane
+2297,3,Methylcyclohexanone
+2298,3,Methylcyclopentane
+2299,6.1,Methyl dichloroacetate
+2300,6.1,2-Methyl-5-ethylpyridine
+2301,3,2-Methylfuran
+2302,3,5-Methylhexan-2-one
+2303,3,Isopropenylbenzene
+2304,4.1,"Naphthalene, molten"
+2305,8,Nitrobenzenesulfonic acid
+2306,6.1,"Nitrobenzotrifluorides, liquid"
+2307,6.1,3-Nitro-4-chlorobenzotrifluoride
+2308,8,Nitrosylsulfuric acid
+2309,3,Octadiene
+2310,3,"Pentane-2,4-dione"
+2311,6.1,Phenetidines
+2312,6.1,"Phenol, molten"
+2313,3,Picolines
+2314,?,(UN No. no longer in use)
+2315,9,"Polychlorinated biphenyls, liquid"
+2316,6.1,"Sodium cuprocyanide, solid"
+2317,6.1,"Sodium cuprocyanide, solution"
+2318,4.2,"Sodium hydrosulfide, with less than 25 percent water of crystallization"
+2319,3,"Terpene hydrocarbons, n.o.s."
+2320,8,Tetraethylenepentamine
+2321,6.1,"Trichlorobenzenes, liquid"
+2322,6.1,Trichlorobutene
+2323,3,Triethyl phosphite
+2324,3,Triisobutylene
+2325,3,"1,3,5-Trimethylbenzene (Mesitylene)"
+2326,8,Trimethylcyclohexylamine
+2327,8,Trimethylhexamethylenediamine
+2328,6.1,Trimethylhexamethylene diisocyanate
+2329,3,Trimethyl phosphite
+2330,3,Undecane
+2331,8,"Zinc chloride, anhydrous"
+2332,3,Acetaldehyde oxime
+2333,3,Allyl acetate
+2334,6.1,Allylamine
+2335,3,Allyl ethyl ether
+2336,3,Allyl formate
+2337,6.1,Phenyl mercaptan
+2338,3,Benzotrifluoride
+2339,3,2-Bromobutane
+2340,3,2-Bromoethyl ethyl ether
+2341,3,1-Bromo-3-methylbutane
+2342,3,Bromomethylpropanes
+2343,3,2-Bromopentane
+2344,3,Bromopropanes
+2345,3,3-Bromopropyne
+2346,3,Butanedione
+2347,3,Butyl mercaptans
+2348,3,"Butyl acrylates, inhibited"
+2349,?,(UN No. no longer in use)
+2350,3,Butyl methyl ether
+2351,3,Butyl nitrites
+2352,3,"Butyl vinyl ether, inhibited"
+2353,3,Butyryl chloride
+2354,3,Chloromethyl ethyl ether
+2355,?,(UN No. no longer in use)
+2356,3,2-Chloropropane
+2357,8,Cyclohexylamine
+2358,3,Cyclooctatetraene
+2359,3,Diallylamine
+2360,3,Diallylether
+2361,3,Diisobutylamine
+2362,3,"1,1-Dichloroethane"
+2363,3,Ethyl mercaptan
+2364,3,n-Propylbenzene
+2365,?,(UN No. no longer in use)
+2366,3,Diethyl carbonate
+2367,3,alpha-Methylvaleraldehyde
+2368,3,alpha-Pinene
+2369,?,(UN No. no longer in use) Ethylene glycol monobutyl ether (UN No. no longer in use)[1]
+2370,3,1-Hexene
+2371,3,Isopentenes
+2372,3,"1,2-Di-(dimethylamino)ethane"
+2373,3,Diethoxymethane
+2374,3,"3,3-Diethoxypropene"
+2375,3,Diethyl sulfide
+2376,3,"2,3-Dihydropyran"
+2377,3,"1,1-Dimethoxyethane"
+2378,3,2-Dimethylaminoacetonitrile
+2379,3,"1,3-Dimethylbutylamine"
+2380,3,Dimethyldiethoxysilane
+2381,3,Dimethyl disulfide
+2382,6.1,"Dimethylhydrazine, symmetrical"
+2383,3,Dipropylamine
+2384,3,Di-n-propyl ether
+2385,3,Ethyl isobutyrate
+2386,3,1-Ethylpiperidine
+2387,3,Fluorobenzene
+2388,3,Fluorotoluenes
+2389,3,Furan
+2390,3,2-Iodobutane
+2391,3,Iodomethylpropanes
+2392,3,Iodopropanes
+2393,3,Isobutyl formate
+2394,3,Isobutyl propionate
+2395,3,Isobutyryl chloride
+2396,3,"Methacrylaldehyde, inhibited"
+2397,3,3-Methylbutan-2-one
+2398,3,Methyl tert-butyl ether
+2399,3,1-Methylpiperidine
+2400,3,Methyl isovalerate
+2401,8,Piperidine
+2402,3,Propanethiols
+2403,3,Isopropenyl acetate
+2404,3,Propionitrile
+2405,3,Isopropyl butyrate
+2406,3,Isopropyl isobutyrate
+2407,6.1,Isopropyl chloroformate
+2408,?,(UN No. no longer in use) Isopropyl formate (UN No. no longer in use)
+2409,3,Isopropyl propionate
+2410,3,"1,2,3,6-Tetrahydropyridine"
+2411,3,Butyronitrile
+2412,3,Tetrahydrothiophene
+2413,3,Tetrapropylorthotitanate
+2414,3,Thiophene
+2415,?,(UN No. no longer in use)
+2416,3,Trimethyl borate
+2417,2,"Carbonyl fluoride, compressed"
+2418,2,Sulfur tetrafluoride
+2419,2,Bromotrifluoroethylene
+2420,2,Hexafluoroacetone
+2421,2,Nitrogen trioxide
+2422,2,Octafluorobut-2-ene or Refrigerant gas R 1318
+2423,-,(UN No. no longer in use)
+2424,2,Octafluoropropane or Refrigerant gas R 218
+2425,-,(UN No. no longer in use)
+2426,5.1,"Ammonium nitrate, liquid (hot concentrated solution)"
+2427,5.1,"Potassium chlorate, aqueous solution"
+2428,5.1,"Sodium chlorate, aqueous solution"
+2429,5.1,Calcium chlorate aqueous solution
+2430,8,"Alkylphenols, solid, n.o.s. (including C2-C12 homologues)"
+2431,6.1,Anisidines
+2432,6.1,"N,N-Diethylaniline"
+2433,6.1,Chloronitrotoluenes liquid or Chloronitrotoluenes solid
+2434,8,Dibenzyldichlorosilane
+2435,8,Ethylphenyldichlorosilane
+2436,3,Thioacetic acid
+2437,8,Methylphenyldichlorosilane
+2438,6.1,Trimethylacetyl chloride
+2439,8,"Sodium hydrogendifluoride, solid or Sodium hydrogendifluoride, solution"
+2440,8,"Stannic chloride, pentahydrate"
+2441,4.2,"Titanium trichloride, pyrophoric or Titanium trichloride mixtures, pyrophoric"
+2442,8,Trichloroacetyl chloride
+2443,8,Vanadium oxytrichloride
+2444,8,Vanadium tetrachloride
+2445,4.2,(UN No. no longer in use) Lithium alkyls (UN No. no longer in use)[1][2]
+2446,6.1,Nitrocresols
+2447,4.2,"Phosphorus white, molten"
+2448,4.1,"Sulfur, molten"
+2449,?,(UN No. no longer in use) Oxalates (UN No. no longer in use)[2]
+2450,?,(UN No. no longer in use)
+2451,2,"Nitrogen trifluoride, compressed"
+2452,2,"Ethylacetylene, inhibited"
+2453,2,Ethyl fluoride or Refrigerant gas R 161
+2454,2,"Methyl fluoride, or Refrigerant gas R 41"
+2455,2,Methyl nitrite
+2456,3,2-Chloropropene
+2457,3,"2,3-Dimethylbutane"
+2458,3,Hexadienes
+2459,3,2-Methyl-1-butene
+2460,3,2-Methyl-2-butene
+2461,3,Methylpentadienes
+2462,?,(UN No. no longer in use) Methyl pentanes (UN No. no longer in use)[2]
+2463,4.3,Aluminum hydride
+2464,5.1,Beryllium nitrate
+2465,5.1,"Dichloroisocyanuric acid, dry or Dichloroisocyanuric acid salts"
+2466,5.1,Potassium superoxide
+2467,?,(UN No. no longer in use) Sodium percarbonates (UN No. no longer in use)[2]
+2468,5.1,"Trichloroisocyanuric acid, dry"
+2469,5.1,Zinc bromate
+2470,6.1,"Phenylacetonitrile, liquid"
+2471,6.1,Osmium tetroxide
+2472,?,(UN No. no longer in use) Pindone (UN No. no longer in use)[2]
+2473,6.1,Sodium arsanilate
+2474,6.1,Thiophosgene
+2475,8,Vanadium trichloride
+2476,?,(UN No. no longer in use) Warfarin (UN No. no longer in use)
+2477,6.1,Methyl isothiocyanate
+2478,3,"Isocyanates, flammable, toxic, n.o.s. or Isocyanate solutions, flammable, toxic, n.o.s. flashpoint less than 23 °C"
+2479,?,(UN No. no longer in use)
+2480,6.1,Methyl isocyanate
+2481,3,Ethyl isocyanate
+2482,6.1,n-Propyl isocyanate
+2483,3,Isopropyl isocyanate
+2484,6.1,tert-Butyl isocyanate
+2485,6.1,n-Butyl isocyanate
+2486,3,Isobutyl isocyanate
+2487,6.1,Phenyl isocyanate
+2488,6.1,Cyclohexyl isocyanate
+2489,?,"(UN No. no longer in use) Diphenylmethane-4,4´-diisocyanate (UN No. no longer in use)[2]"
+2490,6.1,Dichlorodiisopropyl ether
+2491,8,Ethanolamine or Ethanolamine solutions
+2492,?,(UN No. no longer in use)
+2493,3,Hexamethyleneimine
+2494,?,(UN No. no longer in use)
+2495,5.1,Iodine pentafluoride
+2496,8,Propionic anhydride
+2497,?,"(UN No. no longer in use) Sodium phenolate, solid (UN No. no longer in use)[2]"
+2498,3,"1,2,3,6-Tetrahydrobenzaldehyde"
+2499,?,(UN No.s no longer in use)
+2501,6.1,"Tris(1-aziridinyl)phosphine oxide, solution"
+2502,8,Valeryl chloride
+2503,8,Zirconium tetrachloride
+2504,6.1,Tetrabromoethane
+2505,6.1,Ammonium fluoride
+2506,8,Ammonium hydrogen sulfate
+2507,8,"Chloroplatinic acid, solid"
+2508,8,Molybdenum pentachloride
+2509,8,Potassium hydrogen sulfate
+2510,?,(UN No. no longer in use)
+2511,8,2-Chloropropionic acid
+2512,6.1,Aminophenols (o-; m-; p-)
+2513,8,Bromoacetyl bromide
+2514,3,Bromobenzene
+2515,6.1,Bromoform
+2516,6.1,Carbon tetrabromide
+2517,2,"1-Chloro-1,1-difluoroethane or Refrigerant gas R 142b"
+2518,6.1,"1,5,9-Cyclododecatriene"
+2519,?,(UN No. no longer in use)
+2520,3,Cyclooctadienes
+2521,6.1,"Diketene, inhibited"
+2522,6.1,2-Dimethylaminoethyl methacrylate
+2523,?,(UN No. no longer in use)
+2524,3,Ethyl orthoformate
+2525,6.1,Ethyl oxalate
+2526,3,Furfurylamine
+2527,3,"Isobutyl acrylate, inhibited"
+2528,3,Isobutyl isobutyrate
+2529,3,Isobutyric acid
+2530,3,(UN No. no longer in use) Isobutyric anhydride (UN No. longer in use)[1]
+2531,8,"Methacrylic acid, inhibited"
+2532,?,(UN No. no longer in use)
+2533,6.1,Methyl trichloroacetate
+2534,2,Methylchlorosilane
+2535,3,4-Methylmorpholine or n-methylmorpholine
+2536,3,Methyltetrahydrofuran
+2537,?,(UN No. no longer in use) Chlorodifluoroethane (UN No. no longer in use)
+2538,4.1,Nitronaphthalene
+2539,?,(UN No. no longer in use) Octylaldehyde (UN No. no longer in use)
+2540,?,(UN No. no longer in use)
+2541,3,Terpinolene
+2542,6.1,Tributylamine
+2543,?,(UN No.s no longer in use)
+2545,4.2,"Hafnium powder, dry"
+2546,4.2,"Titanium powder, dry"
+2547,5.1,Sodium superoxide
+2548,2,Chlorine pentafluoride
+2549,?,(UN No. no longer in use)
+2550,?,(UN No. no longer in use) Ethyl methyl ketone peroxides (UN No. no longer in use)[1]
+2551,?,(UN No. no longer in use) tert-Butyl peroxydiethylacetate with tert-Butyl peroxybenzoate (UN No. no longer in use)[1]
+2552,6.1,Hexafluoroacetone hydrate
+2553,?,(UN No. no longer in use) Coal tar naphtha (UN No. no longer in use)[1]
+2554,3,Methyl allyl chloride
+2555,4.1,"Nitrocellulose with water with not less than 25 percent water, by mass"
+2556,4.1,"Nitrocellulose, with alcohol with not less than 25 percent alcohol, by mass, and with not more than 12.6 percent nitrogen, by dry mass"
+2557,4.1,"Nitrocellulose, with not more than 12.6 percent nitrogen, by dry mass, or Nitrocellulose mixture with pigment or Nitrocellulose mixture with plasticizer or Nitrocellulose mixture with pigment and plasticizer"
+2558,6.1,Epibromohydrin
+2559,?,(UN No. no longer in use) Chloromethylpropanes (UN No. no longer in use)
+2560,3,2-Methylpentan-2-ol
+2561,3,3-Methyl-1-butene
+2562,?,(UN No. no longer in use) tert-Butyl peroxyisobutyrate (UN No. no longer in use)[1]
+2563,?,(UN No. no longer in use)
+2564,8,"Trichloroacetic acid, solution"
+2565,8,Dicyclohexylamine
+2566,?,(UN No. no longer in use)
+2567,6.1,Sodium pentachlorophenate
+2568,?,(UN No. no longer in use)
+2569,?,"(UN No. no longer in use) Trichloro-s-triazinetrione and its salts, dry (UN No. no longer in use)"
+2570,6.1,Cadmium compounds
+2571,8,Alkylsulfuric acids
+2572,6.1,Phenylhydrazine
+2573,5.1,Thallium chlorate
+2574,6.1,Tricresyl phosphate with more than 3 percent ortho isomer
+2575,?,"(UN No. no longer in use) Vanadium compounds, not otherwise specified (UN No. no longer in use)"
+2576,8,"Phosphorus oxybromide, molten"
+2577,8,Phenylacetyl chloride
+2578,8,Phosphorus trioxide
+2579,8,Piperazine
+2580,8,"Aluminum bromide, solution"
+2581,8,"Aluminum chloride, solution"
+2582,8,"Ferric chloride, solution"
+2583,8,"Alkyl sulfonic acids, solid or Aryl sulfonic acids, solid with more than 5 percent free sulfuric acid"
+2584,8,"Alkyl sulfonic acids, liquid or Aryl sulfonic acids, liquid with more than 5 percent free sulfuric acid"
+2585,8,"Alkyl sulfonic acids, solid or Aryl sulfonic acids, solid with not more than 5 percent free sulfuric acid"
+2586,8,"Alkyl sulfonic acids, liquid or Aryl sulfonic acids, liquid with not more than 5 percent free sulfuric acid"
+2587,6.1,Benzoquinone
+2588,6.1,"Pesticides, solid, toxic, not otherwise specified"
+2589,6.1,Vinyl chloroacetate
+2590,9,"White asbestos (chrysotile, actinolite, anthophyllite, tremolite)"
+2591,2,"Xenon, refrigerated liquid (cryogenic liquids)"
+2592,?,(UN No. no longer in use) Distearyl peroxydicarbonate (UN No. no longer in use)[1]
+2593,?,(UN No. no longer in use) Di-(2-methylbenzoyl)peroxide (UN No. no longer in use)[1]
+2594,?,(UN No. no longer in use) tert-Butyl peroxyneodecanoate (UN No. no longer in use)[1]
+2595,?,(UN No. no longer in use) Dimyristylperoxydicarbonate (UN No. no longer in use)[1]
+2596,?,(UN No. no longer in use) 3-tert-Butyl peroxy-3-phenylphthalide (UN No. no longer in use)[1]
+2597,?,"(UN No. no longer in use) Di-(3,5,5,-trimethyl-1,2-dioxolanyl-3)peroxide (UN No no longer in use)[1]"
+2598,?,"(UN No. no longer in use) Ethyl-3,3-di-(tert-butylperoxy)butyrate (UN No. no longer in use)[1]"
+2599,2,Chlorotrifluoromethane and trifluoromethane azeotropic mixture or Refrigerant gas R 503 with approximately 60 percent chlorotrifluoromethane
+2600,2,"(UN No. no longer in use) Carbon monoxide and hydrogen mixture, compressed (UN No. no longer in use)[1][2]"
+2601,2,Cyclobutane
+2602,2,Dichlorodifluoromethane and difluoroethane azeotropic mixture or Refrigerant gas R 500 with approximately 74 percent dichlorodifluoromethane
+2603,3,Cycloheptatriene
+2604,8,Boron trifluoride diethyl etherate
+2605,3,Methoxymethyl isocyanate
+2606,6.1,Methyl orthosilicate
+2607,3,"Acrolein dimer, stabilized"
+2608,3,Nitropropanes
+2609,6.1,Triallyl borate
+2610,3,Triallylamine
+2611,6.1,Propylene chlorohydrin
+2612,3,Methyl propyl ether
+2613,?,(UN No. no longer in use)
+2614,3,Methallyl alcohol
+2615,3,Ethyl propyl ether
+2616,3,Triisopropyl borate
+2617,3,"Methylcyclohexanols, flammable"
+2618,3,"Vinylanilines, inhibited"
+2619,8,Benzyldimethylamine
+2620,3,Amyl butyrates
+2621,3,Acetyl methyl carbinol
+2622,3,Glycidaldehyde
+2623,4.1,"Firelighters, solid with flammable liquid"
+2624,4.3,Magnesium silicide
+2625,?,(UN No. no longer in use)
+2626,5.1,"Chloric acid aqueous solution, with not more than 10 percent chloric acid"
+2627,5.1,"Nitrites, inorganic, n.o.s."
+2628,6.1,Potassium fluoroacetate
+2629,6.1,Sodium fluoroacetate
+2630,6.1,Selenate or Selenite
+2631,?,(UN No.s no longer in use)
+2642,6.1,Fluoroacetic acid
+2643,6.1,Methyl bromoacetate
+2644,6.1,Methyl iodide
+2645,6.1,Phenacyl bromide
+2646,6.1,Hexachlorocyclopentadiene
+2647,6.1,Malononitrile
+2648,6.1,"1,2-Dibromoethane-3-one"
+2649,6.1,"1,3-Dichloroacetone"
+2650,6.1,"1,1-Dichloro-1-nitroethane"
+2651,6.1,"4,4'-Diaminodiphenylmethane"
+2652,?,(UN No. no longer in use)
+2653,6.1,Benzyl iodide
+2654,?,(UN No. no longer in use)
+2655,6.1,Potassium fluorosilicate
+2656,6.1,Quinoline
+2657,6.1,Selenium disulfide
+2658,6.1,(UN No. no longer in use) Selenium (UN No. no longer in use)
+2659,6.1,Sodium chloroacetate
+2660,6.1,Nitrotoluidines (mono)
+2661,6.1,Hexachloroacetone
+2662,6.1,(UN No. no longer in use) Hydroquinone (UN No. no longer in use)[1]
+2663,?,(UN No. no longer in use)
+2664,6.1,Dibromomethane
+2665,?,(UN No. no longer in use)
+2666,4.3,(UN No. no longer in use) Ethyl cyanoacetate (UN No. no longer in use)
+2667,6.1,Butyltoluenes
+2668,6.1,Chloroacetonitrile
+2669,6.1,"Chlorocresols, liquid or Chlorocresols, solid"
+2670,8,Cyanuric chloride
+2671,6.1,Aminopyridines (o-; m-; p-)
+2672,8,"Ammonia solution, relative density between 0.880 and 0.957 at 15 °C in water, with more than 10 percent but not more than 35 percent ammonia"
+2673,6.1,2-Amino-4-chlorophenol
+2674,6.1,Sodium fluorosilicate
+2675,?,(UN No. no longer in use) Triethylenediamine (UN No. no longer in use)
+2676,2,Stibine
+2677,8,Rubidium hydroxide solution
+2678,8,Rubidium hydroxide
+2679,8,Lithium hydroxide solution
+2680,8,"Lithium hydroxide, monohydrate or Lithium hydroxide, solid"
+2681,8,Caesium hydroxide solution
+2682,8,Caesium hydroxide
+2683,8,Ammonium sulfide solution
+2684,3,Diethylaminopropylamine
+2685,8,"N,N-Diethylethylenediamine"
+2686,8,2-Diethylaminoethanol
+2687,4.1,Dicyclohexylammonium nitrate
+2688,6.1,1-Chloro-3-bromopropane
+2689,6.1,Glycerol alpha-monochlorohydrin
+2690,6.1,"N,n-Butyl imidazole"
+2691,8,Phosphorus pentabromide
+2692,8,Boron tribromide
+2693,8,"Bisulfites, aqueous solutions, n.o.s."
+2694,?,(UN No.s no longer in use)
+2698,8,Tetrahydrophthalic anhydrides with more than 0.05 percent of maleic anhydride
+2699,8,Trifluoroacetic acid
+2700,?,(UN No. no longer in use)
+2701,?,(UN No.s no longer in use)
+2703,?,(UN No. no longer in use) Isopropyl mercaptan (UN No. no longer in use)[1]
+2704,?,(UN No. no longer in use) Propyl mercaptan (UN No. no longer in use)[1]
+2705,8,1-Pentol aka (2E)-3-Methyl-2-penten-4-yn-1-ol[2]
+2706,?,(UN No. no longer in use) Diethylcarbinol (UN No. longer in use)[1]
+2707,3,Dimethyldioxanes
+2708,?,(UN No. no longer in use) Butoxyl (UN No. no longer in use)[1]
+2709,3,Butyl benzenes
+2710,3,Dipropyl ketone
+2711,?,(UN No. no longer in use) Dibromobenzene (UN No. no longer in use)[1]
+2712,?,(UN No. no longer in use)
+2713,6.1,Acridine
+2714,4.1,Zinc resinate
+2715,4.1,Aluminum resinate
+2716,6.1,"1,4-Butynediol"
+2717,4.1,"Camphor, synthetic"
+2718,?,(UN No. no longer in use) Tripropylaluminum (UN No. no longer in use)[1]
+2719,5.1,Barium bromate
+2720,5.1,Chromium nitrate
+2721,5.1,Copper chlorate
+2722,5.1,Lithium nitrate
+2723,5.1,Magnesium chlorate
+2724,5.1,Manganese nitrate
+2725,5.1,Nickel nitrate
+2726,5.1,Nickel nitrite
+2727,6.1,Thallium nitrate
+2728,5.1,Zirconium nitrate
+2729,6.1,Hexachlorobenzene
+2730,6.1,Nitroanisole
+2731,?,(UN No. no longer in use)
+2732,6.1,Nitrobromobenzenes liquid or Nitrobromobenzenes solid
+2733,3,"Amines, flammable, corrosive, n.o.s. or Polyamines, flammable, corrosive, n.o.s."
+2734,8,"Amines, liquid, corrosive, flammable, n.o.s. or Polyamines, liquid, corrosive, flammable, n.o.s."
+2735,8,"Amines, liquid, corrosive, n.o.s. or Polyamines, liquid, corrosive, n.o.s."
+2736,?,(UN No. no longer in use)
+2737,?,(UN No. no longer in use) Bis-aminopropylamine (UN No. no longer in use)
+2738,6.1,N-Butylaniline
+2739,8.1,Butyric anhydride
+2740,6.1,n-Propyl chloroformate
+2741,5.1,Barium hypochlorite with more than 22 percent available chlorine
+2742,6.1,"Chloroformates, toxic, corrosive, flammable, n.o.s."
+2743,6.1,n-Butyl chloroformate
+2744,6.1,Cyclobutyl chloroformate
+2745,6.1,Chloromethyl chloroformate
+2746,6.1,Phenyl chloroformate
+2747,6.1,tert-Butylcyclohexylchloroformate
+2748,6.1,2-Ethylhexyl chloroformate
+2749,3,Tetramethylsilane
+2750,6.1,"1,3-Dichloropropan-2-ol"
+2751,8,Diethylthiophosphoryl chloride
+2752,3,"1,2-Epoxy-3-ethoxypropane"
+2753,6.1,N-Ethylbenzyltoluidines liquid or N-Ethylbenzyltoluidines solid
+2754,6.1,N-Ethyltoluidines
+2755,?,(UN No. no longer in use) 3-Chloroperoxybenzoic acid (UN No. no longer in use)[1]
+2756,?,"(UN No. no longer in use) Organic peroxides, mixture (UN No. no longer in use)[1]"
+2757,6.1,"Carbamate pesticides, solid, toxic"
+2758,3,"Carbamate pesticides, liquid, flammable, toxic, flashpoint less than 23 °C"
+2759,6.1,"Arsenical pesticides, solid, toxic"
+2760,3,"Arsenical pesticides, liquid, flammable, toxic, flashpoint less than 23 °C"
+2761,6.1,"Organochlorine pesticides, solid, toxic"
+2762,3,"Organochlorine pesticides liquid, flammable, toxic, flashpoint less than 23 °C"
+2763,6.1,"Triazine pesticides, solid, toxic"
+2764,3,"Triazine pesticides, liquid, flammable, toxic, flashpoint less than 23 °C"
+2765,?,"(UN No. no longer in use) Phenoxy pesticides, solid, toxic, n.o.s. (UN No. no longer in use)[1]"
+2766,?,"(UN No. no longer in use) Phenoxy pesticides, liquid, flammable, toxic, n.o.s. (UN No. no longer in use)[1]"
+2767,?,"(UN No. no longer in use) Phenylurea pesticides, solid, toxic, n.o.s. (UN No. no longer in use)[1]"
+2768,?,"(UN No. no longer in use) Phenylurea pesticides, liquid, flammable, toxic, n.o.s. (UN No. no longer in use)[1]"
+2769,?,"(UN No. no longer in use) Benzoic derivative pesticides, solid, toxic, n.o.s. (UN No. no longer in use)[1]"
+2770,?,"(UN No. no longer in use) Benzoic derivative pesticides, liquid, flammable, toxic, n.o.s. (UN No. no longer in use)[1]"
+2771,6.1,"Thiocarbamate pesticides, solid, toxic"
+2772,3,"Thiocarbamate pesticide, liquid, flammable, toxic, flashpoint less than 23 °C"
+2773,?,"(UN No. no longer in use) Phthalimide derivative pesticides, solid, toxic, n.o.s. (UN No. no longer in use)[1]"
+2774,?,"(UN No. no longer in use) Phthalimide derivative pesticides, liquid, flammable, toxic, n.o.s. (UN No. no longer in use)[1]"
+2775,6.1,"Copper based pesticides, solid, toxic"
+2776,3,"Copper based pesticides, liquid, flammable, toxic, flashpoint less than 23 °C"
+2777,6.1,"Mercury based pesticides, solid, toxic"
+2778,3,"Mercury based pesticides, liquid, flammable, toxic, flashpoint less than 23 °C"
+2779,6.1,"Substituted nitrophenol pesticides, solid, toxic"
+2780,3,"Substituted nitrophenol pesticides, liquid, flammable, toxic, flashpoint less than 23 °C"
+2781,6.1,"Bipyridilium pesticides, solid, toxic"
+2782,3,"Bipyridilium pesticides, liquid, flammable, toxic, flashpoint less than 23 °C"
+2783,6.1,"Organophosphorus pesticides, solid, toxic"
+2784,3,"Organophosphorus pesticides, liquid, flammable, toxic, flashpoint less than 23 °C"
+2785,6.1,4-Thiapentanal
+2786,6.1,"Organotin pesticides, solid, toxic"
+2787,3,"Organotin pesticides, liquid, flammable, toxic, flashpoint less than 23 °C"
+2788,6.1,"Organotin compounds, liquid, n.o.s."
+2789,8,"Acetic acid, glacial or Acetic acid solution, with more than 80 percent acid, by mass"
+2790,8,"Acetic acid solution, not less than 50 percent but not more than 80 percent acid, by mass or Acetic acid solution, with more than 10 percent and less than 50 percent acid, by mass"
+2791,?,(UN No. no longer in use) Aircraft thrust device (UN No. no longer in use)[1]
+2792,?,(UN No. no longer in use) Aircraft rocket engine igniter (UN No. no longer in use)[1]
+2793,4.2,Ferrous metal borings or Ferrous metal shavings or Ferrous metal turnings or Ferrous metal cuttings in a form liable to self-heating
+2794,8,"Batteries, wet, filled with acid, electric storage"
+2795,8,"Batteries, wet, filled with alkali, electric storage"
+2796,8,"Battery fluid, acid or Sulfuric acid with not more than 51 percent acid"
+2797,8,"Battery fluid, alkali"
+2798,8,Phenylphosphorus Dichloride
+2799,8,Phenylphosphorus Thiodichloride
+2800,8,"Batteries, wet, non-spillable, electric storage"
+2801,8,"Dyes, liquid, corrosive, n.o.s. or Dye intermediates, liquid, corrosive, n.o.s."
+2802,8,Copper(II) chloride
+2803,8,Gallium
+2804,?,(UN No. longer in use)
+2805,4.3,"Lithium hydride, fused solid"
+2806,4.3,Lithium nitride
+2807,9,Magnetized material
+2808,8,(UN No. no longer in use) Waste Mercury contained in manufactured articles (UN No. no longer in use)[1]
+2809,8,Mercury or Mercury contained in manufactured articles
+2810,6.1,"Toxic liquids, organic, n.o.s. or Toxic, liquids, organic, n.o.s. Inhalation Hazard, Packing Group I, Zone A or B"
+2811,6.1,"Toxic solid, organic, n.o.s."
+2812,8,"Sodium aluminate, solid"
+2813,4.3,"Water-reactive solid, n.o.s."
+2814,6.2,"Infectious substance, affecting humans or Infectious Substance, affecting humans (Risk Group 2)."
+2815,8,N-Aminoethylpiperazine
+2816,?,(UN No. no longer in use)
+2817,8,"Ammonium hydrogendifluoride, solution"
+2818,8,"Ammonium polysulfide, solution"
+2819,8,Amyl acid phosphate
+2820,8,Butyric acid
+2821,6.1,Phenol solutions
+2822,6.1,2-Chloropyridine
+2823,8,Crotonic acid liquid or Crotonic acid solid
+2824,?,(UN No. no longer in use)
+2825,?,"(UN No. no longer in use) N,N-Diisopropyl ethanolamine (UN No. no longer in use)[2]"
+2826,8,Ethyl chlorothioformate
+2827,?,(UN No.s no longer in use)
+2829,8,Caproic acid
+2830,4.3,Lithium ferrosilicon
+2831,6.1,"1,1,1-Trichloroethane"
+2832,?,(UN No.s no longer in use)
+2834,8,Phosphorous acid
+2835,4.3,Sodium aluminum hydride
+2836,?,(UN No. no longer in use)
+2837,8,"Bisulfate, aqueous solution"
+2838,3,"Vinyl butyrate, inhibited"
+2839,6.1,Aldol
+2840,3,Butyraldoxime
+2841,3,Di-n-amylamine
+2842,3,Nitroethane
+2843,?,(UN No. no longer in use)
+2844,4.3,Calcium manganese silicon
+2845,4.2,"Pyrophoric liquids, organic, n.o.s."
+2846,4.2,"Pyrophoric solids, organic, n.o.s."
+2847,?,(UN No.s no longer in use)
+2849,6.1,3-Chloropropan-1-ol
+2850,3,Propylene tetramer
+2851,8,Boron trifluoride dihydrate
+2852,4.1,"Dipicryl sulfide, wetted with not less than 10 percent water, by mass"
+2853,6.1,Magnesium fluorosilicate
+2854,6.1,Ammonium fluorosilicate
+2855,6.1,Zinc fluorosilicate
+2856,6.1,"Fluorosilicates, n.o.s."
+2857,2,"Refrigerating machines, containing nonflammable, nontoxic, liquefied gas or ammonia solution (UN2672)"
+2858,4.1,"Zirconium, dry, coiled wire, finished metal sheets, strip (thinner than 254 micrometres but not thinner than 18 micrometres)"
+2859,6.1,Ammonium metavanadate
+2860,6.1,(UN No. no longer in use) Vanadium trioxide (UN No. no longer in use)[2][3]
+2861,6.1,Ammonium polyvanadate
+2862,6.1,"Vanadium pentoxide, nonfused form"
+2863,6.1,Sodium ammonium vanadate
+2864,6.1,Potassium metavanadate
+2865,8,Hydroxylamine sulfate
+2866,?,(UN No. no longer in use)
+2867,?,(UN No. no longer in use) Ink (UN No. no longer in use)[2]
+2868,?,(UN No. no longer in use) Resin solution (UN No. no longer in use)[2]
+2869,8,Titanium trichloride mixtures
+2870,4.2,Aluminum borohydride or Aluminum borohydride in devices
+2871,6.1,Antimony powder
+2872,6.1,Dibromochloropropane
+2873,6.1,Dibutylaminoethanol
+2874,6.1,Furfuryl alcohol
+2875,6.1,Hexachlorophene
+2876,6.1,Resorcinol
+2877,?,(UN No. no longer in use) Thiourea (UN No. no longer in use)[2]
+2878,4.1,Titanium sponge granules or Titanium sponge powders
+2879,8,Selenium oxychloride
+2880,5.1,"Calcium hypochlorite, hydrated or Calcium hypochlorite, hydrated mixtures, with not less than 5.5 percent but not more than 10 percent water"
+2881,4.2,"Metal catalyst, dry"
+2882,?,(UN No. no longer in use)
+2883,?,"(UN No. no longer in use) 2,2-Di-(tert-butylperoxy)propane (UN No. no longer in use)[2]"
+2884,?,"(UN No. no longer in use) 2,2-Di-(tert-butylperoxy)propane (UN No. no longer in use)[2]"
+2885,?,"(UN No. no longer in use) 1,1-Di-(tertbutylperoxy) cyclohexane (UN No. no longer in use)[2]"
+2886,?,"(UN No. no longer in use) tert-Butyl peroxy-2-ethylhexanoate, with 2,2-Di-(tert-butylperoxy)butane (UN No. no longer in use)[2]"
+2887,?,(UN No. no longer in use) tert-Butyl peroxy-2-ethylhexanoate]] (UN No. no longer in use)[2]
+2888,?,(UN No. no longer in use) tert-Butyl peroxy-2-ethylhexanoate (UN No. no longer in use)[2]
+2889,?,(UN No. no longer in use) Diisotridecyl peroxydicarbonate (UN No. no longer in use)[2]
+2900,6.2,"Infectious substance, affecting animals"
+2901,2.3,Bromine chloride
+2902,6.1,"Pesticides, liquid, toxic, n.o.s."
+2903,6.1,"Pesticides, liquid, toxic, flammable, flashpoint not less than 23 °C"
+2904,8,"Chlorophenolates, liquid or Phenolates, liquid"
+2905,8,"Chlorophenolates, solid or Phenolates, solid"
+2906,-,"(UN No. no longer in use) Triisocyanatoisocyanurate of Isophoronediisocyanate, solution (UN No. no longer in use)[1]"
+2907,4.1,"Isosorbide dinitrate mixture with not less than 60 percent lactose, mannose, starch or calcium hydrogen phosphate"
+2908,7,"Radioactive material, excepted package—empty packaging"
+2909,7,"Radioactive material, excepted package-articles manufactured from natural or depleted uranium or natural thorium"
+2910,7,"Radioactive material, excepted package-limited quantity of material"
+2911,7,"Radioactive material, excepted package-instruments or articles"
+2912,7,"Radioactive material, low specific activity (LSA-I) [non fissile or fissile-excepted] Radon gas"
+2913,7,"Radioactive material, surface contaminated objects (SCO-I or SCO-II) [non fissile or fissile-excepted]"
+2914,-,(UN No. no longer in use)
+2915,7,"Radioactive material, Type A package [non-special form, non fissile or fissile-excepted]"
+2916,7,"Radioactive material, Type B(U) package [non fissile or fissile-excepted]"
+2917,7,"Radioactive material, Type B(M) package [non fissile or fissile-excepted]"
+2918,(7),"(UN No. no longer in use) Radioactive material, fissile, n.o.s. (UN No. no longer in use)[2]"
+2919,7,"Radioactive material, transported under special arrangement, [non fissile or fissile excepted]"
+2920,8,"Corrosive liquids, flammable, n.o.s."
+2921,8,"Corrosive solids, flammable, n.o.s."
+2922,8(6.1),"Corrosive liquids, toxic, n.o.s."
+2923,8,"Corrosive solids, toxic, n.o.s."
+2924,3,"Flammable liquid, corrosive, n.o.s."
+2925,4.1,"Flammable solids, corrosive, organic, n.o.s."
+2926,4.1,"Flammable solids, toxic, organic, n.o.s."
+2927,6.1,"Toxic liquid, corrosive, organic, n.o.s. or Toxic liquid, corrosive, organic, n.o.s. Inhalation Hazard, Packing Group I, Zone A or B"
+2928,6.1,"Toxic solid, corrosive, organic, n.o.s."
+2929,6.1,"Toxic liquid, flammable, organic, n.o.s. or Toxic liquid, flammable, organic, n.o.s. Inhalation Hazard, Packing Group I, Zone A or B"
+2930,6.1,"Toxic solids, flammable, organic, n.o.s."
+2931,6.1,Vanadyl sulfate
+2932,?,(UN No. no longer in use)
+2933,3,Methyl 2-chloropropionate
+2934,3,Isopropyl 2-chloropropionate
+2935,3,Ethyl 2-chloropropionate
+2936,6.1,Thiolactic acid
+2937,6.1,alpha-Methylbenzyl alcohol
+2938,?,(UN No. no longer in use) Methyl benzoate (UN No. no longer in use)[2]
+2939,?,(UN No. no longer in use)
+2940,4.2,9-Phosphabicyclo-nonanes (Cyclooctadiene phosphines)
+2941,6.1,Fluoroanilines
+2942,6.1,2-Trifluoromethylaniline
+2943,3,Tetrahydrofurfurylamine
+2944,-,(UN No. no longer in use) 4-Fluoroaniline (UN No. no longer in use)[1]
+2945,8,N-Methylbutylamine
+2946,6.1,2-Amino-5-diethylaminopentane
+2947,3,Isopropyl chloroacetate
+2948,6.1,3-Trifluoromethylaniline
+2949,8,"Sodium hydrosulfide, with not less than 25 percent water of crystallization"
+2950,4.3,"Magnesium granules, coated particle size not less than 149 micrometres"
+2951,?,(UN No. no longer in use)
+2952,?,(UN No. no longer in use) Azodiisobutyronitrile (UN No. no longer in use)[1]
+2953,?,"(UN No. no longer in use) 2,2´-Azodi-(2,4-dimethylvaleronitrile) (UN No. no longer in use)[1]"
+2954,?,"(UN No. no longer in use) Azodi-(1,1´-hexahydrobenzonitrile) (UN No. no longer in use)[1]"
+2955,?,"(UN No. no longer in use) 2,2´-Azodi-(2,4-dimethyl-4-methoxyvaleronitrile) (UN No. no longer in use)[1]"
+2956,4.1,"5-tert-Butyl-2,4,6-trinitro-m-xylene or Musk xylene"
+2957,?,(UN No.s no longer in use)
+2965,4.3,Boron trifluoride dimethyl etherate
+2966,6.1,Thioglycol
+2967,8,Sulfamic acid
+2968,4.3,"Maneb stabilized or Maneb preparations, stabilized against self-heating"
+2969,9,Castor beans or Castor meal or Castor pomace or Castor flake
+2970,-,(UN No.s no longer in use)
+2974,7,"(UN No. no longer in use) Radioactive material, special form, n.o.s. (UN No. no longer in use)[2]"
+2975,7,"(UN No. no longer in use) Thorium metal, pyrophoric (UN No. no longer in use)[2]"
+2976,7,"(UN No. no longer in use) Thorium nitrate, solid (UN No. no longer in use)[2]"
+2977,7,"Uranium hexafluoride, fissile"
+2978,7,"Uranium hexafluoride, [non fissile or fissile-excepted]"
+2979,7,"(UN No. no longer in use) Uranium metal, pyrophoric (UN No. no longer in use)[3]"
+2980,7,(UN No. no longer in use) Uranyl nitrate hexahydrate solution (UN No. no longer in use)[3]
+2981,7,"(UN No. no longer in use) Uranyl nitrate, solid (UN No. no longer in use)[3]"
+2982,7,"(UN No. no longer in use) Radioactive material, n.o.s (UN No. no longer in use)[3]"
+2983,3,Ethylene oxide and propylene oxide mixtures with not more than 30 percent ethylene oxide
+2984,5.1,"Hydrogen peroxide, aqueous solutions with not less than 8 percent but less than 20 percent hydrogen peroxide (stabilized as necessary)"
+2985,3,"Chlorosilanes, flammable, corrosive, n.o.s."
+2986,3,"Chlorosilanes, corrosive, flammable, n.o.s."
+2987,8,"Chlorosilanes, corrosive, n.o.s."
+2988,4.3,"Chlorosilanes, water-reactive, flammable, corrosive, n.o.s."
+2989,4.1,"Lead phosphite, dibasic"
+2990,9,"Life-saving appliances, self-inflating"
+2991,3,"Carbamate pesticide, liquid, toxic, flammable, flashpoint not less than 23 °C"
+2992,6.1,"Carbamate pesticides, liquid, toxic"
+2993,3,"Arsenical pesticides, liquid, toxic, flammable, flashpoint not less than 23 °C"
+2994,6.1,"Arsenical pesticides, liquid, toxic"
+2995,6.1,"Organochlorine pesticides, liquid, toxic, flammable, flashpoint not less than 23 °C"
+2996,6.1,"Organochlorine pesticide, liquid, toxic"
+2997,6.1,"Triazine pesticides, liquid, toxic, flammable, flashpoint not less than 23 °C"
+2998,6.1,"Triazine pesticides, liquid, toxic"
+2999,?,"(UN No. no longer in use) Phenoxy pesticides, liquid, toxic, flammable (UN No. no longer in use)[3]"
+3000,?,"(UN No. no longer in use) Phenoxy pesticides, liquid, toxic (UN No. no longer in use)[3]"
+3001,6.1,"(UN No. no longer in use) Phenoxy pesticides, liquid, toxic, flammable (UN No. no longer in use)[1]"
+3002,(6.1),"(UN No. no longer in use) Phenyl urea pesticides, liquid, toxic (UN No. no longer in use)[1][2]"
+3003,(6.1),"(UN No. no longer in use) Benzoic derivative pesticides, liquid, toxic, flammable (UN No. no longer in use)[1]"
+3004,6.1,"(UN No. no longer in use) Benzoic derivative pesticides, liquid, toxic (UN No. no longer in use)[1]"
+3005,6.1,"Thiocarbamate pesticides, liquid, toxic, flammable, flashpoint not less than 23 °C"
+3006,6.1,"Thiocarbamate pesticide, liquid, toxic"
+3007,(6.1),"(UN No. no longer in use) Phthalimide derivative pesticides, liquid, toxic, flammable (UN No. no longer in use)[1]"
+3008,6.1,"(UN No. no longer in use) Phthalimide derivative pesticides, liquid, toxic (UN No. no longer in use)[1]"
+3009,6.1,"Copper based pesticides, liquid, toxic, flammable, flashpoint not less than 23 °C"
+3010,6.1,"Copper based pesticides, liquid, toxic"
+3011,6.1,"Mercury based pesticides, liquid, toxic, flammable, flashpoint not less than 23 °C"
+3012,6.1,"Mercury based pesticides, liquid, toxic"
+3013,6.1,"Substituted nitrophenol pesticides, liquid, toxic, flammable, flashpoint not less than 23 °C"
+3014,6.1,"Substituted nitrophenol pesticides, liquid, toxic"
+3015,6.1,"Bipyridilium pesticides, liquid, toxic, flammable, flashpoint not less than 23 °C"
+3016,6.1,"Bipyridilium pesticides, liquid, toxic"
+3017,6.1,"Organophosphorus pesticides, liquid, toxic, flammable, flashpoint not less than 23 °C"
+3018,6.1,"Organophosphorus pesticides, liquid, toxic"
+3019,6.1,"Organotin pesticides, liquid, toxic, flammable, flashpoint not less than 23 °C"
+3020,6.1,"Organotin pesticides, liquid, toxic"
+3021,3,"Pesticides, liquid, flammable, toxic, flashpoint less than 23 °C"
+3022,3,"1,2-Butylene oxide, stabilized"
+3023,6.1,2-Methyl-2-heptanethiol
+3024,3,"Coumarin derivative pesticides, liquid, flammable, toxic, flashpoint less than 23 °C"
+3025,6.1,"Coumarin derivative pesticides, liquid, toxic, flammable, flashpoint not less than 23 °C"
+3026,6.1,"Coumarin derivative pesticides, liquid, toxic"
+3027,6.1,"Coumarin derivative pesticides, solid, toxic"
+3028,8,"Batteries, dry, containing potassium hydroxide solid, electric, storage"
+3029,?,(UN Nos. no longer in use)
+3048,6.1,Aluminium phosphide pesticides
+3049,(4.2),"(UN No. no longer in use) Metal alkyl halides, water-reactive, n.o.s. or Metal aryl halides, water-reactive, n.o.s. (UN No. no longer in use)[3]"
+3050,(4.2),"(UN No. no longer in use) Metal alkyl hydrides, water-reactive, n.o.s. or Metal aryl hydrides, water-reactive, n.o.s. (UN No. no longer in use)[3]"
+3051,(4.2),(UN No. no longer in use) Aluminium alkyls (UN No. no longer in use)[3]
+3052,(4.2),(UN No. no longer in use) Aluminium alkyl halides (UN No. no longer in use)[3]
+3053,(4.2),(UN No. no longer in use) Magnesium alkyls (UN No. no longer in use)[3]
+3054,3,Cyclohexyl mercaptan
+3055,8,2-(2-Aminoethoxy) ethanol
+3056,3,n-Heptaldehyde
+3057,2,Trifluoroacetyl chloride
+3058,?,"(UN Nos. no longer in use) (Previously a selection of organic peroxides, class 5.2. See UN 3101 to UN 3120)"
+3064,3,"Nitroglycerin, solution in alcohol, with more than 1 percent but not more than 5 percent nitroglycerin"
+3065,3,Alcoholic beverages
+3066,8,Paint or Paint related material
+3067,?,(UN Nos. no longer in use)
+3070,2.2,Ethylene oxide and dichlorodifluoromethane mixture with not more than 12.5 percent ethylene oxide
+3071,6.1,"Mercaptans, liquid, toxic, flammable, n.o.s. or Mercaptan mixtures, liquid, toxic, flammable, n.o.s., flashpoint not less than 23 °C"
+3072,9,"Life-saving appliances, not self-inflating containing dangerous goods as equipment"
+3073,6.1,"Vinylpyridines, inhibited"
+3074,?,(UN Nos. no longer in use)
+3076,(4.2),(UN No. no longer in use) Aluminium alkyl hydrides (UN No. no longer in use)[4]
+3077,9,"Environmentally hazardous substance, solid, n.o.s. (not including waste)"
+3078,4.3,"Cerium, turnings or gritty powder"
+3079,3,"Methacrylonitrile, inhibited"
+3080,6.1,"Isocyanates, toxic, flammable, n.o.s. or Isocyanate solutions, toxic, flammable, n.o.s. flashpoint not less than 23 °C but not more than 61 °C and boiling point less than 300 °C"
+3081,?,(UN No. no longer in use)
+3082,9,"Environmentally hazardous substance, liquid, n.o.s."
+3083,2.3,Perchloryl fluoride
+3084,8,"Corrosive solid, oxidizing, n.o.s."
+3085,5.1,"Oxidizing solid, corrosive, n.o.s."
+3086,6.1,"Toxic solid, oxidizing, n.o.s."
+3087,5.1,"Oxidizing solid, toxic, n.o.s."
+3088,4.2,"Self-heating solid, organic, n.o.s."
+3089,4.1,"Metal powder, flammable, n.o.s."
+3090,9,Lithium metal batteries
+3091,9,Lithium metal batteries contained in equipment or Lithium metal batteries packed with equipment
+3092,3,1-Methoxy-2-propanol
+3093,8,"Corrosive liquid, oxidizing, n.o.s."
+3094,8,"Corrosive liquid, water-reactive, n.o.s."
+3095,8,"Corrosive solid, self-heating, n.o.s."
+3096,8,"Corrosive solids, water-reactive, n.o.s."
+3097,4.1,"Flammable solid, oxidizing, n.o.s."
+3098,5.1,"Oxidizing liquid, corrosive, n.o.s."
+3099,5.1,"Oxidizing liquid, toxic, n.o.s."
+3100,5.1,"Oxidizing solid, self-heating, n.o.s."
+3101,5.2,"Organic peroxide type B, liquid"
+3102,5.2,"Organic peroxide type B, solid"
+3103,5.2,"Organic peroxide type C, liquid"
+3104,5.2,"Organic peroxide type C, solid"
+3105,5.2,"Organic peroxide type D, liquid"
+3106,5.2,"Organic peroxide type D, solid"
+3107,5.2,"Organic peroxide type E, liquid"
+3108,5.2,"Organic peroxide type E, solid"
+3109,5.2,"Organic peroxide type F, liquid"
+3110,5.2,"Organic peroxide type F, solid"
+3111,5.2,"Organic peroxide type B, liquid, temperature controlled"
+3112,5.2,"Organic peroxide type B, solid, temperature controlled"
+3113,5.2,"Organic peroxide type C, liquid, temperature controlled"
+3114,5.2,"Organic peroxide type C, solid, temperature controlled"
+3115,5.2,"Organic peroxide type D, liquid, temperature controlled"
+3116,5.2,"Organic peroxide type D, solid, temperature controlled"
+3117,5.2,"Organic peroxide type E, liquid, temperature controlled"
+3118,5.2,"Organic peroxide type E, solid, temperature controlled"
+3119,5.2,"Organic peroxide type F, liquid, temperature controlled"
+3120,5.2,"Organic peroxide type F, solid, temperature controlled"
+3121,5.1,"Oxidizing solid, water-reactive, n.o.s."
+3122,6.1,"Toxic liquids, oxidizing, n.o.s. or Toxic liquids, oxidizing, n.o.s. Inhalation Hazard, Packing Group I, Zone A or B"
+3123,6.1,"Toxic liquids, water-reactive, n.o.s. or Toxic liquids, water-reactive, n.o.s. Inhalation Hazard, Packing Group I, Zone A or B"
+3124,6.1,"Toxic solids, self-heating, n.o.s."
+3125,6.1,"Toxic solids, water-reactive, n.o.s."
+3126,4.2,"Self-heating solid, corrosive, organic, n.o.s."
+3127,4.2,"Self-heating solid, oxidizing, n.o.s."
+3128,4.2,"Self-heating solid, toxic, organic, n.o.s."
+3129,4.3,"Water-reactive liquid, corrosive, n.o.s."
+3130,4.3,"Water-reactive liquid, toxic, n.o.s."
+3131,4.3,"Water-reactive solid, corrosive, n.o.s."
+3132,4.3,"Water-reactive solid, flammable, n.o.s."
+3133,4.3,"Water-reactive solid, oxidizing, n.o.s."
+3134,4.3,"Water-reactive solid, toxic, n.o.s."
+3135,4.3,"Water-reactive solid, self-heating, n.o.s."
+3136,2.2,"Trifluoromethane, refrigerated liquid"
+3137,5.1,"Oxidizing solid, flammable, n.o.s."
+3138,2.1,"Ethylene, acetylene and propylene mixture, refrigerated liquid, with not less than 71,5% ethylene, not more than 22,5% acetylene and not more than 6% propylene"
+3139,5.1,"Oxidizing liquid, n.o.s."
+3140,6.1,"Alkaloids, liquid, n.o.s. or Alkaloid salts, liquid, n.o.s."
+3141,6.1,"Antimony compound, inorganic, liquid, n.o.s."
+3142,6.1,"Disinfectant, liquid, toxic, n.o.s."
+3143,6.1,"Dye, solid, toxic, n.o.s. or Dye intermediate, solid, toxic, n.o.s."
+3144,6.1,"Nicotine compound, liquid, n.o.s. or Nicotine preparation, liquid, n.o.s."
+3145,8,"Alkylphenols, liquid, n.o.s. (including C2-C12 homologues)"
+3146,6.1,"Organotin compounds, solid, n.o.s."
+3147,8,"Dye, solid, corrosive, n.o.s. or Dye intermediate, solid, corrosive, n.o.s."
+3148,4.3,"Water-reactive liquid, n.o.s."
+3149,5.1,"Hydrogen peroxide and peroxyacetic acid mixtures, stabilized, with acids, water, and not more than 5 percent peroxyacetic acid"
+3150,2.1,"Devices, small, hydrocarbon gas powered or Hydrocarbon gas refills for small devices, with release device"
+3151,9,"Polyhalogenated biphenyls, liquid or Polyhalogenated terphenyls, liquid"
+3152,9,"Polyhalogenated biphenyls, solid or Polyhalogenated terphenyls, solid"
+3153,2.1,Perfluoro(methyl vinyl ether)
+3154,2.1,Perfluoro(ethyl vinyl ether)
+3155,6.1,Pentachlorophenol
+3156,2.2,"Compressed gas, oxidizing, n.o.s."
+3157,2.2,"Liquefied gas, oxidizing, n.o.s."
+3158,2.2,"Gas, refrigerated liquid, n.o.s. (cryogenic liquid)"
+3159,2.2,"1,1,1,2-Tetrafluoroethane or Refrigerant gas R 134a"
+3160,2.3,"Liquefied gas, toxic, flammable, n.o.s. Inhalation Hazard Zone A, B, C, or D"
+3161,2.1,"Liquefied gas, flammable, n.o.s."
+3162,2.3,"Liquefied gas, toxic, n.o.s. Inhalation Hazard Zone A, B, C, or D"
+3163,2.2,"Liquefied gas, n.o.s."
+3164,2.2,"Articles, pressurized pneumatic or Hydraulic (containing non-flammable gas)"
+3165,3,Aircraft hydraulic power unit fuel tank (containing a mixture of anhydrous hydrazine and monomethyl hydrazine) (M86 fuel)
+3166,9,"Engines, internal combustion, flammable gas powered or Engines, internal combustion, flammable liquid powered or Vehicle, flammable gas powered or Vehicle, flammable liquid powered"
+3167,2.1,"Gas sample, non-pressurized, flammable, n.o.s., not refrigerated liquid"
+3168,2.3,"Gas sample, non-pressurized, toxic, flammable, n.o.s., not refrigerated liquid"
+3169,2.3,"Gas sample, non-pressurized, toxic, n.o.s., not refrigerated liquid"
+3170,4.3,Aluminum smelting by-products or Aluminum remelting by-products or Aluminum Dross
+3171,9,Battery-powered vehicle or Battery-powered equipment
+3172,6.1,"Toxins, extracted from living sources, liquid, n.o.s"
+3173,?,(UN No. no longer in use)
+3174,4.2,Titanium disulfide
+3175,4.1,"Solids containing flammable liquid, n.o.s."
+3176,4.1,"Flammable solid, organic, molten, n.o.s."
+3177,?,(UN No. no longer in use)
+3178,4.1,"Flammable solid, inorganic, n.o.s."
+3179,4.1,"Flammable solid, toxic, inorganic, n.o.s."
+3180,4.1,"Flammable solid, corrosive, inorganic, n.o.s."
+3181,4.1,"Metal salts of organic compounds, flammable, n.o.s."
+3182,4.1,"Metal hydrides, flammable, n.o.s."
+3183,4.2,"Self-heating liquid, organic, n.o.s."
+3184,4.2,"Self-heating liquid, toxic, organic, n.o.s."
+3185,4.2,"Self-heating liquid, corrosive, organic, n.o.s."
+3186,4.2,"Self-heating liquid, inorganic, n.o.s."
+3187,4.2,"Self-heating liquid, toxic, inorganic, n.o.s."
+3188,4.2,"Self-heating liquid, corrosive, inorganic, n.o.s."
+3189,4.2,"Metal powder, self-heating, n.o.s."
+3190,4.2,"Self-heating solid, inorganic, n.o.s."
+3191,4.2,"Self-heating solid, toxic, inorganic, n.o.s."
+3192,4.2,"Self-heating solid, corrosive, inorganic, n.o.s."
+3193,?,(UN No. no longer in use)
+3194,4.2,"Pyrophoric liquid, inorganic, n.o.s."
+3195,?,(UN Nos. no longer in use)
+3196,?,(UN Nos. no longer in use)
+3197,?,(UN Nos. no longer in use)
+3198,?,(UN Nos. no longer in use)
+3199,?,(UN Nos. no longer in use)
+3200,4.2,"Pyrophoric solid, inorganic, n.o.s."
+3201,?,(UN number no longer in use)
+3202,?,(UN number no longer in use)
+3203,(4.2),"(UN number no longer in use) Pyrophoric organometallic compound, water-reactive, n.o.s. (UN number no longer in use)[1]"
+3204,?,(UN number no longer in use)
+3205,4.2,"Alkaline earth metal alcoholates, n.o.s."
+3206,4.2,"Alkali metal alcoholates, self-heating, corrosive, n.o.s."
+3207,(4.3),"(UN number no longer in use) Organometallic compound or Compound solution or Compound dispersion, water-reactive, flammable, n.o.s. (UN number no longer in use)[1]"
+3208,4.3,"Metallic substance, water-reactive, n.o.s."
+3209,4.3,"Metallic substance, water-reactive, self-heating, n.o.s."
+3210,5.1,"Chlorates, inorganic, aqueous solutions, n.o.s."
+3211,5.1,"Perchlorates, inorganic, aqueous solution, n.o.s."
+3212,5.1,"Hypochlorites, inorganic, n.o.s."
+3213,5.1,"Bromates, inorganic, aqueous solution, n.o.s."
+3214,5.1,"Permanganates, inorganic, aqueous solution, n.o.s."
+3215,5.1,"Persulfates, inorganic, n.o.s."
+3216,5.1,"Persulfates, inorganic, aqueous solution, n.o.s."
+3217,?,"(UN number no longer in use) Percarbonates, inorganic, n.o.s. (UN number no longer in use)[2]"
+3218,5.1,"Nitrates, inorganic, aqueous solution, n.o.s."
+3219,5.1,"Nitrites, inorganic, aqueous solution, n.o.s."
+3220,2.2,Pentafluoroethane or Refrigerant gas R 125
+3221,4.1,Self-reactive liquid type B
+3222,4.1,Self-reactive solid type B
+3223,4.1,Self-reactive liquid type C
+3224,4.1,Self-reactive solid type C
+3225,4.1,Self-reactive liquid type D
+3226,4.1,Self-reactive solid type D
+3227,4.1,Self-reactive liquid type E
+3228,4.1,Self-reactive solid type E
+3229,4.1,Self-reactive liquid type F
+3230,4.1,Self-reactive solid type F
+3231,4.1,"Self-reactive liquid type B, temperature controlled"
+3232,4.1,"Self-reactive solid type B, temperature controlled"
+3233,4.1,"Self-reactive liquid type C, temperature controlled"
+3234,4.1,"Self-reactive solid type C, temperature controlled"
+3235,4.1,"Self-reactive liquid type D, temperature controlled"
+3236,4.1,"Self-reactive solid type D, temperature controlled"
+3237,4.1,"Self-reactive liquid type E, temperature controlled"
+3238,4.1,"Self-reactive solid type E, temperature controlled"
+3239,4.1,"Self-reactive liquid type F, temperature controlled"
+3240,4.1,"Self-reactive solid type F, temperature controlled"
+3241,4.1,"2-Bromo-2-nitropropane-1,3-diol"
+3242,4.1,Azodicarbonamide
+3243,6.1,"Solids containing toxic liquid, n.o.s."
+3244,8,"Solids containing corrosive liquid, n.o.s."
+3245,9,Genetically modified microorganisms or Genetically modified organisms
+3246,6.1,Methanesulfonyl chloride
+3247,5.1,"Sodium peroxoborate, anhydrous,"
+3248,3,"Medicine, liquid, flammable, toxic, n.o.s."
+3249,6.1,"Medicine, solid, toxic, n.o.s."
+3250,6.1,"Chloroacetic acid, molten"
+3251,4.1,Isosorbide-5-mononitrate
+3252,2.1,Difluoromethane or Refrigerant gas R 32
+3253,8,Disodium trioxosilicate
+3254,4.2,Tributylphosphane
+3255,4.2,tert-Butyl hypochlorite
+3256,3,"Elevated temperature liquid, flammable, n.o.s., with flashpoint above 60 °C, at or above its flashpoint"
+3257,9,"Elevated temperature liquid, n.o.s., at or above 100 °C and below its flashpoint (including molten metals, molten salts, etc.)"
+3258,9,"Elevated temperature solid, n.o.s., at or above 240 °C, see 49 CFR 173.247(h)(4)"
+3259,8,"Amines, solid, corrosive, n.o.s. or Polyamines, solid, corrosive, n.o.s."
+3260,8,"Corrosive solid, acidic, inorganic, n.o.s."
+3261,8,"Corrosive solid, acidic, organic, n.o.s."
+3262,8,"Corrosive solid, basic, inorganic, n.o.s."
+3263,8,"Corrosive solid, basic, organic, n.o.s."
+3264,8,"Corrosive liquid, acidic, inorganic, n.o.s."
+3265,8,"Corrosive liquid, acidic, organic, n.o.s."
+3266,8,"Corrosive liquid, basic, inorganic, n.o.s."
+3267,8,"Corrosive liquid, basic, organic, n.o.s."
+3268,9,Safety devices electrically initiated
+3269,3,Polyester resin kit
+3270,4.1,Nitrocellulose membrane filters
+3271,3,"Ethers, n.o.s."
+3272,3,"Esters, n.o.s."
+3273,3,"Nitriles, flammable, toxic, n.o.s."
+3274,3,"Alcoholates solution, n.o.s., in alcohol"
+3275,6.1,"Nitriles, toxic, flammable, n.o.s."
+3276,6.1,"Nitriles, toxic, liquid, n.o.s."
+3277,6.1,"Chloroformates, toxic, corrosive, n.o.s."
+3278,6.1,"Organophosphorus compound, toxic, liquid, n.o.s."
+3279,6.1,"Organophosphorus compound, toxic, flammable, n.o.s."
+3280,6.1,"Organoarsenic compound, n.o.s."
+3281,6.1,"Metal carbonyls, liquid, n.o.s."
+3282,6.1,"Organometallic compound, toxic, liquid, n.o.s."
+3283,6.1,"Selenium compound, solid, n.o.s."
+3284,6.1,"Tellurium compound, solid, n.o.s."
+3285,6.1,"Vanadium compound, n.o.s."
+3286,3,"Flammable liquid, toxic, corrosive, n.o.s."
+3287,6.1,"Toxic liquid, inorganic, n.o.s. or Toxic liquid, inorganic, n.o.s. Inhalation Hazard, Packing Group I, Zone A or B"
+3288,6.1,"Toxic solid, inorganic, n.o.s."
+3289,6.1,"Toxic liquid, corrosive, inorganic, n.o.s. or Toxic liquid, corrosive, inorganic, n.o.s. Inhalation Hazard, Packing Group I, Zone A or B"
+3290,6.1,"Toxic solid, corrosive, inorganic, n.o.s."
+3291,6.2,"Clinical waste, unspecified, n.o.s. or (Bio)medical waste, n.o.s. or Regulated medical waste, n.o.s"
+3292,4.3,"Batteries, containing sodium or Cells, containing sodium"
+3293,6.1,"Hydrazine, aqueous solution with not more than 37 percent hydrazine, by mass"
+3294,6.1,"Hydrogen cyanide, solution in alcohol with not more than 45 percent hydrogen cyanide"
+3295,3,"Hydrocarbons, liquid, n.o.s."
+3296,2.2,Heptafluoropropane or Refrigerant gas R 227
+3297,2.2,Ethylene oxide and chlorotetrafluoroethane mixture with not more than 8.8 percent ethylene oxide
+3298,2.2,Ethylene oxide and pentafluoroethane mixture with not more than 7.9 percent ethylene oxide
+3299,2.2,Ethylene oxide and tetrafluoroethane mixture with not more than 5.6 percent ethylene oxide
+3300,2.3,Ethylene oxide and carbon dioxide mixture with more than 87 percent ethylene oxide
+3301,8,"Corrosive liquid, self-heating, n.o.s."
+3302,6.1,2-Dimethylaminoethyl acrylate
+3303,2.3,"Compressed gas, toxic, oxidising, n.o.s."
+3304,2.3,"Compressed gas, toxic, corrosive, n.o.s."
+3305,2.3,"Compressed gas, toxic, flammable, corrosive, n.o.s."
+3306,2.3,"Compressed gas, toxic, oxidising, corrosive, n.o.s."
+3307,2.3,"Liquefied gas, toxic, oxidising, n.o.s."
+3308,2.3,"Liquefied gas, toxic, corrosive, n.o.s."
+3309,2.3,"Liquefied gas, toxic, flammable, corrosive, n.o.s."
+3310,2.3,"Liquefied gas, toxic, oxidising, corrosive, n.o.s."
+3311,2.2,"Gas, refrigerated liquid, oxidising, n.o.s."
+3312,2.1,"Gas, refrigerated liquid, flammable, n.o.s."
+3313,4.2,"Organic pigments, self-heating"
+3314,9,"Plastics moulding compound in dough, sheet or extruded rope form evolving flammable vapour"
+3315,6.1,"Chemical sample, toxic"
+3316,9,Chemical kit or First Aid kit containing dangerous goods
+3317,4.1,"2-Amino-4,6-dinitrophenol, wetted, with not less than 20% water by mass"
+3318,2.3,"Ammonia solution, relative density less than 0.880 at 15 °C in water, with more than 50% ammonia"
+3319,4.1,"Nitroglycerin mixture, desensitized, solid, n.o.s., with more than 2% but not more than 10% nitroglycerin, by mass"
+3320,8,"Sodium borohydride and sodium hydroxide solution, with not more than 12% sodium borohydride and not more than 20% sodium hydroxide, by mass"
+3321,7,"Radioactive material, low specific activity (LSA-II), non-fissile or fissile excepted"
+3322,7,"Radioactive material, low specific activity (LSA-III), non-fissile or fissile excepted"
+3323,7,"Radioactive material, Type C package, non-fissile or fissile excepted"
+3324,7,"Radioactive material, low specific activity (LSA-II), fissile"
+3325,7,"Radioactive material, low specific activity (LSA-III), fissile"
+3326,7,"Radioactive material, surface contaminated objects (SCO-I or SCO-II), fissile"
+3327,7,"Radioactive material, Type A package, fissile, non-special form"
+3328,7,"Radioactive material, Type B (U) package, fissile"
+3329,7,"Radioactive material, Type B (M) package, fissile"
+3330,7,"Radioactive material, Type C package, fissile"
+3331,7,"Radioactive material, transported under special arrangements, fissile"
+3332,7,"Radioactive material, Type A package, special form, non-fissile or fissile excepted"
+3333,7,"Radioactive material, Type A package, special form, fissile"
+3334,9,"Aviation regulated liquid, n.o.s."
+3335,9,"Aviation regulated solid, n.o.s."
+3336,3,"Mercaptans, liquid, flammable, n.o.s. or Mercaptan mixture, liquid, flammable, n.o.s."
+3337,2.2,Refrigerant gas R404A
+3338,2.2,Refrigerant gas R407A
+3339,2.2,Refrigerant gas R407B
+3340,2.2,Refrigerant gas R407C
+3341,4.2,Thiourea dioxide
+3342,4.2,Xanthates
+3343,3,"Nitroglycerin mixture, desensitized, liquid, flammable, n.o.s., with not more than 30% nitroglycerin by mass"
+3344,4.1,"Pentaerythritol tetranitrate mixture, desensitized, solid, n.o.s., with more than 10% but not more than 20% PETN by mass"
+3345,6.1,"Phenoxyacetic acid derivative pesticide, solid, toxic"
+3346,3,"Phenoxyacetic acid derivative pesticide, liquid, flammable, toxic flash point less than 23 °C"
+3347,6.1,"Phenoxyacetic acid derivative pesticide, liquid, toxic, flammable flash point 23 °C or more"
+3348,6.1,"Phenoxyacetic acid derivative pesticide, liquid, toxic"
+3349,6.1,"Pyrethroid pesticide, solid, toxic"
+3350,3,"Pyrethroid pesticide, liquid, flammable, toxic flash point less than 23 °C"
+3351,6.1,"Pyrethroid pesticide, liquid, toxic, flammable flash point 23 °C or more"
+3352,6.1,"Pyrethroid pesticide, liquid, toxic"
+3353,9,"(UN No. no longer in use) Air bag inflators or Air bag modules or Seat belt pretensioners, compressed gas (UN No. no longer in use)[1][2]"
+3354,2.1,"Insecticide gas, flammable, n.o.s."
+3355,2.3,"Insecticide gas, toxic, flammable, n.o.s."
+3356,5.1,"Oxygen generator, chemical"
+3357,3,"Nitroglycerin mixture, desensitized, liquid, n.o.s., with not more than 30% nitroglycerin by mass"
+3358,2.1,"Refrigerating machines, containing flammable, non-toxic, liquefied gas"
+3359,9,Fumigated unit
+3360,4.1,"Fibres, vegetable, dry"
+3361,6.1,"Chlorosilanes, toxic, corrosive, n.o.s."
+3362,6.1,"Chlorosilanes, toxic, corrosive, flammable, n.o.s."
+3363,9,Dangerous goods in machinery or Dangerous goods in apparatus
+3364,4.1,"Trinitrophenol (Picric acid), wetted, with not less than 10% water by mass"
+3365,4.1,"Trinitrochlorobenzene (Picryl chloride), wetted, with not less than 10% water by mass"
+3366,4.1,"Trinitrotoluene (TNT), wetted, with not less than 10% water by mass"
+3367,4.1,"Trinitrobenzene, wetted, with not less than 10% water by mass"
+3368,4.1,"Trinitrobenzoic acid, wetted, with not less than 10% water by mass"
+3369,4.1,"Sodium dinitro-o-cresolate, wetted, with not less than 10% water by mass"
+3370,4.1,"Urea nitrate, wetted, with not less than 10% water by mass"
+3371,3,2-Methylbutanal
+3372,(4.3),"(UN No. no longer in use) Organometallic compound, solid, water reactive, flammable, n.o.s (UN No. no longer in use)[3]"
+3373,6.2,"Biological substance, Category B"
+3374,2.1,"Acetylene, solvent free"
+3375,5.1,Ammonium nitrate emulsion or suspension or gel
+3376,4.1,"4-Nitrophenylhydrazine, with not less than 30% water by mass"
+3377,5.1,Sodium perborate monohydrate
+3378,5.1,Sodium carbonate peroxyhydrate
+3379,3,"Desensitized explosive, liquid, n.o.s."
+3380,4.1,"Desensitized explosive, solid, n.o.s."
+3381,6.1,"Toxic by inhalation liquid, n.o.s. with an inhalation toxicity lower than or equal to 200ml/m3 and saturated vapour concentration greater than or equal to 500 LC50"
+3382,6.1,"Toxic by inhalation liquid, n.o.s. with an inhalation toxicity lower than or equal to 1000ml/m3 and saturated vapour concentration greater than or equal to 10 LC50"
+3383,6.1,"Toxic by inhalation liquid, flammable, n.o.s. with an inhalation toxicity lower than or equal to 200ml/m3 and saturated vapour concentration greater than or equal to 500 LC50"
+3384,6.1,"Toxic by inhalation liquid, flammable, n.o.s. with an inhalation toxicity lower than or equal to 1000ml/m3 and saturated vapour concentration greater than or equal to 10 LC50"
+3385,6.1,"Toxic by inhalation liquid, water-reactive, n.o.s. with an inhalation toxicity lower than or equal to 200ml/m3 and saturated vapour concentration greater than or equal to 500 LC50"
+3386,6.1,"Toxic by inhalation liquid, water-reactive, n.o.s. with an inhalation toxicity lower than or equal to 1000ml/m3 and saturated vapour concentration greater than or equal to 10 LC50"
+3387,6.1,"Toxic by inhalation liquid, oxidising, n.o.s. with an inhalation toxicity lower than or equal to 200ml/m3 and saturated vapour concentration greater than or equal to 500 LC50"
+3388,6.1,"Toxic by inhalation liquid, oxidising, n.o.s. with an inhalation toxicity lower than or equal to 1000ml/m3 and saturated vapour concentration greater than or equal to 10 LC50"
+3389,6.1,"Toxic by inhalation liquid, corrosive, n.o.s. with an inhalation toxicity lower than or equal to 200ml/m3 and saturated vapour concentration greater than or equal to 500 LC50"
+3390,6.1,"Toxic by inhalation liquid, corrosive, n.o.s. with an inhalation toxicity lower than or equal to 1000ml/m3 and saturated vapour concentration greater than or equal to 10 LC50"
+3391,4.2,"Organometallic substance, solid, pyrophoric"
+3392,4.2,"Organometallic substance, liquid, pyrophoric"
+3393,4.2,"Organometallic substance, solid, pyrophoric, water-reactive"
+3394,4.2,"Organometallic substance, liquid, pyrophoric, water-reactive"
+3395,4.3,"Organometallic substance, solid, water-reactive"
+3396,4.3,"Organometallic substance, solid, water-reactive, flammable"
+3397,4.3,"Organometallic substance, solid, water-reactive, self-heating"
+3398,4.3,"Organometallic substance, liquid, water-reactive"
+3399,4.3,"Organometallic substance, liquid, water-reactive, flammable"
+3400,4.3,"Organometallic substance, liquid, water-reactive, self-heating"
+3401,4.3,"Alkali metal amalgam, solid"
+3402,4.3,"Alkaline earth metal amalgam, solid"
+3403,4.3,"Potassium metal alloys, solid"
+3404,4.3,"Potassium sodium alloys, solid"
+3405,5.1,Barium chlorate solution
+3406,5.1,Barium perchlorate solution
+3407,5.1,Chlorate and magnesium chloride mixture solution
+3408,5.1,Lead perchlorate solution
+3409,6.1,"Chloronitrobenzenes, liquid"
+3410,6.1,4-Chloro-o-toluidine hydrochloride solution
+3411,6.1,beta-Naphthylamine solution
+3412,8,"Formic acid a. with not less than 10% but not more than 85% acid by mass, or, b. with not less than 5% but not more than 10% acid by mass"
+3413,6.1,Potassium cyanide solution
+3414,6.1,Sodium cyanide solution
+3415,6.1,Sodium fluoride solution
+3416,6.1,"Chloroacetophenone, liquid"
+3417,6.1,Xylyl bromide solution
+3418,6.1,"2,4-Toluylenediamine solution"
+3419,8,"Boron trifluoride-acetic acid complex, solid"
+3420,8,"Boron trifluoride-propionic acid complex, solid"
+3421,8,Potassium hydrogen difluoride solution
+3422,6.1,Potassium fluoride solution
+3423,8,"Tetramethylammonium hydroxide, solid"
+3424,6.1,Ammonium dinitro-o-cresolate solution
+3425,8,"Bromoacetic acid, solid"
+3426,6.1,Acrylamide solution
+3427,6.1,"Chlorobenzyl chlorides, solid"
+3428,6.1,"3-Chloro-4-methylphenyl isocyanate, solid"
+3429,6.1,"Chlorotoluidines, liquid"
+3430,6.1,"Xylenols, liquid"
+3431,6.1,"Nitrobenzotrifluorides, solid"
+3432,9,"Polychlorinated biphenyls, solid"
+3433,(4.2),"(UN No. no longer in use) Lithium alkyls, solid (UN No. no longer in use)[1]"
+3434,6.1,"Nitrocresols, liquid"
+3435,(6.1),(UN No. no longer in use) Hydroquinone solution (UN No. no longer in use)[2]
+3436,6.1,"Hexafluoroacetone hydrate, solid"
+3437,6.1,"Chlorocresols, solid"
+3438,6.1,"alpha-Methylbenzyl alcohol, solid"
+3439,6.1,"Nitriles, solid, toxic, n.o.s."
+3440,6.1,"Selenium compound, liquid, n.o.s."
+3441,6.1,"Chlorodinitrobenzenes, solid"
+3442,6.1,"Dichloroanilines, solid"
+3443,6.1,"Dinitrobenzenes, solid"
+3444,6.1,"Nicotine hydrochloride, solid"
+3445,6.1,"Nicotine sulphate, solid"
+3446,6.1,"Nitrotoluenes, solid"
+3447,6.1,"Nitroxylenes, solid"
+3448,6.1,"Tear gas substance, solid, n.o.s."
+3449,6.1,"Bromobenzyl cyanides, solid"
+3450,6.1,"Diphenylchloroarsine, solid"
+3451,6.1,"Toluidines, solid"
+3452,6.1,"Xylidines, solid"
+3453,8,"Phosphoric acid, solid"
+3454,6.1,"Dinitrotoluenes, solid"
+3455,6.1,"Cresols, solid"
+3456,8,"Nitrosylsulphuric acid, solid"
+3457,6.1,"Chloronitrotoluenes, solid"
+3458,6.1,"Nitroanisoles, solid"
+3459,6.1,"Nitrobromobenzenes, solid"
+3460,6.1,"N-Ethylbenzyltoluidines, solid"
+3461,(4.2),"(UN No. no longer in use) Aluminium alkyl halides, solid (UN No. no longer in use)[2]"
+3462,6.1,"Toxins extracted from living sources, solid, n.o.s."
+3463,8,Propionic acid with not less than 90% acid by mass
+3464,6.1,"Organophosphorus compound, toxic, solid, n.o.s."
+3465,6.1,"Organoarsenic compound, solid, n.o.s."
+3466,6.1,"Metal carbonyls, solid, n.o.s."
+3467,6.1,"Organometallic compound, toxic, solid, n.o.s."
+3468,2.1,Hydrogen in metal hydride storage system
+3469,3,"Paint, flammable, corrosive or Paint related material, flammable, corrosive"
+3470,8,"Paint, corrosive, flammable or Paint related material, corrosive, flammable"
+3471,8,"Hydrogen difluorides solution, n.o.s."
+3472,8,"Crotonic acid, liquid"
+3473,3,"Fuel cell cartridges, or Fuel cell cartridges contained in equipment or Fuel cell cartridges packed with equipment, containing flammable liquids"
+3474,4.1,"1-Hydroxybenzotriazole, anhydrous, wetted with not less than 20% water, by mass"
+3475,3,"Ethanol and gasoline mixture or ethanol and motor spirit mixture or ethanol and petrol mixture, with more than 10% ethanol"
+3476,4.3,"Fuel cell cartridges or Fuel cell cartridges contained in equipment or Fuel cell cartridges packed with equipment, containing water-reactive substances"
+3477,8,"Fuel cell cartridges or Fuel cell cartridges contained in equipment or Fuel cell cartridges packed with equipment, containing corrosive substances"
+3478,2.1,"Fuel cell cartridges or Fuel cell cartridges contained in equipment or Fuel cell cartridges packed with equipment, containing liquefied flammable gas"
+3479,2.1,"Fuel cell cartridges or Fuel cell cartridges contained in equipment or Fuel cell cartridges packed with equipment, containing hydrogen in metal hydride"
+3480,9,Lithium-ion batteries (including lithium-ion polymer batteries)
+3481,9,Lithium-ion batteries contained in equipment or lithium-ion batteries packed with equipment (including lithium-ion polymer batteries)
+3482,4.3,"Alkali metal dispersion, flammable or alkaline earth metal dispersion, flammable"
+3483,6.1,"Motor fuel anti-knock mixture, flammable"
+3484,8,"Hydrazine aqueous solution, flammable with more than 37% hydrazine, by mass"
+3485,5.1,"Calcium hypochlorite, dry, corrosive or Calcium hypochlorite mixture, dry, corrosive with more than 39% available chlorine (8.8% available oxygen)"
+3486,5.1,"Calcium hypochlorite mixture, dry, corrosive with more than 10% but not more than 39% available chlorine"
+3487,5.1,"Calcium hypochlorite, hydrated, corrosive or Calcium hypochlorite mixture, hydrated, corrosive with not less than 5.5% but not more than 16% water"
+3488,6.1,"Toxic by inhalation liquid, flammable, corrosive, N.O.S. with an inhalation toxicity lower than or equal to 200 ml/m3 and saturated vapour concentration greater than or equal to 500 LC50"
+3489,6.1,"Toxic by inhalation liquid, flammable, corrosive, N.O.S. with an inhalation toxicity lower than or equal to 1000 ml/m3 and saturated vapour concentration greater than or equal to 10 LC50"
+3490,6.1,"Toxic by inhalation liquid, water reactive, flammable, N.O.S. with an inhalation toxicity lower than or equal to 200 ml/m3 and saturated vapour concentration greater than or equal to 500 LC50"
+3491,6.1,"Toxic by inhalation liquid, water reactive, flammable, N.O.S. with an inhalation toxicity lower than or equal to 1000 ml/m3 and saturated vapour concentration greater than or equal to 10 LC50"
+3492,6.1,"(UN No. no longer in use) Toxic by inhalation liquid, corrosive, flammable, N.O.S. with an inhalation toxicity lower than or equal to 200 ml/m3 and saturated vapour concentration greater than or equal to 500 LC50 (UN No. no longer in use)[3]"
+3493,6.1,"(UN No. no longer in use) Toxic by inhalation liquid, corrosive, flammable, N.O.S. with an inhalation toxicity lower than or equal to 1000 ml/m3 and saturated vapour concentration greater than or equal to 10 LC50 (UN No. no longer in use)[4]"
+3494,3,"Petroleum sour crude oil, flammable, toxic"
+3495,8,Iodine
+3496,9,"Batteries, nickel-metal hydride"
+3497,4.2,Krill meal
+3498,8,"Iodine Monochloride, liquid"
+3499,9,"Capacitor, electric double layer (with an energy storage capacity greater than 0.3 Wh)"
+3500,2.2,"Chemical under Pressure, N.O.S."
+3501,2.1,"Chemical under pressure, flammable, not otherwise specified"
+3502,2.2,"Chemical under pressure, toxic, not otherwise specified"
+3503,2.2,"Chemical under pressure, corrosive, not otherwise specified"
+3504,2.1,"Chemical under pressure, flammable, toxic, not otherwise specified"
+3505,2.1,"Chemical under pressure, flammable, corrosive, not otherwise specified"
+3506,8,Mercury contained in manufactured articles
+3507,6.1,"Uranium hexafluoride, radioactive material, excepted package, less than 0.1 kg per package, non-fissile or fissile excepted"
+3508,9,"Capacitor, asymmetric, electric double layer (with an energy storage capacity greater than 0.3 Wh)"
+3509,9,"Packaging, discarded, empty, uncleaned"
+3510,2.1,"Adsorbed gas, flammable, not otherwise specified"
+3511,2.2,"Adsorbed gas, not otherwise specified"
+3512,2.3,"Adsorbed gas, toxic, not otherwise specified"
+3513,2.2,"Adsorbed gas, oxidizing, not otherwise specified"
+3514,2.3,"Adsorbed gas, toxic, flammable, not otherwise specified"
+3515,2.3,"Adsorbed gas, toxic, oxidizing, not otherwise specified"
+3516,2.3,"Adsorbed gas, toxic, corrosive, not otherwise specified"
+3517,2.3,"Adsorbed gas, toxic, flammable, corrosive, not otherwise specified"
+3518,2.3,"Adsorbed gas, toxic, oxidizing, corrosive, not otherwise specified"
+3519,2.3,"Boron trifluoride, adsorbed"
+3520,2.3,"Chlorine, adsorbed"
+3521,2.3,"Silicon tetrafluoride, adsorbed"
+3522,2.3,"Arsine, adsorbed"
+3523,2.3,"Germane, adsorbed"
+3524,2.3,"Phosphorus pentafluoride, adsorbed"
+3525,2.3,"Phosphine, adsorbed"
+3526,2.3,"Hydrogen selenide, adsorbed"
+3527,4.1,"Polyester resin kit, solid base material"
+3528,3,"Engine, internal combustion, flammable liquid powered or engine, fuel cell, flammable liquid powered or machinery, internal combustion, flammable liquid powered or machinery, fuel cell, flammable liquid powered"
+3529,2.1,"Engine, internal combustion, flammable gas powered or engine, fuel cell, flammable gas powered or machinery, internal combustion, flammable gas powered or machinery, fuel cell, flammable gas powered"
+3530,9,"Engine, internal combustion or machinery, internal combustion"
+3531,4.1,"Polymerizing substance, solid, stabilized, not otherwise specified"
+3532,4.1,"Polymerizing substance, liquid, stabilized, not otherwise specified"
+3533,4.1,"Polymerizing substance, solid, stabilized, temperature controlled, not otherwise specified"
+3534,4.1,"Polymerizing substance, liquid, stabilized, temperature controlled, not otherwise specified"
+3535,6.1,"Toxic solid, flammable, inorganic, not otherwise specified"
+3536,9,Lithium batteries installed in cargo transport unit lithium ion batteries or lithium metal batteries
+3537,2.1,"Articles containing flammable gas, not otherwise specified"
+3538,2.2,"Articles containing non-flammable, non toxic gas, not otherwise specified"
+3539,2.3,"Articles containing toxic gas, not otherwise specified"
+3540,3,"Articles containing flammable liquid, not otherwise specified"
+3541,4.1,"Articles containing flammable solid, not otherwise specified"
+3542,4.2,"Articles containing a substance liable to spontaneous combustion, not otherwise specified"
+3543,4.3,"Articles containing a substance which emits flammable gas in contact with water, not otherwise specified"
+3544,5.1,"Articles containing oxidizing substance, not otherwise specified"
+3545,5.2,"Articles containing organic peroxide, not otherwise specified"
+3546,6.1,"Articles containing toxic substance, not otherwise specified"
+3547,8,"Articles containing corrosive substance, not otherwise specified"
+3548,9,"Articles containing miscellaneous dangerous goods, not otherwise specified"
+3549,6.2,"Medical waste, category A, affecting humans, solid or Medical waste, category A, affecting animals only, solid"
+3550,6.1,"Cobalt dihydroxide powder, containing not less than 10 % respirable particles"
+3551,9,Sodium ion batteries with organic electrolyte
+3552,9,"Sodium ion batteries contained in equipment or sodium ion batteries packed with equipment, with organic electrolyte"
+3553,2.1,Disilane
+3554,8,Gallium contained in manufactured articles
+3555,3,"Trifluoromethyltetrazole-sodium salt in acetone, with not less than 68 % acetone, by mass"
+3556,9,"Vehicle, lithium-ion battery powered"
+3557,9,"Vehicle, lithium metal battery powered"
+3558,9,"Vehicle, sodium ion battery powered"
+3559,9,Fire suppressant dispersing devices†
+3560,6.1,Tetramethylammonium hydroxide aqueous solution with not less than 25 % tetramethylammonium hydroxide
+3561,-,(UN No.s not yet in use)
