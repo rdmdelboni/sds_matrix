@@ -247,6 +247,15 @@ class DuckDBManager:
             ).fetchone()
             return int(row[0]) if row else None
 
+    def clear_document_extractions(self, document_id: int) -> None:
+        """Delete all field extractions for a document to allow fresh processing."""
+        logger.info("Clearing extractions for document %s", document_id)
+        with self._lock:
+            self.conn.execute(
+                "DELETE FROM extractions WHERE document_id = ?",
+                [document_id],
+            )
+
     def get_field_details(self, document_id: int) -> dict[str, dict[str, object]]:
         """Return the latest value, confidence and validation metadata for each field."""
         with self._lock:

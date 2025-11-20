@@ -140,6 +140,10 @@ class DocumentProcessor:
             file_type=SUPPORTED_FORMATS.get(file_path.suffix.lower(), "Unknown"),
             num_pages=None,
         )
+        
+        # If document already exists, clear old field extractions to allow fresh processing
+        logger.info("Clearing previous extractions for document %s to allow reprocessing", document_id)
+        self.db.clear_document_extractions(document_id)
 
         try:
             data = extractor.extract(file_path)
