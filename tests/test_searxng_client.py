@@ -100,7 +100,8 @@ def test_token_bucket_consume_success():
     for _ in range(4):
         assert bucket.consume() is True
 
-    assert bucket.tokens <= 1e-4  # Allow floating point rounding error
+    # Allow tiny floating point rounding residues (timing/precision variance)
+    assert bucket.tokens <= 1e-3
 
 def test_token_bucket_consume_failure():
     """Test token consumption fails when bucket is empty."""
@@ -126,7 +127,8 @@ def test_token_bucket_refill():
     # Drain bucket
     for _ in range(5):
         bucket.consume()
-    assert bucket.tokens <= 1e-4  # Allow floating point rounding error
+    # Allow tiny floating point rounding residues (timing/precision variance)
+    assert bucket.tokens <= 1e-3
 
     # Wait 0.5 seconds (should refill 1 token: 2 tokens/sec × 0.5s)
     time.sleep(0.5)

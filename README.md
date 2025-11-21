@@ -154,6 +154,14 @@ pytest --cov=src --cov-report=html
 
 Veja `tests/README.md` para mais detalhes
 
+Tip: to avoid installing the whole runtime when you only want to run tests, use the project-provided test requirements file:
+
+```bash
+# install only test deps used in CI and local unit tests
+python -m pip install -r test-requirements.txt
+pytest -q
+```
+
 ## Proximos passos sugeridos
 
 1. Anexar templates de prompts adicionais para campos multiplos e validar se o chunking cobre as 16 secoes ABNT das FDS.
