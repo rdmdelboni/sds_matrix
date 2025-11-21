@@ -270,9 +270,10 @@ FIELD_SEARCH_BACKOFF_BASE: Final[float] = float(
     )
 )
 
-# Minimum confidence score (character count) required to consider field-level
-# retrieval sufficient. When snippet length exceeds this threshold, the field
-# is considered adequately retrieved and no retry is triggered.
+# Minimum snippet length (character count) required to consider field-level
+# retrieval sufficient. The confidence score is based on snippet length, and
+# when it exceeds this threshold, the field is considered adequately retrieved
+# and no retry is triggered.
 CONFIDENCE_SUFFICIENCY_THRESHOLD: Final[int] = int(
     os.getenv("CONFIDENCE_SUFFICIENCY_THRESHOLD", "300")
 )
