@@ -13,13 +13,13 @@ from tkinter import filedialog, messagebox, ttk
 
 from ..core.chunk_strategy import ChunkStrategy
 from ..core.document_processor import DocumentProcessor, DEFAULT_FIELDS, ADDITIONAL_FIELDS
-from ..core.llm_client import LMStudioClient, GeminiClient, GrokClient, TavilyClient
+from ..core.llm_client import LMStudioClient, GeminiClient, GrokClient
+from ..core.searxng_client import SearXNGClient
 from ..core.queue_manager import ProcessingQueue
 from ..database.duckdb_manager import DuckDBManager
 from ..utils.file_utils import list_supported_files
 from ..utils.config import DATA_DIR, ONLINE_SEARCH_PROVIDER
 from ..utils.logger import logger
-
 
 # Modern Color Palette
 COLORS = {
@@ -46,7 +46,6 @@ COLORS = {
     "text_primary": "#111827",
     "text_secondary": "#6b7280",
 }
-
 
 class SetupTab(ttk.Frame):
     """Tab responsible for folder selection and file preview."""
@@ -357,7 +356,6 @@ class SetupTab(ttk.Frame):
             # Silent UI failure tolerance
             pass
 
-
 class ProcessingTab(ttk.Frame):
     """Tab displaying processing progress and extracted results."""
 
@@ -366,6 +364,7 @@ class ProcessingTab(ttk.Frame):
         self.controller = controller
         self._modes: dict[str, str] = {}  # iid -> mode ("online"|"local")
         self._mode_editor: ttk.Combobox | None = None
+        self._previous_values: dict[str, dict[str, dict[str, object]]] = {}  # file_path -> field_name -> field_data
 
         # Header frame
         header_frame = ttk.Frame(self, style="Header.TFrame")
@@ -447,6 +446,8 @@ class ProcessingTab(ttk.Frame):
         self.tree.tag_configure("valid", background=COLORS["success_light"], foreground=COLORS["text_primary"])
         self.tree.tag_configure("warning", background=COLORS["warning_light"], foreground=COLORS["text_primary"])
         self.tree.tag_configure("invalid", background=COLORS["error_light"], foreground=COLORS["text_primary"])
+        # Tag for updated fields (highlight)
+        self.tree.tag_configure("updated", background="#FFE066", foreground=COLORS["text_primary"])  # Yellow highlight
         # Alternating row colors (used when no validation status)
         self.tree.tag_configure("oddrow", background=COLORS["white"])
         self.tree.tag_configure("evenrow", background=COLORS["neutral_50"])
@@ -459,6 +460,11 @@ class ProcessingTab(ttk.Frame):
         self._context_menu.add_command(label="Alterar modo para local", command=self._set_selected_mode_local)
         self.tree.bind("<Button-3>", self._on_processing_right_click)
 
+    def store_current_values(self, file_path: Path, field_details: dict[str, dict[str, object]]) -> None:
+        """Store current field values before reprocessing to detect updates."""
+        iid = str(file_path)
+        self._previous_values[iid] = dict(field_details)  # Make a copy
+
     def update_status(
         self,
         file_path: Path,
@@ -467,12 +473,33 @@ class ProcessingTab(ttk.Frame):
     ) -> None:
         iid = str(file_path)
         field_details = field_details or {}
+        
+        # Get previous values to detect updates
+        previous = self._previous_values.get(iid, {})
+        updated_fields = set()
+        
+        # Check which fields were updated
+        if previous and status == "Concluido":
+            for field_name, current_data in field_details.items():
+                prev_data = previous.get(field_name, {})
+                prev_value = str(prev_data.get("value", ""))
+                curr_value = str(current_data.get("value", ""))
+                prev_conf = float(prev_data.get("confidence", 0.0))
+                curr_conf = float(current_data.get("confidence", 0.0))
+                
+                # Mark as updated if value or confidence changed significantly
+                if (prev_value != curr_value and curr_value != "NAO ENCONTRADO") or \
+                   (curr_conf > prev_conf + 0.1):
+                    updated_fields.add(field_name)
 
         def format_simple(name: str) -> str:
             data = field_details.get(name) or {}
             value = str(data.get("value") or "-")
             if value == "NAO ENCONTRADO":
                 return "-"
+            # Add indicator for updated fields
+            if name in updated_fields:
+                return f"✨ {value}"
             return value
 
         def format_validation(name: str) -> str:
@@ -509,19 +536,25 @@ class ProcessingTab(ttk.Frame):
             grupo_emb,
             incompat,
         )
-        # combine tags based on any invalid/warning statuses
-        statuses = [
-            data.get("validation_status")
-            for data in field_details.values()
-            if data.get("validation_status") in {"valid", "warning", "invalid"}
-        ]
-        severity_order = ["invalid", "warning", "valid"]
-        selected_tag = None
-        for severity in severity_order:
-            if severity in statuses:
-                selected_tag = severity
-                break
-        tags = (selected_tag,) if selected_tag else ()
+        
+        # Determine row tag - prioritize 'updated' if any field was updated
+        if updated_fields:
+            tags = ("updated",)
+        else:
+            # combine tags based on any invalid/warning statuses
+            statuses = [
+                data.get("validation_status")
+                for data in field_details.values()
+                if data.get("validation_status") in {"valid", "warning", "invalid"}
+            ]
+            severity_order = ["invalid", "warning", "valid"]
+            selected_tag = None
+            for severity in severity_order:
+                if severity in statuses:
+                    selected_tag = severity
+                    break
+            tags = (selected_tag,) if selected_tag else ()
+        
         if self.tree.exists(iid):
             self.tree.item(iid, values=values, tags=tags)
         else:
@@ -639,7 +672,6 @@ class ProcessingTab(ttk.Frame):
 
     def _set_selected_mode_local(self) -> None:
         self._set_selected_mode("local")
-
 
 class ResultsTab(ttk.Frame):
     """Tab to show processed outputs and trigger exports."""
@@ -977,7 +1009,6 @@ class ResultsTab(ttk.Frame):
             )
             return False
 
-
 class Application(tk.Tk):
     """Main Tkinter application."""
 
@@ -987,16 +1018,41 @@ class Application(tk.Tk):
         self.geometry("1700x1000")
         self.minsize(1200, 700)
 
-        # Set window background
+        # set window background
         self.configure(bg=COLORS["neutral_50"])
 
-        # Configure LARGE fonts for better readability
-        default_font = ("Segoe UI", 14, "normal")
-        text_font = ("Segoe UI", 14)
-        fixed_font = ("Consolas", 13)
-        menu_font = ("Segoe UI", 14)
-        heading_font = ("Segoe UI", 15, "bold")
-        title_font = ("Segoe UI", 16, "bold")
+        # Configure LARGE fonts for better readability with emoji support
+        # Use Noto Sans for best cross-platform emoji support
+        import platform
+        system = platform.system()
+        
+        if system == "Linux":
+            # Linux: Use DejaVu Sans or system default with emoji fallback
+            base_font_family = "DejaVu Sans"
+            fixed_font_family = "DejaVu Sans Mono"
+        elif system == "Darwin":  # macOS
+            # macOS: Use SF Pro or system default
+            base_font_family = "SF Pro Text"
+            fixed_font_family = "Monaco"
+        else:  # Windows
+            # Windows: Segoe UI has good emoji support
+            base_font_family = "Segoe UI"
+            fixed_font_family = "Consolas"
+        
+        default_font = (base_font_family, 14, "normal")
+        text_font = (base_font_family, 14)
+        fixed_font = (fixed_font_family, 13)
+        menu_font = (base_font_family, 14)
+        heading_font = (base_font_family, 15, "bold")
+        title_font = (base_font_family, 16, "bold")
+        
+        # Store fonts for use in dialogs
+        self.base_font_family = base_font_family
+        self.fixed_font_family = fixed_font_family
+        self.default_font = default_font
+        self.text_font = text_font
+        self.heading_font = heading_font
+        self.title_font = title_font
 
         self.option_add("*TCombobox*Listbox*Font", default_font)
         self.option_add("*Font", default_font)
@@ -1063,7 +1119,7 @@ class Application(tk.Tk):
                        background=COLORS["white"],
                        foreground=COLORS["text_primary"])
         style.configure("StatusLabel.TLabel",
-                       font=("Segoe UI", 13, "bold"),
+                       font=heading_font,
                        background=COLORS["primary_light"],
                        foreground=COLORS["primary_dark"])
         style.configure("StatusValue.TLabel",
@@ -1075,7 +1131,7 @@ class Application(tk.Tk):
                        background=COLORS["white"],
                        foreground=COLORS["text_secondary"])
         style.configure("ToolbarLabel.TLabel",
-                       font=("Segoe UI", 14, "bold"),
+                       font=heading_font,
                        background=COLORS["white"],
                        foreground=COLORS["text_primary"])
         style.configure("FilterLabel.TLabel",
@@ -1085,7 +1141,7 @@ class Application(tk.Tk):
 
         # Treeview (Table) styles
         style.configure("Modern.Treeview",
-                       font=("Segoe UI", 13),
+                       font=text_font,
                        background=COLORS["white"],
                        foreground=COLORS["text_primary"],
                        fieldbackground=COLORS["white"],
@@ -1115,7 +1171,7 @@ class Application(tk.Tk):
                        darkcolor=COLORS["neutral_50"])
 
         style.configure("TNotebook.Tab",
-                       font=("Segoe UI", 14, "bold"),
+                       font=heading_font,
                        padding=(16, 10),  # Altura padronizada (vertical reduzido)
                        background=COLORS["neutral_200"],
                        foreground=COLORS["text_secondary"],
@@ -1151,16 +1207,16 @@ class Application(tk.Tk):
 
         self.db_manager = DuckDBManager()
         self.llm_client = LMStudioClient()
-        # Online search client based on configured provider (Tavily > Grok > Gemini > LM Studio)
+        # Online search client: SearXNG (default) > Grok > Gemini > LM Studio
         provider = ONLINE_SEARCH_PROVIDER.lower()
         self.online_search_client = None
-        if provider == "tavily":
-            self.online_search_client = TavilyClient()
+        if provider == "searxng":
+            self.online_search_client = SearXNGClient()
         elif provider == "grok":
             self.online_search_client = GrokClient()
         elif provider == "gemini":
             self.online_search_client = GeminiClient()
-        # LM Studio fallback is handled by DocumentProcessor (uses llm_client.search_online_for_missing_fields)
+        # LM Studio fallback handled by DocumentProcessor
 
         self.processor = DocumentProcessor(
             db_manager=self.db_manager,
@@ -1230,7 +1286,7 @@ class Application(tk.Tk):
         self._progress_done: int = 0
 
     def set_selected_files(self, files: list[Path]) -> None:
-        """Set the list of files chosen by the user."""
+        """set the list of files chosen by the user."""
         self.selected_files = files
         for file_path in files:
             self.processing_tab.update_status(file_path, "Na fila", field_details={})
@@ -1272,7 +1328,15 @@ class Application(tk.Tk):
             status, file_path = self.status_queue.get()
             field_details: dict[str, dict[str, object]] = {}
 
-            if status == "Concluido":
+            if status == "Processando":
+                # Store current values before processing starts
+                document_id = self.db_manager.get_document_id(file_path)
+                if document_id:
+                    details = self.db_manager.get_field_details(document_id)
+                    if details:
+                        self.processing_tab.store_current_values(file_path, details)
+                        
+            elif status == "Concluido":
                 document_id = self.db_manager.get_document_id(file_path)
                 if document_id:
                     details = self.db_manager.get_field_details(document_id)
@@ -1418,12 +1482,12 @@ class Application(tk.Tk):
 
         title_frame = ttk.Frame(header, style="Header.TFrame")
         title_frame.pack(fill="x", padx=24, pady=20)
-        ttk.Label(title_frame, text="⚠️", font=("Segoe UI", 36), style="SectionTitle.TLabel").pack(side="left", padx=(0, 16))
+        ttk.Label(title_frame, text="⚠️", font=(self.base_font_family, 36), style="SectionTitle.TLabel").pack(side="left", padx=(0, 16))
 
         title_content = ttk.Frame(title_frame, style="Header.TFrame")
         title_content.pack(side="left", fill="both", expand=True)
-        ttk.Label(title_content, text=title, font=("Segoe UI", 18, "bold"), style="SectionTitle.TLabel").pack(anchor="w")
-        error_label = ttk.Label(title_content, text=message, font=("Segoe UI", 13), wraplength=750, justify="left")
+        ttk.Label(title_content, text=title, font=(self.base_font_family, 18, "bold"), style="SectionTitle.TLabel").pack(anchor="w")
+        error_label = ttk.Label(title_content, text=message, font=(self.base_font_family, 13), wraplength=750, justify="left")
         error_label.configure(foreground=COLORS["error"])
         error_label.pack(anchor="w", pady=(4, 0))
 
@@ -1437,9 +1501,9 @@ class Application(tk.Tk):
             suggestions_frame = ttk.Frame(content_frame, style="Card.TFrame")
             suggestions_frame.pack(fill="x", pady=(0, 16))
 
-            ttk.Label(suggestions_frame, text="💡 Sugestões", font=("Segoe UI", 14, "bold"), style="SectionTitle.TLabel").pack(anchor="w", padx=16, pady=(12, 8))
+            ttk.Label(suggestions_frame, text="💡 Sugestões", font=(self.base_font_family, 14, "bold"), style="SectionTitle.TLabel").pack(anchor="w", padx=16, pady=(12, 8))
 
-            txt_sug = tk.Text(suggestions_frame, height=6, wrap="word", font=("Segoe UI", 12), relief="flat", bg=COLORS["warning_light"], fg=COLORS["text_primary"])
+            txt_sug = tk.Text(suggestions_frame, height=6, wrap="word", font=(self.base_font_family, 12), relief="flat", bg=COLORS["warning_light"], fg=COLORS["text_primary"])
             txt_sug.insert("1.0", suggestions)
             txt_sug.configure(state="disabled")
             txt_sug.pack(fill="x", padx=16, pady=(0, 12))
@@ -1451,10 +1515,10 @@ class Application(tk.Tk):
 
             detail_header = ttk.Frame(details_frame, style="Card.TFrame")
             detail_header.pack(fill="x", padx=16, pady=(12, 8))
-            ttk.Label(detail_header, text="📋 Detalhes Técnicos", font=("Segoe UI", 14, "bold"), style="SectionTitle.TLabel").pack(side="left")
+            ttk.Label(detail_header, text="📋 Detalhes Técnicos", font=(self.base_font_family, 14, "bold"), style="SectionTitle.TLabel").pack(side="left")
             ttk.Button(detail_header, text="📋 Copiar", command=lambda: _copy(details), style="Secondary.TButton").pack(side="right")
 
-            txt = tk.Text(details_frame, height=15, wrap="word", font=("Consolas", 11), relief="flat", bg=COLORS["neutral_100"], fg=COLORS["text_primary"])
+            txt = tk.Text(details_frame, height=15, wrap="word", font=(self.fixed_font_family, 11), relief="flat", bg=COLORS["neutral_100"], fg=COLORS["text_primary"])
             txt.insert("1.0", details)
             txt.configure(state="disabled")
 
@@ -1473,12 +1537,10 @@ class Application(tk.Tk):
         btn_frame.pack(fill="x", padx=24, pady=16)
         ttk.Button(btn_frame, text="Fechar", command=dlg.destroy, style="Primary.TButton").pack(side="right")
 
-
 def run_app() -> None:
     """Entrypoint for launching the GUI."""
     app = Application()
     app.mainloop()
-
 
 class ProgressDialog:
     """Modern modal progress dialog with enhanced styling."""

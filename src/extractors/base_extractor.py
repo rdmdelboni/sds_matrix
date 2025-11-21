@@ -4,15 +4,11 @@ from __future__ import annotations
 
 from abc import ABC, abstractmethod
 from pathlib import Path
-from typing import Dict, List, Optional
 
+ExtractedTables = list[dict[str, object]]
 
-ExtractedTables = List[Dict[str, object]]
-
-
-class ExtractionPayload(Dict[str, object]):
+class ExtractionPayload(dict[str, object]):
     """Typed alias for extracted data maps."""
-
 
 class BaseExtractor(ABC):
     """Common interface for document extractors."""
@@ -29,9 +25,9 @@ class BaseExtractor(ABC):
         self,
         *,
         text: str,
-        metadata: Optional[Dict[str, object]] = None,
-        sections: Optional[Dict[int, str]] = None,
-        tables: Optional[ExtractedTables] = None,
+        metadata: dict[str, object | None] = None,
+        sections: dict[int, str | None] = None,
+        tables: ExtractedTables | None = None,
     ) -> ExtractionPayload:
         """Helper to standardise extractor output."""
         return ExtractionPayload(

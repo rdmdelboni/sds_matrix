@@ -12,7 +12,6 @@ from src.core.validator import (
     validate_field,
 )
 
-
 class TestNumeroONUValidator:
     """Test suite for ONU number validation."""
 
@@ -68,7 +67,6 @@ class TestNumeroONUValidator:
         with pytest.raises(ValidationError):
             NumeroONU(value="1234", confidence=1.1)
 
-
 class TestNumeroCASValidator:
     """Test suite for CAS number validation."""
 
@@ -101,7 +99,6 @@ class TestNumeroCASValidator:
         
         with pytest.raises(ValidationError, match="formato"):
             NumeroCAS(value="64-19-77", confidence=0.9)
-
 
 class TestClassificacaoONUValidator:
     """Test suite for UN classification validation."""
@@ -144,7 +141,6 @@ class TestClassificacaoONUValidator:
         # Test classe 0 which is invalid
         with pytest.raises(ValidationError, match="invalida"):
             ClassificacaoONU(value="Classe 0", confidence=0.9)
-
 
 class TestValidateField:
     """Test suite for validate_field helper function."""

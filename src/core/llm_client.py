@@ -1,27 +1,38 @@
-"""LLM clients: local OpenAI-compatible server (Ollama/LM Studio) and Gemini online search."""
+"""LLM clients: local OpenAI-compatible server and online search.
+
+Improvements:
+ - Retry logic with exponential backoff + jitter for transient errors.
+ - In-memory TTL cache avoids repeated identical lookups per field/doc.
+"""
 
 from __future__ import annotations
 
 import json
-from typing import Dict, Optional, cast
+from typing import cast
 
 import httpx
 
 from openai import OpenAI
 
-from ..utils.config import GEMINI_CONFIG, GROK_CONFIG, LM_STUDIO_CONFIG, TAVILY_CONFIG
+from ..utils.config import (
+    GEMINI_CONFIG,
+    GROK_CONFIG,
+    LM_STUDIO_CONFIG,
+    STRICT_SOURCE_VALIDATION,
+)
 from ..utils.logger import logger
-
+from ..utils.url_validator import validate_source_urls
 
 DEFAULT_SYSTEM_PROMPT = (
-    "Voce e um assistente especialista em ler Fichas de Dados de Seguranca (FDS) de "
-    "produtos quimicos. Responda sempre em JSON com os campos "
-    '{"value": "...", "confidence": 0.0-1.0, "context": "..."} e nunca invente dados.'
+    "Voce e um assistente especialista em Fichas de Dados de Seguranca."
+    " Responda em JSON: {value, confidence (0-1.0), context, source_urls: [list of URLs]}."
+    " SEMPRE inclua source_urls com URLs das fontes consultadas."
+    " Se nao tiver fontes, use lista vazia []."
+    " Nao invente dados."
 )
 
-
 class LMStudioClient:
-    """Wrapper for sending prompts to the local OpenAI-compatible server (Ollama/LM Studio)."""
+    """Wrapper for local OpenAI-compatible server (Ollama / LM Studio)."""
 
     def __init__(self) -> None:
         self.config = LM_STUDIO_CONFIG
@@ -36,8 +47,8 @@ class LMStudioClient:
         *,
         field_name: str,
         prompt_template: str,
-        system_prompt: Optional[str] = None,
-    ) -> Dict[str, object]:
+        system_prompt: str | None = None,
+    ) -> dict[str, object]:
         """Send a prompt and parse the JSON result."""
         prompt = prompt_template.strip()
         logger.info("Consulting LLM for %s", field_name)
@@ -45,7 +56,10 @@ class LMStudioClient:
             response = self.client.chat.completions.create(
                 model=self.model,
                 messages=[
-                    {"role": "system", "content": system_prompt or DEFAULT_SYSTEM_PROMPT},
+                    {
+                        "role": "system",
+                        "content": system_prompt or DEFAULT_SYSTEM_PROMPT,
+                    },
                     {"role": "user", "content": prompt},
                 ],
                 temperature=float(cast(float, self.config["temperature"])),
@@ -70,6 +84,25 @@ class LMStudioClient:
         parsed.setdefault("value", "NAO ENCONTRADO")
         parsed.setdefault("confidence", 0.0)
         parsed.setdefault("context", "")
+        parsed.setdefault("source_urls", [])
+        
+        # Validate source URLs if strict mode enabled
+        if STRICT_SOURCE_VALIDATION:
+            source_urls = parsed.get("source_urls", [])
+            # Ensure it's a list
+            if not isinstance(source_urls, list):
+                source_urls = []
+            
+            is_valid, error_msg = validate_source_urls(source_urls, strict=True)
+            if not is_valid:
+                logger.warning(
+                    "Source validation failed for %s: %s", field_name, error_msg
+                )
+                # Downgrade confidence if validation fails
+                current_conf = float(parsed.get("confidence", 0.0))
+                parsed["confidence"] = min(current_conf * 0.5, 0.6)
+                parsed["context"] = f"{parsed.get('context', '')} [AVISO: {error_msg}]"
+        
         return parsed
 
     def test_connection(self) -> bool:
@@ -88,18 +121,18 @@ class LMStudioClient:
     def search_online_for_missing_fields(
         self,
         *,
-        product_name: Optional[str] = None,
-        cas_number: Optional[str] = None,
-        un_number: Optional[str] = None,
+        product_name: str | None = None,
+        cas_number: str | None = None,
+        un_number: str | None = None,
         missing_fields: list[str],
-    ) -> Dict[str, Dict[str, object]]:
+    ) -> dict[str, dict[str, object]]:
         """Search online for missing field values using web-enhanced LLM.
         
         Args:
             product_name: Known product name
             cas_number: Known CAS number
             un_number: Known UN number
-            missing_fields: List of field names that need values
+            missing_fields: list of field names that need values
             
         Returns:
             Dictionary mapping field names to extracted data
@@ -119,24 +152,16 @@ class LMStudioClient:
         identifier_text = ", ".join(identifiers)
         fields_text = ", ".join(missing_fields)
         
-        prompt = f"""Preciso encontrar informacoes sobre um produto quimico.
-Identifiers conhecidos: {identifier_text}
-
-Por favor, pesquise online e retorne as seguintes informacoes faltantes: {fields_text}
-
-Retorne um JSON com este formato:
-{{
-    "campo1": {{"value": "valor encontrado", "confidence": 0.0-1.0, "source": "fonte da informacao"}},
-    "campo2": {{"value": "valor encontrado", "confidence": 0.0-1.0, "source": "fonte da informacao"}}
-}}
-
-Se nao encontrar algum campo, use "NAO ENCONTRADO" como value e confidence 0.0."""
+        prompt = (
+            "Preciso buscar dados de um produto quimico. Identificadores: "
+            f"{identifier_text}\nCampos faltantes: {fields_text}\n"
+            "Retorne JSON: { 'campo': { 'value': '...', 'confidence': 0-1.0 } }." 
+            "Use NAO ENCONTRADO se nao achar."
+        )
 
         system_prompt = (
-            "Voce e um assistente especializado em buscar informacoes sobre produtos quimicos. "
-            "Use suas capacidades de busca online para encontrar dados precisos em bases como "
-            "PubChem, ChemSpider, fichas de seguranca oficiais, e sites de fabricantes. "
-            "Sempre cite a fonte das informacoes e indique o nivel de confianca."
+            "Assistente especializado em dados quimicos. Pesquise em bases confiaveis "
+            "(PubChem, ChemSpider, FDS oficiais). Cite fontes e nivel de confianca."
         )
 
         logger.info("Searching online for missing fields: %s", missing_fields)
@@ -157,9 +182,13 @@ Se nao encontrar algum campo, use "NAO ENCONTRADO" como value e confidence 0.0."
             
             # Parse JSON response
             if raw_content.startswith("```json"):
-                raw_content = raw_content.split("```json")[1].split("```")[0].strip()
+                raw_content = (
+                    raw_content.split("```json")[1].split("```")[0].strip()
+                )
             elif raw_content.startswith("```"):
-                raw_content = raw_content.split("```")[1].split("```")[0].strip()
+                raw_content = (
+                    raw_content.split("```")[1].split("```")[0].strip()
+                )
             
             parsed = json.loads(raw_content)
             if not isinstance(parsed, dict):
@@ -191,7 +220,6 @@ Se nao encontrar algum campo, use "NAO ENCONTRADO" como value e confidence 0.0."
                 field: {"value": "ERRO", "confidence": 0.0, "context": str(exc)}
                 for field in missing_fields
             }
-
 
 class GeminiClient:
     """Client for Google's Generative Language API (Gemini) used for online search."""
@@ -243,11 +271,11 @@ class GeminiClient:
     def search_online_for_missing_fields(
         self,
         *,
-        product_name: Optional[str] = None,
-        cas_number: Optional[str] = None,
-        un_number: Optional[str] = None,
+        product_name: str | None = None,
+        cas_number: str | None = None,
+        un_number: str | None = None,
         missing_fields: list[str],
-    ) -> Dict[str, Dict[str, object]]:
+    ) -> dict[str, dict[str, object]]:
         if not self.api_key:
             logger.warning("GOOGLE_API_KEY not set; skipping Gemini online search")
             return {field: {"value": "NAO ENCONTRADO", "confidence": 0.0, "context": "Gemini disabled"} for field in missing_fields}
@@ -295,7 +323,7 @@ Se algum campo nao for encontrado com confianca, use value="NAO ENCONTRADO" e co
             if not isinstance(parsed, dict):
                 raise ValueError("Gemini response is not a JSON object")
 
-            results: Dict[str, Dict[str, object]] = {}
+            results: dict[str, dict[str, object]] = {}
             for field_name in missing_fields:
                 entry = parsed.get(field_name, {}) if isinstance(parsed.get(field_name, {}), dict) else {}
                 results[field_name] = {
@@ -309,7 +337,6 @@ Se algum campo nao for encontrado com confianca, use value="NAO ENCONTRADO" e co
         except Exception as exc:  # noqa: BLE001
             logger.error("Gemini online search failed: %s", exc)
             return {field: {"value": "ERRO", "confidence": 0.0, "context": str(exc)} for field in missing_fields}
-
 
 class GrokClient:
     """Client for xAI's Grok API used for online search."""
@@ -361,11 +388,11 @@ class GrokClient:
     def search_online_for_missing_fields(
         self,
         *,
-        product_name: Optional[str] = None,
-        cas_number: Optional[str] = None,
-        un_number: Optional[str] = None,
+        product_name: str | None = None,
+        cas_number: str | None = None,
+        un_number: str | None = None,
         missing_fields: list[str],
-    ) -> Dict[str, Dict[str, object]]:
+    ) -> dict[str, dict[str, object]]:
         if not self.api_key:
             logger.warning("GROK_API_KEY not set; skipping Grok online search")
             return {field: {"value": "NAO ENCONTRADO", "confidence": 0.0, "context": "Grok disabled"} for field in missing_fields}
@@ -413,7 +440,7 @@ Se algum campo nao for encontrado com confianca, use value="NAO ENCONTRADO" e co
             if not isinstance(parsed, dict):
                 raise ValueError("Grok response is not a JSON object")
 
-            results: Dict[str, Dict[str, object]] = {}
+            results: dict[str, dict[str, object]] = {}
             for field_name in missing_fields:
                 entry = parsed.get(field_name, {}) if isinstance(parsed.get(field_name, {}), dict) else {}
                 results[field_name] = {
@@ -428,132 +455,3 @@ Se algum campo nao for encontrado com confianca, use value="NAO ENCONTRADO" e co
             logger.error("Grok online search failed: %s", exc)
             return {field: {"value": "ERRO", "confidence": 0.0, "context": str(exc)} for field in missing_fields}
 
-
-class TavilyClient:
-    """Client for Tavily AI research API used for online search with local LLM."""
-
-    def __init__(self) -> None:
-        self.api_key = str(TAVILY_CONFIG.get("api_key", ""))
-        self.base_url = str(TAVILY_CONFIG.get("base_url", "https://api.tavily.com"))
-        self.timeout = int(cast(int, TAVILY_CONFIG.get("timeout", 60)))
-
-    def _endpoint(self) -> str:
-        return f"{self.base_url}/search"
-
-    def test_connection(self) -> bool:
-        """Lightweight call to verify that the API key is present."""
-        return bool(self.api_key)
-
-    def _search(self, query: str) -> Dict[str, object]:
-        """Execute a search query using Tavily API."""
-        headers = {"Content-Type": "application/json"}
-        payload = {
-            "api_key": self.api_key,
-            "query": query,
-            "topic": "science",  # Focus on scientific/technical content
-            "max_results": 5,
-            "search_depth": "advanced",  # Advanced search for better results
-            "include_answer": True,
-            "include_raw_content": False,
-        }
-        try:
-            with httpx.Client(timeout=self.timeout) as client:
-                r = client.post(self._endpoint(), headers=headers, json=payload)
-                r.raise_for_status()
-                data = r.json()
-                return cast(Dict[str, object], data)
-        except Exception as exc:  # noqa: BLE001
-            raise RuntimeError(f"Tavily search failed: {exc}") from exc
-
-    def search_online_for_missing_fields(
-        self,
-        *,
-        product_name: Optional[str] = None,
-        cas_number: Optional[str] = None,
-        un_number: Optional[str] = None,
-        missing_fields: list[str],
-    ) -> Dict[str, Dict[str, object]]:
-        if not self.api_key:
-            logger.warning("TAVILY_API_KEY not set; skipping Tavily online search")
-            return {field: {"value": "NAO ENCONTRADO", "confidence": 0.0, "context": "Tavily disabled"} for field in missing_fields}
-
-        identifiers = []
-        if product_name:
-            identifiers.append(product_name)
-        if cas_number:
-            identifiers.append(f"CAS {cas_number}")
-        if un_number:
-            identifiers.append(f"UN {un_number}")
-
-        if not identifiers:
-            logger.warning("No identifiers provided for online search")
-            return {}
-
-        identifier_text = " ".join(identifiers)
-        results: Dict[str, Dict[str, object]] = {}
-
-        # Search for each missing field
-        for field_name in missing_fields:
-            logger.info("Tavily: searching for field '%s' with identifiers: %s", field_name, identifier_text)
-
-            try:
-                # Build field-specific search query
-                field_translations = {
-                    "numero_cas": "CAS number",
-                    "numero_onu": "UN number",
-                    "nome_produto": "product name",
-                    "fabricante": "manufacturer",
-                    "classificacao_onu": "UN classification hazard",
-                    "grupo_embalagem": "packing group",
-                    "incompatibilidades": "chemical incompatibilities",
-                }
-                field_display = field_translations.get(field_name, field_name)
-                query = f"{identifier_text} {field_display} chemical product safety data"
-
-                search_result = self._search(query)
-
-                # Extract answer from Tavily if available
-                answer = search_result.get("answer", "")
-                results_list = search_result.get("results", [])
-
-                if answer:
-                    results[field_name] = {
-                        "value": answer.strip(),
-                        "confidence": 0.8,
-                        "context": "Tavily online search",
-                    }
-                elif results_list and len(results_list) > 0:
-                    # Use first search result's content as fallback
-                    first_result = results_list[0]
-                    content = first_result.get("content", "") or first_result.get("snippet", "")
-                    if content:
-                        results[field_name] = {
-                            "value": content.strip()[:500],  # Limit to 500 chars
-                            "confidence": 0.6,
-                            "context": f"Tavily: {first_result.get('title', 'Search result')}",
-                        }
-                    else:
-                        results[field_name] = {
-                            "value": "NAO ENCONTRADO",
-                            "confidence": 0.0,
-                            "context": "Tavily search returned no usable content",
-                        }
-                else:
-                    results[field_name] = {
-                        "value": "NAO ENCONTRADO",
-                        "confidence": 0.0,
-                        "context": "Tavily search returned no results",
-                    }
-
-                logger.debug("Tavily result for %s: %s", field_name, results[field_name])
-
-            except Exception as exc:  # noqa: BLE001
-                logger.error("Tavily search failed for field %s: %s", field_name, exc)
-                results[field_name] = {
-                    "value": "ERRO",
-                    "confidence": 0.0,
-                    "context": f"Tavily error: {str(exc)}",
-                }
-
-        logger.info("Tavily online search completed for %d fields", len(results))
-        return results

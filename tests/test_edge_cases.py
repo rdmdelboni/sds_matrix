@@ -13,14 +13,12 @@ from src.core.document_processor import DocumentProcessor
 from src.core.heuristics import HeuristicExtractor
 from src.database.duckdb_manager import DuckDBManager
 
-
 @pytest.fixture
 def mock_db_manager() -> MagicMock:
     """Create a mock database manager."""
     mock = MagicMock(spec=DuckDBManager)
     mock.register_document.return_value = 1
     return mock
-
 
 @pytest.fixture
 def mock_llm_client() -> MagicMock:
@@ -33,7 +31,6 @@ def mock_llm_client() -> MagicMock:
     }
     return mock
 
-
 @pytest.fixture
 def processor(mock_db_manager: MagicMock, mock_llm_client: MagicMock) -> DocumentProcessor:
     """Create a DocumentProcessor with mocked dependencies."""
@@ -43,7 +40,6 @@ def processor(mock_db_manager: MagicMock, mock_llm_client: MagicMock) -> Documen
         chunk_strategy=ChunkStrategy(),
         heuristic_extractor=HeuristicExtractor(),
     )
-
 
 class TestEmptyHeuristics:
     """Test behavior when heuristics return no results."""
@@ -100,7 +96,6 @@ class TestEmptyHeuristics:
         # Check that at least some fields have "NAO ENCONTRADO"
         values = [call[1]["value"] for call in store_calls]
         assert "NAO ENCONTRADO" in values
-
 
 class TestLLMTimeout:
     """Test handling of LLM timeouts and errors."""
@@ -167,7 +162,6 @@ class TestLLMTimeout:
         # Verify error was logged in database
         assert mock_db_manager.update_document_status.called
 
-
 class TestMalformedInput:
     """Test handling of malformed or corrupted input."""
 
@@ -214,7 +208,6 @@ class TestMalformedInput:
         # Should complete without error, storing "NAO ENCONTRADO"
         assert mock_db_manager.register_document.called
         assert mock_db_manager.update_document_status.called
-
 
 class TestHeuristicEdgeCases:
     """Test edge cases in heuristic extraction."""
@@ -295,7 +288,6 @@ class TestHeuristicEdgeCases:
             assert result is not None
             assert result["value"] == expected
 
-
 class TestConfidenceThresholds:
     """Test confidence threshold behavior."""
 
@@ -363,17 +355,16 @@ class TestConfidenceThresholds:
         # Should call LLM because 0.85 < 0.95
         assert mock_llm_client.extract_field.call_count >= 3
 
-
 class TestModeSwitch:
     """Test online vs local mode behavior."""
 
-    def test_online_mode_skips_local_llm(
+    def test_online_mode_runs_llm_and_sets_up_online_search(
         self,
         processor: DocumentProcessor,
         mock_llm_client: MagicMock,
         tmp_path: Path,
     ) -> None:
-        """Test that online mode skips local LLM processing."""
+        """Test that online mode still uses the local LLM before online completion."""
         test_file = tmp_path / "test.pdf"
         test_file.write_text("dummy")
 
@@ -383,10 +374,10 @@ class TestModeSwitch:
             "sections": None,
         })
 
-        # Online mode should skip local LLM
+        # Online mode should leverage LLM, then online completion afterwards
         processor.process(test_file, mode="online")
 
-        assert mock_llm_client.extract_field.call_count == 0
+        assert mock_llm_client.extract_field.call_count >= 3
 
     def test_local_mode_uses_llm_for_low_confidence(
         self,

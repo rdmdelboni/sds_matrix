@@ -3,14 +3,13 @@
 from __future__ import annotations
 
 from pathlib import Path
-from typing import Iterable, Optional
+from typing import Iterable
 
 import duckdb
 import pandas as pd
 
 from ..utils.config import DUCKDB_FILE
 from ..utils.logger import logger
-
 
 EXPORT_QUERY = """
 WITH latest_extractions AS (
@@ -65,8 +64,7 @@ GROUP BY d.id, d.filename, d.status, d.processed_at, d.processing_time_seconds
 ORDER BY d.processed_at DESC NULLS LAST, d.id DESC
 """
 
-
-def load_results(limit: Optional[int] = None) -> pd.DataFrame:
+def load_results(limit: int | None = None) -> pd.DataFrame:
     """Return processed results as a DataFrame."""
     query = EXPORT_QUERY
     if limit:
@@ -81,16 +79,14 @@ def load_results(limit: Optional[int] = None) -> pd.DataFrame:
         df = conn.execute(query).df()
     return df
 
-
-def export_to_csv(path: Path, limit: Optional[int] = None) -> Path:
+def export_to_csv(path: Path, limit: int | None = None) -> Path:
     """Export the processed data to CSV."""
     df = load_results(limit=limit)
     df.to_csv(path, index=False, encoding="utf-8")
     logger.info("Results exported to CSV at %s", path)
     return path
 
-
-def export_to_excel(path: Path, limit: Optional[int] = None) -> Path:
+def export_to_excel(path: Path, limit: int | None = None) -> Path:
     """Export the processed data to Excel."""
     df = load_results(limit=limit)
     with pd.ExcelWriter(path, engine="openpyxl") as writer:

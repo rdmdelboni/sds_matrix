@@ -6,14 +6,12 @@ import queue
 import threading
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Callable, Optional
+from typing import Callable
 
 from ..utils.config import MAX_WORKERS
 from ..utils.logger import logger
 
-
 StatusCallback = Callable[[str, Path], None]
-
 
 @dataclass(frozen=True)
 class ProcessingJob:
@@ -21,7 +19,6 @@ class ProcessingJob:
 
     file_path: Path
     mode: str  # "online" or "local"
-
 
 class ProcessingQueue:
     """Thread-based queue that processes documents sequentially."""
@@ -31,9 +28,9 @@ class ProcessingQueue:
         processor,
         *,
         workers: int | None = None,
-        on_started: Optional[StatusCallback] = None,
-        on_finished: Optional[StatusCallback] = None,
-        on_failed: Optional[Callable[[Path, Exception], None]] = None,
+        on_started: StatusCallback | None = None,
+        on_finished: StatusCallback | None = None,
+        on_failed: Callable[[Path, Exception | None, None]] = None,
     ) -> None:
         self.processor = processor
         self.workers = max(1, workers or MAX_WORKERS)
