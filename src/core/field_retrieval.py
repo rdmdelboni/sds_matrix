@@ -19,16 +19,18 @@ from dataclasses import dataclass
 
 from ..database.duckdb_manager import DuckDBManager
 from ..utils.config import (
+    CONFIDENCE_SUFFICIENCY_THRESHOLD,
     CONFIDENCE_THRESHOLD_LOW,
     CRAWL_TEXT_MAX_CHARS,
-    MAX_CRAWL_PAGES_PER_FIELD,
-    FIELD_SEARCH_MAX_ATTEMPTS,
     FIELD_SEARCH_BACKOFF_BASE,
+    FIELD_SEARCH_MAX_ATTEMPTS,
+    MAX_CRAWL_PAGES_PER_FIELD,
 )
 from ..utils.logger import logger
 from .field_cache import get_field_cache
 from .searxng_client import SearXNGClient  # Primary provider
 from .validator import validate_field
+
 
 @dataclass(slots=True)
 class RetrievalResult:
@@ -280,7 +282,7 @@ class FieldRetriever:
                                     best_source = url
 
                     # Decide whether to retry field-level
-                    sufficient = best_conf >= 300 or best_snippet
+                    sufficient = best_conf >= CONFIDENCE_SUFFICIENCY_THRESHOLD or best_snippet
                     last_attempt = attempt == FIELD_SEARCH_MAX_ATTEMPTS - 1
                     if sufficient or last_attempt:
                         break
