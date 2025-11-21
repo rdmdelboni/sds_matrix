@@ -162,6 +162,13 @@ python -m pip install -r test-requirements.txt
 pytest -q
 ```
 
+Alternatively you can install all test/dev extras using the project package extra:
+
+```bash
+# Install project plus dev/test extras (recommended for contributors)
+pip install -e .[dev]
+```
+
 ## Proximos passos sugeridos
 
 1. Anexar templates de prompts adicionais para campos multiplos e validar se o chunking cobre as 16 secoes ABNT das FDS.
