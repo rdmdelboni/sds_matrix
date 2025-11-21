@@ -270,6 +270,13 @@ FIELD_SEARCH_BACKOFF_BASE: Final[float] = float(
     )
 )
 
+# Minimum confidence score (character count) required to consider field-level
+# retrieval sufficient. When snippet length exceeds this threshold, the field
+# is considered adequately retrieved and no retry is triggered.
+CONFIDENCE_SUFFICIENCY_THRESHOLD: Final[int] = int(
+    os.getenv("CONFIDENCE_SUFFICIENCY_THRESHOLD", "300")
+)
+
 # Timeout (seconds) for individual HTTP fetches of search result pages
 WEB_FETCH_TIMEOUT_SECONDS: Final[int] = int(
     os.getenv("WEB_FETCH_TIMEOUT_SECONDS", "20")
