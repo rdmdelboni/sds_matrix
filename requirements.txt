@@ -16,7 +16,6 @@ pydantic>=2.10.0
 
 # Open-source search solution (SearXNG + Crawl4AI)
 crawl4ai>=0.3.0
-asyncio>=3.4.3
 openpyxl==3.1.2
 python-dotenv==1.0.0
 tqdm==4.66.1
